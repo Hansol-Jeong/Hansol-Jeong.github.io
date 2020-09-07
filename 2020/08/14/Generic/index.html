@@ -14,16 +14,16 @@
 <meta property="og:site_name" content="Hansol">
 <meta property="og:description" content="Generics  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;제네릭... 제네릭...넘모싫어요      왜 필요할까요?     *소금이 필요한 이유와 같다 할 수 있죠. 왜 쓸까요? * 제네릭은 편리합니다.  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;어떤 점에서 편리할까요. 제네릭의 형태를 한번 뜯어봅시다     class GenericFoo &amp;#123;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://hansol-jeong.github.io/2020/08/14/Generic/img/salt.jpg">
-<meta property="og:image" content="https://hansol-jeong.github.io/2020/08/14/Generic/img/근본론.jpg">
+<meta property="og:image" content="https://hansol-jeong.github.io/2020/08/14/Generic/img/salt.JPG">
+<meta property="og:image" content="https://hansol-jeong.github.io/2020/08/14/Generic/img/근본론.JPG">
 <meta property="og:image" content="https://hansol-jeong.github.io/2020/08/14/Generic/img/images.jpg">
 <meta property="og:image" content="https://hansol-jeong.github.io/2020/08/14/Generic/img/nick.jpg">
 <meta property="article:published_time" content="2020-08-14T01:57:53.000Z">
-<meta property="article:modified_time" content="2020-08-14T04:02:16.946Z">
+<meta property="article:modified_time" content="2020-09-07T16:35:28.290Z">
 <meta property="article:author" content="Hansol">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hansol-jeong.github.io/2020/08/14/Generic/img/salt.jpg">
+<meta name="twitter:image" content="https://hansol-jeong.github.io/2020/08/14/Generic/img/salt.JPG">
   
     <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
   
@@ -97,7 +97,7 @@
         <h1>Generics</h1>
  &nbsp;&nbsp;&nbsp;&nbsp;제네릭... 제네릭...넘모싫어요   
   <h2>왜 필요할까요?</h2> <div image>
-  <img src="./img/salt.jpg" width="300" height="200"></div>
+  <img src="./img/salt.JPG" width="300" height="200"></div>
 *소금이 필요한 이유와 같다 할 수 있죠.
 <h2>왜 쓸까요?</h2>
 * 제네릭은 편리합니다.
@@ -132,14 +132,14 @@ public &lt;T&gt; T method(T x) &#123;
 <p>}<br></code></pre>&nbsp;&nbsp;&nbsp;&nbsp;비교를 위해 문제가 일어나지 않는 코드와 비교해 볼 겁니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;우리는 항상 근본을 중요시하죠, 정몽주느낌이에요. 그래서 근본을 따져봅시다. 우선 아래 클래스의  <pre><code><br> public static <T> T staticMethod (T t) &#123;<br>        return t;<br>    &#125;<br></code></pre>이건 되는데</p>
 <pre><code> 
 public static <T> T staicMethod(T var) &#123; &#125;
-</code></pre>&nbsp;&nbsp;&nbsp;&nbsp;이건 안된다는 것이에요 어째서 일까요? 답은 '근본'에 있습니다.<img src="./img/근본론.jpg" width="300" height="200">
+</code></pre>&nbsp;&nbsp;&nbsp;&nbsp;이건 안된다는 것이에요 어째서 일까요? 답은 '근본'에 있습니다.<img src="./img/근본론.JPG" width="300" height="200">
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;차근 차근 살펴보죠 우선 class GenericBar&lt;’T’&gt;이 아이는 객체를 생성할 때<br>GenericFoo&lt;’String’&gt; foo = new GenericFoo&lt;’String’&gt;이런식으로 객체를 생성할때 자료형을 정해줍니다.   그리고 class GenericMethod 이 아이는 객체를 생성할 때 보통 클래스마냥 GenericMethod Foo = new    GenericMethod요로코롬 만들어 주면 되겟죠, 전자와 후자의 차이가뭘까요? 일단 후자는 객체를 생성하기 위한 모든조건이 갖추어져있습니다. 이에 이견은 있을 수 없죠. 그런데 전자는 클래스 자체가 제네릭이고 객체가 생성되기 전에 클래스 단에서 제네릭의 자료형이 정해지지 않았어요 뭐 여기까진 괜찮아요 그런데말입니다<br><img src="./img/images.jpg" width="300" height="200"><br>&nbsp;&nbsp;&nbsp;&nbsp;안전성의 문제가 대두됩니다. static T classVar;을 보죠 객체가 생성되기 전에   생성되는 클래스 변수T의 T가 뭔지 몰라요. 객체를 생성해야 하는데 객체를 생성하면서 T를 결정하고 그 후에   T를 요구하면 모를까 객체 생성전부터 T를 요구하네요 빡치게 난 이걸 줄 수 없어요 근데 만들래요 그러니까   엎어버리는겁니다(아님말고)<br>public static <T> T staicMethod(T var) { } 이것 역시 마찬가지에요. 난 너에게 T를 준적이 없는데 먼저 staticMethod를 T를이용해서 정의하래요.<br><img src="./img/nick.jpg" width="300" height="200">아니 이건 너무한거아니냐고. 그래서 자바가 엎어버리고 빨간줄 그어버리는 겁니다. 뭔가 설명이 부족하지만 난여기까지에요 미안해요 카메라맨.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/14/Generic/" data-id="ckdtph0uj00016cv108ehbhfe" class="article-share-link">Share</a>
+      <a data-url="https://hansol-jeong.github.io/2020/08/14/Generic/" data-id="ckesqyyiv0000ykv11jqqdz4n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
