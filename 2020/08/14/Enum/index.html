@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Enum | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Enumeration 부장님: 난 짜장면.    사원1 : 저도 짜장면이요.    사원2 : 저도 짜장먹겠습니다.    신짜오 : 저도짜장이요.    신입 : 저는 짬뽕먹겠습니다.    *모두 경악한다*    부장님: Enum....!!!!Enumeration!!!!    #  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;그래요 오늘은 이넘이에요 이넘에 대해">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Enum">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/08/14/Enum/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="Enumeration 부장님: 난 짜장면.    사원1 : 저도 짜장면이요.    사원2 : 저도 짜장먹겠습니다.    신짜오 : 저도짜장이요.    신입 : 저는 짬뽕먹겠습니다.    *모두 경악한다*    부장님: Enum....!!!!Enumeration!!!!    #  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;그래요 오늘은 이넘이에요 이넘에 대해">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-14T01:08:22.000Z">
+<meta property="article:modified_time" content="2020-08-14T04:02:15.390Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Enum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/14/Enum/" class="article-date">
+  <time datetime="2020-08-14T01:08:22.000Z" itemprop="datePublished">2020-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Enum
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>Enumeration</h1>
+부장님: 난 짜장면.   
+사원1 : 저도 짜장면이요.   
+사원2 : 저도 짜장먹겠습니다.   
+신짜오 : 저도짜장이요.   
+신입 : 저는 짬뽕먹겠습니다.   
+*모두 경악한다*   
+부장님: Enum....!!!!Enumeration!!!!   
+#
+ &nbsp;&nbsp;&nbsp;&nbsp;그래요 오늘은 이넘이에요 이넘에 대해 알아보도록 하겟숴요    
+
+<pre><code> enum Job &#123; 
+                STUDENT, MARKETING, DEVELOPER, CHIEF_EXECUTIONAL_OFFICER; // 열거형 상수
+            &#125;</code></pre>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;기본적으로 이넘은 이렇게 씁니다. 근데 이넘의 안에있는 STUDENT, MARKETING 등은 각각 객체입니다. 뭔소리냐구요? 나도 혼란스럽지만 우리같이 해보죠   </p>
+<pre><code>enum Family &#123;
+               FATHER("아버지"), MOTHER("어머니"), SON("아들"), DAUGHTER("딸"); // 열거형 상수(객체)
+               private String koreanWord; // 멤버 변수(객체에 속하는 변수)
+
+               // private은 생략 가능, public 불가능
+               private Family(String koreanWord) &#123;
+                   this.koreanWord = koreanWord;
+               &#125;
+
+               public String getKoreanWord() &#123;
+                   return koreanWord;
+               &#125;
+
+               public void setKoreanWord(String koreanWord) &#123;
+                   this.koreanWord = koreanWord;
+               &#125;
+           &#125; </code></pre>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;위의 코드를 같이 보시죠. 열거형 Family 클래스가 있어요. 안에는 아빠 엄마 아들 딸들이 들어있네요. 단란한 가족이네요. 멤버 변수로써 koreanWork가 있습니다.<br>이제 이 아이들이 어떻게 동작하는지 해석해봐요.<br> &nbsp;&nbsp;&nbsp;&nbsp;멤버변수 아래를 보시면 Family생성자가 보여요 이 생성자는 문자열을 받아서 koreanWord값을 지정해주네요? 그럼 저 생성자는 어떻게 쓰면 좋은것일까요 get-set은 너무당연한거니까 걍넘어갑시다<br> 쟈 한번 보죠 떨리네요 내가말하는게 맞는지아닌지 모호한지아닌지 오류가있는지아닌지 90%확률로 있긴한데 이쪽분야가 용어하나에도 민감하다보니까 무슨말을 할수가 없어요 근데 여긴 내블로그니까 맘대로 싸지를거에요<br> 혹시 보시고 ‘아 자바 저렇게 하는거 아닌데…’하셔도 어쩔 수 없습니다. 쟈 그럼한번 보죠 enum Family클래스안에 원소들은 객체입니다. 즉 Family클래스의 객체인거죠 Family의 생성자는 문자열을 입력으로<br> 받을 수 있고, 즉 FATHER MOTHER… 얘네도 다 문자열을 입력으로 받을 수 있어요. 그 문자열은 private String koreanWord로 저장되겟죠? 그럼 이게 도대체 어떻게 쓰이는 걸까요 그것도 예제를 통해 알아보죠   </p>
+<pre><code>        Family fam = Family.SON;
+                   Family Fam = Family.SON;
+                   System.out.println(fam.getKoreanWord());
+                    fam.setKoreanWord("버린 자식");
+                    Fam.setKoreanWord("거둬진 자식");
+                   System.out.println(fam.getKoreanWord());
+                   System.out.println(Family.SON.getKoreanWord()); </code></pre>
+<p> &nbsp;&nbsp;&nbsp;&nbsp; 아주 아름다운 코드네요 이뻐요 잘빠졌어요 쟈 해석해봅시다. Family 클래스 틀의 레퍼런스 fam은 SON객체를 생성하죠(아님말고), 아니 여기선<br> 생성한다기보단 불러온다는게 맞을거에요 SON객체는 하나거든요 그래서 불러와서 System.out.println(fam.getKoreanWord()); 을 하면 모가 나올까욘 답은   </p>
+<ul>
+<li><em>바람이 세차게 부는 1970s 기차역 앞</em>   </li>
+<li>???:나물사세요… 나물… 나물한단 사고가세요   </li>
+<li>행인1:에잇 아줌마 비켜요 길막지말고   </li>
+<li><em>나물 바구니를 발로차는 행인, ???은 쓰러지고만다</em>   </li>
+<li>???:아이고,,,안되는데 만식이 공책필요하다했는데…아이고,,,아까워서 어쩌나   </li>
+<li>퍽!   </li>
+<li><em>‘퍽!’소리와 함께 나뒹굴어지는 행인</em>   </li>
+<li>아들:이게…!      </li>
+<li>어머니:…”아들”…! 안돼…!<br>&nbsp;&nbsp;&nbsp;&nbsp;네 맞아요 답은 “아들”이었습니다. fam객체는 SON으로 대입시켰고 SON은 파라미터 변수로 “아들”을 줬었죠. Family클래스의 생성자는 koreanWord를 변경했고 다시말해서<br>SON객체의 koreanWord는 “아들”로 변경됬을 것이며 그 결과 fam.getKoreanWord는 “아들”이란 값을 갖고 있을 것이에요. 여기서 fam.set…을 하면 SON객체의 koreanWord를 변경할것입니다.<br>아까 제가 객체를 생성하는게 아니라 불러오는 거라고 했죠 진짠지 같이 한번 보죠. SON객체를 ‘???’ 하고있는 fam과 Fam을 만들었 습니다. 이때 각각 버린자식과 거둬진 자식을 세팅했을 때<br>각각 다른값이 출력되면 새로운 SON을 만든것이겠고, 같다면 SON하나를 공유할 거에요 그럼 결과 같이 보시죠<pre><code>거둬진 자식
+거둬진 자식
+</code></pre>
+&nbsp;&nbsp;&nbsp;&nbsp; 다행이네요, 올겨울은 얼어죽진 않겠어요. 보시다시피 둘다 거둬졌으며 곧 fam과 Fam은 같은 SON을 가리키고 있다는 것을 알 수 있습니다.즉 ???=참조 라고 할 수 있겠네요(아님말고)<br>여기까지 Enum이었습니다 잘가라 이넘들아</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/14/Enum/" data-id="ckdtph0uf00006cv17s1s3hwa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/14/Generic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Generic
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/11/Polymorphism2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Polymorphism2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 20px;">java</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/14/Generic/">Generic</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/Enum/">Enum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/11/Polymorphism2/">Polymorphism2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/10/Polymorphism/">Polymorphism1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/How-to-strat-Git/">How-to-start-Git</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

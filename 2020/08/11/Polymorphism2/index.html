@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Polymorphism2 | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Pholymorphism2  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;네 폴리모피즘2입니다. 슬슬 어려워지네요, 하지만 우린 취업해서 엄마에게 효도해야겠죠. 엄마 조금만 기다려 아들이 효도할게       Interface  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;다형성을 실현하는 방법중 하나로 인터페이스가 있습니다. 인터페이스는 추상메소드의 확장판인데">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Polymorphism2">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/08/11/Polymorphism2/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="Pholymorphism2  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;네 폴리모피즘2입니다. 슬슬 어려워지네요, 하지만 우린 취업해서 엄마에게 효도해야겠죠. 엄마 조금만 기다려 아들이 효도할게       Interface  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;다형성을 실현하는 방법중 하나로 인터페이스가 있습니다. 인터페이스는 추상메소드의 확장판인데">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-11T12:23:42.000Z">
+<meta property="article:modified_time" content="2020-08-14T04:02:15.382Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Polymorphism2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/11/Polymorphism2/" class="article-date">
+  <time datetime="2020-08-11T12:23:42.000Z" itemprop="datePublished">2020-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Polymorphism2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>Pholymorphism2</h1>
+ &nbsp;&nbsp;&nbsp;&nbsp;네 폴리모피즘2입니다. 슬슬 어려워지네요, 하지만 우린 취업해서 엄마에게 효도해야겠죠. 엄마 조금만 기다려 아들이 효도할게   
+
+  <h2>Interface</h2>
+ &nbsp;&nbsp;&nbsp;&nbsp;다형성을 실현하는 방법중 하나로 인터페이스가 있습니다. 인터페이스는 추상메소드의 확장판인데요,어떤 특징이 있는지 같이 보시죠 물론 예시와 함께요   
+
+ <pre><code> interface Walkable &#123;
+                 void walk();
+             &#125;
+
+             interface Runnable &#123;
+                 void run();
+             &#125;
+
+             interface Jumpable extends Walkable, Runnable &#123;
+                 void jump();
+             &#125;</code></pre>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;이 예제가 인터페이스의 특성을 아주 완벼쿠@하게 표현해 줍니다. 먼저 Walkable인터페이스를 보시죠, 해당 인터페이스는 안쪽에 walk메소드를 가지고 있습니다<br> 이는 추상메소드와 마찬가지로 반드시 구현시켜줘야 하죠, 특징적으로 앞에 public abstract가 생략되어서 그렇지 역시 추상메소드입니다.<br> &nbsp;&nbsp;&nbsp;&nbsp;아래 Runnable역시 추상메소드구요 여기서 아래 Jumpable이 보이네요, 추상 클래스와 인터페이스의 큰 차이점은 바로 다중 상속이<br> 되는가입니다. 추상 클래스든 뭐든 원래 상속은 extends키워드로 하나의 클래스밖에 상속할 수 없어요, 하지만 인터페이스는 몇개라도 상속 받을 수 있습니다. 멋지죠?<br> &nbsp;&nbsp;&nbsp;&nbsp;또 한가지 특징은 멤버변수는 항상public static final인데요 역시 생략가능합니다. 이를 제외하곤 원래 인터페이스는 별 특징이 없엇어요 하지만 JDK이후로 끔찍한<br> 혼종이 생기게 됩니다.<br>  <h2>Interface include default method</h2><br>  &nbsp;&nbsp;&nbsp;&nbsp;제목부터 무섭네요. 네 JDK1.8이후로 우리의 인터페이스는 원래 추상메소드만 가질수 있었는데 디폴트 함수도 가질 수 있게 되었습니다.<br>  똑똑하신 분들이 추가하신데는 다 이유가 있겠죠, 이유를 알아볼까요?<br>  <pre><code>   기존에 사용하던 인터페이스가 개선되어, 모든 자식 메소드에 동일하게<br>   &nbsp;&nbsp;&nbsp;&nbsp;구현되어야 하는 메소드가 생긴 경우에 쉽게 기능을 추가하기 위해 만들어짐</code></pre><br>   이라고 되있네요 역시 똑똑한 분들인것 같아요. 다시 풀어서 말해보죠. 여러개의 클래스에 A인터페이스가 상속되었습니다. 그런데 나란 놈은 몽총이라서 뒤늦게 해당 인터페이스에 뭔가를 추가하고싶어요<br>   그런데 만약에 내가 해당인터페이스를 이미 100개의 클래스에 상속시켜버렸다면 난 복붙을 100번해야해요 그런 일이 일어나지 않도록 한번에 추가할 수 있게 디폴트 메소드를 만든것입니다. 여러분 그런데 여기<br>   한가지 트릭이있어요. 저도 속았는데요, 디폴트 메소드는<br>   <pre><code>     default void defaultMethod() &#123; // 디폴트 메소드<br>                       System.out.println("Default method");<br>                   &#125;</code></pre><br>  요롯코롬 인터페이스 내부에 작성합니다. 언뜻보면 디폴트 접근제한자를 쓴 것 같지만 그게아니에요. 의미상으로 디폴트값을 나타내기 위해서 디폴트 접근제한자를 썻지만 여타 다른 메소드와<br>  동일하게 이녀석으 public입니다. 원래 인터페이스 안의 메소드는 모두 public으로 평등하니까요. 그렇다고해요 외워요그냥.<br>   &nbsp;&nbsp;&nbsp;&nbsp;여기서 끝난줄 아셧겠지만 트릭이 사실 한가지 더있습니다. 바로 이 아름다운 디폴트 메소드때문에 생김 참사인데요 코드를 보며 같이 보시죠<br>   <pre><code>class FooThree extends SuperFoo implements IFooTwo </code></pre><br>  &nbsp;&nbsp;&nbsp;&nbsp;이렇게 SuperFoo라는 일반 클래스와 IFooTwo라는 인터페이스를 상속받는 FooThree라는 클래스를 상상해 볼게요 이 때<br>  <pre><code> class SuperFoo &#123;<br>                  public void defaultMethod() &#123;<br>                      System.out.println("Default method in Super class");<br>                  &#125;<br>              &#125;<br>interface IFooTwo &#123;<br>    void abstractMethod();<br>    default void defaultMethod() &#123; // 디폴트 메소드<br>        System.out.println("Default method");<br>    &#125;<br>&#125;<br></code></pre><br> &nbsp;&nbsp;&nbsp;&nbsp;각각의 코드들은 이렇다고 해봅시다. 그러면 여기서 크고 아름다운 문제가 생겨버려요. 상속받은 SuperFoo도 defaultMethod를<br> 가지고 있고, IFooTwo인터페이스도 defaultMethod를 가지고 있네요. 그런데 두 메소드의 내용은 달라요. 과연 FooThree는 누구의 선택을 받을까요? 정답은 바로<br> SuperFoo입니다. Super라서 이긴건 아니구요. 본질을 따져봐야 해요. 원래 인터페이스는 default값을 가진다는 개념이 없엇죠. 하지만 편의성을 위해 나중에 생기긴 했어요<br> 하지만 그 편의성이 본질을 해칠 순 없습니다. 이녀석은 원래는 존재하면 안되는 아이에요. 족보로 따지면 ‘서자’인 셈이져. 반대로 우리 Super는 원래 족보상에 있는 ‘적자’일<br> 거에요. 클래스도 적자서자를 따지는 더러운 세상이져 아 참고로 인터페이스도 키워드가 interface지만 본질은 클래스입니다. 하여튼 답은 SuperFoo였어요.<br> #<br> 이렇게 Polymorphism2도 마쳐보았습니다 즐거우셨나요? 전 즐거웠어요 다음에 또봐요</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/11/Polymorphism2/" data-id="ckdtph0uw000a6cv1cp92g907" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/14/Enum/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Enum
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/10/Polymorphism/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Polymorphism1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 20px;">java</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/14/Generic/">Generic</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/Enum/">Enum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/11/Polymorphism2/">Polymorphism2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/10/Polymorphism/">Polymorphism1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/How-to-strat-Git/">How-to-start-Git</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
