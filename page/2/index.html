@@ -66,14 +66,255 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-How-to-strat-Git" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Strings" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/07/How-to-strat-Git/" class="article-date">
-  <time datetime="2020-08-07T07:19:38.000Z" itemprop="datePublished">2020-08-07</time>
+    <a href="/2020/11/03/Strings/" class="article-date">
+  <time datetime="2020-11-02T23:40:03.428Z" itemprop="datePublished">2020-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title:Strings<br>date: 2020-08-05 22:54:51<br>tags:   </p>
+<ul>
+<li>java</li>
+<li>til  </li>
+<li>Strings</li>
+</ul>
+<p>categories:  </p>
+<ul>
+<li>java  </li>
+<li>til</li>
+<li>Strings</li>
+</ul>
+<hr>
+<h1 id="문자열"><a href="#문자열" class="headerlink" title="문자열"></a>문자열</h1><h2 id="문자열의-특징"><a href="#문자열의-특징" class="headerlink" title="문자열의 특징"></a>문자열의 특징</h2><ul>
+<li><p>클래스로 구현되어 있다.</p>
+</li>
+<li><p>내부에 문자의 배열로 데이터가 구현되어 있다.</p>
+</li>
+<li><p>한번 만든 문자열은 변하지 않는다. (Immutable) (Strings)</p>
+<ul>
+<li>StringBuilder(동기화 x 빠름), StringBuffer(동기화 o, 느림)사용<h2 id="문자열의-생성"><a href="#문자열의-생성" class="headerlink" title="문자열의 생성"></a>문자열의 생성</h2></li>
+</ul>
+</li>
+<li><p>new 키워드를 이용하여 생성</p>
+<ul>
+<li><code>String string = new String(&quot;문자열             생성&quot;);</code></li>
+</ul>
+</li>
+<li><p>new 키워드 없이 생성 (권장)</p>
+<ul>
+<li><code>String string = &quot;문자열 생성&quot;;</code><h2 id="문자열-메소드"><a href="#문자열-메소드" class="headerlink" title="문자열 메소드"></a>문자열 메소드</h2></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>length(): 문자여르이 길이를 출력</li>
+<li>charAt(int index): index번 쨰 위치한 문자 출력</li>
+<li>indexOf(char ch): ch가 위치한 iㅜdex출력, 없을 시 -1</li>
+<li>equals(Object ob): ob와 비교한 결과 출력</li>
+<li>equalsIgnoreCase(String string): 대소문자 구분없이 string과 비교 결과 출력</li>
+<li>replace(char oldChar, char newChar): oldChar를 찾아 newChar로 변경된 문자열 출력</li>
+<li>substring(int beginIndex, int endIndex): 문자열을 beginIndex부터 endIndex -1까지 잘라서 출력</li>
+<li>trim(): 문자열 좌우 공백을 없앤 결과를 출력</li>
+<li>matches(String regex): 문자열을 정규표현식 regex확인 결과 출력</li>
+<li>split(String regex): 문자열을 정규표현식 형태로 나눈 후 배열로 출력</li>
+</ul>
+<h2 id="도전과제"><a href="#도전과제" class="headerlink" title="도전과제"></a>도전과제</h2><ul>
+<li>정규표현식</li>
+<li>StringBuilder</li>
+<li>StringBuffer<br>에 대해 알아보기</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/03/Strings/" data-id="ckh16xjj1000vp4v1etitfwe2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Variable" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/03/Variable/" class="article-date">
+  <time datetime="2020-11-02T23:39:43.108Z" itemprop="datePublished">2020-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: Variable<br>date: 2020-07-27 22:12:43<br>tags:   </p>
+<ul>
+<li>java</li>
+<li>til  </li>
+<li>Variable</li>
+</ul>
+<p>categories:  </p>
+<ul>
+<li>java  </li>
+<li>til</li>
+<li>Variable  </li>
+</ul>
+<hr>
+<h1 id="변수"><a href="#변수" class="headerlink" title="변수"></a>변수</h1><ul>
+<li><p>변수는 변하는 수</p>
+</li>
+<li><p>수학의 변수와 유사하다</p>
+</li>
+<li><p>변수란 것은 변수타입이 존재하고, 변수에는 변수명, 값을 할당할 수 있다.</p>
+<h1 id="사용-예"><a href="#사용-예" class="headerlink" title="사용 예"></a>사용 예</h1></li>
+<li><p>int y,z, value; 여러개도 동시 선언 가능</p>
+</li>
+<li><p>int valueOne =10, valueTwo =20; 이렇게 한줄에도 가능</p>
+</li>
+<li><p>int int; 이 경우는 되지 않는다. 이미 예약어로 잡혀있어서, 자바에서 문법적으로 쓰는 키워드는 변수명으로 사용이 불가하다.</p>
+</li>
+<li><p>int intOne; 이렇게는 가능하다.</p>
+</li>
+<li><p>int 심지어_한글도_됩니다_하지만_쓰지_않습니다;</p>
+</li>
+<li><p>int 4four; 숫자로 시작할 순 없습니다.</p>
+</li>
+<li><p>int _4four; 숫자로 쓰고싶다면 _로 시작하면 됩니다. _는 특수문자가 아닙니다.</p>
+</li>
+<li><p>int fe$the; 특수문자는 되지 않지만 $는 됩니다. 하지만 쓰지 않습니다.</p>
+<h1 id="CodeConvention"><a href="#CodeConvention" class="headerlink" title="CodeConvention"></a>CodeConvention</h1><p>변수명을 어떠한 식으로 쓰면 좋은가</p>
+<h2 id="camelCase"><a href="#camelCase" class="headerlink" title="camelCase"></a>camelCase</h2><p>첫번째 소문자 그다음 띄어쓰기 대신에 대문자</p>
+<ul>
+<li>int valueOfComputer;<h2 id="PascalCase"><a href="#PascalCase" class="headerlink" title="PascalCase"></a>PascalCase</h2>UpperCamelCase라고도 한다</li>
+<li>PascalCase는 변수이름으론 쓰지 않습니다.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/03/Variable/" data-id="ckh16xjj2000xp4v1aayd3dp5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Wrapper_Class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/03/Wrapper_Class/" class="article-date">
+  <time datetime="2020-11-02T23:39:32.290Z" itemprop="datePublished">2020-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: Wrapper Class<br>date: 2020-08-14 21:55:23<br>tags:   </p>
+<ul>
+<li>java</li>
+<li>til  </li>
+<li>Wrapper Class</li>
+</ul>
+<p>categories:  </p>
+<ul>
+<li>java  </li>
+<li>til</li>
+<li>Wrapper Class</li>
+</ul>
+<hr>
+<h1 id="Wrapper-클래스-Wrapper-Class"><a href="#Wrapper-클래스-Wrapper-Class" class="headerlink" title="Wrapper 클래스 (Wrapper Class)"></a>Wrapper 클래스 (Wrapper Class)</h1><h2 id="Wrapper-클래스란"><a href="#Wrapper-클래스란" class="headerlink" title="Wrapper 클래스란"></a>Wrapper 클래스란</h2><ul>
+<li><p>기본형 타입을 객체로 사용하기 위한 클래스</p>
+<h2 id="Wrapper-클래스의-종류"><a href="#Wrapper-클래스의-종류" class="headerlink" title="Wrapper 클래스의 종류"></a>Wrapper 클래스의 종류</h2><ul>
+<li>byte -&gt; Byte</li>
+<li>char -&gt; Character</li>
+<li>short -&gt; Short</li>
+<li>int -&gt; Integer</li>
+<li>long -&gt; Long</li>
+<li>float -&gt; Float</li>
+<li>double -&gt; Double</li>
+<li>boolean -&gt; Boolean<h2 id="Wrapper-객체-생성"><a href="#Wrapper-객체-생성" class="headerlink" title="Wrapper 객체 생성"></a>Wrapper 객체 생성</h2></li>
+</ul>
+</li>
+<li><p>생성자를 이용한 객체 생성</p>
+<pre><code>Integer integer = new Integer(10);</code></pre>
+</li>
+<li><p>valueOf를 이용한 객체 생성</p>
+</li>
+</ul>
+<pre><code>    Integer integer = Integer.valueOf(10);
+    //이건 그럼 클래스.메소드 니까 valueOf(int n)은 static메소드겠지?</code></pre>
+<h2 id="Autoboxing-amp-Unboxing"><a href="#Autoboxing-amp-Unboxing" class="headerlink" title="Autoboxing &amp; Unboxing"></a>Autoboxing &amp; Unboxing</h2><ul>
+<li><p>오토박싱 (Autoboxing)</p>
+<ul>
+<li>Java1.5부터 추가된 기능으로, 객체로 다루어야 할 때 자동으로 Wrapper 클래스로 변경하는 기능</li>
+</ul>
+</li>
+<li><p>언박싱 (Unboxing)</p>
+<ul>
+<li>Wrapper 객체를 기본형으로 자동으로 변경하는 기능</li>
+</ul>
+</li>
+</ul>
+<pre><code>        int i = 10;
+        Integer wrapped = i;
+        int b = 20 + wrapped;</code></pre>
+<h2 id="Wrapper-타입의-값-비교"><a href="#Wrapper-타입의-값-비교" class="headerlink" title="Wrapper 타입의 값 비교"></a>Wrapper 타입의 값 비교</h2><p>Wrapper 타입은 객체이므로, ==를 이용하여 값을 비교할 수 없다.</p>
+<pre><code>Integer intOne = new Integer(100);
+Integer intTwo = new Integer(100);
+
+System.out.println(intOne == intTwo); // false
+System.out.println(intOne.equals(intTwo)) // true
+System.out.println(intOne == 100) // true (Unboxing)</code></pre>
+<h2 id="문자열의-기본-자료형-변환"><a href="#문자열의-기본-자료형-변환" class="headerlink" title="문자열의 기본 자료형 변환"></a>문자열의 기본 자료형 변환</h2><ul>
+<li><p>Parsing 정적 메소드를 이용한 변환</p>
+<pre><code>int x = Integer.parseInt(&quot;100&quot;);
+long y = Long.parseLong(&quot;512345124&quot;);</code></pre>
+</li>
+<li><p>Wrapper 객체로의 변환</p>
+<pre><code>Integer intObj = Integer.valueOf(&quot;1000&quot;);
+Integer intObjTwo = new Integer(&quot;1234&quot;);</code></pre>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/03/Wrapper_Class/" data-id="ckh176arx0002swv1gp1u2aj1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MultiThread(6)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/MultiThread(6)/" class="article-date">
+  <time datetime="2020-10-29T23:44:34.000Z" itemprop="datePublished">2020-10-30</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
   </div>
 
   </div>
@@ -84,7 +325,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/How-to-strat-Git/">How-to-start-Git</a>
+      <a class="article-title" href="/2020/10/30/MultiThread(6)/">MultiThread(6)</a>
     </h1>
   
 
@@ -92,55 +333,713 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1>나는 오늘 무었을 배웠는가</h1>
-  <h2>1.세팅</h2>
-  <h2>2.git init에 대해 배웠습니다</h2>  
-  <h2>3.git clone에 대해 배웠습니다.</h2>
-<h2>1.세팅</h2>
-* 메일 설정
-<pre><code> $git config --global user.name "당신의유저네임"</code></pre>
- &nbsp;&nbsp;&nbsp;&nbsp;요로코롬 깃헙과 연결할 유저 이름을 설정 할 수가 있다는 것을 알아줬으면 하는 바에요
-* 이름설정
-<pre><code>  git config --global user.email "당신의메일주소"</code></pre>
-&nbsp;&nbsp;&nbsp;&nbsp;같은 방식으로 메일도 설정할 수가 있습니다.
-* 에디터 설정
-<pre><code> git config --global core.editor "vim"</code></pre>
-&nbsp;&nbsp;&nbsp;&nbsp;우리는 텍스트 에디터로서 vim을 쓸겁니다. 요로코롬 븸을 깔아주세요
+        <h1 id="MultiThread-6"><a href="#MultiThread-6" class="headerlink" title="MultiThread(6)"></a>MultiThread(6)</h1><h1 id="synchronizedList"><a href="#synchronizedList" class="headerlink" title="synchronizedList"></a>synchronizedList</h1><pre><code>List&lt;Integer&gt; list1 = new Vector&lt;&gt;();  
+List&lt;Integer&gt; list2 = new ArrayList&lt;&gt;();  
+List&lt;Integer&gt; list3 = Collections.synchronizedList(list2);  
+// list3: list2의 싱크된 버전  
 
-<h2>2.git init</h2>
-* git init보단 clone을 주로 쓴다 합니다. 하지만 깃의 원리를 배우기 위해 배워보아요
 
-<pre><code>  $mkdir first-git-repo 
-  $cd first-git-repo</code></pre>
-<p> &nbsp;&nbsp;&nbsp;&nbsp; 위의 두 과정은 각각 깃 레퍼지토리와 연결할 폴더를 만드는 과정과 그  폴더로 이동하는 과정이에요 그쪽으로 이동해야<br>  뭔가를 할 수 있을거에욘<br>  &nbsp;&nbsp;&nbsp;&nbsp;다음엔 뭘해야 할까요 맞아요 깃허브에도 새로운 저장공간(레퍼지토리)를 만들고 그 둘을 이어주는 작업이<br>  필요할 것이라고 생각되는 부분이에요 그러면 그 과정을 함께 보시죠<br>  <pre><code> &git init</code></pre><br>  &nbsp;&nbsp;&nbsp;&nbsp;울 통해 우리의 first-git-repo에 github과 연결할 준비를 합니다. 이러면 우리 폴더께서<br>  로컬 레퍼지토리로 사용됨을 기대하며 꽃단장을 마친 겁니다. 이제 로컬 레퍼지토리를 원격 (remote)레퍼지토리와 연결시켜 볼까요<br>  <pre><code> $ git remote add origin 원격 레퍼지토리 주소</code></pre><br>   &nbsp;&nbsp;&nbsp;&nbsp;쟈 위의 코드가 바로 로컬 레퍼지토리와 리모트 레퍼지토리를 이어주는 선죽교입니다.<br>   저 코드를 씀으로써 우리는 이제 진정한 깃인이 된것이에요 이후에 README.md파일을 만드는 작업이 우리를 기다려요<br>  &nbsp;&nbsp;&nbsp;&nbsp;README.md…왜있는 걸까요 저도아직 잘 모릅니다. 하지만 만들라니 만들어야겠지요.<br>  우선 레퍼지토리를 생성하는 순간에 옵션으로 README.md를 만들 수 있어요 그런데말이죠 참 신기하게도 git init으로 하는<br>  과정에서 README.md를 옵션으로 선택해서 연결하면 오류가 뜬다는 거에요 이유는 구글링 해보시기 바랍니다. 그래서 우리는<br>  만들어줄거에요<br>  <pre><code>$touch README.md<br>$vi README.md</code></pre><br>&nbsp;&nbsp;&nbsp;&nbsp;쟈 우선 첫번째 코드는 리드미 파일을 만드는 것입니다 두번 째는 우리가 앞서 설치한 vim에디터로 리드미를<br>수정해줄거에요 </p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;i를 눌러 insert mode를 활성화 한 뒤, 텍스트 편집을 수행하고 esc키를 눌러 normal mode로 빠져나와<br> :wq 를 입력하여 저장한 뒤 vim을 종료합니다.</p>
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;이제 파일들을 준비시키고 올려보겠습니다 업로드 준비과정은<br>  <pre><code>$ git add README.md</code></pre><br>  이고 만약 여러개라면 여러개 띄어쓰기로 구분해서 쓰시면되고 전부다 올려야한다! 하시면은</p>
-  <pre><code>$ git add *</code></pre>
-<p>  요로코롬 해주면 될꺼같아요 마지막으로<br>    <pre><code>$ git commit</code></pre><br>    해주면은 이제 원격 레포지토리에 뙇! 올라갈것입니다. 가 아니에요 <strong>올라가지않아요</strong>. 안올라간다구요 진지해요<br>    commit과정은 README.md에 대한 설명을 올려주는 과정입니다 아까 vim으로 편집했던 설명을 넣어주는 겁니다. 이제 진짜로<br>    올려보죠<br>      <pre><code>$git push -u origin master</code></pre><br>      &nbsp;&nbsp;&nbsp;&nbsp;무섭게 생겼네요 해당 push는 원격레포에 처음으로 올려줄 때만 해주면 되구요 그 이후는<br>       <pre><code>$git push origin master</code></pre><br>       &nbsp;&nbsp;&nbsp;&nbsp;요로코롬 올려주시면됩니다. 이렇게 git init 이 끝낫답니당</p>
-<h2>  
-3.git clone  </h2>
-&nbsp;&nbsp;&nbsp;&nbsp; 아주 깔꼼하고 간편하고 이쁘고 아름다운 방법이라고 말하고있는것만 같아요 아주간단해요 마찬가지로 레포지토리를   
-생성할 때 README,LICENSE, README.md, .gitignore파일과 함께 생성해 주면 됩니다. 그런데 LICENSE, .gitignore 무섭게 생겼네요    
-이름처럼 무시하고싶게 생긴아이들이에요 그런데 반대로 저 뜻은 무시하면 안된다는 뜻이라합니다(???)     
+for (int i = 0; i &lt; 1000; i++) &#123;  
+    new Thread(() -&gt; &#123;  
+        for (int j = 0; j &lt; 100; j++) &#123;  
+            list1.add(1);  
+  &#125;  
+    &#125;).start();  
+&#125;  
 
-<ul>
-<li>LICENSE<br>&nbsp;&nbsp;&nbsp;&nbsp;라이센스는 어느 오픈소스를 기반으로 만들었는지 알려주는 것이라는데 우리 뉴비들은 그냥 MIT 라이센스 쓰면된다는게<br>정설입니다</li>
-<li>.git ignore<br>&nbsp;&nbsp;&nbsp;&nbsp;깃 이그노어는 내가 쓸 운영체제, 개발환경, 프로그래밍언어를 고려해서 쓸모 없는 파일들을 알아서 무시해주는<br>스마트한 녀석이라고 배웠어요, 아직 뭐가뭔지모르겠지만 그냥 그렇다합니다. 그러면 우리가 일일히 파일 형식을 지정해줘야할까요? 아뇨<br>세상은 그렇게 불편하게 발전하지 않았습니다. 간편한 방법을 알아보죠</li>
-</ul>
-<p>[gitignore.io]<a target="_blank" rel="noopener" href="https://www.toptal.com/developers/gitignore">https://www.toptal.com/developers/gitignore</a><br>  &nbsp;&nbsp;&nbsp;&nbsp;열로 가시면 자신의 운영체제,개발환경,프로그래밍 언어를 기입하면 .gitignore내용을 자동으로 만들어 줍니다.<br>  그렇다면 우리가 할것은 우리의 gitignore을 vim으로 복붙하는 것 밖엔 없다는 것이에요! 참으로 좋은세상이 아닐 수 없습니다.</p>
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;이제 아까과정과 같습니다. 원격 로컬 연결해줄것이에요 해봅시다</p>
-  <pre><code>$ git clone 복사한remoteRepo주소</code></pre> 
-<p>  &nbsp;&nbsp;&nbsp;&nbsp;아 그런데 앞에서 얘기 안한게 있는데 주소는 HTTPS주소 쓰셔야되요 SSH쓰는 법은 구글링 ㄱㄱ<br>  &nbsp;&nbsp;&nbsp;&nbsp;쟈 이제 원격 로컬 연결했고, 리드미도 만들었고 vim으로 수정까지 다하셧겟죠그럼 add하시고 commit하시고<br>  push 하시면 됩니다. 그런데 여기서 또 clone의 좋은점은 앞의 init에서처럼 -u안붙여도 되요 즉</p>
-   <pre><code>  $git push origin master</code></pre>
-<p>   &nbsp;&nbsp;&nbsp;&nbsp;요로코롬 하시면 됩니다. 이상 깃 헙 강의 1일차였습니다.</p>
+for (int i = 0; i &lt; 1000; i++) &#123;  
+    new Thread(() -&gt; &#123;  
+        for (int j = 0; j &lt; 100; j++) &#123;  
+            list3.add(1);  
+  &#125;  
+    &#125;).start();  
+&#125;  
+
+
+
+Thread.sleep(1000);  
+
+System.out.println(list1.size());  
+System.out.println(list2.size());</code></pre>
+<p>  리스트를 sync해서 쓸 수 있는데 대표적으로 우리가 아는 sync된 리스트는 Vector이다. 때문에 기본적으로 벡터는 다른 자료구조에 비해 느린 이유가 여기있다. 따로 Vector를 쓰지 않고 싱크된 자료구조를 쓰고 싶다면 위의 코드처럼 Collections.synchronizedList(list) 로 만들어 주면 될 것이다.</p>
+<h1 id="쓰레드-풀-Thread-Pool"><a href="#쓰레드-풀-Thread-Pool" class="headerlink" title="쓰레드 풀(Thread Pool)"></a>쓰레드 풀(Thread Pool)</h1><p>  쓰레드는 생성하고 관리하기가 어렵다. 때문에 쓰레드 풀이란 것이있다. 이미 만들어진 쓰레드 뭉텅이에 SynchronousQueue(작업 큐)를 제출(submit)해주면 된다. 이 스레드 풀을 생성하는 방법은 Executors.newCachedThreadPool(), Executors.newFixedThreadPool(n),new ThreadPoolExecutor ( 여러가지 ) 이렇게 세 가지가 있으며 공통점은 작업큐를 제출할 때 작업큐는 Runnable객체 또는 Callable객체여야 한다는 것이다. 활용 예는 아래와 같다.</p>
+<pre><code>public class Main &#123;  
+    public static void main(String[] args) throws InterruptedException &#123;  
+        ExecutorService pool1 = Executors.newCachedThreadPool();  
+  /**  
+ * newCachedThreadPool * - 초기 스레드가 0개 -&gt; 오버헤드가 없다.  
+ * - 코어 스레드가 0개(일하지 않아도 살려두는 스레드)  
+ * - 요청 작업보다 스레드가 부족하면 새 스레드를 생성  
+  * - 60초 동안 일하지 않은 스레드는 제거  
+  */  
+  ExecutorService pool2 = Executors.newFixedThreadPool(10);  
+  /**  
+ *  newFixedThreadPool *  - 최대 스레드 nThread개  
+  *  - 코어 스레드 nThread개  
+  *  - 요청 작업보다 스레드가 부족하면 새 스레드 생성  
+  *  - 작업하지 않는 스레드도 제거하지 않고 동작  
+  */  
+
+  ExecutorService es = new ThreadPoolExecutor (  
+                10, //코어 스레드  
+  100, // 최대 스레드 개수  
+  120, // 스레드가 이 시간동안 일 하지 않으면 제거  
+  TimeUnit.SECONDS,  
+ new SynchronousQueue&lt;Runnable&gt;() // 요청 -&gt; 작업을 쌓아둔 큐 -&gt;스레드 풀  
+  );  
+  //2.스레드에 할당할 작업 생성  
+  class Work implements Runnable &#123;  
+
+            @Override  
+  public void run() &#123;  
+                for(int i = 0; i&lt; 100; i++) &#123;  
+                    System.out.println(i);  
+  &#125;  
+            &#125;  
+        &#125;  
+        class CallableWork implements Callable&lt;String&gt; &#123;  
+
+            @Override  
+  public String call() throws Exception &#123;  
+                return &quot;작업종료&quot;;  
+  &#125;  
+        &#125;  
+        //3.스레드에 작업 요청  
+  Future&lt;String&gt; future;  
+  future=pool1.submit(new CallableWork());  
+ for (int i = 0; i&lt;100; i++) &#123;  
+            pool1.submit(new Work());  
+ ;  &#125;//4. 스레드 종료(동기화)  
+ //스레드 풀은 자동 종료가 안되기 때문에, 직접 스레드풀을 종료해 주어야 한다.  
+  pool1.shutdown(); // Thread.join()과 마찬가지로 끝나길 기다려서 종료  
+  Thread.sleep(1000);  
+ try &#123;  
+            System.out.println(future.get()); //get()은 Blocking method 즉59번 째 줄에 future에 값이 들어오기 전까진 get()에서 블러킹한다.  
+ //get()을 영원히 기다릴 수 도 있음으로 timeout 설정 가능  
+  future.cancel(true); //실행중인 Callable객체를 강제종료 인터럽트해서 강제종료  
+  System.out.println(future.isCancelled());  
+  System.out.println(future.isDone());  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125; catch (ExecutionException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+    &#125;  
+&#125;</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/07/How-to-strat-Git/" data-id="ckgz91rov000240v1a9hdanmz" class="article-share-link">Share</a>
+      <a data-url="https://hansol-jeong.github.io/2020/10/30/MultiThread(6)/" data-id="ckgz91rp7000e40v11n2wb8db" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MultiThread(4)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/29/MultiThread(4)/" class="article-date">
+  <time datetime="2020-10-28T23:23:44.000Z" itemprop="datePublished">2020-10-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/29/MultiThread(4)/">MultiThread(4)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MultiThread-4"><a href="#MultiThread-4" class="headerlink" title="MultiThread(4)"></a>MultiThread(4)</h1><p>멀티 쓰레드 프로그래밍: 여러개의 스레드를 사용하는 프로그래밍 기법!</p>
+<ul>
+<li>Thread: 최소의 프로세스 동작단위 -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다.</li>
+<li>Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세스가 된다.(프로그램을 실행할 때, 멀티 프로세스로 동작하는 프로그램도 있다.)</li>
+</ul>
+<h2 id="notify"><a href="#notify" class="headerlink" title="notify()"></a>notify()</h2><p>wait() 중인 다른 스레드를 하나 동작 상태로 만든다.</p>
+<h2 id="wait"><a href="#wait" class="headerlink" title="wait()"></a>wait()</h2><p>Lock을 반환하고 대기 상태로 들어간다.</p>
+<ul>
+<li>여러 동작을 병렬적으로 처리하여 CPU 사용율 향상 (CPU Utilization) (ex. 인코딩, 랜더링, 배치작업 (DB 정리, 로그처리 등…)    </li>
+<li>시간이 걸리는 동작을 분리하여 프로그램의 응답성 향상(ex. GUI, 게임, 앱, 웹API, …)</li>
+</ul>
+<h1 id="notify-와-wait-을-사용한-멀티스레드-구현"><a href="#notify-와-wait-을-사용한-멀티스레드-구현" class="headerlink" title="notify() 와 wait() 을 사용한 멀티스레드 구현"></a>notify() 와 wait() 을 사용한 멀티스레드 구현</h1><pre><code>    class WorkObject &#123;  
+    public synchronized void methodA() &#123;  
+        System.out.println(&quot;methodA() called&quot;);  
+  notify(); // wait()중인 다른 스레드를 하나 동작 상태로 만든다.  
+  try &#123;  
+            wait(); // Lock을 반환하고 대기 상태로 들어감.  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+    &#125;  
+   public synchronized void methodB() &#123;  
+        System.out.println(&quot;methodB() called&quot;);  
+  notify();  
+ try &#123;  
+            wait();  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+
+    &#125;  
+&#125;  
+
+class MyThread extends Thread &#123;  
+    private final WorkObject workObject;  
+ private boolean isA;  
+
+ public MyThread(WorkObject workObject, boolean isA) &#123; // Dependency Injection  
+  this.workObject = workObject;  
+ this.isA = isA;  
+  &#125;  
+
+    @Override  
+  public void run() &#123;  
+        for (int i = 0; i &lt; 10; i++) &#123;  
+            if (isA) &#123;  
+                workObject.methodA();  
+  &#125; else &#123;  
+                workObject.methodB();  
+  &#125;  
+        &#125;  
+    &#125;  
+&#125;  
+
+public class Main &#123;  
+    public static void main(String[] args) &#123;  
+        WorkObject sharedObj = new WorkObject();  
+
+  Thread p1 = new MyThread(sharedObj, true);  
+  Thread p2 = new MyThread(sharedObj, false);  
+
+  p1.start();  
+  p2.start();  
+  &#125;  
+&#125;</code></pre>
+<p>  코드가 좀 길다. 하지만 자를 수 없었다. 결론적으론 메소드 A와 메소드 B가 있고 각 각 다른 쓰레드에서 p1,p2를 실행시켜 각 각 run()을 주고받는다. p1은 run에서 메소드A만 10번을 실행할 것이고 p2는 메소드 B만 10번을 실행할 것이다. 이 때  각 메소드의 동작을 살펴보면 메소드 A와B는 모두 method called메시지를 출력 후 notify()를 실행한다. 이로 써 wait()중인 다른 스레드를 동작상태로 만들고 자신은 뒤이어 wait()으로 대기상태에 들어간다. 이를 주고받으며 서로 10번씩 20번을 하면 동작이 끝난다.</p>
+<h1 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h1><p> 세마포의 사전적 의미는 횟대(깃발)이다.<br> n개의 깃발을 놓고, 여러 스레드가 경쟁하도록 하는 sync기법이다.<br> n=1이면,  BinarySemaphore라고 하며, Lock과 유사하게 동작</p>
+<pre><code>public class Main &#123;  
+    public static void main(String[] args) &#123;  
+        Semaphore sem = new Semaphore(1);  
+  System.out.println(sem.availablePermits());  
+//  
+//        try &#123; // Blocking으로 동작  
+//            sem.acquire(12);  
+//        &#125; catch (InterruptedException e) &#123;  
+//            e.printStackTrace();  
+//        &#125;  
+//        sem.acquireUninterruptibly(); // interrupt()에 반응하지 않음  
+  System.out.println(sem.tryAcquire()); // Blocking하지 않고, 실패하면 false 리턴  
+  try &#123;  
+            System.out.println(sem.tryAcquire(2000, TimeUnit.MILLISECONDS)); // Blocking하지 않고, 실패하면 false 리턴  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+        System.out.println(sem.availablePermits());
+  sem.release();  
+  System.out.println(sem.availablePermits());  
+  &#125;  
+&#125;</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/29/MultiThread(4)/" data-id="ckgz91rp4000a40v11w16f9ur" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MultiThread(5)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/29/MultiThread(5)/" class="article-date">
+  <time datetime="2020-10-28T23:16:42.000Z" itemprop="datePublished">2020-10-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/29/MultiThread(5)/">MultiThread(5)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+         <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+<h1 id="식사하는-철학자들"><a href="#식사하는-철학자들" class="headerlink" title="식사하는 철학자들"></a>식사하는 철학자들</h1><p> 철학자들(Circle)이 식사를 하려합니다. 식사를 하기 위해선 양손에 포크가 필요한데요, 반드시 양손에 두개의 포크를 가진 사람만이 식사를 할 수 있습니다. 때문에 식사를 못한사람은 식사를 하고있는 사람이 포크를 내려놓을 때 까지 기다려야 합니다. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A((Circle)) -- fork --&gt; B((Circle))</span><br><span class="line">B((Circle)) -- fork --&gt; C((Circle))</span><br><span class="line">C((Circle)) -- fork --&gt; D((Circle))</span><br><span class="line">D((Circle)) -- fork --&gt; E((Circle))</span><br><span class="line">E((Circle)) -- fork --&gt; A((Circle))</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h1><pre><code> class Philosopher extends Thread &#123;  
+ private final int id;  각각의 철학자를 나타냅니다
+ private final Fork left;  그 철학자 왼쪽의 포크 상태
+ private final Fork right;  오른쪽의 포크 상태
+
+ public Philosopher(int id, Fork left, Fork right) &#123;  
+        this.id = id;  
+ this.left = left;  
+ this.right = right;  
+  &#125;  
+
+    @Override  
+  public void run() &#123;  
+        while (true) &#123;  
+            try &#123;  
+                left.acquire(); 왼쪽 포크(세마포)를 얻기를 시도한다.
+//                System.out.println(id + &quot;: left taken.&quot;);  
+  &#125; catch (InterruptedException e) &#123;  
+                e.printStackTrace();  
+  &#125;  
+
+            try &#123;  
+                if (!right.tryAcquire(1000, TimeUnit.MILLISECONDS)) &#123;  
+                    left.release();  
+  Thread.yield();  
+ continue;  &#125;  오른쪽 포크가 없는 상태라면 1초후 강제로 왼쪽 포크(세마포)를 해제한다. 그리고 쓰레드를 양보한다.
+//                System.out.println(id + &quot;: right taken.&quot;);  
+  &#125; catch (InterruptedException e) &#123;  
+                e.printStackTrace();  
+  &#125;  
+
+            try &#123;  
+                System.out.println(id + &quot; is eating.&quot;);  
+  Thread.sleep(2000);  
+  &#125; catch (InterruptedException e) &#123;  
+                e.printStackTrace();  
+  &#125;  
+
+            left.release();  
+  right.release();  
+  Thread.yield();  
+  &#125;  
+    &#125;  
+&#125;  
+
+class Fork extends Semaphore &#123;  
+
+    public Fork() &#123;  
+        super(1);  
+  &#125;  
+&#125;  
+
+public class Main &#123;  
+    public static void main(String[] args) &#123;  
+        Philosopher[] phils = new Philosopher[5];  
+  Fork[] forks = new Fork[5];  
+
+ for (int i = 0; i &lt; 5; i++) &#123;  
+            forks[i] = new Fork();  
+  &#125;  
+
+        for (int i = 0; i &lt; 5 - 1; i++) &#123;  
+            phils[i] = new Philosopher(i, forks[i], forks[(i + 1) % 5]);  
+  &#125;  
+        phils[4] = new Philosopher(4, forks[0], forks[4]);  
+
+ for (int i = 0; i &lt; 5; i++) &#123;  
+            phils[i].start();  
+  &#125;  
+    &#125;  
+&#125;</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/29/MultiThread(5)/" data-id="ckgz91rp5000b40v14oj7abno" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MultiThread(3)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/28/MultiThread(3)/" class="article-date">
+  <time datetime="2020-10-27T23:53:51.000Z" itemprop="datePublished">2020-10-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/28/MultiThread(3)/">MultiThread(3)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MultiThread-3"><a href="#MultiThread-3" class="headerlink" title="MultiThread(3)"></a>MultiThread(3)</h1><h1 id="Daemon-thread"><a href="#Daemon-thread" class="headerlink" title="Daemon thread"></a>Daemon thread</h1><ul>
+<li>다른 모든 스레드가 종료될 경우, 스스로 종료되는 메소드이다. </li>
+<li>무한 루프로 대기하면서 동작하는 구현이 많다 -&gt; 무한루프로 대기하다가 다른거 끝나면 실행되는 구조</li>
+<li>일정시간마다 동작하며, interrupt등에 의해서 동작한다.</li>
+</ul>
+<h1 id="활용-예"><a href="#활용-예" class="headerlink" title="# 활용 예"></a># 활용 예</h1><pre><code> class AutoSaver extends Thread &#123;  
+    public AutoSaver() &#123;  
+        this.setDaemon(true); // 메인 스레드가 종료되면 스스로 종료되도록 데몬 설정  
+  &#125;  
+
+    @Override  
+  public void run() &#123;  
+        while (true) &#123;  
+            try &#123;  
+                Thread.sleep(5000);  
+  &#125; catch (InterruptedException e) &#123;  
+                e.printStackTrace();  
+  &#125;  
+            // Save Something...  
+  System.out.println(&quot;Auto Save Done!&quot;);  
+  &#125;  
+    &#125;  
+&#125;  
+
+public class Main &#123;  
+    public static void main(String[] args) throws InterruptedException &#123;  
+
+        new AutoSaver().start();  
+
+ for (int i = 0; i &lt; 15; i++) &#123;  
+            Thread.sleep(1000);  
+  System.out.println(&quot;Working&quot;);  
+  &#125;  
+    &#125;  
+&#125;</code></pre>
+<h1 id="Intrinsic-Lock-고유-락-과-synchronized-키워드"><a href="#Intrinsic-Lock-고유-락-과-synchronized-키워드" class="headerlink" title="Intrinsic Lock(고유 락) 과 synchronized 키워드"></a>Intrinsic Lock(고유 락) 과 synchronized 키워드</h1><ul>
+<li>자바의 모든 객체는 고유 락을 가지고 있음<ul>
+<li>객체의 소유권을 한정하는 내부적인 구현 -&gt; 소유권은 독점적이다.</li>
+</ul>
+</li>
+<li>synchronized를 이용하면 객체의 고유 락의 소유권을 가져올 수 있다.<ul>
+<li>소유권이 이미 점유된 경우에는 Blocking으로 동작한다!</li>
+</ul>
+</li>
+</ul>
+<h2 id="사용-예-1-멀티스레드-동작에-취약한-구현"><a href="#사용-예-1-멀티스레드-동작에-취약한-구현" class="headerlink" title="사용 예(1) 멀티스레드 동작에 취약한 구현"></a>사용 예(1) 멀티스레드 동작에 취약한 구현</h2><pre><code>  class Counter &#123;  
+    private int count = 0;  
+ public int increaseCount() &#123;  
+        return ++count; // 읽고, 수정하고, 쓰는 작업  
+  // 경쟁적으로 동작하다 보면, 읽고 수정하고 쓰기 전에 다른 쓰레드가 읽는 경우가 발생  
+  &#125;  
+
+    public int getCount() &#123;  
+        return count;  
+  &#125;  
+&#125;</code></pre>
+<p> 해당 코드를 멀티쓰레드로 돌릴 경우 누가먼저 돌아갈 지 알 수 없으며 실행이 겹칠 수 있다. 그러면 카운트가 안될 수도 있어!</p>
+<h2 id="사용-예-2-Intrinsic-Lock을-이용한-구현"><a href="#사용-예-2-Intrinsic-Lock을-이용한-구현" class="headerlink" title="사용 예(2) Intrinsic Lock을 이용한 구현"></a>사용 예(2) Intrinsic Lock을 이용한 구현</h2><pre><code>     class Counter &#123;  
+    private Object lock = new Object();  
+ private int count = 0;  
+ public int increaseCount() &#123;  
+        synchronized (lock) &#123;  
+            return ++count; // 읽고, 수정하고, 쓰는 작업  
+  &#125;  
+    &#125;  
+
+    public int getCount() &#123;  
+        return count;  
+  &#125;  
+&#125;</code></pre>
+<p> 해당 쓰레드에서 오브젝트객체인 lock을 점유하지 않았다면 메소드 실행 불가능 때문에 한번에 하나의 쓰레드만 실행된다. 이를 좀더 간편하게 object객체를 자기자신 this로 선언하면</p>
+<pre><code>class Counter &#123;  
+    private int count = 0;  
+ public int increaseCount() &#123;  
+        synchronized (this) &#123;  
+            return ++count; // 읽고, 수정하고, 쓰는 작업  
+  &#125;  
+    &#125;  
+
+    public int getCount() &#123;  
+        return count;  
+  &#125;  
+&#125;</code></pre>
+<p> 요로케 this로 줄일 수 있고 더 나아가서는</p>
+<pre><code>class Counter &#123;  
+    private int count = 0;  
+ public synchronized int increaseCount() &#123;  
+        return ++count; // 읽고, 수정하고, 쓰는 작업  
+  &#125;  
+
+    public int getCount() &#123;  
+        return count;  
+  &#125;  
+&#125;</code></pre>
+<p> 이렇게 메소드에 synchronized키워드를 사용할 수 있다. 세 경우 모두 해당 객체를 소유하지 못했다면 Blocking된다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/28/MultiThread(3)/" data-id="ckgz91rp1000740v1451jgdd0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MultiThread(2)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/27/MultiThread(2)/" class="article-date">
+  <time datetime="2020-10-27T14:02:46.000Z" itemprop="datePublished">2020-10-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/27/MultiThread(2)/">MultiThread(2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MultiThread-2"><a href="#MultiThread-2" class="headerlink" title="MultiThread(2)"></a>MultiThread(2)</h1><p> MultiThread(1) 에서 우리는 join()을 통해 다음 쓰레드로 연결시키는 방법에 대해 알아봤습니다. 하지만 이보다 더 활용성이 높은 yield()가 있습니다.</p>
+<h2 id="Yield"><a href="#Yield" class="headerlink" title="Yield()"></a>Yield()</h2><p> yield()함수는 join()과 마찬가지로 다음 쓰레드로 이동하는 역할을 합니다 하지만 다른점이 있다면 yield() 이름과 마찬가지로 다른스레드로 ‘양보’하고 자신은 바로 실행 ‘대기’에 들어간다는 점입니다. 이는 다시 실행될 수 있는 여지를 남깁니다.</p>
+<h2 id="사용-예-Code"><a href="#사용-예-Code" class="headerlink" title="사용 예(Code)"></a>사용 예(Code)</h2><ul>
+<li>디버깅이 어렵다 -&gt; 쓰레드가 동시에 동작하기 때문에, 디버거로 확인하기 어려움. -&gt; 디버거를 쓰거나, 디버깅을 하기 위한 코드를 추가하면 동작이 변한다.</li>
+<li>구현이 어렵다. 쓰레드간의 동기화를 하기 위한 구현이 어렵다. 쉽게 동기화하면 느려진다. -&gt; Context Switching 오버헤드가 있기 때문에 동기화를 잘 못하면 오히려 더 느려진다.</li>
+</ul>
+<h2 id="쓰레드를-생성하는-3가지-방법"><a href="#쓰레드를-생성하는-3가지-방법" class="headerlink" title="쓰레드를 생성하는 3가지 방법"></a>쓰레드를 생성하는 3가지 방법</h2><h2 id="1-Extends-를-통한-생성"><a href="#1-Extends-를-통한-생성" class="headerlink" title="1. Extends 를 통한 생성"></a>1. Extends 를 통한 생성</h2><pre><code>class MyThread extends Thread &#123;  
+@Override  
+ public void run() &#123;  
+    for (int i = 0; i &lt; 10; i++) &#123;  
+        System.out.print(i);  
+  &#125;  
+    System.out.println();  
+    &#125;  
+&#125;</code></pre>
+<h2 id="2-익명의-내부클래스-를-통한-생성"><a href="#2-익명의-내부클래스-를-통한-생성" class="headerlink" title="2. 익명의 내부클래스 를 통한 생성"></a>2. 익명의 내부클래스 를 통한 생성</h2><pre><code>    Thread p1 = new Thread(new Runnable() &#123; // 1. 익명 내부 클래스  
+  @Override  
+  public void run() &#123;  
+        try &#123;  
+            Thread.sleep(50);  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+        System.out.println(&quot;Hello Thread&quot;);  
+  &#125;  
+&#125;);</code></pre>
+<h2 id="3-람다식을-통한-생성"><a href="#3-람다식을-통한-생성" class="headerlink" title="3. 람다식을 통한 생성"></a>3. 람다식을 통한 생성</h2><pre><code>Thread p2 = new Thread(() -&gt; &#123; // 2. 람다식 구현  
+  System.out.println(&quot;Thread by lambda&quot;);  
+ while (true) &#123;  
+
+    &#125;  
+&#125;);</code></pre>
+<h1 id="쓰레드-실행"><a href="#쓰레드-실행" class="headerlink" title="쓰레드 실행"></a>쓰레드 실행</h1><p> 쓰레드는 .start()함수를 통해 실행되며, 한번 실행되면 재사용이 불가합니다. 때문에 실행이 아닌 테스트를 하려면 메인쓰레드로 접근하는 .run()을 사용 하면 됩니다. run은 Thread 에 implement한 Runnable() 인터페이스를 오버라이드한 함수로 쓰레드 실행에 영향을 주지 않습니다.</p>
+<h2 id="Sleep-Join"><a href="#Sleep-Join" class="headerlink" title="Sleep(), Join();"></a>Sleep(), Join();</h2><p> 멀티쓰레드의 실행 순서는 OS가 관여하므로(Priority, Starve) 어떤것이 먼저 실행 될지 정확하게 알 수 없습니다. 이를 해결하기 위해 쓰레드를 Thread.sleep(millis) 해주면 해당 쓰레드는 해당 시간 때문에 대기합니다. 하지만 이는 사용자가 직접 얼마나 기다릴 지 기입해야하고 예측해야 하기 때문에 비효율 적입니다. 이를 위해 Join()을 써봅니다.<br>  Join()은 예를들어 p2라는 쓰레드가 실행되고 있다면 다음 쓰레드 전에 p2.join()메소드를 호출합니다. 그렇다면 p2 쓰레드가 끝난 후 다음 쓰레드가 실행될 것입니다. p2.join(millis) 는 해당 시간 동안 기다리고 시간이 되면 강제로 다음 쓰레드를 실행합니다.</p>
+<h2 id="구현-후-즉시-실행"><a href="#구현-후-즉시-실행" class="headerlink" title="구현 후 즉시 실행"></a>구현 후 즉시 실행</h2><p>  쓰레드의 레퍼런스를 일일히 지정해주지 않아도 되는 경우가 있습니다. 이 경우</p>
+<pre><code>new Thread(() -&gt; &#123;  
+    System.out.println(&quot;IDEA&quot;);  
+&#125;).start(); // 이렇게 하면 join 등 활용이 어려움</code></pre>
+<p>   이런식으로 레퍼런스를 지정해 주지 않고 실행하면 속도가 빨라지지만, 객체지정이 안되어있으니 join등 후에 사용이 어려울 것입니다.</p>
+<h2 id="yield-로-멀티쓰레드-동작-컨트롤하기-잘-섞어보기-FEAT-신제용강사님"><a href="#yield-로-멀티쓰레드-동작-컨트롤하기-잘-섞어보기-FEAT-신제용강사님" class="headerlink" title="yield()로 멀티쓰레드 동작 컨트롤하기(잘 섞어보기) FEAT.신제용강사님"></a>yield()로 멀티쓰레드 동작 컨트롤하기(잘 섞어보기) FEAT.신제용강사님</h2><p> 도와주세요 신제용강사님<br>    Thread p1 = new Thread(() -&gt; {<br>        for (int i = 0; i &lt; 1000; i++) {<br>            System.out.print(“~”);<br>            Thread.yield(); // 다른 스레드로 양보하고 바로 실행 대기<br>            try {<br>                Thread.sleep(1000); // Running 상태에서 Timed_Waiting 상태로 이동<br>            } catch (InterruptedException e) {<br>                e.printStackTrace();<br>            }<br>        }<br>    });<br>여기서 yield를 해도 잘 섞이지 않앗던 이유와 sleep을 해주면 잘섞이던 이유가 기억이안납니다..!</p>
+<p><img src="https://ca.slack-edge.com/T017RKADVUJ-U017RQZMW2W-gdacf126aa0d-48"><br>yield는 양보하고, 곧바로 자기 자신도 실행 대기로 가지만<br>sleep은 대기상태로 일정 시간동안 있기 때문에 그 사이에 다른 스레드가 동작할 가능성이 더 높기 때문입니다!</p>
+<p><img src="https://ca.slack-edge.com/T017RKADVUJ-U017RNXV534-fcab42309467-48"></p>
+<p>맞습니다 기억낫습니다<img src="https://a.slack-edge.com/production-standard-emoji-assets/10.2/google-medium/1f44d.png" alt=":+1:"><br> 위에서 볼 수 있듯 양보하면 자기자신도 실행다기로 가지만 일정시간동안 대기하면서 다른 스레드가 동작할 가능성이 더 높다!</p>
+<h2 id="Interrupt"><a href="#Interrupt" class="headerlink" title="Interrupt"></a>Interrupt</h2><p> p1.interrupt(); 기존 동작을 방해하고 반응을 강제하는 메소드이며 이름과 똑같이 기존 메소드 동작을 방해하고 해당 메소드를 강제 실행시키는 메소드이다.</p>
+<ul>
+<li>주로 임베디드에서 많이 사용</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/27/MultiThread(2)/" data-id="ckgz91rp0000640v1bvqwbcl0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MultiThread(1)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/26/MultiThread(1)/" class="article-date">
+  <time datetime="2020-10-26T13:11:23.000Z" itemprop="datePublished">2020-10-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/26/MultiThread(1)/">MultiThread(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MultiThread-1"><a href="#MultiThread-1" class="headerlink" title="MultiThread(1)"></a>MultiThread(1)</h1><p>멀티 쓰레드 프로그래밍: 여러개의 스레드를 사용하는 프로그래밍 기법!</p>
+<ul>
+<li>Thread: 최소의 프로세스 동작단위 -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다.</li>
+<li>Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세스가 된다.(프로그램을 실행할 때, 멀티 프로세스로 동작하는 프로그램도 있다.)</li>
+</ul>
+<h1 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h1><ul>
+<li>여러 동작을 병렬적으로 처리하여 CPU 사용율 향상 (CPU Utilization) (ex. 인코딩, 랜더링, 배치작업 (DB 정리, 로그처리 등…)    </li>
+<li>시간이 걸리는 동작을 분리하여 프로그램의 응답성 향상(ex. GUI, 게임, 앱, 웹API, …)</li>
+</ul>
+<h1 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h1><ul>
+<li>디버깅이 어렵다 -&gt; 쓰레드가 동시에 동작하기 때문에, 디버거로 확인하기 어려움. -&gt; 디버거를 쓰거나, 디버깅을 하기 위한 코드를 추가하면 동작이 변한다.</li>
+<li>구현이 어렵다. 쓰레드간의 동기화를 하기 위한 구현이 어렵다. 쉽게 동기화하면 느려진다. -&gt; Context Switching 오버헤드가 있기 때문에 동기화를 잘 못하면 오히려 더 느려진다.</li>
+</ul>
+<h2 id="쓰레드를-생성하는-3가지-방법"><a href="#쓰레드를-생성하는-3가지-방법" class="headerlink" title="쓰레드를 생성하는 3가지 방법"></a>쓰레드를 생성하는 3가지 방법</h2><h2 id="1-Extends-를-통한-생성"><a href="#1-Extends-를-통한-생성" class="headerlink" title="1. Extends 를 통한 생성"></a>1. Extends 를 통한 생성</h2><pre><code>class MyThread extends Thread &#123;  
+@Override  
+ public void run() &#123;  
+    for (int i = 0; i &lt; 10; i++) &#123;  
+        System.out.print(i);  
+  &#125;  
+    System.out.println();  
+    &#125;  
+&#125;</code></pre>
+<h2 id="2-익명의-내부클래스-를-통한-생성"><a href="#2-익명의-내부클래스-를-통한-생성" class="headerlink" title="2. 익명의 내부클래스 를 통한 생성"></a>2. 익명의 내부클래스 를 통한 생성</h2><pre><code>    Thread p1 = new Thread(new Runnable() &#123; // 1. 익명 내부 클래스  
+  @Override  
+  public void run() &#123;  
+        try &#123;  
+            Thread.sleep(50);  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+        System.out.println(&quot;Hello Thread&quot;);  
+  &#125;  
+&#125;);</code></pre>
+<h2 id="3-람다식을-통한-생성"><a href="#3-람다식을-통한-생성" class="headerlink" title="3. 람다식을 통한 생성"></a>3. 람다식을 통한 생성</h2><pre><code>Thread p2 = new Thread(() -&gt; &#123; // 2. 람다식 구현  
+  System.out.println(&quot;Thread by lambda&quot;);  
+ while (true) &#123;  
+
+    &#125;  
+&#125;);</code></pre>
+<h1 id="쓰레드-실행"><a href="#쓰레드-실행" class="headerlink" title="쓰레드 실행"></a>쓰레드 실행</h1><p> 쓰레드는 .start()함수를 통해 실행되며, 한번 실행되면 재사용이 불가합니다. 때문에 실행이 아닌 테스트를 하려면 메인쓰레드로 접근하는 .run()을 사용 하면 됩니다. run은 Thread 에 implement한 Runnable() 인터페이스를 오버라이드한 함수로 쓰레드 실행에 영향을 주지 않습니다.</p>
+<h2 id="Sleep-Join"><a href="#Sleep-Join" class="headerlink" title="Sleep(), Join();"></a>Sleep(), Join();</h2><p> 멀티쓰레드의 실행 순서는 OS가 관여하므로(Priority, Starve) 어떤것이 먼저 실행 될지 정확하게 알 수 없습니다. 이를 해결하기 위해 쓰레드를 Thread.sleep(millis) 해주면 해당 쓰레드는 해당 시간 때문에 대기합니다. 하지만 이는 사용자가 직접 얼마나 기다릴 지 기입해야하고 예측해야 하기 때문에 비효율 적입니다. 이를 위해 Join()을 써봅니다.<br>  Join()은 예를들어 p2라는 쓰레드가 실행되고 있다면 다음 쓰레드 전에 p2.join()메소드를 호출합니다. 그렇다면 p2 쓰레드가 끝난 후 다음 쓰레드가 실행될 것입니다. p2.join(millis) 는 해당 시간 동안 기다리고 시간이 되면 강제로 다음 쓰레드를 실행합니다.</p>
+<h2 id="구현-후-즉시-실행"><a href="#구현-후-즉시-실행" class="headerlink" title="구현 후 즉시 실행"></a>구현 후 즉시 실행</h2><p>  쓰레드의 레퍼런스를 일일히 지정해주지 않아도 되는 경우가 있습니다. 이 경우</p>
+<pre><code>new Thread(() -&gt; &#123;  
+    System.out.println(&quot;IDEA&quot;);  
+&#125;).start(); // 이렇게 하면 join 등 활용이 어려움</code></pre>
+<p>   이런식으로 레퍼런스를 지정해 주지 않고 실행하면 속도가 빨라지지만, 객체지정이 안되어있으니 join등 후에 사용이 어려울 것입니다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/26/MultiThread(1)/" data-id="ckgz91roz000540v1a8u1gagp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-day_1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/11/day_1/" class="article-date">
+  <time datetime="2020-10-11T03:43:22.000Z" itemprop="datePublished">2020-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>►<a class="article-category-link" href="/categories/Front-End/day-1/">day_1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/11/day_1/">How-to-start-Git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/11/day_1/" data-id="ckgzcaqys0005e8v14x8nezz8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
 
     </footer>
   </div>
@@ -153,7 +1052,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -164,7 +1063,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -174,7 +1073,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -184,7 +1083,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
@@ -193,7 +1092,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -206,23 +1105,23 @@
       <ul>
         
           <li>
-            <a href="/2020/10/30/MultiThread(6)/">MultiThread(6)</a>
+            <a href="/2020/11/03/Abstract_Class/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2020/10/29/MultiThread(4)/">MultiThread(4)</a>
+            <a href="/2020/11/03/Arrays/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2020/10/29/MultiThread(5)/">MultiThread(5)</a>
+            <a href="/2020/11/03/Conditional_Statements/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2020/10/28/MultiThread(3)/">MultiThread(3)</a>
+            <a href="/2020/11/03/DataType/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2020/10/27/MultiThread(2)/">MultiThread(2)</a>
+            <a href="/2020/11/03/Inheritence/">(no title)</a>
           </li>
         
       </ul>
