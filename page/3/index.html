@@ -66,6 +66,89 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-How-to-strat-Git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/How-to-strat-Git/" class="article-date">
+  <time datetime="2020-08-07T07:19:38.000Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/How-to-strat-Git/">How-to-start-Git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>나는 오늘 무었을 배웠는가</h1>
+  <h2>1.세팅</h2>
+  <h2>2.git init에 대해 배웠습니다</h2>  
+  <h2>3.git clone에 대해 배웠습니다.</h2>
+<h2>1.세팅</h2>
+* 메일 설정
+<pre><code> $git config --global user.name "당신의유저네임"</code></pre>
+ &nbsp;&nbsp;&nbsp;&nbsp;요로코롬 깃헙과 연결할 유저 이름을 설정 할 수가 있다는 것을 알아줬으면 하는 바에요
+* 이름설정
+<pre><code>  git config --global user.email "당신의메일주소"</code></pre>
+&nbsp;&nbsp;&nbsp;&nbsp;같은 방식으로 메일도 설정할 수가 있습니다.
+* 에디터 설정
+<pre><code> git config --global core.editor "vim"</code></pre>
+&nbsp;&nbsp;&nbsp;&nbsp;우리는 텍스트 에디터로서 vim을 쓸겁니다. 요로코롬 븸을 깔아주세요
+
+<h2>2.git init</h2>
+* git init보단 clone을 주로 쓴다 합니다. 하지만 깃의 원리를 배우기 위해 배워보아요
+
+<pre><code>  $mkdir first-git-repo 
+  $cd first-git-repo</code></pre>
+<p> &nbsp;&nbsp;&nbsp;&nbsp; 위의 두 과정은 각각 깃 레퍼지토리와 연결할 폴더를 만드는 과정과 그  폴더로 이동하는 과정이에요 그쪽으로 이동해야<br>  뭔가를 할 수 있을거에욘<br>  &nbsp;&nbsp;&nbsp;&nbsp;다음엔 뭘해야 할까요 맞아요 깃허브에도 새로운 저장공간(레퍼지토리)를 만들고 그 둘을 이어주는 작업이<br>  필요할 것이라고 생각되는 부분이에요 그러면 그 과정을 함께 보시죠<br>  <pre><code> &git init</code></pre><br>  &nbsp;&nbsp;&nbsp;&nbsp;울 통해 우리의 first-git-repo에 github과 연결할 준비를 합니다. 이러면 우리 폴더께서<br>  로컬 레퍼지토리로 사용됨을 기대하며 꽃단장을 마친 겁니다. 이제 로컬 레퍼지토리를 원격 (remote)레퍼지토리와 연결시켜 볼까요<br>  <pre><code> $ git remote add origin 원격 레퍼지토리 주소</code></pre><br>   &nbsp;&nbsp;&nbsp;&nbsp;쟈 위의 코드가 바로 로컬 레퍼지토리와 리모트 레퍼지토리를 이어주는 선죽교입니다.<br>   저 코드를 씀으로써 우리는 이제 진정한 깃인이 된것이에요 이후에 README.md파일을 만드는 작업이 우리를 기다려요<br>  &nbsp;&nbsp;&nbsp;&nbsp;README.md…왜있는 걸까요 저도아직 잘 모릅니다. 하지만 만들라니 만들어야겠지요.<br>  우선 레퍼지토리를 생성하는 순간에 옵션으로 README.md를 만들 수 있어요 그런데말이죠 참 신기하게도 git init으로 하는<br>  과정에서 README.md를 옵션으로 선택해서 연결하면 오류가 뜬다는 거에요 이유는 구글링 해보시기 바랍니다. 그래서 우리는<br>  만들어줄거에요<br>  <pre><code>$touch README.md<br>$vi README.md</code></pre><br>&nbsp;&nbsp;&nbsp;&nbsp;쟈 우선 첫번째 코드는 리드미 파일을 만드는 것입니다 두번 째는 우리가 앞서 설치한 vim에디터로 리드미를<br>수정해줄거에요 </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;i를 눌러 insert mode를 활성화 한 뒤, 텍스트 편집을 수행하고 esc키를 눌러 normal mode로 빠져나와<br> :wq 를 입력하여 저장한 뒤 vim을 종료합니다.</p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;이제 파일들을 준비시키고 올려보겠습니다 업로드 준비과정은<br>  <pre><code>$ git add README.md</code></pre><br>  이고 만약 여러개라면 여러개 띄어쓰기로 구분해서 쓰시면되고 전부다 올려야한다! 하시면은</p>
+  <pre><code>$ git add *</code></pre>
+<p>  요로코롬 해주면 될꺼같아요 마지막으로<br>    <pre><code>$ git commit</code></pre><br>    해주면은 이제 원격 레포지토리에 뙇! 올라갈것입니다. 가 아니에요 <strong>올라가지않아요</strong>. 안올라간다구요 진지해요<br>    commit과정은 README.md에 대한 설명을 올려주는 과정입니다 아까 vim으로 편집했던 설명을 넣어주는 겁니다. 이제 진짜로<br>    올려보죠<br>      <pre><code>$git push -u origin master</code></pre><br>      &nbsp;&nbsp;&nbsp;&nbsp;무섭게 생겼네요 해당 push는 원격레포에 처음으로 올려줄 때만 해주면 되구요 그 이후는<br>       <pre><code>$git push origin master</code></pre><br>       &nbsp;&nbsp;&nbsp;&nbsp;요로코롬 올려주시면됩니다. 이렇게 git init 이 끝낫답니당</p>
+<h2>  
+3.git clone  </h2>
+&nbsp;&nbsp;&nbsp;&nbsp; 아주 깔꼼하고 간편하고 이쁘고 아름다운 방법이라고 말하고있는것만 같아요 아주간단해요 마찬가지로 레포지토리를   
+생성할 때 README,LICENSE, README.md, .gitignore파일과 함께 생성해 주면 됩니다. 그런데 LICENSE, .gitignore 무섭게 생겼네요    
+이름처럼 무시하고싶게 생긴아이들이에요 그런데 반대로 저 뜻은 무시하면 안된다는 뜻이라합니다(???)     
+
+<ul>
+<li>LICENSE<br>&nbsp;&nbsp;&nbsp;&nbsp;라이센스는 어느 오픈소스를 기반으로 만들었는지 알려주는 것이라는데 우리 뉴비들은 그냥 MIT 라이센스 쓰면된다는게<br>정설입니다</li>
+<li>.git ignore<br>&nbsp;&nbsp;&nbsp;&nbsp;깃 이그노어는 내가 쓸 운영체제, 개발환경, 프로그래밍언어를 고려해서 쓸모 없는 파일들을 알아서 무시해주는<br>스마트한 녀석이라고 배웠어요, 아직 뭐가뭔지모르겠지만 그냥 그렇다합니다. 그러면 우리가 일일히 파일 형식을 지정해줘야할까요? 아뇨<br>세상은 그렇게 불편하게 발전하지 않았습니다. 간편한 방법을 알아보죠</li>
+</ul>
+<p>[gitignore.io]<a target="_blank" rel="noopener" href="https://www.toptal.com/developers/gitignore">https://www.toptal.com/developers/gitignore</a><br>  &nbsp;&nbsp;&nbsp;&nbsp;열로 가시면 자신의 운영체제,개발환경,프로그래밍 언어를 기입하면 .gitignore내용을 자동으로 만들어 줍니다.<br>  그렇다면 우리가 할것은 우리의 gitignore을 vim으로 복붙하는 것 밖엔 없다는 것이에요! 참으로 좋은세상이 아닐 수 없습니다.</p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;이제 아까과정과 같습니다. 원격 로컬 연결해줄것이에요 해봅시다</p>
+  <pre><code>$ git clone 복사한remoteRepo주소</code></pre> 
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;아 그런데 앞에서 얘기 안한게 있는데 주소는 HTTPS주소 쓰셔야되요 SSH쓰는 법은 구글링 ㄱㄱ<br>  &nbsp;&nbsp;&nbsp;&nbsp;쟈 이제 원격 로컬 연결했고, 리드미도 만들었고 vim으로 수정까지 다하셧겟죠그럼 add하시고 commit하시고<br>  push 하시면 됩니다. 그런데 여기서 또 clone의 좋은점은 앞의 init에서처럼 -u안붙여도 되요 즉</p>
+   <pre><code>  $git push origin master</code></pre>
+<p>   &nbsp;&nbsp;&nbsp;&nbsp;요로코롬 하시면 됩니다. 이상 깃 헙 강의 1일차였습니다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/07/How-to-strat-Git/" data-id="ckgz91rov000240v1a9hdanmz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-OOP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/06/OOP/" class="article-date">
@@ -960,7 +1043,7 @@ Scanner scanner = new Scanner(System.in);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 12.5px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 

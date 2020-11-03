@@ -1176,14 +1176,14 @@ public static void main(String[] args) throws Exception &#123;
 
 
   
-    <article id="post-Wrapper_Class" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-InnerClasses" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/14/Wrapper_Class/" class="article-date">
-  <time datetime="2020-08-14T12:55:23.000Z" itemprop="datePublished">2020-08-14</time>
+    <a href="/2020/08/18/InnerClasses/" class="article-date">
+  <time datetime="2020-08-18T13:26:24.000Z" itemprop="datePublished">2020-08-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a>
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Annotations/">Annotations</a>
   </div>
 
   </div>
@@ -1194,7 +1194,7 @@ public static void main(String[] args) throws Exception &#123;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/14/Wrapper_Class/">Wrapper Class</a>
+      <a class="article-title" href="/2020/08/18/InnerClasses/">Annotations</a>
     </h1>
   
 
@@ -1202,67 +1202,170 @@ public static void main(String[] args) throws Exception &#123;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Wrapper-클래스-Wrapper-Class"><a href="#Wrapper-클래스-Wrapper-Class" class="headerlink" title="Wrapper 클래스 (Wrapper Class)"></a>Wrapper 클래스 (Wrapper Class)</h1><h2 id="Wrapper-클래스란"><a href="#Wrapper-클래스란" class="headerlink" title="Wrapper 클래스란"></a>Wrapper 클래스란</h2><ul>
-<li><p>기본형 타입을 객체로 사용하기 위한 클래스</p>
-<h2 id="Wrapper-클래스의-종류"><a href="#Wrapper-클래스의-종류" class="headerlink" title="Wrapper 클래스의 종류"></a>Wrapper 클래스의 종류</h2><ul>
-<li>byte -&gt; Byte</li>
-<li>char -&gt; Character</li>
-<li>short -&gt; Short</li>
-<li>int -&gt; Integer</li>
-<li>long -&gt; Long</li>
-<li>float -&gt; Float</li>
-<li>double -&gt; Double</li>
-<li>boolean -&gt; Boolean<h2 id="Wrapper-객체-생성"><a href="#Wrapper-객체-생성" class="headerlink" title="Wrapper 객체 생성"></a>Wrapper 객체 생성</h2></li>
-</ul>
+        <h1 id="내부-클래스-Inner-Classes"><a href="#내부-클래스-Inner-Classes" class="headerlink" title="내부 클래스 (Inner Classes)"></a>내부 클래스 (Inner Classes)</h1><h2 id="내부-클래스란"><a href="#내부-클래스란" class="headerlink" title="내부 클래스란"></a>내부 클래스란</h2><ul>
+<li><p>클래스 내부에 선언하는 클래스로 중첩 클래스(Nested Class)라고도 부름</p>
 </li>
-<li><p>생성자를 이용한 객체 생성</p>
-<pre><code>Integer integer = new Integer(10);</code></pre>
-</li>
-<li><p>valueOf를 이용한 객체 생성</p>
-</li>
-</ul>
-<pre><code>    Integer integer = Integer.valueOf(10);
-    //이건 그럼 클래스.메소드 니까 valueOf(int n)은 static메소드겠지?</code></pre>
-<h2 id="Autoboxing-amp-Unboxing"><a href="#Autoboxing-amp-Unboxing" class="headerlink" title="Autoboxing &amp; Unboxing"></a>Autoboxing &amp; Unboxing</h2><ul>
-<li><p>오토박싱 (Autoboxing)</p>
+<li><p><code>HAS-A</code>  관계에 있는 클래스가 해당 클래스에서만 사용될 경우 주로 사용</p>
+<h2 id="내부-클래스의-종류"><a href="#내부-클래스의-종류" class="headerlink" title="내부 클래스의 종류"></a>내부 클래스의 종류</h2></li>
+<li><p>클래스 영역에 선언</p>
 <ul>
-<li>Java1.5부터 추가된 기능으로, 객체로 다루어야 할 때 자동으로 Wrapper 클래스로 변경하는 기능</li>
+<li>클래스 내부 클래스: static이 붙은 정적인 내부 클래스</li>
+<li>인스턴스 내부 클래스: 외부 클래스의 멤버 변수처럼 사용 가능</li>
 </ul>
 </li>
-<li><p>언박싱 (Unboxing)</p>
+<li><p>로컬 영역에 선언</p>
 <ul>
-<li>Wrapper 객체를 기본형으로 자동으로 변경하는 기능</li>
+<li>로컬 내부 클래스: 선언된 영역의 Scope 내에서 사용 가능</li>
+<li>익명 내부 클래스: 객체를 일회성으로 생성하기 위한 이름이 없는 클래스<h2 id="다양한-내부-클래스"><a href="#다양한-내부-클래스" class="headerlink" title="다양한 내부 클래스"></a>다양한 내부 클래스</h2></li>
 </ul>
 </li>
 </ul>
-<pre><code>        int i = 10;
-        Integer wrapped = i;
-        int b = 20 + wrapped;</code></pre>
-<h2 id="Wrapper-타입의-값-비교"><a href="#Wrapper-타입의-값-비교" class="headerlink" title="Wrapper 타입의 값 비교"></a>Wrapper 타입의 값 비교</h2><p>Wrapper 타입은 객체이므로, ==를 이용하여 값을 비교할 수 없다.</p>
-<pre><code>Integer intOne = new Integer(100);
-Integer intTwo = new Integer(100);
+<h3 id="클래스-내부-클래스-Class-Inner-Class"><a href="#클래스-내부-클래스-Class-Inner-Class" class="headerlink" title="클래스 내부 클래스 (Class Inner Class)"></a>클래스 내부 클래스 (Class Inner Class)</h3><ul>
+<li><p>클래스 영역에  <code>static</code>  키워드와 함께 선언된 내부 클래스</p>
+</li>
+<li><p>외부 클래스 객체가 없어도 생성 가능</p>
+</li>
+<li><p>외부 클래스의 private을 포함한 모든 멤버에 접근 가능</p>
+</li>
+<li><p>static 멤버 변수를 가질 수 있음</p>
+<pre><code>class Outer &#123;
+static class ClassInner &#123;
+    int innerVar = 1;
+    static int staticInnerVar = 100;
 
-System.out.println(intOne == intTwo); // false
-System.out.println(intOne.equals(intTwo)) // true
-System.out.println(intOne == 100) // true (Unboxing)</code></pre>
-<h2 id="문자열의-기본-자료형-변환"><a href="#문자열의-기본-자료형-변환" class="headerlink" title="문자열의 기본 자료형 변환"></a>문자열의 기본 자료형 변환</h2><ul>
-<li><p>Parsing 정적 메소드를 이용한 변환</p>
-<pre><code>int x = Integer.parseInt(&quot;100&quot;);
-long y = Long.parseLong(&quot;512345124&quot;);</code></pre>
+    void innerMethod() &#123;
+        Outer outer = new Outer();
+        System.out.println(outer.outerVar);
+        System.out.println(innerVar);
+    &#125;
+&#125;
+
+private int outerVar = 2;
+
+void outerMethod() &#123;
+    ClassInner inner = new ClassInner();
+    inner.innerMethod();
+&#125;
+
+public static void main(String[] args) &#123;
+    Static inner = new StaticInner();
+    inner.innerMethod();
+&#125;
+&#125;</code></pre>
 </li>
-<li><p>Wrapper 객체로의 변환</p>
-<pre><code>Integer intObj = Integer.valueOf(&quot;1000&quot;);
-Integer intObjTwo = new Integer(&quot;1234&quot;);</code></pre>
+</ul>
+<h3 id="인스턴스-내부-클래스-Instance-Inner-Class"><a href="#인스턴스-내부-클래스-Instance-Inner-Class" class="headerlink" title="인스턴스 내부 클래스 (Instance Inner Class)"></a>인스턴스 내부 클래스 (Instance Inner Class)</h3><ul>
+<li><p>클래스 영역에  <code>static</code>  키워드 없이 선언된 클래스</p>
+</li>
+<li><p>외부 클래스의 private을 포함한 모든 멤버에 접근 가능</p>
+</li>
+<li><p>외부 클래스 객체를 통해서만 생성 가능</p>
+</li>
+<li><p>static 멤버 변수는 사용할 수 없으나,  <code>static final</code>은 사용 가능</p>
+<pre><code>class Outer &#123;
+class InstanceInner &#123;
+int innerMemberVar = 1;
+//static int staticMemberVar = 1;
+static final int CONSTANT_VAR = 10;
+
+void innerMethod() &#123;
+    System.out.println(innerMemberVar);
+    System.out.println(outerMemberVar);
+&#125;
+&#125;
+
+private int outerMemberVar = 2;
+
+void outerMethod() &#123;
+ IstanceInner obj = new InstanceInner();
+ obj.innerMethod();
+&#125;    
+
+public static void main(String[] args) &#123;
+Outer outer = new Outer();
+InstanceInner inner = outer.new InstanceInner();
+inner.innerMethod();
+&#125;
+&#125;</code></pre>
+</li>
+<li><p>외부 클래스의 멤버 변수와 이름이 겹치는 경우 <code>this</code> 활용</p>
+<pre><code>class Outer &#123;
+  class InstanceInner &#123;
+      int var = 1;
+
+      void innerMethod() &#123;
+          System.out.println(var);
+          System.out.println(this.var);
+          System.out.println(Outer.this.var);
+      &#125;
+  &#125;
+
+private int var = 2;
+
+public static void main(String[] args) &#123;
+    Outer outer = new Outer();
+    InstanceInner inner = outer.new InstanceInner();
+    inner.innerMethod();
+&#125;
+&#125;</code></pre>
+<h3 id="로컬-내부-클래스-Local-Inner-Class"><a href="#로컬-내부-클래스-Local-Inner-Class" class="headerlink" title="로컬 내부 클래스 (Local Inner Class)"></a>로컬 내부 클래스 (Local Inner Class)</h3></li>
+<li><p>클래스 영역이 아닌 로컬 영역에서 선언된 클래스</p>
+<ul>
+<li>메소드, 생성자, 초기화 블록의 내부</li>
+</ul>
+</li>
+<li><p>정적 변수는 가질 수 없으나, static final 변수는 가질 수 있음</p>
+</li>
+<li><p>로컬 영역의 변수 다음과 같은 사항을 따름</p>
+<ul>
+<li><p>Java1.7: final로 선언된 변수에만 접근 가능</p>
+</li>
+<li><p>Java1.8: 모든 변수에 접근 가능하나, final로 간주되어 새로운 값 할당 불가</p>
+<pre><code>void outerMethod() &#123;
+int var = 1; // 메소드 호출 스택
+class LocalInner &#123;
+void innerMethod() &#123;
+    System.out.println(var);
+&#125;
+ &#125;
+LocalInner inner = new LocalInner(); // 힙 영역
+inner.innerMethod();
+&#125;</code></pre>
+<p>도전과제: 내부클래스와 final의 관계</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="익명의-내부-클래스-Anonymous-Inner-Class"><a href="#익명의-내부-클래스-Anonymous-Inner-Class" class="headerlink" title="익명의 내부 클래스 (Anonymous Inner Class)"></a>익명의 내부 클래스 (Anonymous Inner Class)</h3><ul>
+<li><p>로컬 내부 클래스와 동일하나, 이름이 없어 선언 즉시 한 번 사용 가능</p>
+</li>
+<li><p>추상 클래스나 인터페이스의 구현에 많이 사용</p>
+<pre><code>interface IFoo &#123;
+void do();
+&#125;
+  class AnonymousInnerClassTest &#123;
+void useFoo(IFoo foo) &#123;
+    foo.do();
+&#125;
+public static void main(String[] args) &#123;
+    useFoo(new IFoo() &#123;
+        @Override
+        void do() &#123;
+            System.out.println(&quot;Do!&quot;);
+        &#125;
+    &#125;);
+&#125;
+&#125;</code></pre>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/14/Wrapper_Class/" data-id="ckh176arx0002swv1gp1u2aj1" class="article-share-link">Share</a>
+      <a data-url="https://hansol-jeong.github.io/2020/08/18/InnerClasses/" data-id="ckh1kspxx00009cv1f1caby4d" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
 
     </footer>
   </div>
@@ -1306,7 +1409,7 @@ Integer intObjTwo = new Integer(&quot;1234&quot;);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 12.5px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
