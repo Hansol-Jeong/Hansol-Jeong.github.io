@@ -5,21 +5,16 @@
   
 
   
-  <title>MultiThread(4) | Hansol</title>
+  <title>Tag: StringTokenizer | Hansol</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MultiThread(4)멀티 쓰레드 프로그래밍: 여러개의 스레드를 사용하는 프로그래밍 기법!  Thread: 최소의 프로세스 동작단위 -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다. Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세스가 된다.(프로그램을 실행할">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MultiThread(4)">
-<meta property="og:url" content="https://hansol-jeong.github.io/2020/10/29/java/MultiThread(4)/index.html">
+  <meta name="description" content="한솔이블로그">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hansol">
+<meta property="og:url" content="https://hansol-jeong.github.io/tags/StringTokenizer/index.html">
 <meta property="og:site_name" content="Hansol">
-<meta property="og:description" content="MultiThread(4)멀티 쓰레드 프로그래밍: 여러개의 스레드를 사용하는 프로그래밍 기법!  Thread: 최소의 프로세스 동작단위 -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다. Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세스가 된다.(프로그램을 실행할">
+<meta property="og:description" content="한솔이블로그">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-28T23:23:44.000Z">
-<meta property="article:modified_time" content="2020-11-03T01:15:15.131Z">
 <meta property="article:author" content="Hansol">
-<meta property="article:tag" content="java">
-<meta property="article:tag" content="til">
-<meta property="article:tag" content="MultiThread">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
@@ -69,155 +64,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-java/MultiThread(4)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/29/java/MultiThread(4)/" class="article-date">
-  <time datetime="2020-10-28T23:23:44.000Z" itemprop="datePublished">2020-10-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      MultiThread(4)
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2020/08/20/java/StringTokenizer/" class="archive-article-date">
+  <time datetime="2020-08-20T07:22:19.000Z" itemprop="datePublished">Aug 20</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/08/20/java/StringTokenizer/">StringTokenizer</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="MultiThread-4"><a href="#MultiThread-4" class="headerlink" title="MultiThread(4)"></a>MultiThread(4)</h1><p>멀티 쓰레드 프로그래밍: 여러개의 스레드를 사용하는 프로그래밍 기법!</p>
-<ul>
-<li>Thread: 최소의 프로세스 동작단위 -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다.</li>
-<li>Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세스가 된다.(프로그램을 실행할 때, 멀티 프로세스로 동작하는 프로그램도 있다.)</li>
-</ul>
-<h2 id="notify"><a href="#notify" class="headerlink" title="notify()"></a>notify()</h2><p>wait() 중인 다른 스레드를 하나 동작 상태로 만든다.</p>
-<h2 id="wait"><a href="#wait" class="headerlink" title="wait()"></a>wait()</h2><p>Lock을 반환하고 대기 상태로 들어간다.</p>
-<ul>
-<li>여러 동작을 병렬적으로 처리하여 CPU 사용율 향상 (CPU Utilization) (ex. 인코딩, 랜더링, 배치작업 (DB 정리, 로그처리 등…)    </li>
-<li>시간이 걸리는 동작을 분리하여 프로그램의 응답성 향상(ex. GUI, 게임, 앱, 웹API, …)</li>
-</ul>
-<h1 id="notify-와-wait-을-사용한-멀티스레드-구현"><a href="#notify-와-wait-을-사용한-멀티스레드-구현" class="headerlink" title="notify() 와 wait() 을 사용한 멀티스레드 구현"></a>notify() 와 wait() 을 사용한 멀티스레드 구현</h1><pre><code>    class WorkObject &#123;  
-    public synchronized void methodA() &#123;  
-        System.out.println(&quot;methodA() called&quot;);  
-  notify(); // wait()중인 다른 스레드를 하나 동작 상태로 만든다.  
-  try &#123;  
-            wait(); // Lock을 반환하고 대기 상태로 들어감.  
-  &#125; catch (InterruptedException e) &#123;  
-            e.printStackTrace();  
-  &#125;  
-    &#125;  
-   public synchronized void methodB() &#123;  
-        System.out.println(&quot;methodB() called&quot;);  
-  notify();  
- try &#123;  
-            wait();  
-  &#125; catch (InterruptedException e) &#123;  
-            e.printStackTrace();  
-  &#125;  
-
-    &#125;  
-&#125;  
-
-class MyThread extends Thread &#123;  
-    private final WorkObject workObject;  
- private boolean isA;  
-
- public MyThread(WorkObject workObject, boolean isA) &#123; // Dependency Injection  
-  this.workObject = workObject;  
- this.isA = isA;  
-  &#125;  
-
-    @Override  
-  public void run() &#123;  
-        for (int i = 0; i &lt; 10; i++) &#123;  
-            if (isA) &#123;  
-                workObject.methodA();  
-  &#125; else &#123;  
-                workObject.methodB();  
-  &#125;  
-        &#125;  
-    &#125;  
-&#125;  
-
-public class Main &#123;  
-    public static void main(String[] args) &#123;  
-        WorkObject sharedObj = new WorkObject();  
-
-  Thread p1 = new MyThread(sharedObj, true);  
-  Thread p2 = new MyThread(sharedObj, false);  
-
-  p1.start();  
-  p2.start();  
-  &#125;  
-&#125;</code></pre>
-<p>  코드가 좀 길다. 하지만 자를 수 없었다. 결론적으론 메소드 A와 메소드 B가 있고 각 각 다른 쓰레드에서 p1,p2를 실행시켜 각 각 run()을 주고받는다. p1은 run에서 메소드A만 10번을 실행할 것이고 p2는 메소드 B만 10번을 실행할 것이다. 이 때  각 메소드의 동작을 살펴보면 메소드 A와B는 모두 method called메시지를 출력 후 notify()를 실행한다. 이로 써 wait()중인 다른 스레드를 동작상태로 만들고 자신은 뒤이어 wait()으로 대기상태에 들어간다. 이를 주고받으며 서로 10번씩 20번을 하면 동작이 끝난다.</p>
-<h1 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h1><p> 세마포의 사전적 의미는 횟대(깃발)이다.<br> n개의 깃발을 놓고, 여러 스레드가 경쟁하도록 하는 sync기법이다.<br> n=1이면,  BinarySemaphore라고 하며, Lock과 유사하게 동작</p>
-<pre><code>public class Main &#123;  
-    public static void main(String[] args) &#123;  
-        Semaphore sem = new Semaphore(1);  
-  System.out.println(sem.availablePermits());  
-//  
-//        try &#123; // Blocking으로 동작  
-//            sem.acquire(12);  
-//        &#125; catch (InterruptedException e) &#123;  
-//            e.printStackTrace();  
-//        &#125;  
-//        sem.acquireUninterruptibly(); // interrupt()에 반응하지 않음  
-  System.out.println(sem.tryAcquire()); // Blocking하지 않고, 실패하면 false 리턴  
-  try &#123;  
-            System.out.println(sem.tryAcquire(2000, TimeUnit.MILLISECONDS)); // Blocking하지 않고, 실패하면 false 리턴  
-  &#125; catch (InterruptedException e) &#123;  
-            e.printStackTrace();  
-  &#125;  
-        System.out.println(sem.availablePermits());
-  sem.release();  
-  System.out.println(sem.availablePermits());  
-  &#125;  
-&#125;</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/10/29/java/MultiThread(4)/" data-id="ckh2ffo6h001pcov16c5pgt4e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2020/10/30/java/MultiThread(6)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          MultiThread(6)
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/10/29/java/MultiThread(5)/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">MultiThread(5)</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         
