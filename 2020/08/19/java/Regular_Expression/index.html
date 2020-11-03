@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Regular_Expression | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="정규표현식 (Regular Expression)정규표현식 특정 조건에 맞는 문자열을 검색&#x2F;치환하는 패턴 기반의 식  이메일, 전화번호 등 특정한 형식에 맞는지 validation하는 데에 사용 정규표현식 표현 방법 정규 표현식의 기본 작성 방식 “&#x2F;패턴&#x2F;[플래그(Opt.)]”기본 메타 문자    메타 문자&#x2F; 의미  ^x : x로 시작 x$ : x로 끝 .x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regular_Expression">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/08/19/java/Regular_Expression/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="정규표현식 (Regular Expression)정규표현식 특정 조건에 맞는 문자열을 검색&#x2F;치환하는 패턴 기반의 식  이메일, 전화번호 등 특정한 형식에 맞는지 validation하는 데에 사용 정규표현식 표현 방법 정규 표현식의 기본 작성 방식 “&#x2F;패턴&#x2F;[플래그(Opt.)]”기본 메타 문자    메타 문자&#x2F; 의미  ^x : x로 시작 x$ : x로 끝 .x">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-19T13:16:05.000Z">
+<meta property="article:modified_time" content="2020-11-03T20:57:46.342Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="til">
+<meta property="article:tag" content="Regular_Expression">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java/Regular_Expression" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/19/java/Regular_Expression/" class="article-date">
+  <time datetime="2020-08-19T13:16:05.000Z" itemprop="datePublished">2020-08-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Regular_Expression
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="정규표현식-Regular-Expression"><a href="#정규표현식-Regular-Expression" class="headerlink" title="정규표현식 (Regular Expression)"></a>정규표현식 (Regular Expression)</h1><h2 id="정규표현식"><a href="#정규표현식" class="headerlink" title="정규표현식"></a>정규표현식</h2><ul>
+<li><p>특정 조건에 맞는 문자열을 검색/치환하는 패턴 기반의 식</p>
+</li>
+<li><p>이메일, 전화번호 등 특정한 형식에 맞는지 validation하는 데에 사용</p>
+<h2 id="정규표현식-표현-방법"><a href="#정규표현식-표현-방법" class="headerlink" title="정규표현식 표현 방법"></a>정규표현식 표현 방법</h2></li>
+<li><p>정규 표현식의 기본 작성 방식</p>
+<p>“/패턴/[플래그(Opt.)]”<br>기본 메타 문자</p>
+</li>
+</ul>
+<ul>
+<li><p>메타 문자/ 의미</p>
+<ul>
+<li>^x : x로 시작</li>
+<li>x$ : x로 끝</li>
+<li>.x : x앞에 하나의 문자가 있음</li>
+<li>x+ : x가 1번 이상 반복</li>
+<li>x? : x가 있거나 없음</li>
+<li>x* : x가 0번 이상 반복</li>
+<li>x|y : x 또는 y가 있음</li>
+</ul>
+</li>
+<li><p>괄호의 활용</p>
+<ul>
+<li>(xy) : 괄호 안의 내용을 그룹화</li>
+<li>x{n} : n번 반복됨</li>
+<li>x{n, } : n번 이상 반복됨</li>
+<li>x{n, m) : n번 이상, m번 이하 반복됨</li>
+<li>[xy] : x 또는 y</li>
+<li>[a-z] : 알파벳 소문자 a~z </li>
+<li>[0-9]: 숫자</li>
+<li>[가-힣] : 한글</li>
+<li>[^x] : x가 아닌 것</li>
+<li>[^0-9] : 숫자가 아닌 것</li>
+</ul>
+</li>
+<li><p>축약 문자</p>
+<ul>
+<li>^, . , … : \뒤에 나오는 문자를 문자로 처리</li>
+<li>b : 단어의 경계를 찾는다.<br>\B : 단어의 경계가 아닌 것을 찾는다<br>\d : 숫자를 찾는다<br>\D : 숫자가 아닌 것을 찾는다.<br>\s : 공백 문자를 찾는다.<br>\S : 공백 문자가 아닌 것을 찾는다.<br>\w : [a-zA-z0-9_]<br>\W : [^a-zA-Z0-9_]</li>
+</ul>
+</li>
+<li><p>유용한 정규식 예</p>
+</li>
+</ul>
+<ul>
+<li>한글 이름 :  <code>^[가-힣]&#123;2,5&#125;$</code> : 한글로 시작하고 2글자이상 5글자 이하</li>
+<li>핸드폰 번호:  <code>^01(0|1|2|6|9)[-\s]?\d&#123;3,4&#125;[-\s]?\d&#123;4&#125;$</code> </li>
+<li>이메일 주소:  <code>^[\w\.-]&#123;1,64&#125;@[\w\.-]&#123;1,252&#125;\.\w&#123;2,4&#125;$</code><h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2></li>
+</ul>
+<p>Flag/ 기능</p>
+<ul>
+<li>g : 문자열 내 모든 패턴을 찾음</li>
+<li>i : 대소문자를 구분하지 않음</li>
+<li>m : 문자열의 모든 줄에서 찾음</li>
+</ul>
+<h2 id="정규표현식을-사용하는-클래스"><a href="#정규표현식을-사용하는-클래스" class="headerlink" title="정규표현식을 사용하는 클래스"></a>정규표현식을 사용하는 클래스</h2><h3 id="Pattern-클래스"><a href="#Pattern-클래스" class="headerlink" title="Pattern 클래스"></a>Pattern 클래스</h3><ul>
+<li><p>메소드/ 설명</p>
+<ul>
+<li>public static Pattern compile(String regex) : Pattern 객체를 생성<ul>
+<li>public Matcher matcher(CharSequence input) : 입력을 분석하는 Matcher 객체 생성</li>
+<li>public static boolean matches(String regex, CharSequence input) : 입력이 regexp에 해당하는지 판단</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Matcher-클래스"><a href="#Matcher-클래스" class="headerlink" title="Matcher 클래스"></a>Matcher 클래스</h3><p>메소드/ 설명</p>
+<ul>
+<li>find() : 정규 표현식에 부합되는 내용이 문자열에 포함되어 있는지 반환. 이전 검색 위치부터 이어서 검색.</li>
+<li>start() : 패턴에 부합되는 요소의 시작 인덱스 반환</li>
+<li>end() : 패턴에 부합되는 요소가 끝나는 위치 +1을 반환</li>
+<li>matches() : 문자열 전체가 정규표현식에 일치하는 지를 반환</li>
+<li>lookingAt() : 비교하려는 문자열이 정규표현식으로 시작하는지 반환. 0번 인덱스부터 검색.</li>
+<li>replaceFirst() : 일치하는 첫 파턴을 문자열로 대체</li>
+<li>replaceAll() : 일치하는 모든 패턴을 문자열로 대체</li>
+<li>reset() : Matcher 의 정보를 리셋하여 0번 인덱스 부터 다시 검색<br>도전과제: 정규표현식 연습 사이트 리뷰하기</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://regexone.com/">https://regexone.com/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/19/java/Regular_Expression/" data-id="ckh2gc52y0000nsv1fm1ehxec" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/20/java/Lambda/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lambda
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/19/java/InnerClasses/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">InnerClasses</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/03/Spring/day_1/">day_1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/java/MultiThread(6)/">MultiThread(6)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/java/MultiThread(4)/">MultiThread(4)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/java/MultiThread(5)/">MultiThread(5)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/28/java/MultiThread(3)/">MultiThread(3)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
