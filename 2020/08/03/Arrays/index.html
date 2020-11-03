@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Arrays | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="배열 (Arrays)배열의 특성 하나의 변수로 여러개의 값을 다룰 수 있다. 동일한 자료형의 값만 다룰 수 있다. 한번 생성된 배열의 크기는 변하지 않는다. 배열에 속한 값은 메모리에 연속적으로 위치한다.  배열의 생성 배열의 선언  int[] intArray;&#x2F;&#x2F; 자료형[] 변수명; recommendedint integerArray[];&#x2F;&#x2F; 자료형 변수명">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arrays">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/08/03/Arrays/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="배열 (Arrays)배열의 특성 하나의 변수로 여러개의 값을 다룰 수 있다. 동일한 자료형의 값만 다룰 수 있다. 한번 생성된 배열의 크기는 변하지 않는다. 배열에 속한 값은 메모리에 연속적으로 위치한다.  배열의 생성 배열의 선언  int[] intArray;&#x2F;&#x2F; 자료형[] 변수명; recommendedint integerArray[];&#x2F;&#x2F; 자료형 변수명">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-03T13:22:45.000Z">
+<meta property="article:modified_time" content="2020-11-03T00:06:41.198Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="til">
+<meta property="article:tag" content="Arrays">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Arrays" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/03/Arrays/" class="article-date">
+  <time datetime="2020-08-03T13:22:45.000Z" itemprop="datePublished">2020-08-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Arrays/">Arrays</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Arrays
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="배열-Arrays"><a href="#배열-Arrays" class="headerlink" title="배열 (Arrays)"></a>배열 (Arrays)</h1><h2 id="배열의-특성"><a href="#배열의-특성" class="headerlink" title="배열의 특성"></a>배열의 특성</h2><ul>
+<li>하나의 변수로 여러개의 값을 다룰 수 있다.</li>
+<li>동일한 자료형의 값만 다룰 수 있다.</li>
+<li>한번 생성된 배열의 크기는 변하지 않는다.</li>
+<li>배열에 속한 값은 메모리에 연속적으로 위치한다.</li>
+</ul>
+<h2 id="배열의-생성"><a href="#배열의-생성" class="headerlink" title="배열의 생성"></a>배열의 생성</h2><ul>
+<li><p>배열의 선언</p>
+<ul>
+<li>int[] intArray;// 자료형[] 변수명; recommended<br>int integerArray[];// 자료형 변수명[]; old c-style</li>
+</ul>
+<p>배열의 생성/초기화</p>
+</li>
+<li><p>생성 후 값 할당</p>
+<ul>
+<li>int[] intArray = new int[10];<br>intArray[0] = 4;<br>intArray[1] = 10;<ul>
+<li>int[] intArray;<br>intArray = new int[]{4, 5, 1, 2, 5};</li>
+</ul>
+</li>
+<li>생성과 동시에 값 할당</li>
+</ul>
+<ul>
+<li>int[] intArray = {3, 5, 1, 20, 65};</li>
+<li>int[] intArray2 = new int[]{4, 6, 2, 3, 4};</li>
+</ul>
+</li>
+</ul>
+<h2 id="배열과-반복문"><a href="#배열과-반복문" class="headerlink" title="배열과 반복문"></a>배열과 반복문</h2><ul>
+<li><p>인덱스를 이용한 배열 접근</p>
+<ul>
+<li>float[] floatArray = new float[10];<br>for (int i = 0; i &lt; floatArray.length; i++) {<br>floatArray[i] = i * 0.5;<br>}</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>향상된 for 문을 이용한 배열 접근</p>
+<ul>
+<li>int[] intArray = {4, 5, 1, 2, 7, 5};<br>for (int value: intArray) {<br>System.out.println(value);<br>}</li>
+</ul>
+</li>
+</ul>
+<h2 id="배열의-크기-변경"><a href="#배열의-크기-변경" class="headerlink" title="배열의 크기 변경"></a>배열의 크기 변경</h2><ul>
+<li><p>배열의 크기는 변경할 수 없으므로 새로운 배열을 만들고 데이터를 옮겨야 한다.</p>
+<ul>
+<li>int[] src = {1, 2, 3, 4, 5};<br>int[] dst = new int[10];<br>for(int i = 0; i &lt; source.length; i++) {<br>dst[i] = src[i];<br>}</li>
+<li>int[] src = {1, 2, 3, 4, 5};<br>int[] dst = new int[10];<br>System.arraycopy(src, 0, dst, 0, src.length);</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/03/Arrays/" data-id="ckh16xji40000p4v11ygi63x4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/07/How-to-strat-Git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          How-to-start-Git
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/30/Conditional_Statements/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Conditional_Statements</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/03/Inheritence/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/Inputs_and_Outputs/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/Loops/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/N-D_Arrays/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/OOP/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

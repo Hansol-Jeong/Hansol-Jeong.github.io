@@ -66,397 +66,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Abstract_Class" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/03/Abstract_Class/" class="article-date">
-  <time datetime="2020-11-02T23:43:59.460Z" itemprop="datePublished">2020-11-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: Abstract_Class<br>date: 2020-08-13 21:55:23<br>tags:   </p>
-<ul>
-<li>java</li>
-<li>til  </li>
-<li>Abstract_Class<br>categories:</li>
-<li>java  </li>
-<li>til</li>
-<li>Abstract_Class</li>
-</ul>
-<hr>
-<h1 id="추상-클래스-Abstract-Class"><a href="#추상-클래스-Abstract-Class" class="headerlink" title="추상 클래스 (Abstract Class)"></a>추상 클래스 (Abstract Class)</h1><h2 id="추상-클래스란"><a href="#추상-클래스란" class="headerlink" title="추상 클래스란"></a>추상 클래스란</h2><ul>
-<li><p>일부 메소드가 구현되지 않고 선언만 되어 있는 클래스</p>
-<ul>
-<li>자식 클래스에서 반드시 구현해야 하는 메소드를  <code>abstract</code>로 선언</li>
-<li>필요한 모든 클래스가 구현될 수 있도록 강제<h2 id="추상-클래스의-선언"><a href="#추상-클래스의-선언" class="headerlink" title="추상 클래스의 선언"></a>추상 클래스의 선언</h2></li>
-</ul>
-</li>
-<li><p><code>abstract</code>  키워드를 이용해 클래스를 선언</p>
-</li>
-<li><p>``abstract`  키워드를 이용해 메소드를 선언</p>
-</li>
-</ul>
-<pre><code>    abstract class AbstractFoo &#123;
-        public void method() &#123;
-            return;
-        &#125;
-
-        public abstract void abstractMethod();
-    &#125;</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/11/03/Abstract_Class/" data-id="ckh174xow0000wgv1blhq318u" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Arrays" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/03/Arrays/" class="article-date">
-  <time datetime="2020-11-02T23:43:47.184Z" itemprop="datePublished">2020-11-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: Arrays<br>date: 2020-08-03 22:22:45<br>tags:   </p>
-<ul>
-<li>java</li>
-<li>til  </li>
-<li>Arrays<br>categories:  </li>
-<li>java  </li>
-<li>til</li>
-<li>Arrays</li>
-</ul>
-<hr>
-<h1 id="배열-Arrays"><a href="#배열-Arrays" class="headerlink" title="배열 (Arrays)"></a>배열 (Arrays)</h1><h2 id="배열의-특성"><a href="#배열의-특성" class="headerlink" title="배열의 특성"></a>배열의 특성</h2><ul>
-<li>하나의 변수로 여러개의 값을 다룰 수 있다.</li>
-<li>동일한 자료형의 값만 다룰 수 있다.</li>
-<li>한번 생성된 배열의 크기는 변하지 않는다.</li>
-<li>배열에 속한 값은 메모리에 연속적으로 위치한다.</li>
-</ul>
-<h2 id="배열의-생성"><a href="#배열의-생성" class="headerlink" title="배열의 생성"></a>배열의 생성</h2><ul>
-<li><p>배열의 선언</p>
-<ul>
-<li>int[] intArray;// 자료형[] 변수명; recommended<br>int integerArray[];// 자료형 변수명[]; old c-style</li>
-</ul>
-<p>배열의 생성/초기화</p>
-</li>
-<li><p>생성 후 값 할당</p>
-<ul>
-<li>int[] intArray = new int[10];<br>intArray[0] = 4;<br>intArray[1] = 10;<ul>
-<li>int[] intArray;<br>intArray = new int[]{4, 5, 1, 2, 5};</li>
-</ul>
-</li>
-<li>생성과 동시에 값 할당</li>
-</ul>
-<ul>
-<li>int[] intArray = {3, 5, 1, 20, 65};</li>
-<li>int[] intArray2 = new int[]{4, 6, 2, 3, 4};</li>
-</ul>
-</li>
-</ul>
-<h2 id="배열과-반복문"><a href="#배열과-반복문" class="headerlink" title="배열과 반복문"></a>배열과 반복문</h2><ul>
-<li><p>인덱스를 이용한 배열 접근</p>
-<ul>
-<li>float[] floatArray = new float[10];<br>for (int i = 0; i &lt; floatArray.length; i++) {<br>floatArray[i] = i * 0.5;<br>}</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>향상된 for 문을 이용한 배열 접근</p>
-<ul>
-<li>int[] intArray = {4, 5, 1, 2, 7, 5};<br>for (int value: intArray) {<br>System.out.println(value);<br>}</li>
-</ul>
-</li>
-</ul>
-<h2 id="배열의-크기-변경"><a href="#배열의-크기-변경" class="headerlink" title="배열의 크기 변경"></a>배열의 크기 변경</h2><ul>
-<li><p>배열의 크기는 변경할 수 없으므로 새로운 배열을 만들고 데이터를 옮겨야 한다.</p>
-<ul>
-<li>int[] src = {1, 2, 3, 4, 5};<br>int[] dst = new int[10];<br>for(int i = 0; i &lt; source.length; i++) {<br>dst[i] = src[i];<br>}</li>
-<li>int[] src = {1, 2, 3, 4, 5};<br>int[] dst = new int[10];<br>System.arraycopy(src, 0, dst, 0, src.length);</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/11/03/Arrays/" data-id="ckh16xji40000p4v11ygi63x4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Conditional_Statements" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/03/Conditional_Statements/" class="article-date">
-  <time datetime="2020-11-02T23:43:23.876Z" itemprop="datePublished">2020-11-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: Conditional_Statements<br>date: 2020-07-30 22:14:22<br>tags:   </p>
-<ul>
-<li>java</li>
-<li>til  </li>
-<li>Conditional_Statements<br>categories:  </li>
-<li>java  </li>
-<li>til</li>
-<li>Conditional_Statements</li>
-</ul>
-<hr>
-<h1 id="조건문"><a href="#조건문" class="headerlink" title="조건문"></a>조건문</h1><h2 id="조건문의-구성"><a href="#조건문의-구성" class="headerlink" title="조건문의 구성"></a>조건문의 구성</h2><ul>
-<li>조건식, 실행문<h2 id="다양한-조건문"><a href="#다양한-조건문" class="headerlink" title="다양한 조건문"></a>다양한 조건문</h2></li>
-</ul>
-<h3 id="if-계열-조건문"><a href="#if-계열-조건문" class="headerlink" title="if 계열 조건문"></a>if 계열 조건문</h3><h4 id="if-문"><a href="#if-문" class="headerlink" title="if 문"></a>if 문</h4><pre><code>if(조건식)
-  // 실행문
-
-if(조건식) &#123;
-  // 실행문
-&#125;</code></pre>
-<h4 id="if-else문"><a href="#if-else문" class="headerlink" title="if~else문"></a>if~else문</h4><pre><code>if(조건식) &#123;
-  // 조건식이 true일때 실행할 실행문
-&#125; else &#123;
-  // 조건식이 false일때 실행할 실행문
-&#125;</code></pre>
-<h4 id="if-else-if-else-문"><a href="#if-else-if-else-문" class="headerlink" title="if ~ else if ~ else 문"></a>if ~ else if ~ else 문</h4><pre><code>if(조건식1) &#123;
-  // 조건식1이 true일때 실행할 실행문
-&#125; else if(조건식2) &#123;
-  // 조건식1이 false이고, 조건식2가 true일때 실행할 실행문
-&#125; else &#123;
-  // 모든 조건식이 false일 때 실행할 실행문
-&#125;</code></pre>
-<h4 id="Nested-if-문"><a href="#Nested-if-문" class="headerlink" title="Nested if 문"></a>Nested if 문</h4><pre><code>if(조건식1) &#123;
-  if(조건식2) &#123;
-    // 조건식1과 조건식2가 true일때 실행할 실행문
-  &#125; else &#123;
-    if(조건식3) &#123;
-      // 조건식1과 조건식3이 true이고 조건식2가 false일때 실행할 실행문
-    &#125;
-  &#125;
-&#125;</code></pre>
-<h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch ~ case"></a>switch ~ case</h3><ul>
-<li><p>조건식과 비교할 대상이 여럿일 때 사용</p>
-<ul>
-<li>조건식의 출력은 정수값, 문자열, 열거형 등 정확한 값을 리턴</li>
-</ul>
-</li>
-<li><pre><code> switch(조건식) &#123;
- case 비교값1:
-   // 실행문1
-   break;
- case 비교값2:
-   // 실행문2
-   break;
- default:
-   // 실행문3</code></pre>
-<p>   }</p>
-</li>
-<li><p>Fall-through</p>
-<ul>
-<li>break문을 사용하지 않고 다음 case문을 실행시키는 방법</li>
-</ul>
-</li>
-<li><p>  switch(조건식) {</p>
-<pre><code>case 비교값1:
-  // 실행문1
-case 비교값2:
-  // 실행문2
-default:
-  // 실행문3</code></pre>
-<p>  }<br>  // 비교값1에 해당할 경우: 실행문1, 실행문2, 실행문3 실행<br>  // 비교값2에 해당할 경우: 실행문2, 실행문3 실행<br>  // 해당하는 값이 없을 경우: 실행문3 실행</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/11/03/Conditional_Statements/" data-id="ckh176arp0000swv18jis6jtm" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-DataType" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/11/03/DataType/" class="article-date">
-  <time datetime="2020-11-02T23:43:03.900Z" itemprop="datePublished">2020-11-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: DataType<br>date: 2020-07-28 22:13:21<br>tags:   </p>
-<ul>
-<li>java</li>
-<li>til  </li>
-<li>DataType<br>categories:  </li>
-<li>java  </li>
-<li>til</li>
-<li>DataType   </li>
-</ul>
-<hr>
-<h1 id="자료형"><a href="#자료형" class="headerlink" title="자료형"></a>자료형</h1><ul>
-<li>자료형은 기본형과(Primitive Type), 과 참조형 (Reference Type)이 있다.</li>
-<li>기본형 자료형에 는 정수형, 실수형, 문자형, 논리형이 있다</li>
-<li>참조형에는 대표적으로 문자열 데이터가 있다.</li>
-</ul>
-<h1 id="기본형"><a href="#기본형" class="headerlink" title="기본형"></a>기본형</h1><table>
-<thead>
-<tr>
-<th>종류</th>
-<th>자료형</th>
-<th>크기(byte)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>문자</td>
-<td>char</td>
-<td>2</td>
-</tr>
-<tr>
-<td>정수</td>
-<td>byte,short,int,long</td>
-<td>1,2,4,8</td>
-</tr>
-<tr>
-<td>실수</td>
-<td>float,double</td>
-<td>4,8</td>
-</tr>
-<tr>
-<td>논리</td>
-<td>boolean</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<ul>
-<li>정수의 값 표현 범위</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>자료형</th>
-<th>범위</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>byte</td>
-<td>-2^7 ~ 2^7-1</td>
-</tr>
-<tr>
-<td>short</td>
-<td>-2^15 ~2^15-1</td>
-</tr>
-<tr>
-<td>int</td>
-<td>-2^31~ 2^31-1</td>
-</tr>
-<tr>
-<td>long</td>
-<td>-2^63~ 2^63-1</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>실수형의 값 표현 범위</p>
-<table>
-<thead>
-<tr>
-<th>자료형</th>
-<th>범위</th>
-<th>m</th>
-<th>e</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>float</td>
-<td>-m * 10^e ~ m * 10^e</td>
-<td>23</td>
-<td>8</td>
-</tr>
-<tr>
-<td>short</td>
-<td>-m * 10^e ~ m * 10^e</td>
-<td>52</td>
-<td>11</td>
-</tr>
-</tbody></table>
-<h1 id="참조형"><a href="#참조형" class="headerlink" title="참조형"></a>참조형</h1><p>값을 직접 저장하지 않고, 값이 저장된 주소를 저장 ex) Date birthDay = new Date();</p>
-<h1 id="여러가지-자료형"><a href="#여러가지-자료형" class="headerlink" title="여러가지 자료형"></a>여러가지 자료형</h1><ul>
-<li>정수형</li>
-<li>실수형</li>
-<li>문자형</li>
-<li>논리형</li>
-<li>문자열</li>
-</ul>
-</li>
-</ul>
-<h1 id="업캐스팅-다운캐스팅"><a href="#업캐스팅-다운캐스팅" class="headerlink" title="업캐스팅 다운캐스팅"></a>업캐스팅 다운캐스팅</h1><h2 id="업캐스팅"><a href="#업캐스팅" class="headerlink" title="업캐스팅"></a>업캐스팅</h2><ul>
-<li><p>자료의 범위가 더 큰 자료형으로 변환하는 경우</p>
-<ul>
-<li><p>묵시적, 명시적 방법 모두 사용 가능</p>
-<p> byte x = 10;<br>int y = (int)x;<br>int z = x;</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="다운캐스팅"><a href="#다운캐스팅" class="headerlink" title="다운캐스팅"></a>다운캐스팅</h2><ul>
-<li><p>값의 범위가 더 작은 자료형으로 변환하는 경우</p>
-<ul>
-<li><p>명시적인 방법으로만 캐스팅 가능</p>
-<p>  int x = 1024;<br>byte z = (byte)x;</p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/11/03/DataType/" data-id="ckh16xjio0005p4v160tc235j" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Inheritence" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/03/Inheritence/" class="article-date">
@@ -1027,6 +636,376 @@ public class StaticImport &#123;
 
 
   
+    <article id="post-Strings" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/03/Strings/" class="article-date">
+  <time datetime="2020-11-02T23:40:03.428Z" itemprop="datePublished">2020-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title:Strings<br>date: 2020-08-05 22:54:51<br>tags:   </p>
+<ul>
+<li>java</li>
+<li>til  </li>
+<li>Strings<br>categories:  </li>
+<li>java  </li>
+<li>til</li>
+<li>Strings</li>
+</ul>
+<hr>
+<h1 id="문자열"><a href="#문자열" class="headerlink" title="문자열"></a>문자열</h1><h2 id="문자열의-특징"><a href="#문자열의-특징" class="headerlink" title="문자열의 특징"></a>문자열의 특징</h2><ul>
+<li><p>클래스로 구현되어 있다.</p>
+</li>
+<li><p>내부에 문자의 배열로 데이터가 구현되어 있다.</p>
+</li>
+<li><p>한번 만든 문자열은 변하지 않는다. (Immutable) (Strings)</p>
+<ul>
+<li>StringBuilder(동기화 x 빠름), StringBuffer(동기화 o, 느림)사용<h2 id="문자열의-생성"><a href="#문자열의-생성" class="headerlink" title="문자열의 생성"></a>문자열의 생성</h2></li>
+</ul>
+</li>
+<li><p>new 키워드를 이용하여 생성</p>
+<ul>
+<li><code>String string = new String(&quot;문자열             생성&quot;);</code></li>
+</ul>
+</li>
+<li><p>new 키워드 없이 생성 (권장)</p>
+<ul>
+<li><code>String string = &quot;문자열 생성&quot;;</code><h2 id="문자열-메소드"><a href="#문자열-메소드" class="headerlink" title="문자열 메소드"></a>문자열 메소드</h2></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>length(): 문자여르이 길이를 출력</li>
+<li>charAt(int index): index번 쨰 위치한 문자 출력</li>
+<li>indexOf(char ch): ch가 위치한 iㅜdex출력, 없을 시 -1</li>
+<li>equals(Object ob): ob와 비교한 결과 출력</li>
+<li>equalsIgnoreCase(String string): 대소문자 구분없이 string과 비교 결과 출력</li>
+<li>replace(char oldChar, char newChar): oldChar를 찾아 newChar로 변경된 문자열 출력</li>
+<li>substring(int beginIndex, int endIndex): 문자열을 beginIndex부터 endIndex -1까지 잘라서 출력</li>
+<li>trim(): 문자열 좌우 공백을 없앤 결과를 출력</li>
+<li>matches(String regex): 문자열을 정규표현식 regex확인 결과 출력</li>
+<li>split(String regex): 문자열을 정규표현식 형태로 나눈 후 배열로 출력</li>
+</ul>
+<h2 id="도전과제"><a href="#도전과제" class="headerlink" title="도전과제"></a>도전과제</h2><ul>
+<li>정규표현식</li>
+<li>StringBuilder</li>
+<li>StringBuffer<br>에 대해 알아보기</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/03/Strings/" data-id="ckh16xjj1000vp4v1etitfwe2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Variable" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/03/Variable/" class="article-date">
+  <time datetime="2020-11-02T23:39:43.108Z" itemprop="datePublished">2020-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: Variable<br>date: 2020-07-27 22:12:43<br>tags:   </p>
+<ul>
+<li>java</li>
+<li>til  </li>
+<li>Variable<br>categories:  </li>
+<li>java  </li>
+<li>til</li>
+<li>Variable  </li>
+</ul>
+<hr>
+<h1 id="변수"><a href="#변수" class="headerlink" title="변수"></a>변수</h1><ul>
+<li><p>변수는 변하는 수</p>
+</li>
+<li><p>수학의 변수와 유사하다</p>
+</li>
+<li><p>변수란 것은 변수타입이 존재하고, 변수에는 변수명, 값을 할당할 수 있다.</p>
+<h1 id="사용-예"><a href="#사용-예" class="headerlink" title="사용 예"></a>사용 예</h1></li>
+<li><p>int y,z, value; 여러개도 동시 선언 가능</p>
+</li>
+<li><p>int valueOne =10, valueTwo =20; 이렇게 한줄에도 가능</p>
+</li>
+<li><p>int int; 이 경우는 되지 않는다. 이미 예약어로 잡혀있어서, 자바에서 문법적으로 쓰는 키워드는 변수명으로 사용이 불가하다.</p>
+</li>
+<li><p>int intOne; 이렇게는 가능하다.</p>
+</li>
+<li><p>int 심지어_한글도_됩니다_하지만_쓰지_않습니다;</p>
+</li>
+<li><p>int 4four; 숫자로 시작할 순 없습니다.</p>
+</li>
+<li><p>int _4four; 숫자로 쓰고싶다면 _로 시작하면 됩니다. _는 특수문자가 아닙니다.</p>
+</li>
+<li><p>int fe$the; 특수문자는 되지 않지만 $는 됩니다. 하지만 쓰지 않습니다.</p>
+<h1 id="CodeConvention"><a href="#CodeConvention" class="headerlink" title="CodeConvention"></a>CodeConvention</h1><p>변수명을 어떠한 식으로 쓰면 좋은가</p>
+<h2 id="camelCase"><a href="#camelCase" class="headerlink" title="camelCase"></a>camelCase</h2><p>첫번째 소문자 그다음 띄어쓰기 대신에 대문자</p>
+<ul>
+<li>int valueOfComputer;<h2 id="PascalCase"><a href="#PascalCase" class="headerlink" title="PascalCase"></a>PascalCase</h2>UpperCamelCase라고도 한다</li>
+<li>PascalCase는 변수이름으론 쓰지 않습니다.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/03/Variable/" data-id="ckh16xjj2000xp4v1aayd3dp5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Wrapper_Class" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/03/Wrapper_Class/" class="article-date">
+  <time datetime="2020-11-02T23:39:32.290Z" itemprop="datePublished">2020-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: Wrapper Class<br>date: 2020-08-14 21:55:23<br>tags:   </p>
+<ul>
+<li>java</li>
+<li>til  </li>
+<li>Wrapper Class</li>
+</ul>
+<p>categories:  </p>
+<ul>
+<li>java  </li>
+<li>til</li>
+<li>Wrapper Class</li>
+</ul>
+<hr>
+<h1 id="Wrapper-클래스-Wrapper-Class"><a href="#Wrapper-클래스-Wrapper-Class" class="headerlink" title="Wrapper 클래스 (Wrapper Class)"></a>Wrapper 클래스 (Wrapper Class)</h1><h2 id="Wrapper-클래스란"><a href="#Wrapper-클래스란" class="headerlink" title="Wrapper 클래스란"></a>Wrapper 클래스란</h2><ul>
+<li><p>기본형 타입을 객체로 사용하기 위한 클래스</p>
+<h2 id="Wrapper-클래스의-종류"><a href="#Wrapper-클래스의-종류" class="headerlink" title="Wrapper 클래스의 종류"></a>Wrapper 클래스의 종류</h2><ul>
+<li>byte -&gt; Byte</li>
+<li>char -&gt; Character</li>
+<li>short -&gt; Short</li>
+<li>int -&gt; Integer</li>
+<li>long -&gt; Long</li>
+<li>float -&gt; Float</li>
+<li>double -&gt; Double</li>
+<li>boolean -&gt; Boolean<h2 id="Wrapper-객체-생성"><a href="#Wrapper-객체-생성" class="headerlink" title="Wrapper 객체 생성"></a>Wrapper 객체 생성</h2></li>
+</ul>
+</li>
+<li><p>생성자를 이용한 객체 생성</p>
+<pre><code>Integer integer = new Integer(10);</code></pre>
+</li>
+<li><p>valueOf를 이용한 객체 생성</p>
+</li>
+</ul>
+<pre><code>    Integer integer = Integer.valueOf(10);
+    //이건 그럼 클래스.메소드 니까 valueOf(int n)은 static메소드겠지?</code></pre>
+<h2 id="Autoboxing-amp-Unboxing"><a href="#Autoboxing-amp-Unboxing" class="headerlink" title="Autoboxing &amp; Unboxing"></a>Autoboxing &amp; Unboxing</h2><ul>
+<li><p>오토박싱 (Autoboxing)</p>
+<ul>
+<li>Java1.5부터 추가된 기능으로, 객체로 다루어야 할 때 자동으로 Wrapper 클래스로 변경하는 기능</li>
+</ul>
+</li>
+<li><p>언박싱 (Unboxing)</p>
+<ul>
+<li>Wrapper 객체를 기본형으로 자동으로 변경하는 기능</li>
+</ul>
+</li>
+</ul>
+<pre><code>        int i = 10;
+        Integer wrapped = i;
+        int b = 20 + wrapped;</code></pre>
+<h2 id="Wrapper-타입의-값-비교"><a href="#Wrapper-타입의-값-비교" class="headerlink" title="Wrapper 타입의 값 비교"></a>Wrapper 타입의 값 비교</h2><p>Wrapper 타입은 객체이므로, ==를 이용하여 값을 비교할 수 없다.</p>
+<pre><code>Integer intOne = new Integer(100);
+Integer intTwo = new Integer(100);
+
+System.out.println(intOne == intTwo); // false
+System.out.println(intOne.equals(intTwo)) // true
+System.out.println(intOne == 100) // true (Unboxing)</code></pre>
+<h2 id="문자열의-기본-자료형-변환"><a href="#문자열의-기본-자료형-변환" class="headerlink" title="문자열의 기본 자료형 변환"></a>문자열의 기본 자료형 변환</h2><ul>
+<li><p>Parsing 정적 메소드를 이용한 변환</p>
+<pre><code>int x = Integer.parseInt(&quot;100&quot;);
+long y = Long.parseLong(&quot;512345124&quot;);</code></pre>
+</li>
+<li><p>Wrapper 객체로의 변환</p>
+<pre><code>Integer intObj = Integer.valueOf(&quot;1000&quot;);
+Integer intObjTwo = new Integer(&quot;1234&quot;);</code></pre>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/03/Wrapper_Class/" data-id="ckh176arx0002swv1gp1u2aj1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MultiThread(6)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/MultiThread(6)/" class="article-date">
+  <time datetime="2020-10-29T23:44:34.000Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/MultiThread(6)/">MultiThread(6)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MultiThread-6"><a href="#MultiThread-6" class="headerlink" title="MultiThread(6)"></a>MultiThread(6)</h1><h1 id="synchronizedList"><a href="#synchronizedList" class="headerlink" title="synchronizedList"></a>synchronizedList</h1><pre><code>List&lt;Integer&gt; list1 = new Vector&lt;&gt;();  
+List&lt;Integer&gt; list2 = new ArrayList&lt;&gt;();  
+List&lt;Integer&gt; list3 = Collections.synchronizedList(list2);  
+// list3: list2의 싱크된 버전  
+
+
+for (int i = 0; i &lt; 1000; i++) &#123;  
+    new Thread(() -&gt; &#123;  
+        for (int j = 0; j &lt; 100; j++) &#123;  
+            list1.add(1);  
+  &#125;  
+    &#125;).start();  
+&#125;  
+
+for (int i = 0; i &lt; 1000; i++) &#123;  
+    new Thread(() -&gt; &#123;  
+        for (int j = 0; j &lt; 100; j++) &#123;  
+            list3.add(1);  
+  &#125;  
+    &#125;).start();  
+&#125;  
+
+
+
+Thread.sleep(1000);  
+
+System.out.println(list1.size());  
+System.out.println(list2.size());</code></pre>
+<p>  리스트를 sync해서 쓸 수 있는데 대표적으로 우리가 아는 sync된 리스트는 Vector이다. 때문에 기본적으로 벡터는 다른 자료구조에 비해 느린 이유가 여기있다. 따로 Vector를 쓰지 않고 싱크된 자료구조를 쓰고 싶다면 위의 코드처럼 Collections.synchronizedList(list) 로 만들어 주면 될 것이다.</p>
+<h1 id="쓰레드-풀-Thread-Pool"><a href="#쓰레드-풀-Thread-Pool" class="headerlink" title="쓰레드 풀(Thread Pool)"></a>쓰레드 풀(Thread Pool)</h1><p>  쓰레드는 생성하고 관리하기가 어렵다. 때문에 쓰레드 풀이란 것이있다. 이미 만들어진 쓰레드 뭉텅이에 SynchronousQueue(작업 큐)를 제출(submit)해주면 된다. 이 스레드 풀을 생성하는 방법은 Executors.newCachedThreadPool(), Executors.newFixedThreadPool(n),new ThreadPoolExecutor ( 여러가지 ) 이렇게 세 가지가 있으며 공통점은 작업큐를 제출할 때 작업큐는 Runnable객체 또는 Callable객체여야 한다는 것이다. 활용 예는 아래와 같다.</p>
+<pre><code>public class Main &#123;  
+    public static void main(String[] args) throws InterruptedException &#123;  
+        ExecutorService pool1 = Executors.newCachedThreadPool();  
+  /**  
+ * newCachedThreadPool * - 초기 스레드가 0개 -&gt; 오버헤드가 없다.  
+ * - 코어 스레드가 0개(일하지 않아도 살려두는 스레드)  
+ * - 요청 작업보다 스레드가 부족하면 새 스레드를 생성  
+  * - 60초 동안 일하지 않은 스레드는 제거  
+  */  
+  ExecutorService pool2 = Executors.newFixedThreadPool(10);  
+  /**  
+ *  newFixedThreadPool *  - 최대 스레드 nThread개  
+  *  - 코어 스레드 nThread개  
+  *  - 요청 작업보다 스레드가 부족하면 새 스레드 생성  
+  *  - 작업하지 않는 스레드도 제거하지 않고 동작  
+  */  
+
+  ExecutorService es = new ThreadPoolExecutor (  
+                10, //코어 스레드  
+  100, // 최대 스레드 개수  
+  120, // 스레드가 이 시간동안 일 하지 않으면 제거  
+  TimeUnit.SECONDS,  
+ new SynchronousQueue&lt;Runnable&gt;() // 요청 -&gt; 작업을 쌓아둔 큐 -&gt;스레드 풀  
+  );  
+  //2.스레드에 할당할 작업 생성  
+  class Work implements Runnable &#123;  
+
+            @Override  
+  public void run() &#123;  
+                for(int i = 0; i&lt; 100; i++) &#123;  
+                    System.out.println(i);  
+  &#125;  
+            &#125;  
+        &#125;  
+        class CallableWork implements Callable&lt;String&gt; &#123;  
+
+            @Override  
+  public String call() throws Exception &#123;  
+                return &quot;작업종료&quot;;  
+  &#125;  
+        &#125;  
+        //3.스레드에 작업 요청  
+  Future&lt;String&gt; future;  
+  future=pool1.submit(new CallableWork());  
+ for (int i = 0; i&lt;100; i++) &#123;  
+            pool1.submit(new Work());  
+ ;  &#125;//4. 스레드 종료(동기화)  
+ //스레드 풀은 자동 종료가 안되기 때문에, 직접 스레드풀을 종료해 주어야 한다.  
+  pool1.shutdown(); // Thread.join()과 마찬가지로 끝나길 기다려서 종료  
+  Thread.sleep(1000);  
+ try &#123;  
+            System.out.println(future.get()); //get()은 Blocking method 즉59번 째 줄에 future에 값이 들어오기 전까진 get()에서 블러킹한다.  
+ //get()을 영원히 기다릴 수 도 있음으로 timeout 설정 가능  
+  future.cancel(true); //실행중인 Callable객체를 강제종료 인터럽트해서 강제종료  
+  System.out.println(future.isCancelled());  
+  System.out.println(future.isDone());  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125; catch (ExecutionException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+    &#125;  
+&#125;</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/30/MultiThread(6)/" data-id="ckgz91rp7000e40v11n2wb8db" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -1042,7 +1021,7 @@ public class StaticImport &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1052,7 +1031,7 @@ public class StaticImport &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -1062,7 +1041,7 @@ public class StaticImport &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
@@ -1071,7 +1050,7 @@ public class StaticImport &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
     </div>
   </div>
 
@@ -1084,23 +1063,23 @@ public class StaticImport &#123;
       <ul>
         
           <li>
-            <a href="/2020/11/03/Abstract_Class/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/03/Arrays/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/03/Conditional_Statements/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/03/DataType/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2020/11/03/Inheritence/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/Inputs_and_Outputs/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/Loops/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/N-D_Arrays/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/OOP/">(no title)</a>
           </li>
         
       </ul>

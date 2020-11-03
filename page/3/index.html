@@ -66,438 +66,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Enum" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/14/Enum/" class="article-date">
-  <time datetime="2020-08-14T01:08:22.000Z" itemprop="datePublished">2020-08-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Enum/">Enum</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/14/Enum/">Enum</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1>Enumeration</h1>
-부장님: 난 짜장면.   
-사원1 : 저도 짜장면이요.   
-사원2 : 저도 짜장먹겠습니다.   
-신짜오 : 저도짜장이요.   
-신입 : 저는 짬뽕먹겠습니다.   
-*모두 경악한다*   
-부장님: Enum....!!!!Enumeration!!!!   
-#
- &nbsp;&nbsp;&nbsp;&nbsp;그래요 오늘은 이넘이에요 이넘에 대해 알아보도록 하겟숴요    
-
-<pre><code> enum Job &#123; 
-                STUDENT, MARKETING, DEVELOPER, CHIEF_EXECUTIONAL_OFFICER; // 열거형 상수
-            &#125;</code></pre>
-<p> &nbsp;&nbsp;&nbsp;&nbsp;기본적으로 이넘은 이렇게 씁니다. 근데 이넘의 안에있는 STUDENT, MARKETING 등은 각각 객체입니다. 뭔소리냐구요? 나도 혼란스럽지만 우리같이 해보죠   </p>
-<pre><code>enum Family &#123;
-               FATHER("아버지"), MOTHER("어머니"), SON("아들"), DAUGHTER("딸"); // 열거형 상수(객체)
-               private String koreanWord; // 멤버 변수(객체에 속하는 변수)
-
-               // private은 생략 가능, public 불가능
-               private Family(String koreanWord) &#123;
-                   this.koreanWord = koreanWord;
-               &#125;
-
-               public String getKoreanWord() &#123;
-                   return koreanWord;
-               &#125;
-
-               public void setKoreanWord(String koreanWord) &#123;
-                   this.koreanWord = koreanWord;
-               &#125;
-           &#125; </code></pre>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;위의 코드를 같이 보시죠. 열거형 Family 클래스가 있어요. 안에는 아빠 엄마 아들 딸들이 들어있네요. 단란한 가족이네요. 멤버 변수로써 koreanWork가 있습니다.<br>이제 이 아이들이 어떻게 동작하는지 해석해봐요.<br> &nbsp;&nbsp;&nbsp;&nbsp;멤버변수 아래를 보시면 Family생성자가 보여요 이 생성자는 문자열을 받아서 koreanWord값을 지정해주네요? 그럼 저 생성자는 어떻게 쓰면 좋은것일까요 get-set은 너무당연한거니까 걍넘어갑시다<br> 쟈 한번 보죠 떨리네요 내가말하는게 맞는지아닌지 모호한지아닌지 오류가있는지아닌지 90%확률로 있긴한데 이쪽분야가 용어하나에도 민감하다보니까 무슨말을 할수가 없어요 근데 여긴 내블로그니까 맘대로 싸지를거에요<br> 혹시 보시고 ‘아 자바 저렇게 하는거 아닌데…’하셔도 어쩔 수 없습니다. 쟈 그럼한번 보죠 enum Family클래스안에 원소들은 객체입니다. 즉 Family클래스의 객체인거죠 Family의 생성자는 문자열을 입력으로<br> 받을 수 있고, 즉 FATHER MOTHER… 얘네도 다 문자열을 입력으로 받을 수 있어요. 그 문자열은 private String koreanWord로 저장되겟죠? 그럼 이게 도대체 어떻게 쓰이는 걸까요 그것도 예제를 통해 알아보죠   </p>
-<pre><code>        Family fam = Family.SON;
-                   Family Fam = Family.SON;
-                   System.out.println(fam.getKoreanWord());
-                    fam.setKoreanWord("버린 자식");
-                    Fam.setKoreanWord("거둬진 자식");
-                   System.out.println(fam.getKoreanWord());
-                   System.out.println(Family.SON.getKoreanWord()); </code></pre>
-<p> &nbsp;&nbsp;&nbsp;&nbsp; 아주 아름다운 코드네요 이뻐요 잘빠졌어요 쟈 해석해봅시다. Family 클래스 틀의 레퍼런스 fam은 SON객체를 생성하죠(아님말고), 아니 여기선<br> 생성한다기보단 불러온다는게 맞을거에요 SON객체는 하나거든요 그래서 불러와서 System.out.println(fam.getKoreanWord()); 을 하면 모가 나올까욘 답은   </p>
-<ul>
-<li><em>바람이 세차게 부는 1970s 기차역 앞</em>   </li>
-<li>???:나물사세요… 나물… 나물한단 사고가세요   </li>
-<li>행인1:에잇 아줌마 비켜요 길막지말고   </li>
-<li><em>나물 바구니를 발로차는 행인, ???은 쓰러지고만다</em>   </li>
-<li>???:아이고,,,안되는데 만식이 공책필요하다했는데…아이고,,,아까워서 어쩌나   </li>
-<li>퍽!   </li>
-<li><em>‘퍽!’소리와 함께 나뒹굴어지는 행인</em>   </li>
-<li>아들:이게…!      </li>
-<li>어머니:…”아들”…! 안돼…!<br>&nbsp;&nbsp;&nbsp;&nbsp;네 맞아요 답은 “아들”이었습니다. fam객체는 SON으로 대입시켰고 SON은 파라미터 변수로 “아들”을 줬었죠. Family클래스의 생성자는 koreanWord를 변경했고 다시말해서<br>SON객체의 koreanWord는 “아들”로 변경됬을 것이며 그 결과 fam.getKoreanWord는 “아들”이란 값을 갖고 있을 것이에요. 여기서 fam.set…을 하면 SON객체의 koreanWord를 변경할것입니다.<br>아까 제가 객체를 생성하는게 아니라 불러오는 거라고 했죠 진짠지 같이 한번 보죠. SON객체를 ‘???’ 하고있는 fam과 Fam을 만들었 습니다. 이때 각각 버린자식과 거둬진 자식을 세팅했을 때<br>각각 다른값이 출력되면 새로운 SON을 만든것이겠고, 같다면 SON하나를 공유할 거에요 그럼 결과 같이 보시죠<pre><code>거둬진 자식
-거둬진 자식
-</code></pre>
-&nbsp;&nbsp;&nbsp;&nbsp; 다행이네요, 올겨울은 얼어죽진 않겠어요. 보시다시피 둘다 거둬졌으며 곧 fam과 Fam은 같은 SON을 가리키고 있다는 것을 알 수 있습니다.즉 ???=참조 라고 할 수 있겠네요(아님말고)<br>여기까지 Enum이었습니다 잘가라 이넘들아</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/14/Enum/" data-id="ckgz91roo000140v14q790z1k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Interface" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/13/Interface/" class="article-date">
-  <time datetime="2020-08-13T12:55:23.000Z" itemprop="datePublished">2020-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Interface/">Interface</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/13/Interface/">Interface</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="인터페이스-Interface"><a href="#인터페이스-Interface" class="headerlink" title="인터페이스 (Interface)"></a>인터페이스 (Interface)</h1><h2 id="인터페이스란"><a href="#인터페이스란" class="headerlink" title="인터페이스란"></a>인터페이스란</h2><ul>
-<li><p>클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀</p>
-</li>
-<li><p>아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드</p>
-<h2 id="인터페이스의-특징"><a href="#인터페이스의-특징" class="headerlink" title="인터페이스의 특징"></a>인터페이스의 특징</h2></li>
-<li><p><code>class</code>가 아닌  <code>interface</code>  키워드로 선언</p>
-<ul>
-<li><code>public</code>  또는  <code>default</code>  접근 제어자만 사용 가능</li>
-</ul>
-</li>
-<li><p>멤버 변수는 항상  <code>public static final</code>이며, 생략 가능</p>
-</li>
-<li><p>멤버 메소드는 항상  <code>public abstract</code>이며, 생략 가능</p>
-</li>
-<li><p>클래스와 달리 인터페이스는 여러 개 상속받을 수 있다.</p>
-<pre><code>public interface IFoo &#123;
-public static final int MEMBER_VAR = 10;
-int MEMBER_VAR2 = 20; // public static final
-
-public abstract void methodA(int param);
-void methodB(int param); // public abstract
-&#125;
-
-public class Foo implements IFoo &#123;
-@Override
-void methodA(int param) &#123;
-    System.out.println(param);
-&#125;
-
-@Override
-void methodB(int param) &#123;
-    System.out.println(param);
-&#125;
-&#125;</code></pre>
-<h2 id="인터페이스간의-상속"><a href="#인터페이스간의-상속" class="headerlink" title="인터페이스간의 상속"></a>인터페이스간의 상속</h2></li>
-<li><p>인터페이스 간의 ‘IS-A’ 관계</p>
-</li>
-<li><p>인터페이스가 인터페이스를 상속할 경우  <code>extends</code>로 상속</p>
-</li>
-<li><p>클래스-클래스와 달리 다중 상속 가능</p>
-<pre><code>interface Walkable &#123;
-void walk();
-&#125;
-
-interface Runnable &#123;
-void run();
-&#125;
-public interface Jumpable extends Walkable, Runnable &#123;
-void jump();
-&#125;
-public class Jumper implements Jumpable &#123;
-@Override
-void walk() &#123;
-    System.out.println(&quot;walk&quot;);
-&#125;
-@Override
-void run() &#123;
-    System.out.println(&quot;run&quot;);
-&#125;
-@Override
-void jump() &#123;
-    System.out.println(&quot;jump&quot;);
-&#125;
-&#125;</code></pre>
-</li>
-</ul>
-<h2 id="JDK-1-8"><a href="#JDK-1-8" class="headerlink" title="JDK 1.8"></a>JDK 1.8</h2><ul>
-<li><p>기본 메소드 (Default method): 자식 클래스에서 구현할 필요가 없는 메소드</p>
-<ul>
-<li>인터페이스에  <code>default</code>  메소드를 구현할 수 있다.</li>
-<li><code>default</code>  메소드는 항상  <code>public</code>이다.</li>
-<li>인터페이스의 철학과 맞지 않으나, 인터페이스가 개선되었을 때 손쉽게 기능 추가를 위해 만들어짐</li>
-</ul>
-<p>interface IFoo {<br>void abstractMethod();</p>
-<p>default void defaultMethod() { // 구현 클래스에서 구현할 필요가 없다.</p>
-<pre><code>System.out.println(&quot;Default method&quot;);</code></pre>
-<p>}<br>}</p>
-<p>class SuperFoo {<br>void defaultMethod() {</p>
-<pre><code>System.out.println(&quot;Super method&quot;);</code></pre>
-<p>}<br>}</p>
-<p>class FooOne implements IFoo {<br>void abstractMethod() {</p>
-<pre><code>return;</code></pre>
-<p>}<br>}</p>
-<p>class FooTwo extends SuperFoo implements IFoo {<br>void abstractMethod() {</p>
-<pre><code>return;</code></pre>
-<p>}<br>}</p>
-<p>public class Main {<br>public static void main(String[] args) {</p>
-<pre><code>FooOne fooOne = new FooOne();
-fooOne.defaultMethod(); // Default method
-
-FooTwo fooTwo = new FooTwo();
-fooTwo.defaultMethod(); // Super method</code></pre>
-<p>}<br>}</p>
-</li>
-</ul>
-<ul>
-<li><p>static 메소드: 클래스 메소드와 동일하게 사용 가능</p>
-<ul>
-<li>인터페이스 이름으로 호출 가능</li>
-<li>클래스 구현체의 이름으로는 호출할 수 없음</li>
-</ul>
-</li>
-</ul>
-<pre><code>      interface IFoo &#123;
-      static void staticMethod() &#123;
-      System.out.println(&quot;static method&quot;);
-      &#125;
-      &#125;
-      class Foo implements IFoo &#123;
-      &#125;
-      public class Main &#123;
-      public static void main(String[] args) &#123;
-      IFoo.staticMethod(); // static method
-      // Foo.staticMethod(); // not possible
-      &#125;
-      &#125;</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/13/Interface/" data-id="ckh16xjir000ap4v1eksd6w0t" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Modifier" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/12/Modifier/" class="article-date">
-  <time datetime="2020-08-12T14:53:23.000Z" itemprop="datePublished">2020-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Modifier/">Modifier</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/12/Modifier/">Modifier</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="제어자-Modifier"><a href="#제어자-Modifier" class="headerlink" title="제어자 (Modifier)"></a>제어자 (Modifier)</h1><h2 id="제어자란"><a href="#제어자란" class="headerlink" title="제어자란"></a>제어자란</h2><ul>
-<li>클래스, 변수, 메소드에 부가 기능을 부여하는 키워드</li>
-<li>접근 제어자 (Access modifiers)<ul>
-<li>접근할 수 있는 범위를 정하는 키워드</li>
-<li><code>public</code>,  <code>protected</code>,  <code>(default = package)</code>,  <code>private</code></li>
-</ul>
-</li>
-<li>그 외 제어자 (Other modifiers)<ul>
-<li>특별한 기능을 부여하는 제어자</li>
-<li><code>static</code>,  <code>final</code>,  <code>abstract</code>,  <code>synchronized</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="제어자의-기능"><a href="#제어자의-기능" class="headerlink" title="제어자의 기능"></a>제어자의 기능</h2><h3 id="접근-제어자"><a href="#접근-제어자" class="headerlink" title="접근 제어자"></a>접근 제어자</h3><ul>
-<li><p>접근 가능한 범위를 정해, 데이터 은닉/보호 (Encapsulation) 기능을 추가한다.</p>
-</li>
-<li><p>접근 제어자별 접근 범위</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>제어자</th>
-<th>같은 클래스</th>
-<th>같은 패키지</th>
-<th>다른패키지에 속한 자식클래스</th>
-<th>전제</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public</td>
-<td>o</td>
-<td>o</td>
-<td>o</td>
-<td>o</td>
-</tr>
-<tr>
-<td>protected</td>
-<td>o</td>
-<td>o</td>
-<td>o</td>
-<td></td>
-</tr>
-<tr>
-<td>default</td>
-<td>o</td>
-<td>o</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>private</td>
-<td>o</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<ul>
-<li><p><code>private</code>  또는  <code>protected</code>  변수에 접근하기 위해 getter와 setter 사용</p>
-<pre><code> class public Foo &#123;
-  private int x = 0;
-  private int y = 1;
-
-  public void setX(int x) &#123; // setter
-      this.x = x;
-  &#125;
-
-  public void setY(int y) &#123; // setter
-      if (y &gt;= 0) &#123;
-        this.y = y;
-      &#125;
-  &#125;
-
-  public int getX() &#123; // getter
-      return x;
-  &#125;
-
-  public int getY() &#123; // getter
-      return y;
-  &#125;</code></pre>
-<p>  }</p>
-</li>
-</ul>
-<h3 id="그-외의-제어자"><a href="#그-외의-제어자" class="headerlink" title="그 외의 제어자"></a>그 외의 제어자</h3><ul>
-<li><p><code>final</code></p>
-<ul>
-<li><p>더 이상 바뀔 수 없음을 의미</p>
-</li>
-<li><p>클래스, 메소드, 변수에 사용할 수 있음</p>
-<ul>
-<li><p>클래스: 더 이상 상속이 불가능해진다.</p>
-</li>
-<li><p>메소드: 자식 클래스에서 오버라이드할 수 없다.</p>
-</li>
-<li><p>변수: 변수의 값이 초기화 이후에 변하지 않는다.</p>
-<ul>
-<li>생성자에서 초기화가 이루어지는 것을  <code>blank final</code>  변수라 한다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>public class Foo {<br>final int x = 0; // final variable<br>final int y; // blank finial variable</p>
-<p>public Foo(int y) {<br>  this.y = y; // blank final variable  initialization<br>}<br>}</p>
-</li>
-<li><p><code>static</code></p>
-<ul>
-<li>클래스 변수, 클래스 메소드 등을 선언하기 위해 사용</li>
-</ul>
-</li>
-<li><p><code>abstract</code></p>
-<ul>
-<li>추상 클래스에서 사용</li>
-</ul>
-</li>
-<li><p><code>synchronized</code></p>
-<ul>
-<li>동시성 프로그래밍에 사용<h2 id="싱글톤-패턴-Singletone"><a href="#싱글톤-패턴-Singletone" class="headerlink" title="싱글톤 패턴 (Singletone)"></a>싱글톤 패턴 (Singletone)</h2></li>
-</ul>
-</li>
-<li><p>객체가 단 하나만 존재할 수 있는 클래스</p>
-</li>
-<li><p><code>private</code>  생성자를 이용한다.</p>
-<pre><code>class SingletonClass &#123;
-private static SingletoneClass instance = new SingletonClass();
-private SingletonClass() &#123;&#125;
-
-public static SingletonClass getInstance() &#123;
-  return instance;
-&#125; 
-&#125;</code></pre>
-<p>static메소드를 통해 instance를 반환 받을 수 있고 instance는 static SingletonClass 객체이기 때문에 SingletonClass의 객체는 하나일 수 밖에 없으며, 오직 getInstance함수로만 생성이 가능하다.</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/12/Modifier/" data-id="ckh16xjiw000pp4v13kas0tsi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-Polymorphism2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/11/Polymorphism2/" class="article-date">
@@ -1170,6 +738,356 @@ static &#123;
 
 
   
+    <article id="post-Arrays" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/03/Arrays/" class="article-date">
+  <time datetime="2020-08-03T13:22:45.000Z" itemprop="datePublished">2020-08-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Arrays/">Arrays</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/03/Arrays/">Arrays</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="배열-Arrays"><a href="#배열-Arrays" class="headerlink" title="배열 (Arrays)"></a>배열 (Arrays)</h1><h2 id="배열의-특성"><a href="#배열의-특성" class="headerlink" title="배열의 특성"></a>배열의 특성</h2><ul>
+<li>하나의 변수로 여러개의 값을 다룰 수 있다.</li>
+<li>동일한 자료형의 값만 다룰 수 있다.</li>
+<li>한번 생성된 배열의 크기는 변하지 않는다.</li>
+<li>배열에 속한 값은 메모리에 연속적으로 위치한다.</li>
+</ul>
+<h2 id="배열의-생성"><a href="#배열의-생성" class="headerlink" title="배열의 생성"></a>배열의 생성</h2><ul>
+<li><p>배열의 선언</p>
+<ul>
+<li>int[] intArray;// 자료형[] 변수명; recommended<br>int integerArray[];// 자료형 변수명[]; old c-style</li>
+</ul>
+<p>배열의 생성/초기화</p>
+</li>
+<li><p>생성 후 값 할당</p>
+<ul>
+<li>int[] intArray = new int[10];<br>intArray[0] = 4;<br>intArray[1] = 10;<ul>
+<li>int[] intArray;<br>intArray = new int[]{4, 5, 1, 2, 5};</li>
+</ul>
+</li>
+<li>생성과 동시에 값 할당</li>
+</ul>
+<ul>
+<li>int[] intArray = {3, 5, 1, 20, 65};</li>
+<li>int[] intArray2 = new int[]{4, 6, 2, 3, 4};</li>
+</ul>
+</li>
+</ul>
+<h2 id="배열과-반복문"><a href="#배열과-반복문" class="headerlink" title="배열과 반복문"></a>배열과 반복문</h2><ul>
+<li><p>인덱스를 이용한 배열 접근</p>
+<ul>
+<li>float[] floatArray = new float[10];<br>for (int i = 0; i &lt; floatArray.length; i++) {<br>floatArray[i] = i * 0.5;<br>}</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>향상된 for 문을 이용한 배열 접근</p>
+<ul>
+<li>int[] intArray = {4, 5, 1, 2, 7, 5};<br>for (int value: intArray) {<br>System.out.println(value);<br>}</li>
+</ul>
+</li>
+</ul>
+<h2 id="배열의-크기-변경"><a href="#배열의-크기-변경" class="headerlink" title="배열의 크기 변경"></a>배열의 크기 변경</h2><ul>
+<li><p>배열의 크기는 변경할 수 없으므로 새로운 배열을 만들고 데이터를 옮겨야 한다.</p>
+<ul>
+<li>int[] src = {1, 2, 3, 4, 5};<br>int[] dst = new int[10];<br>for(int i = 0; i &lt; source.length; i++) {<br>dst[i] = src[i];<br>}</li>
+<li>int[] src = {1, 2, 3, 4, 5};<br>int[] dst = new int[10];<br>System.arraycopy(src, 0, dst, 0, src.length);</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/03/Arrays/" data-id="ckh16xji40000p4v11ygi63x4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Conditional_Statements" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/30/Conditional_Statements/" class="article-date">
+  <time datetime="2020-07-30T13:14:22.000Z" itemprop="datePublished">2020-07-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/Conditional_Statements/">Conditional_Statements</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="조건문"><a href="#조건문" class="headerlink" title="조건문"></a>조건문</h1><h2 id="조건문의-구성"><a href="#조건문의-구성" class="headerlink" title="조건문의 구성"></a>조건문의 구성</h2><ul>
+<li>조건식, 실행문<h2 id="다양한-조건문"><a href="#다양한-조건문" class="headerlink" title="다양한 조건문"></a>다양한 조건문</h2></li>
+</ul>
+<h3 id="if-계열-조건문"><a href="#if-계열-조건문" class="headerlink" title="if 계열 조건문"></a>if 계열 조건문</h3><h4 id="if-문"><a href="#if-문" class="headerlink" title="if 문"></a>if 문</h4><pre><code>if(조건식)
+  // 실행문
+
+if(조건식) &#123;
+  // 실행문
+&#125;</code></pre>
+<h4 id="if-else문"><a href="#if-else문" class="headerlink" title="if~else문"></a>if~else문</h4><pre><code>if(조건식) &#123;
+  // 조건식이 true일때 실행할 실행문
+&#125; else &#123;
+  // 조건식이 false일때 실행할 실행문
+&#125;</code></pre>
+<h4 id="if-else-if-else-문"><a href="#if-else-if-else-문" class="headerlink" title="if ~ else if ~ else 문"></a>if ~ else if ~ else 문</h4><pre><code>if(조건식1) &#123;
+  // 조건식1이 true일때 실행할 실행문
+&#125; else if(조건식2) &#123;
+  // 조건식1이 false이고, 조건식2가 true일때 실행할 실행문
+&#125; else &#123;
+  // 모든 조건식이 false일 때 실행할 실행문
+&#125;</code></pre>
+<h4 id="Nested-if-문"><a href="#Nested-if-문" class="headerlink" title="Nested if 문"></a>Nested if 문</h4><pre><code>if(조건식1) &#123;
+  if(조건식2) &#123;
+    // 조건식1과 조건식2가 true일때 실행할 실행문
+  &#125; else &#123;
+    if(조건식3) &#123;
+      // 조건식1과 조건식3이 true이고 조건식2가 false일때 실행할 실행문
+    &#125;
+  &#125;
+&#125;</code></pre>
+<h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch ~ case"></a>switch ~ case</h3><ul>
+<li><p>조건식과 비교할 대상이 여럿일 때 사용</p>
+<ul>
+<li>조건식의 출력은 정수값, 문자열, 열거형 등 정확한 값을 리턴</li>
+</ul>
+</li>
+<li><pre><code> switch(조건식) &#123;
+ case 비교값1:
+   // 실행문1
+   break;
+ case 비교값2:
+   // 실행문2
+   break;
+ default:
+   // 실행문3</code></pre>
+<p>   }</p>
+</li>
+<li><p>Fall-through</p>
+<ul>
+<li>break문을 사용하지 않고 다음 case문을 실행시키는 방법</li>
+</ul>
+</li>
+<li><p>  switch(조건식) {</p>
+<pre><code>case 비교값1:
+  // 실행문1
+case 비교값2:
+  // 실행문2
+default:
+  // 실행문3</code></pre>
+<p>  }<br>  // 비교값1에 해당할 경우: 실행문1, 실행문2, 실행문3 실행<br>  // 비교값2에 해당할 경우: 실행문2, 실행문3 실행<br>  // 해당하는 값이 없을 경우: 실행문3 실행</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/07/30/Conditional_Statements/" data-id="ckh176arp0000swv18jis6jtm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-DataType" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/28/DataType/" class="article-date">
+  <time datetime="2020-07-28T13:13:21.000Z" itemprop="datePublished">2020-07-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/DataType/">DataType</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/28/DataType/">DataType</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="자료형"><a href="#자료형" class="headerlink" title="자료형"></a>자료형</h1><ul>
+<li>자료형은 기본형과(Primitive Type), 과 참조형 (Reference Type)이 있다.</li>
+<li>기본형 자료형에 는 정수형, 실수형, 문자형, 논리형이 있다</li>
+<li>참조형에는 대표적으로 문자열 데이터가 있다.</li>
+</ul>
+<h1 id="기본형"><a href="#기본형" class="headerlink" title="기본형"></a>기본형</h1><table>
+<thead>
+<tr>
+<th>종류</th>
+<th>자료형</th>
+<th>크기(byte)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>문자</td>
+<td>char</td>
+<td>2</td>
+</tr>
+<tr>
+<td>정수</td>
+<td>byte,short,int,long</td>
+<td>1,2,4,8</td>
+</tr>
+<tr>
+<td>실수</td>
+<td>float,double</td>
+<td>4,8</td>
+</tr>
+<tr>
+<td>논리</td>
+<td>boolean</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<ul>
+<li>정수의 값 표현 범위</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>자료형</th>
+<th>범위</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>-2^7 ~ 2^7-1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>-2^15 ~2^15-1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>-2^31~ 2^31-1</td>
+</tr>
+<tr>
+<td>long</td>
+<td>-2^63~ 2^63-1</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>실수형의 값 표현 범위</p>
+<table>
+<thead>
+<tr>
+<th>자료형</th>
+<th>범위</th>
+<th>m</th>
+<th>e</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>-m * 10^e ~ m * 10^e</td>
+<td>23</td>
+<td>8</td>
+</tr>
+<tr>
+<td>short</td>
+<td>-m * 10^e ~ m * 10^e</td>
+<td>52</td>
+<td>11</td>
+</tr>
+</tbody></table>
+<h1 id="참조형"><a href="#참조형" class="headerlink" title="참조형"></a>참조형</h1><p>값을 직접 저장하지 않고, 값이 저장된 주소를 저장 ex) Date birthDay = new Date();</p>
+<h1 id="여러가지-자료형"><a href="#여러가지-자료형" class="headerlink" title="여러가지 자료형"></a>여러가지 자료형</h1><ul>
+<li>정수형</li>
+<li>실수형</li>
+<li>문자형</li>
+<li>논리형</li>
+<li>문자열</li>
+</ul>
+</li>
+</ul>
+<h1 id="업캐스팅-다운캐스팅"><a href="#업캐스팅-다운캐스팅" class="headerlink" title="업캐스팅 다운캐스팅"></a>업캐스팅 다운캐스팅</h1><h2 id="업캐스팅"><a href="#업캐스팅" class="headerlink" title="업캐스팅"></a>업캐스팅</h2><ul>
+<li><p>자료의 범위가 더 큰 자료형으로 변환하는 경우</p>
+<ul>
+<li><p>묵시적, 명시적 방법 모두 사용 가능</p>
+<p> byte x = 10;<br>int y = (int)x;<br>int z = x;</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="다운캐스팅"><a href="#다운캐스팅" class="headerlink" title="다운캐스팅"></a>다운캐스팅</h2><ul>
+<li><p>값의 범위가 더 작은 자료형으로 변환하는 경우</p>
+<ul>
+<li><p>명시적인 방법으로만 캐스팅 가능</p>
+<p>  int x = 1024;<br>byte z = (byte)x;</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/07/28/DataType/" data-id="ckh16xjio0005p4v160tc235j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -1185,7 +1103,7 @@ static &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1195,7 +1113,7 @@ static &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -1205,7 +1123,7 @@ static &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 10px;">Front-End</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
@@ -1214,7 +1132,7 @@ static &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
     </div>
   </div>
 
@@ -1227,23 +1145,23 @@ static &#123;
       <ul>
         
           <li>
-            <a href="/2020/11/03/Abstract_Class/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/03/Arrays/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/03/Conditional_Statements/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/03/DataType/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2020/11/03/Inheritence/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/Inputs_and_Outputs/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/Loops/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/N-D_Arrays/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/OOP/">(no title)</a>
           </li>
         
       </ul>
