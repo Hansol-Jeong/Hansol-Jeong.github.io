@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Polymorphism1 | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Polymorphism  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;네 그래요 오늘은 다형성에 대해 알아볼 거십니다.    Override   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;뜬금 없지만 제가 좋아하는 노래중 하나는 바로 JP SAXE의 If the world was ending      인데요, 처음에 그 노래를 듣고 검색하려고 구글에 over">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Polymorphism1">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/08/10/java/Polymorphism/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="Polymorphism  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;네 그래요 오늘은 다형성에 대해 알아볼 거십니다.    Override   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;뜬금 없지만 제가 좋아하는 노래중 하나는 바로 JP SAXE의 If the world was ending      인데요, 처음에 그 노래를 듣고 검색하려고 구글에 over">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-10T11:03:04.000Z">
+<meta property="article:modified_time" content="2020-11-03T01:15:15.507Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="til">
+<meta property="article:tag" content="Polymorphism">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java/Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/10/java/Polymorphism/" class="article-date">
+  <time datetime="2020-08-10T11:03:04.000Z" itemprop="datePublished">2020-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Polymorphism/">Polymorphism</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Polymorphism1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>Polymorphism</h1>
+ &nbsp;&nbsp;&nbsp;&nbsp;네 그래요 오늘은 다형성에 대해 알아볼 거십니다.
+
+  <h2>Override</h2>
+  &nbsp;&nbsp;&nbsp;&nbsp;뜬금 없지만 제가 좋아하는 노래중 하나는 바로 JP SAXE의 If the world was ending   
+  인데요, 처음에 그 노래를 듣고 검색하려고 구글에 override라고 쳤다가 도저히 안나왔던 기억이 있습니다. 알고보니   
+  'over right' 였더군요. 그냥 그랬다구요 이제 들어가 보죠   
+   #   
+  &nbsp;&nbsp;&nbsp;&nbsp; 쟈 다형성을 형성하는 방법으로는 첫번째로 override가 있습니다.   
+  override는 상속이 이루어진 경우에만 가능한데요 예를 들어보죠
+
+<pre><code>class Foo &#123;
+               static public String y = "Super Class";
+               public String x = "Super";
+
+               public void methodA() &#123;
+                   System.out.println("Super Method");
+               &#125;
+           &#125;
+
+           class Bar extends Foo &#123;
+               static public String y = "Sub Class";
+               public String x = "Sub";
+
+               @Override
+               public void methodA() &#123;
+                   System.out.println("Sub Method");
+               &#125;
+           &#125; </code></pre>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;쟈 이경우는 Bar가 Foo를 상속했습니다. 그리고 methodA()를 Bar에서 오버라이드 하고있죠<br> 지금은 Foo를 상속한 Bar가 하나지만 Bar1,Bar2,Bar3…이렇게 여러개가 있다면 어떨까요? 맞습니다 필요한 자식 클래스로 필요<br> 할때마다 캐스팅 할 수 있겠죠 이렇게 오버라이딩을 통해 다형성을 실현할 수 있습니다.<br> <h2>Overload</h2><br>   &nbsp;&nbsp;&nbsp;&nbsp;네 두번째 방법은 오버로드인데요 오버로드는 상속이 필요없죠, 그저 필요한 메소드를<br>   상황에 맞게 바꿔쓰시면 됩니다. 이것도 예를 들어보죠</p>
+<pre><code>     public Vector3D add(Vector3D x) &#123;
+                    return new Vector3D(this.x + x.x,
+                            this.y + x.y,
+                            this.z + x.z);
+                &#125;
+
+                public Vector3D add(float x) &#123;
+                    return new Vector3D(this.x + x,
+                            this.y + x,
+                            this.z + x);
+                &#125;</code></pre>
+<p> &nbsp;&nbsp;&nbsp;&nbsp; 무섭게 생겼죠? 그래요 나도 무서워요 벡터는 참 못생긴것 같아요 하지만 뜯어보면 이쁜구석이<br> 조금이라도 있을지 모르니 같이 보기로해요. 보면 같은 반환형(Vector3D)에 같은 메소드이름(add)를 가졌네요 그런데 다른게<br> 눈에 띄어요, 바로 파라미터값과 안에 내용이 미묘하게 조큼 다르죠? 그래요 이게 바로 오버로드에요 저그인구수 +8해주는 오버로드가<br> 생각나는 부분이지만 넘어가기로 해요. 결론적으로 오버로드는 파라미터 자료형 또는 갯수가 다를 때 내용을 다르게만들어서 필요할때<br> 바꿔쓸 수 있답니다. 이를 통해서 다형성을 실현할 수 있지요</p>
+ <pre><code>     public Vector3D add(Vector3D x) &#123;
+                     return new Vector3D(this.x + x.x,
+                             this.y + x.y,
+                             this.z + x.z);
+                 &#125;
+
+                 public Vector3D add(float x) &#123;
+                     return new Vector3D(this.x + x,
+                             this.y + x,
+                             this.z + x);
+                 &#125;</code></pre>
+ <h2>AbstractClass</h2>
+    &nbsp;&nbsp;&nbsp;&nbsp;세번째 방법도있어요 세번쨰는 추상클래스를 통한 다형성의 실현이에요 더럽게 종류도 많네요 하지만   
+    여러분과 저는 취업을 해야하니 한번 같이 뜯어보도록 하죠. 저는 예시덕후라 또 예시 한번 가실게요
+     <pre><code>abstract class AbstractFoo &#123;
+                    int x, y;
+                    public void method() &#123;
+                        System.out.println("method");
+                    &#125;
+                    public abstract void abstractMethod();
+                &#125;
+                class Foo extends AbstractFoo &#123;
+                    @Override
+                    public void abstractMethod() &#123;
+                        System.out.println("implemented abstractMethod");
+                    &#125;
+                &#125;&#125;</code></pre>무섭게 생겼네요 하지만 해야지 어쩌겠어요 보시면 abstractMethod();를 포함하고있는 클래스는   
+                지금까지 우리가 보아온 녀석과 좀달라요. 주황버섯에서 뿔버섯이 됫달까요 그런느낌이죠 다들하시죠? abstract class AbstractFoo라고   
+                앞에 abstract가 붙어 있어요 무슨뜻일까요? 네 잘알고 계시네요 추상이란 뜻이에요 추사랑아빠 추상 아니에요   
+                그래서 이 추상 클래스, 추상메소드가 뭘 하느냐? 예를들면 가이드라인 같은거에요. 우리 같이 눈을감고 생각해보죠 당신은   
+                공사장에서 현장안전관리요원으로 취직했어요 그리고 하루 공사가 끝날 때 꼭 체크해야 할 항목들이 있죠. 예를들면 
+                * 개미굴이 몇개인지    
+                * 두더지는 보이지않는지    
+                * 비둘기는 몇kg정도인지    
+               bsp;&nbsp;&nbsp; 체크하는 것들일 거에요 만약에 하나라도 체크를 안하고 퇴근한다면 공사장에 재앙이 생기기 때문에 이것은 회사에서 필수항목으로   
+               체크하라고 가이드라인에 넣어놨다 해보죠. 이게바로 추상메소드입니다. 추상클래스에 추상메소드로 선언해 놓으면 당신은 그것을 무조건   
+               구현해놔야해요 다시 위의 코드를 보죠 abstract class AbstractFoo 라는 가이드라인에서 public abstract void abstractMethod();항목은   
+               꼭 구현해놓으라고 선언한 것이에요 그렇기 때문에 당신이 추상 클래스인 abstract class AbstractFoo를 상속받아서 새로운 클래스를   
+               정의하고 싶다면  class Foo extends AbstractFoo에서 
+                <pre><code> 
+                @Override
+                 public void abstractMethod() &#123;
+                   System.out.println("implemented abstractMethod");
+                  &#125;</code></pre>이부분을 구현해야 한다는 소리에요 안그러면 안되요 이게바로 추상 클래스입니다.
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/10/java/Polymorphism/" data-id="ckh2ffo6n0027cov18z7t4nv7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/10/java/Inheritence/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Inheritance
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/07/java/Class/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Class</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/03/Front-End/day_1/">day_1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/java/MultiThread(6)/">MultiThread(6)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/java/MultiThread(4)/">MultiThread(4)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/java/MultiThread(5)/">MultiThread(5)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/28/java/MultiThread(3)/">MultiThread(3)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>MultiThread(3) | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MultiThread(3)Daemon thread 다른 모든 스레드가 종료될 경우, 스스로 종료되는 메소드이다.  무한 루프로 대기하면서 동작하는 구현이 많다 -&gt; 무한루프로 대기하다가 다른거 끝나면 실행되는 구조 일정시간마다 동작하며, interrupt등에 의해서 동작한다.  # 활용 예 class AutoSaver extends Thread &amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MultiThread(3)">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/10/28/java/MultiThread(3)/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="MultiThread(3)Daemon thread 다른 모든 스레드가 종료될 경우, 스스로 종료되는 메소드이다.  무한 루프로 대기하면서 동작하는 구현이 많다 -&gt; 무한루프로 대기하다가 다른거 끝나면 실행되는 구조 일정시간마다 동작하며, interrupt등에 의해서 동작한다.  # 활용 예 class AutoSaver extends Thread &amp;#1">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-27T23:53:51.000Z">
+<meta property="article:modified_time" content="2020-11-03T01:15:15.427Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="til">
+<meta property="article:tag" content="MultiThread">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java/MultiThread(3)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/28/java/MultiThread(3)/" class="article-date">
+  <time datetime="2020-10-27T23:53:51.000Z" itemprop="datePublished">2020-10-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MultiThread(3)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MultiThread-3"><a href="#MultiThread-3" class="headerlink" title="MultiThread(3)"></a>MultiThread(3)</h1><h1 id="Daemon-thread"><a href="#Daemon-thread" class="headerlink" title="Daemon thread"></a>Daemon thread</h1><ul>
+<li>다른 모든 스레드가 종료될 경우, 스스로 종료되는 메소드이다. </li>
+<li>무한 루프로 대기하면서 동작하는 구현이 많다 -&gt; 무한루프로 대기하다가 다른거 끝나면 실행되는 구조</li>
+<li>일정시간마다 동작하며, interrupt등에 의해서 동작한다.</li>
+</ul>
+<h1 id="활용-예"><a href="#활용-예" class="headerlink" title="# 활용 예"></a># 활용 예</h1><pre><code> class AutoSaver extends Thread &#123;  
+    public AutoSaver() &#123;  
+        this.setDaemon(true); // 메인 스레드가 종료되면 스스로 종료되도록 데몬 설정  
+  &#125;  
+
+    @Override  
+  public void run() &#123;  
+        while (true) &#123;  
+            try &#123;  
+                Thread.sleep(5000);  
+  &#125; catch (InterruptedException e) &#123;  
+                e.printStackTrace();  
+  &#125;  
+            // Save Something...  
+  System.out.println(&quot;Auto Save Done!&quot;);  
+  &#125;  
+    &#125;  
+&#125;  
+
+public class Main &#123;  
+    public static void main(String[] args) throws InterruptedException &#123;  
+
+        new AutoSaver().start();  
+
+ for (int i = 0; i &lt; 15; i++) &#123;  
+            Thread.sleep(1000);  
+  System.out.println(&quot;Working&quot;);  
+  &#125;  
+    &#125;  
+&#125;</code></pre>
+<h1 id="Intrinsic-Lock-고유-락-과-synchronized-키워드"><a href="#Intrinsic-Lock-고유-락-과-synchronized-키워드" class="headerlink" title="Intrinsic Lock(고유 락) 과 synchronized 키워드"></a>Intrinsic Lock(고유 락) 과 synchronized 키워드</h1><ul>
+<li>자바의 모든 객체는 고유 락을 가지고 있음<ul>
+<li>객체의 소유권을 한정하는 내부적인 구현 -&gt; 소유권은 독점적이다.</li>
+</ul>
+</li>
+<li>synchronized를 이용하면 객체의 고유 락의 소유권을 가져올 수 있다.<ul>
+<li>소유권이 이미 점유된 경우에는 Blocking으로 동작한다!</li>
+</ul>
+</li>
+</ul>
+<h2 id="사용-예-1-멀티스레드-동작에-취약한-구현"><a href="#사용-예-1-멀티스레드-동작에-취약한-구현" class="headerlink" title="사용 예(1) 멀티스레드 동작에 취약한 구현"></a>사용 예(1) 멀티스레드 동작에 취약한 구현</h2><pre><code>  class Counter &#123;  
+    private int count = 0;  
+ public int increaseCount() &#123;  
+        return ++count; // 읽고, 수정하고, 쓰는 작업  
+  // 경쟁적으로 동작하다 보면, 읽고 수정하고 쓰기 전에 다른 쓰레드가 읽는 경우가 발생  
+  &#125;  
+
+    public int getCount() &#123;  
+        return count;  
+  &#125;  
+&#125;</code></pre>
+<p> 해당 코드를 멀티쓰레드로 돌릴 경우 누가먼저 돌아갈 지 알 수 없으며 실행이 겹칠 수 있다. 그러면 카운트가 안될 수도 있어!</p>
+<h2 id="사용-예-2-Intrinsic-Lock을-이용한-구현"><a href="#사용-예-2-Intrinsic-Lock을-이용한-구현" class="headerlink" title="사용 예(2) Intrinsic Lock을 이용한 구현"></a>사용 예(2) Intrinsic Lock을 이용한 구현</h2><pre><code>     class Counter &#123;  
+    private Object lock = new Object();  
+ private int count = 0;  
+ public int increaseCount() &#123;  
+        synchronized (lock) &#123;  
+            return ++count; // 읽고, 수정하고, 쓰는 작업  
+  &#125;  
+    &#125;  
+
+    public int getCount() &#123;  
+        return count;  
+  &#125;  
+&#125;</code></pre>
+<p> 해당 쓰레드에서 오브젝트객체인 lock을 점유하지 않았다면 메소드 실행 불가능 때문에 한번에 하나의 쓰레드만 실행된다. 이를 좀더 간편하게 object객체를 자기자신 this로 선언하면</p>
+<pre><code>class Counter &#123;  
+    private int count = 0;  
+ public int increaseCount() &#123;  
+        synchronized (this) &#123;  
+            return ++count; // 읽고, 수정하고, 쓰는 작업  
+  &#125;  
+    &#125;  
+
+    public int getCount() &#123;  
+        return count;  
+  &#125;  
+&#125;</code></pre>
+<p> 요로케 this로 줄일 수 있고 더 나아가서는</p>
+<pre><code>class Counter &#123;  
+    private int count = 0;  
+ public synchronized int increaseCount() &#123;  
+        return ++count; // 읽고, 수정하고, 쓰는 작업  
+  &#125;  
+
+    public int getCount() &#123;  
+        return count;  
+  &#125;  
+&#125;</code></pre>
+<p> 이렇게 메소드에 synchronized키워드를 사용할 수 있다. 세 경우 모두 해당 객체를 소유하지 못했다면 Blocking된다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/28/java/MultiThread(3)/" data-id="ckh2ffo6g001mcov141nh4tig" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/29/java/MultiThread(5)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MultiThread(5)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/27/java/MultiThread(2)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MultiThread(2)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/03/Front-End/day_1/">day_1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/java/MultiThread(6)/">MultiThread(6)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/java/MultiThread(4)/">MultiThread(4)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/java/MultiThread(5)/">MultiThread(5)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/28/java/MultiThread(3)/">MultiThread(3)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
