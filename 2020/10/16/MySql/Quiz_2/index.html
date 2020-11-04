@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Quiz_2 | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Quiz 1: 전체 몇개의 대륙이 있는지 출력하세요.use world;SELECT Continent, count(Continent)FROM countryGROUP BY Continent; select count(distinct(continent))from country; select continent from country group by continent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quiz_2">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/10/16/MySql/Quiz_2/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="Quiz 1: 전체 몇개의 대륙이 있는지 출력하세요.use world;SELECT Continent, count(Continent)FROM countryGROUP BY Continent; select count(distinct(continent))from country; select continent from country group by continent">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-16T13:13:21.000Z">
+<meta property="article:modified_time" content="2020-11-04T12:21:29.701Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="Database">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Quiz_2">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MySql/Quiz_2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/16/MySql/Quiz_2/" class="article-date">
+  <time datetime="2020-10-16T13:13:21.000Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Database/">Database</a>►<a class="article-category-link" href="/categories/Database/MySQL/">MySQL</a>►<a class="article-category-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Quiz_2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Quiz-1-전체-몇개의-대륙이-있는지-출력하세요"><a href="#Quiz-1-전체-몇개의-대륙이-있는지-출력하세요" class="headerlink" title="Quiz 1: 전체 몇개의 대륙이 있는지 출력하세요."></a>Quiz 1: 전체 몇개의 대륙이 있는지 출력하세요.</h2><p>use world;<br>SELECT Continent, count(Continent)<br>FROM country<br>GROUP BY Continent;</p>
+<p>select count(distinct(continent))<br>from country;</p>
+<p>select continent from country group by continent;</p>
+<p>select count(*) from (select continent from country group by continent) as ct;<br>– 모르겠습니다.</p>
+<h2 id="Quiz-2-국가-코드별-도시의-갯수를-출력하세요-상위-5개를-출력"><a href="#Quiz-2-국가-코드별-도시의-갯수를-출력하세요-상위-5개를-출력" class="headerlink" title="Quiz 2: 국가 코드별 도시의 갯수를 출력하세요. (상위 5개를 출력)"></a>Quiz 2: 국가 코드별 도시의 갯수를 출력하세요. (상위 5개를 출력)</h2><p>– 1. 국가 코드별 2.도시갯수 3. 상위 5개<br>SELECT countryCode, count(countrycode) AS count<br>FROM city GROUP BY countrycode ORDER BY count DESC LIMIT 5;</p>
+<h2 id="Quiz-3-대륙별-몇개의-나라가-있는지-대륙별-나라의-갯수로-내림차순하여-출력하세요"><a href="#Quiz-3-대륙별-몇개의-나라가-있는지-대륙별-나라의-갯수로-내림차순하여-출력하세요" class="headerlink" title="Quiz 3: 대륙별 몇개의 나라가 있는지 대륙별 나라의 갯수로 내림차순하여 출력하세요."></a>Quiz 3: 대륙별 몇개의 나라가 있는지 대륙별 나라의 갯수로 내림차순하여 출력하세요.</h2><p>– 1.대륙별 나라갯수 count 2. 그걸로 내림차순<br>SELECT continent, count(continent) AS count FROM country GROUP BY continent ORDER BY count DESC;</p>
+<h2 id="Quiz-4-대륙별-인구가-1000만명-이상인-나라의-수와-GNP의-표준편차를-출력하세요-GNP-표준편차로-내림차순"><a href="#Quiz-4-대륙별-인구가-1000만명-이상인-나라의-수와-GNP의-표준편차를-출력하세요-GNP-표준편차로-내림차순" class="headerlink" title="Quiz 4: 대륙별 인구가 1000만명 이상인 나라의 수와 GNP의 표준편차를 출력하세요. (GNP 표준편차로 내림차순)"></a>Quiz 4: 대륙별 인구가 1000만명 이상인 나라의 수와 GNP의 표준편차를 출력하세요. (GNP 표준편차로 내림차순)</h2><p>– 1.대륙별 2.인구 1000만이상인 나라수 3. GNP의 표준편차 STDDEV(표준편차) 4. 그걸로 내림차순<br>SELECT continent, count(continent), STDDEV(GNP) AS std_gnp – 1000만이상도시의  GNP들이 GROUP BY 되었을떄의 표준 편차-&gt;STDDEV<br>FROM country<br>WHERE population &gt;=10000000<br>GROUP BY continent ORDER BY std_gnp DESC; </p>
+<h2 id="Quiz-5-City-테이블에서-국가코드-CountryCode-별로-총인구가-몇명인지-조회하고-총인구-순으로-내림차순하세요-총인구가-5천만-이상인-도시만-출력"><a href="#Quiz-5-City-테이블에서-국가코드-CountryCode-별로-총인구가-몇명인지-조회하고-총인구-순으로-내림차순하세요-총인구가-5천만-이상인-도시만-출력" class="headerlink" title="Quiz 5: City 테이블에서 국가코드(CountryCode) 별로 총인구가 몇명인지 조회하고 총인구 순으로 내림차순하세요. (총인구가 5천만 이상인 도시만 출력)"></a>Quiz 5: City 테이블에서 국가코드(CountryCode) 별로 총인구가 몇명인지 조회하고 총인구 순으로 내림차순하세요. (총인구가 5천만 이상인 도시만 출력)</h2><p>– 1. city테이블 2.국가코드별로 총인구가 몇명인지 3.총인구순으로 내림차순<br>SELECT countrycode, SUM(population) AS population FROM city<br>GROUP BY countrycode ORDER BY population DESC;</p>
+<h2 id="Quiz-6-언어별-사용하는-국가수를-조회하고-많이-사용하는-언어를-6위에서-10위까지-조회하세요"><a href="#Quiz-6-언어별-사용하는-국가수를-조회하고-많이-사용하는-언어를-6위에서-10위까지-조회하세요" class="headerlink" title="Quiz 6: 언어별 사용하는 국가수를 조회하고 많이 사용하는 언어를 6위에서 10위까지 조회하세요."></a>Quiz 6: 언어별 사용하는 국가수를 조회하고 많이 사용하는 언어를 6위에서 10위까지 조회하세요.</h2><p>– 1.언어별 사용하는 국가수 2.6~7위 출력<br>SELECT Language, count(language) AS count FROM countrylanguage<br>GROUP BY language<br>ORDER BY count DESC<br>LIMIT 5,5;</p>
+<h2 id="Quiz-7-언어별-15곳-이상의-국가에서-사용되는-언어를-조회하고-언어별-국가수에-따라-내림차순하세요"><a href="#Quiz-7-언어별-15곳-이상의-국가에서-사용되는-언어를-조회하고-언어별-국가수에-따라-내림차순하세요" class="headerlink" title="Quiz 7: 언어별 15곳 이상의 국가에서 사용되는 언어를 조회하고, 언어별 국가수에 따라 내림차순하세요."></a>Quiz 7: 언어별 15곳 이상의 국가에서 사용되는 언어를 조회하고, 언어별 국가수에 따라 내림차순하세요.</h2><p>– 1.언어별 15곳이상에서 사용되는 언어 2.언어별 국가수에 따라 내림차순<br>SELECT language, count(language) AS count FROM countrylanguage GROUP BY language<br>HAVING count&gt;=15 ORDER BY count DESC;</p>
+<h2 id="Quiz-8-대륙별-전체-표면적크기를-구하고-표면적-크기-순으로-내림차순하세요"><a href="#Quiz-8-대륙별-전체-표면적크기를-구하고-표면적-크기-순으로-내림차순하세요" class="headerlink" title="Quiz 8: 대륙별 전체 표면적크기를 구하고 표면적 크기 순으로 내림차순하세요."></a>Quiz 8: 대륙별 전체 표면적크기를 구하고 표면적 크기 순으로 내림차순하세요.</h2><p>– 1. 대륙별 전체 표면적 2.표면적 크기순으로 내림차순<br>SELECT continent, SUM(SurfaceArea) AS SurfaceArea FROM country<br>GROUP BY continent ORDER BY SurfaceArea DESC; – 소수점은 떻게 없앱니까</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/16/MySql/Quiz_2/" data-id="ckh3degi9000934v18ns8fq14" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/19/Front-End/day_1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          day_1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/15/MySql/Quiz_1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Quiz_1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 12.86px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 12.86px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 11.43px;">Polymorphism</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 11.43px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/03/Spring/day_1/">day_1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/java/MultiThread(6)/">MultiThread(6)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/java/MultiThread(4)/">MultiThread(4)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/29/java/MultiThread(5)/">MultiThread(5)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/28/java/MultiThread(3)/">MultiThread(3)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

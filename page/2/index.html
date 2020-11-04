@@ -66,6 +66,178 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-MySql/Quiz_2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/16/MySql/Quiz_2/" class="article-date">
+  <time datetime="2020-10-16T13:13:21.000Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Database/">Database</a>►<a class="article-category-link" href="/categories/Database/MySQL/">MySQL</a>►<a class="article-category-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/MySql/Quiz_2/">Quiz_2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Quiz-1-전체-몇개의-대륙이-있는지-출력하세요"><a href="#Quiz-1-전체-몇개의-대륙이-있는지-출력하세요" class="headerlink" title="Quiz 1: 전체 몇개의 대륙이 있는지 출력하세요."></a>Quiz 1: 전체 몇개의 대륙이 있는지 출력하세요.</h2><p>use world;<br>SELECT Continent, count(Continent)<br>FROM country<br>GROUP BY Continent;</p>
+<p>select count(distinct(continent))<br>from country;</p>
+<p>select continent from country group by continent;</p>
+<p>select count(*) from (select continent from country group by continent) as ct;<br>– 모르겠습니다.</p>
+<h2 id="Quiz-2-국가-코드별-도시의-갯수를-출력하세요-상위-5개를-출력"><a href="#Quiz-2-국가-코드별-도시의-갯수를-출력하세요-상위-5개를-출력" class="headerlink" title="Quiz 2: 국가 코드별 도시의 갯수를 출력하세요. (상위 5개를 출력)"></a>Quiz 2: 국가 코드별 도시의 갯수를 출력하세요. (상위 5개를 출력)</h2><p>– 1. 국가 코드별 2.도시갯수 3. 상위 5개<br>SELECT countryCode, count(countrycode) AS count<br>FROM city GROUP BY countrycode ORDER BY count DESC LIMIT 5;</p>
+<h2 id="Quiz-3-대륙별-몇개의-나라가-있는지-대륙별-나라의-갯수로-내림차순하여-출력하세요"><a href="#Quiz-3-대륙별-몇개의-나라가-있는지-대륙별-나라의-갯수로-내림차순하여-출력하세요" class="headerlink" title="Quiz 3: 대륙별 몇개의 나라가 있는지 대륙별 나라의 갯수로 내림차순하여 출력하세요."></a>Quiz 3: 대륙별 몇개의 나라가 있는지 대륙별 나라의 갯수로 내림차순하여 출력하세요.</h2><p>– 1.대륙별 나라갯수 count 2. 그걸로 내림차순<br>SELECT continent, count(continent) AS count FROM country GROUP BY continent ORDER BY count DESC;</p>
+<h2 id="Quiz-4-대륙별-인구가-1000만명-이상인-나라의-수와-GNP의-표준편차를-출력하세요-GNP-표준편차로-내림차순"><a href="#Quiz-4-대륙별-인구가-1000만명-이상인-나라의-수와-GNP의-표준편차를-출력하세요-GNP-표준편차로-내림차순" class="headerlink" title="Quiz 4: 대륙별 인구가 1000만명 이상인 나라의 수와 GNP의 표준편차를 출력하세요. (GNP 표준편차로 내림차순)"></a>Quiz 4: 대륙별 인구가 1000만명 이상인 나라의 수와 GNP의 표준편차를 출력하세요. (GNP 표준편차로 내림차순)</h2><p>– 1.대륙별 2.인구 1000만이상인 나라수 3. GNP의 표준편차 STDDEV(표준편차) 4. 그걸로 내림차순<br>SELECT continent, count(continent), STDDEV(GNP) AS std_gnp – 1000만이상도시의  GNP들이 GROUP BY 되었을떄의 표준 편차-&gt;STDDEV<br>FROM country<br>WHERE population &gt;=10000000<br>GROUP BY continent ORDER BY std_gnp DESC; </p>
+<h2 id="Quiz-5-City-테이블에서-국가코드-CountryCode-별로-총인구가-몇명인지-조회하고-총인구-순으로-내림차순하세요-총인구가-5천만-이상인-도시만-출력"><a href="#Quiz-5-City-테이블에서-국가코드-CountryCode-별로-총인구가-몇명인지-조회하고-총인구-순으로-내림차순하세요-총인구가-5천만-이상인-도시만-출력" class="headerlink" title="Quiz 5: City 테이블에서 국가코드(CountryCode) 별로 총인구가 몇명인지 조회하고 총인구 순으로 내림차순하세요. (총인구가 5천만 이상인 도시만 출력)"></a>Quiz 5: City 테이블에서 국가코드(CountryCode) 별로 총인구가 몇명인지 조회하고 총인구 순으로 내림차순하세요. (총인구가 5천만 이상인 도시만 출력)</h2><p>– 1. city테이블 2.국가코드별로 총인구가 몇명인지 3.총인구순으로 내림차순<br>SELECT countrycode, SUM(population) AS population FROM city<br>GROUP BY countrycode ORDER BY population DESC;</p>
+<h2 id="Quiz-6-언어별-사용하는-국가수를-조회하고-많이-사용하는-언어를-6위에서-10위까지-조회하세요"><a href="#Quiz-6-언어별-사용하는-국가수를-조회하고-많이-사용하는-언어를-6위에서-10위까지-조회하세요" class="headerlink" title="Quiz 6: 언어별 사용하는 국가수를 조회하고 많이 사용하는 언어를 6위에서 10위까지 조회하세요."></a>Quiz 6: 언어별 사용하는 국가수를 조회하고 많이 사용하는 언어를 6위에서 10위까지 조회하세요.</h2><p>– 1.언어별 사용하는 국가수 2.6~7위 출력<br>SELECT Language, count(language) AS count FROM countrylanguage<br>GROUP BY language<br>ORDER BY count DESC<br>LIMIT 5,5;</p>
+<h2 id="Quiz-7-언어별-15곳-이상의-국가에서-사용되는-언어를-조회하고-언어별-국가수에-따라-내림차순하세요"><a href="#Quiz-7-언어별-15곳-이상의-국가에서-사용되는-언어를-조회하고-언어별-국가수에-따라-내림차순하세요" class="headerlink" title="Quiz 7: 언어별 15곳 이상의 국가에서 사용되는 언어를 조회하고, 언어별 국가수에 따라 내림차순하세요."></a>Quiz 7: 언어별 15곳 이상의 국가에서 사용되는 언어를 조회하고, 언어별 국가수에 따라 내림차순하세요.</h2><p>– 1.언어별 15곳이상에서 사용되는 언어 2.언어별 국가수에 따라 내림차순<br>SELECT language, count(language) AS count FROM countrylanguage GROUP BY language<br>HAVING count&gt;=15 ORDER BY count DESC;</p>
+<h2 id="Quiz-8-대륙별-전체-표면적크기를-구하고-표면적-크기-순으로-내림차순하세요"><a href="#Quiz-8-대륙별-전체-표면적크기를-구하고-표면적-크기-순으로-내림차순하세요" class="headerlink" title="Quiz 8: 대륙별 전체 표면적크기를 구하고 표면적 크기 순으로 내림차순하세요."></a>Quiz 8: 대륙별 전체 표면적크기를 구하고 표면적 크기 순으로 내림차순하세요.</h2><p>– 1. 대륙별 전체 표면적 2.표면적 크기순으로 내림차순<br>SELECT continent, SUM(SurfaceArea) AS SurfaceArea FROM country<br>GROUP BY continent ORDER BY SurfaceArea DESC; – 소수점은 떻게 없앱니까</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/16/MySql/Quiz_2/" data-id="ckh3degi9000934v18ns8fq14" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySql/Quiz_1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/15/MySql/Quiz_1/" class="article-date">
+  <time datetime="2020-10-15T11:11:51.000Z" itemprop="datePublished">2020-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Database/">Database</a>►<a class="article-category-link" href="/categories/Database/MySQL/">MySQL</a>►<a class="article-category-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/15/MySql/Quiz_1/">Quiz_1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Quiz-1-Sakila-데이터-베이스에서-국가가-인도-고객의-수를-출력하세요"><a href="#Quiz-1-Sakila-데이터-베이스에서-국가가-인도-고객의-수를-출력하세요" class="headerlink" title="Quiz 1: Sakila 데이터 베이스에서 국가가(?) 인도 고객의 수를 출력하세요."></a>Quiz 1: Sakila 데이터 베이스에서 국가가(?) 인도 고객의 수를 출력하세요.</h2><p>use sakila;<br>SELECT * FROM country<br>WHERE country = “India”; – country_id=44</p>
+<p>SELECT store_id, count(store_id) FROM customer GROUP BY store_id;<br>SELECT * FROM address;<br>SELECT * FROM store; – 매장은 2개 둘중하나가 인도매장?<br>– 모르겠습니다</p>
+<h2 id="Quiz-2-한국-도시중에-100만이-넘는-도시를-조회하여-인구순으로-내림차순-하세요"><a href="#Quiz-2-한국-도시중에-100만이-넘는-도시를-조회하여-인구순으로-내림차순-하세요" class="headerlink" title="Quiz 2: 한국 도시중에 100만이 넘는 도시를 조회하여 인구순으로 내림차순 하세요."></a>Quiz 2: 한국 도시중에 100만이 넘는 도시를 조회하여 인구순으로 내림차순 하세요.</h2><p>– 1. 한국도시 2.100만 3.인구순 내림차순<br>use world;<br>SELECT name, population – 파란글씨는 무엇입니까<br>FROM city – IN countrycode =”KOR”<br>WHERE countrycode =”KOR” AND population &gt;=1000000<br>ORDER BY population DESC;</p>
+<h2 id="Quiz-3-city-테이블에서-population이-800만-1000만-사이인-도시-데이터를-인구수순으로-내림차순하세요"><a href="#Quiz-3-city-테이블에서-population이-800만-1000만-사이인-도시-데이터를-인구수순으로-내림차순하세요" class="headerlink" title="Quiz 3: city 테이블에서 population이 800만 ~ 1000만 사이인 도시 데이터를 인구수순으로 내림차순하세요."></a>Quiz 3: city 테이블에서 population이 800만 ~ 1000만 사이인 도시 데이터를 인구수순으로 내림차순하세요.</h2><p>– 1.city 테이블 2.population 800~1000 3.인구순 내림차순<br>SELECT name, countrycode, population<br>FROM city<br>WHERE population &gt;=8000000 AND population &lt;=10000000<br>ORDER BY population DESC;</p>
+<h2 id="Quiz-4-country-테이블에서-1940-1950년도-사이에-독립한-국가들을-조회하고-독립한-년도-순으로-오름차순하세요"><a href="#Quiz-4-country-테이블에서-1940-1950년도-사이에-독립한-국가들을-조회하고-독립한-년도-순으로-오름차순하세요" class="headerlink" title="Quiz 4: country 테이블에서 1940 ~ 1950년도 사이에 독립한 국가들을 조회하고 독립한 년도 순으로 오름차순하세요."></a>Quiz 4: country 테이블에서 1940 ~ 1950년도 사이에 독립한 국가들을 조회하고 독립한 년도 순으로 오름차순하세요.</h2><p>– 1. country테이블 2.1940~1950독립 3.독립년도 순으로 오름차순<br>– SELECT IndepYear<br>– FROM country;<br>SELECT Name AS NameIndep, continent, population – NameIndep에 IndepYear을 어떻게 추가합니까<br>FROM country<br>WHERE IndepYear != 0 AND IndepYear &gt;=1940 AND IndepYear &lt;1950<br>ORDER BY IndepYear;</p>
+<h2 id="Quiz-5-contrylanguage-테이블에서-스페인어-한국어-영어를-95-이상-사용하는-국가-코드를-Percentage로-내림차순하여-아래와-같이-조회하세요"><a href="#Quiz-5-contrylanguage-테이블에서-스페인어-한국어-영어를-95-이상-사용하는-국가-코드를-Percentage로-내림차순하여-아래와-같이-조회하세요" class="headerlink" title="Quiz 5: contrylanguage 테이블에서 스페인어, 한국어, 영어를 95% 이상 사용하는 국가 코드를 Percentage로 내림차순하여 아래와 같이 조회하세요."></a>Quiz 5: contrylanguage 테이블에서 스페인어, 한국어, 영어를 95% 이상 사용하는 국가 코드를 Percentage로 내림차순하여 아래와 같이 조회하세요.</h2><p>– 1.countrylanguage 테이블 2.스페인어, 한국어 ,영어를 95%이상 하용하는 국가 코드-&gt; Percentage 로 내림차순<br>SELECT * FROM countrylanguage<br>WHERE language IN (“Spanish”, “English”, “Korean”) AND IsOfficial=”T” AND Percentage&gt;=95<br>ORDER BY Percentage DESC;</p>
+<h2 id="Quiz-6-country-테이블에서-Code가-A로-시작하고-GovernmentForm에-Republic이-포함되는-데이터를-아래와같이-조회하세요"><a href="#Quiz-6-country-테이블에서-Code가-A로-시작하고-GovernmentForm에-Republic이-포함되는-데이터를-아래와같이-조회하세요" class="headerlink" title="Quiz 6: country 테이블에서 Code가 A로 시작하고 GovernmentForm에 Republic이 포함되는 데이터를 아래와같이 조회하세요."></a>Quiz 6: country 테이블에서 Code가 A로 시작하고 GovernmentForm에 Republic이 포함되는 데이터를 아래와같이 조회하세요.</h2><p>– 1. country 테이블 2.Code = A로 시작 3. GorvernmnetForm = %Republic%<br>SELECT Code, Name, Continent, GovernmentForm, population<br>From country<br>– WHERE code LIKE “%A”; 뭔가 오고 A로 끝난다<br>WHERE code LIKE “A%” AND GovernmentForm LIKE “%Republic%”; – A다음에 뭔가온다</p>
+<h2 id="Quiz-7-Sakila-actor-테이블에서-first-name이-DAN-인-배우의-수를-출력하세요"><a href="#Quiz-7-Sakila-actor-테이블에서-first-name이-DAN-인-배우의-수를-출력하세요" class="headerlink" title="Quiz 7: Sakila actor 테이블에서 first_name이 DAN 인 배우의 수를 출력하세요."></a>Quiz 7: Sakila actor 테이블에서 first_name이 DAN 인 배우의 수를 출력하세요.</h2><p>– 1. first_name = DAN 2. count함수로 수 출력-&gt;group by<br>use sakila; – 이건 대소문자 구분해야되네<br>SELECT first_name, count(first_name)<br>FROM actor<br>GROUP BY first_name HAVING first_name = “DAN”;</p>
+<h2 id="Quiz-8-Sakila-film-text-테이블에서-title이-ICE가-들어가고-description에-Drama가-들어간-데이터를-출력하세요"><a href="#Quiz-8-Sakila-film-text-테이블에서-title이-ICE가-들어가고-description에-Drama가-들어간-데이터를-출력하세요" class="headerlink" title="Quiz 8: Sakila film_text 테이블에서 title이 ICE가 들어가고 description에 Drama가 들어간 데이터를 출력하세요."></a>Quiz 8: Sakila film_text 테이블에서 title이 ICE가 들어가고 description에 Drama가 들어간 데이터를 출력하세요.</h2><p>– 1. Sakila film_text 테이블 2.title LIKE %ICE% 3. description LIKE %Drama%<br>SELECT film_id, title, description FROM film_text<br>WHERE title LIKE “%ICE%” AND description LIKE “%Drama%”;</p>
+<h2 id="Quiz-9-Sakila-데이터-베이스의-film-list-뷰에서-price가-1-4-length가-180-이상-category는-Sci-Fi과Animation이-아닌-데이터를-출력하세요"><a href="#Quiz-9-Sakila-데이터-베이스의-film-list-뷰에서-price가-1-4-length가-180-이상-category는-Sci-Fi과Animation이-아닌-데이터를-출력하세요" class="headerlink" title="Quiz 9: Sakila 데이터 베이스의 film_list 뷰에서 price가 1 ~ 4, length가 180 이상, category는 Sci-Fi과Animation이 아닌 데이터를 출력하세요."></a>Quiz 9: Sakila 데이터 베이스의 film_list 뷰에서 price가 1 ~ 4, length가 180 이상, category는 Sci-Fi과Animation이 아닌 데이터를 출력하세요.</h2><p>– 1. film_list 뷰? 2.price = 1~4, length &gt;=180, category != Sci-Fi과Animation</p>
+<p>SELECT title, description, category, length, price FROM film_list<br>WHERE price &gt;=1 AND price &lt;=4 AND length &gt;= 180 AND category NOT IN (“Animation”, “Sci-Fi”);</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/15/MySql/Quiz_1/" data-id="ckh3deghu000034v17bmz5ihq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySql/day_3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/14/MySql/day_3/" class="article-date">
+  <time datetime="2020-10-14T01:24:48.000Z" itemprop="datePublished">2020-10-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Database/">Database</a>►<a class="article-category-link" href="/categories/Database/MySQL/">MySQL</a>►<a class="article-category-link" href="/categories/Database/MySQL/day-3/">day_3</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/14/MySql/day_3/">Day_3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="functions"><a href="#functions" class="headerlink" title="functions"></a>functions</h1><h2 id="ceil-round-truncate"><a href="#ceil-round-truncate" class="headerlink" title="ceil, round, truncate"></a>ceil, round, truncate</h2><p>select ceil(12.345); select ceil(12.345 *100) /100;<br>select round(12.345); select round(12.345,2);<br>select truncate(12.345,2);</p>
+<p>use world;</p>
+<h4 id="국가별-언어-사용-비율을-올림-반올림-버림"><a href="#국가별-언어-사용-비율을-올림-반올림-버림" class="headerlink" title="국가별 언어 사용 비율을 올림, 반올림, 버림"></a>국가별 언어 사용 비율을 올림, 반올림, 버림</h4><p>select countrycode, language, ceil(percentage), round(percentage), truncate(percentage,0) from countrylanguage; </p>
+<h4 id="Date-format"><a href="#Date-format" class="headerlink" title="Date format"></a>Date format</h4><p>use sakila;<br>select sum(amount) as income, date_format(payment_date, “%M-%H”) as monthly from payment – %H가의미하는 건 뭘까<br>#월별 수입으로 바꾸고 싶다.<br>group by monthly<br>order by income desc; – 월별 피크타임 (월별로 묶었는데 시간으로 정렬)</p>
+<p>use world;</p>
+<h4 id="100만-이상의-인구를-가신-도시-중-500만이-넘으면-big-city-아니면-small-city"><a href="#100만-이상의-인구를-가신-도시-중-500만이-넘으면-big-city-아니면-small-city" class="headerlink" title="100만 이상의 인구를 가신 도시 중, 500만이 넘으면 big city 아니면 small city"></a>100만 이상의 인구를 가신 도시 중, 500만이 넘으면 big city 아니면 small city</h4><p>select CountryCode, name, population, if(population &gt;5000000, “big city”, “small city”) from city where population &gt;1000000;</p>
+<h4 id="ifnull"><a href="#ifnull" class="headerlink" title="ifnull"></a>ifnull</h4><p>#독립연도가 없으면 0으로 표시<br>select name, ifnull(indepYear,0) from country;</p>
+<h2 id="case-when-then-end-조건이-여러개-있을-때"><a href="#case-when-then-end-조건이-여러개-있을-때" class="headerlink" title="case when then end (조건이 여러개 있을 때)"></a>case when then end (조건이 여러개 있을 때)</h2><h4 id="국가-인구가-10억-이상-“level-3”-1억-이상-“level-2”-1억-이하-“level-1”"><a href="#국가-인구가-10억-이상-“level-3”-1억-이상-“level-2”-1억-이하-“level-1”" class="headerlink" title="국가 인구가 10억 이상 “level 3”, 1억 이상 “level 2”, 1억 이하 “level 1”"></a>국가 인구가 10억 이상 “level 3”, 1억 이상 “level 2”, 1억 이하 “level 1”</h4><p>select code, name, population, case<br>when population &gt; 1000000000 then “level3”<br>when population &gt; 100000000 then “levle2”<br>else “level1” end scale<br>from country order by population desc;</p>
+<h2 id="Join"><a href="#Join" class="headerlink" title="Join"></a>Join</h2><p>use jbs;<br>create database test;<br>use test;<br>create table user (<br>name varchar(20),<br>addr varchar(20)<br>);<br>create table money2 (<br>    name varchar(20),<br>    income int<br>);<br>insert into user (name, addr)<br>values (“A”, “seoul”), (“A”, “pusan”),(“B”,”London”), (“C”, “incheon”);</p>
+<p>insert into money2 (name, income)<br>values (“A”,1000),(“A”, 2000),(“C”,3000),(“D”,4000);</p>
+<h3 id="이너조인-가장-많이-쓰인다"><a href="#이너조인-가장-많이-쓰인다" class="headerlink" title="이너조인 - 가장 많이 쓰인다"></a>이너조인 - 가장 많이 쓰인다</h3><p>select * from user<br>join money2 on user.name = money2.name;</p>
+<h3 id="left-join"><a href="#left-join" class="headerlink" title="left join"></a>left join</h3><p>select * from user<br>left join money2 on user.name = money2.name; – user.name 기준</p>
+<h3 id="right-join"><a href="#right-join" class="headerlink" title="right join"></a>right join</h3><p>select * from user<br>right join money2 on user.name = money2.name; – money.name 기준</p>
+<h4 id="city-테이블과-country-테이블을-조인해서"><a href="#city-테이블과-country-테이블을-조인해서" class="headerlink" title="city 테이블과 country 테이블을 조인해서"></a>city 테이블과 country 테이블을 조인해서</h4><p>#city 인구가 500만이 넘는 도시의 국가코드, 국가이름, 도시이름, 인구수를 출력<br>use world;<br>select country.code, country.name, city.name, city.population<br>from city join country on country.code = city.countrycode where city.population &gt;5000000;</p>
+<h4 id="국가별-도시별-언어-사용률을-출력"><a href="#국가별-도시별-언어-사용률을-출력" class="headerlink" title="국가별, 도시별, 언어 사용률을 출력"></a>국가별, 도시별, 언어 사용률을 출력</h4><p>select code, country.name, city.name, countrylanguage.language, countrylanguage.percentage<br>from country, city, countrylanguage where country.code = city.countrycode and city.countrycode = countrylanguage.countrycode; – 코드가 같은걸 찾으면 도시가 여러개 나오지, 코드가같은 언어도여러개 나오지, 곱한거만큼 나옴<br>select * from country; select * from countrylanguage; select *from city;</p>
+<h4 id="아까-그-문제를-한국과-미국에-국한되서-풀어봐라"><a href="#아까-그-문제를-한국과-미국에-국한되서-풀어봐라" class="headerlink" title="아까 그 문제를 한국과 미국에 국한되서 풀어봐라"></a>아까 그 문제를 한국과 미국에 국한되서 풀어봐라</h4><p>select code, country.name, city.name, countrylanguage.language, countrylanguage.percentage<br>from city, country, countrylanguage where code in (“USA”, “KOR”) and (city.countrycode = country.code and country.code = countrylanguage.countrycode)<br>order by percentage;</p>
+<h3 id="union-select-결과를-합쳐서-출력-할-때-사용"><a href="#union-select-결과를-합쳐서-출력-할-때-사용" class="headerlink" title="union : select 결과를 합쳐서 출력 할 때 사용"></a>union : select 결과를 합쳐서 출력 할 때 사용</h3><ul>
+<li>union : 자동으로 중복제거</li>
+<li>union all : 자동으로 중복제거 X<br>use test;</li>
+</ul>
+<p>select * from user;<br>select * from money2;</p>
+<p>select name from user union select name from money2; </p>
+<p>#아우터 조인하기 전에 조인 한번 더 보자<br>select * from user join money2 on user.name = money2.name;<br>select * from user left join money2 on user.name = money2.name;<br>select * from user right join money2 on user.name = money2.name;</p>
+<p>select * from user left join money2 on user.name = money2.name<br>union<br>select * from user right join money2 on user.name = money2.name;  – left right join 하지만 중간에 중복되는 거 제거하고 전부 출력</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/14/MySql/day_3/" data-id="ckh3degie000i34v16bjcg86s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-MySql/day_2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/13/MySql/day_2/" class="article-date">
@@ -903,523 +1075,6 @@ public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
 
 
   
-    <article id="post-java/java_lang" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/21/java/java_lang/" class="article-date">
-  <time datetime="2020-08-21T13:26:17.000Z" itemprop="datePublished">2020-08-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/java-lang/">java_lang</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/21/java/java_lang/">java_lang</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="java-lang-패키지"><a href="#java-lang-패키지" class="headerlink" title="java.lang 패키지"></a>java.lang 패키지</h1><h2 id="java-lang"><a href="#java-lang" class="headerlink" title="java.lang"></a>java.lang</h2><ul>
-<li><p>Java에서 가장 기본적이며 자주 사용되는 클래스를 모은 패키지</p>
-</li>
-<li><p>별도로 import하지 않아도 사용이 가능한, Java의 기본 중의 기본</p>
-</li>
-<li><h2 id="Object-Class"><a href="#Object-Class" class="headerlink" title="Object Class"></a>Object Class</h2></li>
-<li><p>모든 클래스의 조상 클래스로, 클래스가 갖춰야할 기본 기능을 제공</p>
-</li>
-<li><p>필요한 경우 Object 클래스에 정의된 메소드를 Override하여 사용</p>
-<ul>
-<li>getClass(): 현재 객체의 클래스를 반환한다.</li>
-<li>hashCode(): 현재 객체의 해시코드 값을 반환한다.</li>
-<li>equals(): 현재 객체와 대상이 같은 객체를 참조하는지 여부를 반환한다.</li>
-<li>toString(): 객체를 문자열로 변환하여 반환한다.</li>
-<li>clone() throws CloneNotSupportedException: 객체를 복사하여 새로운 객체로 반환한다.<h3 id="equals"><a href="#equals" class="headerlink" title="equals()"></a>equals()</h3></li>
-</ul>
-</li>
-<li><p>Object 클래스의 equals() 메소드 구현</p>
-<ul>
-<li>객체의 참조만을 비교</li>
-</ul>
-</li>
-</ul>
-<pre><code>        public boolean equals(Object obj) &#123;
-        return (this == obj);
-        &#125;</code></pre>
-<ul>
-<li><p>String 클래스의 equals() 메소드 구현 (Overriding)</p>
-<ul>
-<li><p>효율적으로 객체의 내용이 동일한지 비교</p>
-<p>public boolean equals(Object anObject) {<br> if (this == anObject) {</p>
-<pre><code> return true;</code></pre>
-<p> }<br> if (anObject instanceof String) {</p>
-<pre><code> String aString = (String)anObject;
- if (!COMPACT_STRINGS || this.coder == aString.coder) &#123;
-     return StringLatin1.equals(value, aString.value);
- &#125;</code></pre>
-<p> }<br> return false;<br>}</p>
-<h3 id="hashCode"><a href="#hashCode" class="headerlink" title="hashCode()"></a>hashCode()</h3></li>
-</ul>
-</li>
-<li><p>객체를 구분하기 위해 사용하는 정수값(해시코드)을 반환</p>
-<ul>
-<li>프로그램 내에서 객체마다 유일하므로 주소값처럼 사용 가능</li>
-</ul>
-</li>
-<li><p><code>native</code>  메소드이므로 구현 내용을 볼 수 없음</p>
-</li>
-<li><p>hashCode()의 제한 사항</p>
-<ul>
-<li>한 객체의 hashCode()를 여러번 호출할 경우, equals()에 사용하는 값이 변하지 않으면 동일한 값을 반환해야 한다.</li>
-<li>equals() 메소드가 같다고 판단한 두 객체의 hashCode() 반환값은 같아야 한다.</li>
-<li>equals() 메소드가 다르다고 판단한 두 객체의 hashCode()가 반드시 다를 필요는 없으나, 다른 값이 나오면 HashTable 성능이 향상된다.<h3 id="clone"><a href="#clone" class="headerlink" title="clone()"></a>clone()</h3></li>
-</ul>
-</li>
-<li><p>자신을 복제하여 새로운 객체를 생성하는 메소드</p>
-</li>
-<li><p>배열을 복제할 경우 새로운 객체를 생성하므로 원본을 훼손하지 않을 수 있음</p>
-</li>
-<li><p>clone() override 시  <code>Cloneable</code>  인터페이스를 구현해야 함</p>
-<pre><code>int [] ints = &#123;1, 2, 3, 4, 5&#125;;
-int [] ints2 = ints.clone();</code></pre>
-<h3 id="getClass"><a href="#getClass" class="headerlink" title="getClass()"></a>getClass()</h3></li>
-<li><p>Class 에 대한 정보를 담고 있는 Class 객체를 반환</p>
-</li>
-<li><p>객체의 getClass() 메소드 또는 해당 클래스의 정적 변수 class를 이용 가능</p>
-</li>
-</ul>
-<pre><code>    class Foo &#123;
-        public void methodA() &#123;
-            System.out.println(&quot;method A called.&quot;);
-        &#125;
-    &#125;
-
-    class FooTest &#123;
-        public static void main(String[] args) throws Exception &#123;
-            Foo foo = new Foo();
-            Class fooClass = foo.getClass();
-
-            System.out.println(fooClass.getName());
-            System.out.println(fooClass.getDeclaredMethods().length);
-            System.out.println(Foo.class.getDeclaredMethod(&quot;methodA&quot;).invoke(foo));
-        &#125;
-    &#125;</code></pre>
-<p>fooClass 는 foo의 클래스 정보를 갖고 있는 class객체</p>
-<h3 id="System"><a href="#System" class="headerlink" title="System"></a>System</h3><ul>
-<li><p>실행 중인 OS와 interact하기 위한 클래스</p>
-</li>
-<li><p>System 클래스의 주요 정적 변수</p>
-</li>
-</ul>
-<p>속성</p>
-<ul>
-<li><p>PrintStream err: 오류를 출력하기 위한 표준 출력 스트림</p>
-</li>
-<li><p>InputStream in: 표준 입력을 처리하기 위한 입력 스트림</p>
-</li>
-<li><p>PrintStream out: 표준 출력을 처리하기 위한 출력 스트림</p>
-<h2 id="System-클래스의-주요-정적-메소드"><a href="#System-클래스의-주요-정적-메소드" class="headerlink" title="System 클래스의 주요 정적 메소드"></a>System 클래스의 주요 정적 메소드</h2></li>
-<li><p>arraycopy(): src 배열의 내용을 dst배열로 복사한다.</p>
-</li>
-<li><p>currentTimeMillis(): 현재 시스템 시간을 ms로 변환한다.</p>
-</li>
-<li><p>exit(): 프로그램을 종료한다.</p>
-</li>
-<li><p>gc(): GC를 요청한다.</p>
-</li>
-<li><p>getenv(): 환경 변수의 값을 반환한다.</p>
-</li>
-<li><p>getProperties(): 시스템 속성을 Property로 반환한다.</p>
-</li>
-<li><p>getProperty(): 시스템 속성값을 문자열로 반환한다. 없을 경우 null 또는 def를 반환</p>
-</li>
-<li><p>identitiyHashCode(): 객체의 해시코드 값을 반환한다.</p>
-</li>
-<li><p>lineSeparator(): 시스템의 줄넘김 문자열을 반환한다.</p>
-</li>
-<li><p>nanoTime(): 시스템 시간을 ns로 반환한다.</p>
-</li>
-<li><p>setProperties(): 시스템 속성을 한번에 설정한다.</p>
-</li>
-<li><p>setProperty(): 시스템 속성을 하나씩 설정한다.</p>
-<ul>
-<li>주요 Property<ul>
-<li>속성, 설명</li>
-<li>user.country: OS로케일 정보</li>
-<li>java.io.tmpdir: 임시 경로</li>
-<li>line.separator: 줄넘김 문자열</li>
-<li>user.home: 유저 홈 경로</li>
-<li>file.sepqrator: 파일 경로 구분<h3 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h3></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>수학 계산에 필요한 메소드를 가진 final 클래스-&gt; override불가</p>
-<ul>
-<li>abs(): 절대값을 반환한다.</li>
-<li>ceil(): 올림 값을 double로 반환한다.</li>
-<li>floor(): 내림 값을 double로 반환한다.</li>
-<li>max(): 두 값 중 더 큰 값을 반환한다.</li>
-<li>min(): 두 값 중 더 작은 값을 반환한다.</li>
-<li>random(): 0 이상 1.0 미만의 임의의 값을 반환한다.</li>
-<li>round(): 소수점 첫째자리에서 반올림한 정수 값을 반환한다.</li>
-<li>addExact(): 덧셈 연산으로, Overflow발생 시 ArithmaticException발생.</li>
-<li>substractExact(): 뺼셈 연산으로, Overflow 발생 시 ArithmaticException발생.</li>
-<li>multiplyExact(): 곱셈 연산으로, Overflow 발생 시 ArithmaticException발생.</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/21/java/java_lang/" data-id="ckh2ffo6s002mcov17o8pcrs8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java/Lambda" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/20/java/Lambda/" class="article-date">
-  <time datetime="2020-08-20T14:41:12.000Z" itemprop="datePublished">2020-08-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Lambda/">Lambda</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/20/java/Lambda/">Lambda</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="람다식-Lambda-Expression"><a href="#람다식-Lambda-Expression" class="headerlink" title="람다식 (Lambda Expression)"></a>람다식 (Lambda Expression)</h1><h2 id="람다식이란"><a href="#람다식이란" class="headerlink" title="람다식이란"></a>람다식이란</h2><ul>
-<li>Java 1.8에서 추가된 함수형 프로그래밍 기법</li>
-<li>객체지향 프로그래밍과 다르게, 비즈니스 로직만을 빠르게 구현하는 특징</li>
-<li>객체지향 언어인 Java에서 메소드를 함수처럼 사용하는 형식<h2 id="람다식의-예"><a href="#람다식의-예" class="headerlink" title="람다식의 예"></a>람다식의 예</h2></li>
-</ul>
-<h3 id="배열의-정렬"><a href="#배열의-정렬" class="headerlink" title="배열의 정렬"></a>배열의 정렬</h3><ul>
-<li><p>기본 정렬 방식을 이용한 정렬</p>
-<pre><code>String [] strings = &#123;&quot;fast&quot;, &quot;campus&quot;, &quot;java&quot;, &quot;backend&quot;, &quot;school&quot;&#125;;
-System.out.println(Arrays.toString(strings));
-Arrays.sort(strings);
-System.out.println(Arrays.toString(strings));</code></pre>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>익명 내부 클래스를 이용한 정렬 방식 변경</p>
-<pre><code> Arrays.sort(strings, new Comparator&lt;String&gt;() &#123; // 객체를 생성하여 전달
-  @Override
-  public int compare(String o1, String o2) &#123;
-      return o1.compareTo(o2) * -1; // 내림차순
-  &#125;
- &#125;);</code></pre>
-</li>
-<li><p>람다식을 이용한 정렬 방식의 변경</p>
-<pre><code>Arrays.sort(strings, (o1, o2) -&gt; &#123;return o1.compareTo(o2) * -1;&#125;);
-Comparator&lt;String&gt; comp = (o1, o2) -&gt; &#123;
-  return o1.compareTo(o2) * -1;
-&#125;;
-Arrays.sort(strings, comp);</code></pre>
-</li>
-<li><p>Comparator객체에서 어떤 함수가 return을 하는데? -&gt; 그런 모호함을 없애기 위해 실행되는 함수는 하나여야 한다.ㅇ</p>
-</li>
-<li><p>람다식을 쓰기 위해서는 추상메소드가 단 하나 존재해야 합니다. 그것을 검사하는 방법은</p>
-</li>
-</ul>
-<p>함수형 인터페이스 (Functional Interface)</p>
-<ul>
-<li>추상 메소드가 단 하나 존재하는지 검사</li>
-</ul>
-<pre><code>    @FunctionalInterface
-    public interface Comparator&lt;T&gt; &#123;
-    int compare(T o1, T o2);
-    ...
-    &#125; </code></pre>
-<h2 id="람다식의-형식"><a href="#람다식의-형식" class="headerlink" title="람다식의 형식"></a>람다식의 형식</h2><pre><code>(String x) -&gt; &#123; System.out.println(x); &#125;
-
-(x) -&gt; &#123; System.out.println(x); &#125;
-
-x -&gt; System.out.println(x)
-
-() -&gt; System.out.println(&quot;x&quot;);  // () 생략 불가능
-
-(x) -&gt; &#123;
-    System.out.println(x);
-    return x;
-&#125;
-
-(x) -&gt; &quot;x: &quot; + x</code></pre>
-<h2 id="람다식의-변수-참조"><a href="#람다식의-변수-참조" class="headerlink" title="람다식의 변수 참조"></a>람다식의 변수 참조</h2><ul>
-<li><p>익명 내부 클래스와 동일한 규칙으로 변수 참조</p>
-</li>
-<li><p>문법적으로 this의 사용법만 다름</p>
-<ul>
-<li>익명의 내부 클래스와 달리 외부 클래스를 참조<ul>
-<li>익명의 내부 클래스의 this는 익명의 내부클래스를 가르키고, 람다식의 this는 외부 클래스를 가리킨다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>        @FunctionalInterface
-        interface FunctionalInterface &#123;
-        String method();
-        &#125;
-        class Main &#123;
-        void functionalMethod(FunctionalInterface obj) &#123;
-            System.out.println(obj.method());
-        &#125;
-        public static void main(String[] args) &#123;
-            functionalMethod(()-&gt; &#123;
-                System.out.println(&quot;this: &quot; + this);
-                System.out.println(&quot;OuterClass.this: &quot; + Main.this);
-                return &quot;Lambda expression used.&quot;
-            &#125;);
-            functionalMethod(new FunctionalInterface() &#123;
-                @Override
-                String method() &#123;
-                    System.out.println(&quot;this: &quot; + this);
-                    System.out.println(&quot;OuterClass.this: &quot; + Main.this);
-                    return &quot;Anonymous inner class used.&quot;
-                &#125;);
-        &#125;
-        &#125;</code></pre>
-<h2 id="표준-함수형-인터페이스"><a href="#표준-함수형-인터페이스" class="headerlink" title="표준 함수형 인터페이스"></a>표준 함수형 인터페이스</h2><ul>
-<li><p>자주 사용되는 함수형 인터페이스를 정의해 둔 API</p>
-<ul>
-<li>Consumer, Supplier, Function, Operation, Predicate 계열이 있다.</li>
-<li>Consumer: 입력을 소비. accept(T)</li>
-<li>Supplier: 출력을 공급. get()</li>
-<li>Function: 입력 -&gt; 출력 함수 매핑. apply(R) </li>
-<li>Operation: 입력을 연산하여 동일 타입의 출력으로 리턴. apply(T)</li>
-<li>Predicate: 입력을 판단. test(T)<h3 id="표준-함수형-인터페이스의-종류"><a href="#표준-함수형-인터페이스의-종류" class="headerlink" title="표준 함수형 인터페이스의 종류"></a>표준 함수형 인터페이스의 종류</h3><h4 id="Consumer-계열"><a href="#Consumer-계열" class="headerlink" title="Consumer 계열"></a>Consumer 계열</h4></li>
-<li>Consumer</li>
-<li>BiConsumer</li>
-<li>IntConsumer</li>
-<li>LongConsumer</li>
-<li>DoubleConsumer</li>
-<li>ObjIntConumer</li>
-<li>ObjLongConsumer</li>
-<li>ObjDoubleConsumer<h4 id="Supplier-계열"><a href="#Supplier-계열" class="headerlink" title="Supplier 계열"></a>Supplier 계열</h4></li>
-</ul>
-</li>
-<li><p>Supplier</p>
-</li>
-<li><p>BooleanSupplier</p>
-</li>
-<li><p>IntSupplier</p>
-</li>
-<li><p>LonggSupplier</p>
-</li>
-<li><p>DoubleSupplier</p>
-<h4 id="Function-계열"><a href="#Function-계열" class="headerlink" title="Function 계열"></a>Function 계열</h4></li>
-<li><p>Function</p>
-</li>
-<li><p>BiFunction</p>
-</li>
-<li><p>PFunction</p>
-</li>
-<li><p>PtoQFunction</p>
-</li>
-<li><p>ToPFunction</p>
-</li>
-<li><p>ToPBiFunction</p>
-<h4 id="Operator-계열"><a href="#Operator-계열" class="headerlink" title="Operator 계열"></a>Operator 계열</h4></li>
-<li><p>UnaryOperator</p>
-</li>
-<li><p>BinaryOperator</p>
-</li>
-<li><p>IntunaryOperator</p>
-</li>
-<li><p>LongUnaryOperator</p>
-</li>
-<li><p>DoulbeUnaryOperator</p>
-</li>
-<li><p>IntBinaryOperator</p>
-</li>
-<li><p>LongBinaryOperator</p>
-</li>
-<li><p>DoubleBinaryOperator</p>
-<h4 id="Predicate-계열"><a href="#Predicate-계열" class="headerlink" title="Predicate 계열"></a>Predicate 계열</h4></li>
-<li><p>Predicate</p>
-</li>
-<li><p>BiPredicate</p>
-</li>
-<li><p>IntPredicate</p>
-</li>
-<li><p>LongPredicate</p>
-</li>
-<li><p>DoublePredicate</p>
-<h3 id="표준-함수형-인터페이스의-메소드"><a href="#표준-함수형-인터페이스의-메소드" class="headerlink" title="표준 함수형 인터페이스의 메소드"></a>표준 함수형 인터페이스의 메소드</h3><h4 id="andThen-compose"><a href="#andThen-compose" class="headerlink" title="andThen(), compose()"></a>andThen(), compose()</h4></li>
-<li><p>두 개 이상의 함수형 인터페이스를 연결하기 위해 사용</p>
-<ul>
-<li><code>A.andThen(B)</code>: A를 먼저 실행하고 B를 실행. Consumer, Function, Operator 계열 지원</li>
-</ul>
-</li>
-</ul>
-<pre><code>        Function&lt;String, String&gt; funcOne = x -&gt; &quot;str: &quot; + x;
-        Function&lt;String, String&gt; funcTwo = x -&gt; &quot;&#123;&quot; + x + &quot;&#125;&quot;;
-        Function&lt;String, String&gt; andThen = funcOne.andThen(funcTwo); // &#123;str: x&#125;
-
--   `A.compose(B)`: B를 먼저 실행하고 A를 실행. Function, Operator 계열 지원
-
-        IntUnaryOperator multTwo = x -&gt; x * 2;
-        IntUnaryOperator addTen = x -&gt; x + 10;
-        IntUnaryOperator multTwo.compose(addTen); // (x + 10) * 2</code></pre>
-<h4 id="and-or-negate-isEqual"><a href="#and-or-negate-isEqual" class="headerlink" title="and(), or(), negate(), isEqual()"></a>and(), or(), negate(), isEqual()</h4><ul>
-<li><p>Predicate 계열의 기본 메소드</p>
-<ul>
-<li><p>and(), or(), negate()</p>
-</li>
-<li><p>각각 &amp;&amp;, ||, !의 동작을 한다.</p>
-<p>DoublePredicate predOne = x -&gt; x &gt; 0.5;<br>DoublePredicate predTwo = x -&gt; x &lt; 0.0;<br>DoublePredicate predThree = predOne.or(predTwo);<br>DoublePredicate predFour = predThree.negate();</p>
-</li>
-</ul>
-</li>
-<li><p>Predicate 계열의 클래스 메소드</p>
-<ul>
-<li><p>isEqual()</p>
-<pre><code>Predicate&lt;String&gt; isEqualToString = Predicate.isEqual(&quot;String&quot;);</code></pre>
-<h4 id="minBy-maxBy"><a href="#minBy-maxBy" class="headerlink" title="minBy(), maxBy()"></a>minBy(), maxBy()</h4></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>BinaryOperator 클래스의 클래스 메소드</p>
-<ul>
-<li><p><code>Comparator&lt;T&gt;</code>를 파라미터로 받아 최소값/최대값을 구하는  <code>BinaryOperator&lt;T&gt;</code>를 리턴</p>
-<pre><code>BinaryOperator&lt;String&gt; minBy = BinaryOperator.minBy((o1, o2) -&gt; &#123;
-return len(o1) &gt; len(o2) ? 1 : -1;
-&#125;);
-BinaryOperator&lt;Integer&gt; maxBy = BinaryOperator.maxBy((val1, val2) -&gt; &#123;
-return val1.compareTo(val2);
-&#125;);</code></pre>
-<h3 id="람다식에-메소드-생성자-사용"><a href="#람다식에-메소드-생성자-사용" class="headerlink" title="람다식에 메소드/생성자 사용"></a>람다식에 메소드/생성자 사용</h3></li>
-</ul>
-</li>
-<li><p>이미 구현된 메소드가 있는 경우, 다양한 방식으로 람다식을 대체 가능</p>
-<h4 id="ClassName-instanceMethod"><a href="#ClassName-instanceMethod" class="headerlink" title="ClassName::instanceMethod"></a>ClassName::instanceMethod</h4></li>
-</ul>
-<p>첫번째 파라미터를 객체로, 두번째 파라미터를 메소드 입력으로 사용</p>
-<pre><code>String[] strings = &#123; &quot;A&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot; &#125;;
-Arrays.sort(strings, String::compareTo);</code></pre>
-<h4 id="ClassName-classMethod"><a href="#ClassName-classMethod" class="headerlink" title="ClassName::classMethod"></a>ClassName::classMethod</h4><ul>
-<li><p>클래스 메소드의 입력으로 모든 파라미터가 사용됨</p>
-<pre><code>Function&lt;String, Integer&gt; parser = Integer::parseInt;</code></pre>
-<h4 id="instance-instanceMethod"><a href="#instance-instanceMethod" class="headerlink" title="instance::instanceMethod"></a>instance::instanceMethod</h4></li>
-<li><p>주어진 객체의 메소드를 호출</p>
-<pre><code>String string = &quot;StringA&quot;;
-Predicate&lt;String&gt; pred = string::equals;
-System.out.println(pred.apply(&quot;StringA&quot;));</code></pre>
-<h4 id="ClassName-new"><a href="#ClassName-new" class="headerlink" title="ClassName::new"></a>ClassName::new</h4></li>
-<li><p>생성자를 이용하여 객체를 생성하는 람다식</p>
-</li>
-</ul>
-<pre><code>    IntFunction&lt;String&gt; func = String::new;
-    String string = func.apply(10);</code></pre>
-<h4 id="ClassName-new-1"><a href="#ClassName-new-1" class="headerlink" title="ClassName[]::new"></a>ClassName[]::new</h4><ul>
-<li><p>배열을 생성하는 람다식</p>
-<pre><code>IntFunction&lt;String[]&gt; func = String[]::new;
-String [] strings = func.apply(100);</code></pre>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/20/java/Lambda/" data-id="ckh2ffo680017cov1d49f6jvx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java/StringTokenizer" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/20/java/StringTokenizer/" class="article-date">
-  <time datetime="2020-08-20T07:22:19.000Z" itemprop="datePublished">2020-08-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/20/java/StringTokenizer/">StringTokenizer</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="StringTokenizer-클래스"><a href="#StringTokenizer-클래스" class="headerlink" title="StringTokenizer 클래스"></a>StringTokenizer 클래스</h1><h2 id="StringTokenizer란"><a href="#StringTokenizer란" class="headerlink" title="StringTokenizer란"></a>StringTokenizer란</h2><ul>
-<li><p>문자열 구분자 문자를 이용해 문자열을 분리하는 클래스</p>
-<h2 id="StringTokenizer의-초기화"><a href="#StringTokenizer의-초기화" class="headerlink" title="StringTokenizer의 초기화"></a>StringTokenizer의 초기화</h2><p>StringTokenizer st = new StringTokenizer(“abc,def,ghi”, “,”); // abc def ghi<br>st = new StringTokenizer(“230,0042,015,002”, “0,”); // 23 42 15 2</p>
-<h2 id="StringTokenizer의-메소드"><a href="#StringTokenizer의-메소드" class="headerlink" title="StringTokenizer의 메소드"></a>StringTokenizer의 메소드</h2></li>
-</ul>
-<ul>
-<li>countTokens(): 남아있는 토큰의 갯수를 반환</li>
-<li>hasMoreTokens() : 토큰이 남아있는지 여부를 반환</li>
-<li>nextToken() : 다음 토큰을 String으로 반환</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/20/java/StringTokenizer/" data-id="ckh2gk2w20000v0v15azw6ozk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1435,7 +1090,7 @@ String [] strings = func.apply(100);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1445,7 +1100,7 @@ String [] strings = func.apply(100);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -1455,7 +1110,7 @@ String [] strings = func.apply(100);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 11.67px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 13.33px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 15px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16.67px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 11.67px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 11.67px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 13.33px;">day_1</a> <a href="/tags/day-2/" style="font-size: 11.67px;">day_2</a> <a href="/tags/day-3/" style="font-size: 10px;">day_3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18.33px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 12.86px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 12.86px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 12.86px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 11.43px;">Polymorphism</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 11.43px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
