@@ -5,17 +5,17 @@
   
 
   
-  <title>JFC(1) | Hansol</title>
+  <title>JFC(2) | Hansol</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="자바 컬렉션 프레임워크 (Java Collections Framework; JCF)컬렉션 프레임워크란 java.utils에 속한 일련의 클래스로, 자료구조를 담당  잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현  제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다. JCF 인터페이스 List 인터페이스  Collection 인터페이스를">
+  <meta name="description" content="List 인터페이스 순서가 있는 데이터의 집합을 다루는 인터페이스  List는 인덱스를 이용해 요소를 구분할 수 있어, 데이터의 중복을 허용  Collection 인터페이스를 상속받았으며, 추가 메소드가 구현되어 있다.   메소드&#x2F;설명  add(int index, E element) : index 위치에 요소 element를 삽입한다. addAll( int">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JFC(1)">
-<meta property="og:url" content="https://hansol-jeong.github.io/2020/08/21/java/JCF(1)/index.html">
+<meta property="og:title" content="JFC(2)">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/08/22/java/JCF(1)/index.html">
 <meta property="og:site_name" content="Hansol">
-<meta property="og:description" content="자바 컬렉션 프레임워크 (Java Collections Framework; JCF)컬렉션 프레임워크란 java.utils에 속한 일련의 클래스로, 자료구조를 담당  잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현  제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다. JCF 인터페이스 List 인터페이스  Collection 인터페이스를">
+<meta property="og:description" content="List 인터페이스 순서가 있는 데이터의 집합을 다루는 인터페이스  List는 인덱스를 이용해 요소를 구분할 수 있어, 데이터의 중복을 허용  Collection 인터페이스를 상속받았으며, 추가 메소드가 구현되어 있다.   메소드&#x2F;설명  add(int index, E element) : index 위치에 요소 element를 삽입한다. addAll( int">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-21T06:21:37.000Z">
-<meta property="article:modified_time" content="2020-11-04T00:10:56.409Z">
+<meta property="article:published_time" content="2020-08-22T07:21:01.000Z">
+<meta property="article:modified_time" content="2020-11-04T02:04:06.111Z">
 <meta property="article:author" content="Hansol">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="til">
@@ -71,8 +71,8 @@
       <div class="outer">
         <section id="main"><article id="post-java/JCF(1)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/21/java/JCF(1)/" class="article-date">
-  <time datetime="2020-08-21T06:21:37.000Z" itemprop="datePublished">2020-08-21</time>
+    <a href="/2020/08/22/java/JCF(1)/" class="article-date">
+  <time datetime="2020-08-22T07:21:01.000Z" itemprop="datePublished">2020-08-22</time>
 </a>
     
   <div class="article-category">
@@ -87,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JFC(1)
+      JFC(2)
     </h1>
   
 
@@ -95,71 +95,69 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="자바-컬렉션-프레임워크-Java-Collections-Framework-JCF"><a href="#자바-컬렉션-프레임워크-Java-Collections-Framework-JCF" class="headerlink" title="자바 컬렉션 프레임워크 (Java Collections Framework; JCF)"></a>자바 컬렉션 프레임워크 (Java Collections Framework; JCF)</h1><h2 id="컬렉션-프레임워크란"><a href="#컬렉션-프레임워크란" class="headerlink" title="컬렉션 프레임워크란"></a>컬렉션 프레임워크란</h2><ul>
-<li><p>java.utils에 속한 일련의 클래스로, 자료구조를 담당</p>
+        <h3 id="List-인터페이스"><a href="#List-인터페이스" class="headerlink" title="List 인터페이스"></a>List 인터페이스</h3><ul>
+<li><p>순서가 있는 데이터의 집합을 다루는 인터페이스</p>
 </li>
-<li><p>잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현</p>
+<li><p>List는 인덱스를 이용해 요소를 구분할 수 있어, 데이터의 중복을 허용</p>
 </li>
-<li><p>제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.</p>
-<h2 id="JCF-인터페이스"><a href="#JCF-인터페이스" class="headerlink" title="JCF 인터페이스"></a>JCF 인터페이스</h2></li>
-<li><p>List 인터페이스</p>
-<ul>
-<li>Collection 인터페이스를 상속</li>
-<li>순서가 있는 데이터의 집합으로, 데이터의 중복을 허용</li>
-<li>구현체: ArrayList, LinkedList(, Vector, Stack)</li>
-</ul>
-</li>
-<li><p>Set 인터페이스</p>
-<ul>
-<li>Collection 인터페이스를 상속</li>
-<li>순서가 없는 데이터의 집합으로, 데이터의 중복을 허용하지 않음</li>
-<li>구현체: HashSet, TreeSet</li>
-</ul>
-</li>
-<li><p>Map 인터페이스</p>
-<ul>
-<li>Key-Value 쌍으로 이루어진 데이터의 집합</li>
-<li>구현체: HashMap, TreeMap, Hashtable, Properties<h3 id="Collection-인터페이스"><a href="#Collection-인터페이스" class="headerlink" title="Collection 인터페이스"></a>Collection 인터페이스</h3></li>
-</ul>
-</li>
-<li><p>Collection 인터페이스의 주요 메소드</p>
-<ul>
-<li>add( E e) : 요소 e를 컬렉션에 추가한다.</li>
-<li>addAll(Collection&lt;? extends E c&gt; : 다른 컬렉션 c의 모든 요소를 컬렉션에 추가한다<br>도전 과제: 와일드 카드란</li>
-<li>clear() : 컬렉션의 모든 요소를 제거한다.</li>
-<li>contains(Object o) : 컬렉션에 요소 o가 존재하는지 확인한다.</li>
-<li>containsAll(Collection&lt;?&gt; c) 컬렉션 c의 모든 요소가 컬렉션에 포함되는 지 확인한다.</li>
-<li>equals(Collection&lt;?&gt; c) : 컬렉션 c와 같은 내용을 포함하는지 비교한다.</li>
-<li>isEmpty() : 컬렉션이 비어있는지를 확인한다.</li>
-<li>iterator() : 컬렉션의 Iterator을 반환한다.</li>
-<li>remove(Object o) : 컬렉션에서 요소 o를 제거한다.</li>
-<li>removeAll(Collection&lt;?&gt; c) : 컬렉션 c에 속한 모든 요소를 컬렉션에서 제거한다.</li>
-<li>retainAll(Collection&lt;?&gt; c) : 컬렉션 c에 포함된 객체만 남기고 나머지 요소를 제거한다.</li>
-</ul>
+<li><p>Collection 인터페이스를 상속받았으며, 추가 메소드가 구현되어 있다.</p>
 </li>
 </ul>
+<p>메소드/설명</p>
 <ul>
-<li><p>Iterator</p>
-<ul>
-<li><p>iterator()로 반환되는 객체로, Collection에 저장된 요소에 접근하기 위해 사용</p>
-<ul>
-<li><p>메소드/설명</p>
-<ul>
-<li><p>hasNext(): 다음 요소가 있는지 확인</p>
-</li>
-<li><p>next(): 다음 요소가 있을 경우 반환</p>
-</li>
-<li><p>remove(): 현재 위치의 요소를 삭제</p>
-<ul>
-<li>Iterator의 활용</li>
+<li>add(int index, E element) : index 위치에 요소 element를 삽입한다.</li>
+<li>addAll( int index, Collection&lt;? extends E&gt; c) : index위치부터, 컬렉션 c의 모든 요소를 추가한다.</li>
+<li>get(int index) : index위치에 저장된 요소를 반환한다.</li>
+<li>indexOf(Object o) : 객체 o가 저장된 첫 번쨰 인덱스를 반환한다. 없을 경우 -1을 반환한다.</li>
+<li>lastIndexOf(Object o) : 객체 o가 저장된 마지막 인덱스를 반환한다. 없을 경우 -1을 반환한다.</li>
+<li>listIterator() : ListIterator 객체를 반환한다.</li>
+<li>remove(int index) : index에 위치한 객체를 제거하고 반환한다.</li>
+<li>set(int index, E element) :  index에 위치한 요소를 element로 대체한다.</li>
+<li>subList(int fromIndex, int toIndex) : fromIndex에 위치한 요소부터 toIndex의 직전에 위치한 요소까지 포함한 List를반환한다.</li>
 </ul>
-<p>Iterator<String> iter = collection.iterator();<br>while(iter.hasNext()) {<br>String string = iter.next();<br>System.out.println(string); }<br>이것을 간단하게 하면</p>
+<h2 id="List-인터페이스의-구현체"><a href="#List-인터페이스의-구현체" class="headerlink" title="List 인터페이스의 구현체"></a>List 인터페이스의 구현체</h2><p>List<String> list = new ArrayList&lt;&gt;();<br>list = new LinkedList&lt;&gt;();</p>
+<ul>
+<li><p>ArrayList<E></p>
+<ul>
+<li><p>제네릭 클래스로 구현된 자료구조</p>
 </li>
-</ul>
-<p>for(String string: collection) {<br>System.out.println(string); }</p>
+<li><p>배열을 기반으로 구현된 클래스로, 가장 자주 활용되며 활용도가 높다</p>
+</li>
+<li><p>ArrayList의 생성자는 세 종류가 주어진다</p>
+<pre><code>public ArrayList()
+public Arraylist(int initialCapacity)
+public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
 </li>
 </ul>
 </li>
+<li><p>LinkedList<E></p>
+<ul>
+<li>제네릭 클래스로 구현된 자료구조</li>
+<li>연결리스트를 기반으로 구현된 클래스로, 배열의 단점을 극복하기 위한 구현체이다.<br>데이터 삽입, 삭제시에는 LinkedList가 더 빠르고 검색,조회시에는 ArrayList가 더 빠르다<br><code>ArrayList</code>,  <code>LinkedList</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Object를 요소로 가지는 List 구현체 (Java5 이전)<br>List의 정렬</p>
+</li>
+<li><p><code>Collections</code>  클래스의  <code>sort()</code>  메소드 사용</p>
+<ul>
+<li><code>public static &lt;T extends Comparable&lt;? super T&gt; void sort(List&lt;T&gt; list)</code><ul>
+<li>객체에 선언된  <code>public int compareTo(T t)</code>  메소드로 비교하여 정렬</li>
+</ul>
+</li>
+<li><code>public static &lt;T&gt; void sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)</code><ul>
+<li>Comparator 객체 c에 정의된  <code>public int compare(T o1, T o2)</code>  메소드로 비교하여 정렬<br>ListIterator</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>listIterator()</code>로 반환되는 객체로, 양방향 사용이 가능</p>
+</li>
+<li><p>Iterator를 상속받은 클래스<br>메소드/ 설명</p>
+<ul>
+<li>hasPrevious() : 이전 요소가 있는지 확인</li>
+<li>previous() : 이전 요소가 있을 경우 반환</li>
 </ul>
 </li>
 </ul>
@@ -167,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/21/java/JCF(1)/" data-id="ckh2qp2p10000jwv1gxkc2ioe" class="article-share-link">Share</a>
+      <a data-url="https://hansol-jeong.github.io/2020/08/22/java/JCF(1)/" data-id="ckh2qp2p10000jwv1gxkc2ioe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
@@ -178,19 +176,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/08/21/java/java_lang/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/08/24/java/JCF(3)/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          java_lang
+          JFC(3)
         
       </div>
     </a>
   
   
-    <a href="/2020/08/20/java/Lambda/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/08/22/java/JCF(2)/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Lambda</div>
+      <div class="article-nav-title">JFC(2)</div>
     </a>
   
 </nav>
@@ -226,7 +224,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 12.5px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
