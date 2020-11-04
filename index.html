@@ -66,6 +66,136 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java/IO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/04/java/IO/" class="article-date">
+  <time datetime="2020-11-04T05:55:43.008Z" itemprop="datePublished">2020-11-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: IO<br>date: 2020-08-26 12:13:45<br>tags:   </p>
+<ul>
+<li>java</li>
+<li>til  </li>
+<li>IO</li>
+</ul>
+<p>categories:  </p>
+<ul>
+<li>java  </li>
+<li>til</li>
+<li>IO</li>
+</ul>
+<hr>
+<h1 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h1><h2 id="I-O와-스트림"><a href="#I-O와-스트림" class="headerlink" title="I/O와 스트림"></a>I/O와 스트림</h2><ul>
+<li>I/O란 입출력(Input/Output)을 함께 부르는 것</li>
+<li>자바의 I/O는 스트림을 이용해 데이터를 주고 받는 형식으로 이루어짐<ul>
+<li>데이터의 소스와 목적지를 노드(node)라 부름</li>
+<li>노드는 키보드, 모니터, 파일, 메모리, 데이터베이스, 다른 프로그램 등이 될 수 있음</li>
+</ul>
+</li>
+</ul>
+<h2 id="노드-스트림"><a href="#노드-스트림" class="headerlink" title="노드 스트림"></a>노드 스트림</h2><h3 id="InputStream과-Reader"><a href="#InputStream과-Reader" class="headerlink" title="InputStream과 Reader"></a>InputStream과 Reader</h3><p> InputSTream의 주요 메소드 (byte 단위)</p>
+<p>메소드/ 설명</p>
+<ul>
+<li><p>read() : byte하나를 읽어서 int로 반환. 읽을 값이 없으면 -1</p>
+</li>
+<li><p>read(byte b[]) : 데이터를 읽어 b를 채우고, 읽은 바이트 수를 반환</p>
+</li>
+<li><p>read(byte b[], int offset, int len) : 최대 len개의 바이트를 읽어 b의 offset위치부터 채운다.</p>
+</li>
+<li><p>close() : 스트림을 종료하고 자원을 반납.</p>
+</li>
+<li><p>available() : 읽을 수 있는 데이터의 크기를 반납</p>
+</li>
+<li><p>skip(long n) : 스트림에서 n만큼 건너뛴다.</p>
+</li>
+<li><p>mark(int leadLimit) : reset() 으로 돌아갈 위치를 표시한다. readLimit은 돌릴 수 있는 최대 바이트 수</p>
+</li>
+<li><p>reset() : mark()가 호출된 지점으로 돌아간다.</p>
+</li>
+<li><p>markSupported() : mark, reset메소드의 지원 여부를 반환</p>
+<pre><code>try (InputStream input = System.in) &#123;
+int read = -1;
+while ((read = input.read()) != -1) &#123;
+  System.out.printf(&quot;Integer: %d\nCharacter: %c\n&quot;, read, read);
+&#125; catch(IOException e) &#123;
+  e.printStackTrace();
+&#125;
+&#125;</code></pre>
+</li>
+</ul>
+<p>Reader의 주요 메소드(Char 단위)<br>메소드/ 설명</p>
+<ul>
+<li>int read() : char 하나를 읽어서 int로 반환. 읽을 값이 없으면 -1</li>
+<li>int read(char cbuf[]) : 데이터를 읽어 cbuf를 채우고, 읽은 char수를 반환</li>
+<li>int read(char cbuf[], int off, int len) : 최대 len개의 char를 읽어 cbuf의 offset 위치부터 채운다.</li>
+<li>int read(java.nio.CharBuffer target) :  NIO target에 데이터를 저장한다.</li>
+<li>void close() : 스트림을 종료하고 자원을 반납</li>
+<li>int available() : 읽을 수 있는 데이터의 크기를 반납</li>
+<li>long skip(long n) : 스트림에서 n만큼 건너뛴다</li>
+<li>void mark(int readAheadLimit) : reset()으로 돌아갈 위치를 표시한다. readLimit은 돌릴 수 있는 최대 바이트 수 </li>
+<li>void reset() : mark()가 호출된 지점으로 돌아간다</li>
+<li>boolean markSupported() : mark, reset메소드의 지원 여부를 반환</li>
+</ul>
+<h3 id="OutputStream과-Writer"><a href="#OutputStream과-Writer" class="headerlink" title="OutputStream과 Writer"></a>OutputStream과 Writer</h3><ul>
+<li>OutputStream의 주요 메소드(byte단위)</li>
+</ul>
+<p>메소드/ 설명</p>
+<ul>
+<li>write( int b): b내용을 byte로 출력</li>
+<li>write(byte b[]) : b를 문자열로 변환하여 출력</li>
+<li>write(byte b[], int off, int len) :  b의 off부터 (off+len-1)만큼을 문자열로 변환하여 출력</li>
+<li>close() : 스트림을 종료하고 자원을 반납. close() 내부적으로 flush()호출</li>
+<li>flush() : 버퍼스트림에서 버퍼의 내용을 출력하고 비운다.</li>
+</ul>
+<p>Writer의 주요 메소드(char단위)<br>메소드/ 설명</p>
+<ul>
+<li>write(int c) : c내용을 char로 출력</li>
+<li>write(char cbuf[]) : cbuf를 문자열로 변환하여 출력</li>
+<li>write(char cbuf[], int off, int len) :  cbuf의 off부터 (off+len-1)만큼을 문자열로 변환하여 출력</li>
+<li>write(String str) : str을 출력한다</li>
+<li>write(String str, int off, int len) : str의 off부터 (off+len-1)만큼을 출력</li>
+<li>append(CharSequence csq) : csq를 출력하고 Writer반환</li>
+<li>apend(char C) : c를 출력하고 Writer반환</li>
+<li>close() : 스트림을 종료하고 자원을 반납. close() 내부적으로 flush()호출</li>
+<li>flush() : 버퍼스트림에서 버퍼의 내용을 출력하고 비운다.<h3 id="다양한-입출력-처리"><a href="#다양한-입출력-처리" class="headerlink" title="다양한 입출력 처리"></a>다양한 입출력 처리</h3></li>
+</ul>
+<ul>
+<li><p>메모리 기반의 입/출력</p>
+<pre><code>char[] memory = &quot;메모리 입출력 테스트&quot;.toCharArray();
+char[] buffer = new char[5];
+int read = 0;
+try (CharArrayReader reader = new CharArrayReader(memory);
+ CharArrayWriter writer = new CharArrayWriter();) &#123;
+  while ((read = reader.read(buffer) &gt; 0)) &#123;
+ wrtier.write(buffer, 0, read);
+ &#125;
+System.out.println(Arrays.toString(writer.toCharArray()));
+&#125; catch (IOException e) &#123;
+ e.printStackTrace();
+&#125;</code></pre>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/04/java/IO/" data-id="ckh3080d10004nsv1cc2dchf3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Spring/day_1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/03/Spring/day_1/" class="article-date">
@@ -858,14 +988,14 @@ public class Main &#123;
 
 
   
-    <article id="post-java/JCF(4)" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MySql/day_1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/25/java/JCF(4)/" class="article-date">
-  <time datetime="2020-08-25T09:22:45.000Z" itemprop="datePublished">2020-08-25</time>
+    <a href="/2020/10/12/MySql/day_1/" class="article-date">
+  <time datetime="2020-10-12T04:41:31.000Z" itemprop="datePublished">2020-10-12</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/JCF/">JCF</a>
+    <a class="article-category-link" href="/categories/Database/">Database</a>►<a class="article-category-link" href="/categories/Database/MySQL/">MySQL</a>►<a class="article-category-link" href="/categories/Database/MySQL/day-1/">day_1</a>
   </div>
 
   </div>
@@ -876,7 +1006,7 @@ public class Main &#123;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/25/java/JCF(4)/">JFC(4)</a>
+      <a class="article-title" href="/2020/10/12/MySql/day_1/">Day_1</a>
     </h1>
   
 
@@ -884,72 +1014,140 @@ public class Main &#123;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Map-인터페이스"><a href="#Map-인터페이스" class="headerlink" title="Map 인터페이스"></a>Map 인터페이스</h3><ul>
-<li><p>Key와 Value의 쌍으로 구성된 자료의 집합을 다루는 인터페이스</p>
+        <h1 id="Select-From"><a href="#Select-From" class="headerlink" title="Select-From"></a>Select-From</h1><p>선택합니다(Select) 특정 컬럼들을(Column) 특정 테이블로부터(From)</p>
+<pre><code>use world;
+Select * from country;</code></pre>
 <ul>
-<li>Key, Value 쌍은  <code>Map.Entry&lt;K, V&gt;</code>  객체로 관리</li>
-</ul>
-</li>
-<li><p>Key는 중복될 수 없으며, Value는 중복이 가능</p>
-</li>
-<li><p><code>Map&lt;K, V&gt;</code>의 구현체</p>
-<ul>
-<li><code>HashMap&lt;K, V&gt;</code>  : 가장 많이 사용되는 Map의 구현체</li>
-<li><code>TreeMap&lt;K, V&gt;</code>  : 정렬 기준이 더해진 NavigableMap을 구현한 구현체</li>
-<li><code>Hashtable&lt;K, V&gt;</code>  : HashMap과 유사하지만 성능이 떨어지는 대신 멀티스레드에 안전한 구현체</li>
-<li><code>Properties</code>  : 속성 파일을 손쉽게 관리하는,  <code>Hashtable&lt;K, V&gt;</code>의 하위 클래스 구현체<br>@보통 동기화를 지원하면 느려진다@</li>
-</ul>
+<li><p>world database의 country 테이블 로부터 모든(*) column을 선택하여 출력합니다. </p>
+<h1 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h1><p>From절에 조건을 하나 겁니다.</p>
+<p>SELECT code, name, population<br>FROM country<br>WHERE population&gt;=200000000;</p>
 </li>
 </ul>
-<p>Map&lt;K, V&gt;의 주요 메소드<br>메소드/설명</p>
 <ul>
-<li>clear(): Map의 모든 요소를 삭제</li>
-<li>containKey( Object Key): key가 존재하는 지 여부를 반환</li>
-<li>containsValue(Object value): value가 존재하는지 여부를 반환</li>
-<li>entrySet() : Map의 Entry요소를 Set에 담아 반환</li>
-<li>get(Object key): key 에 해당하는 value객체 반환</li>
-<li>keySet(): key요소를 Set형태로 반환</li>
-<li>put(K key, V value): key와 value쌍으로 구성된 entry추가. 기존에 등록된 key라면 해당 value를, 없으면 null을 반환</li>
-<li>putAll(Map&lt;? extends K, ? extends V&gt; m): m에 속한 모든 Entry추가</li>
-<li>remove(Object key): key에 해당하는 Entry를 제거하고 반환, 등록되지 않은 key라면 null반환</li>
-<li>values(): value객체들을 Collection에 담아 반환</li>
-<li>size(): Map에 포함된 Entry객체의 수 반환</li>
-<li>isEmpty(): Map에 데이터가 없는지 여부 반환</li>
-</ul>
-<p>TreeMap&lt;K, V&gt;의 주요 메소드<br>메소드/설명</p>
+<li><p>(world)country 테이블 로부터 code, name, population column을 선택하여 출력합니다. 이 때 population &gt;= 200000000 인 행만 출력하도록 합니다.</p>
+<h1 id="And"><a href="#And" class="headerlink" title="And"></a>And</h1><p>조건을 연달아 추가 할 수 있습니다.</p>
+<p>  SELECT code, name, population<br>  FROM country<br>  WHERE population &gt;=200000000 AND population &lt;=300000000;</p>
 <ul>
-<li>firstEntry(): 정렬된 첫 Entry반환</li>
-<li>lastEntry(): 정렬된 마지막 Entry반환</li>
-<li>lowerEntry(K key): key 바로 이전 Entry반환</li>
-<li>higherEntry(K key): key바로 다음 Entry반환</li>
-<li>floorEntry(K key) : key 또는 key보다 이전 Entry반환</li>
-<li>ceilingEntry(K key) : key 또는 key보다 이후 Entry반환</li>
-<li>pollFirstEntry(): 정렬된 첫 Entry를 제거하고 반환</li>
-<li>pollLastEntry() : 정렬된 마지막 Entry를 제거하고 반환</li>
-<li>descendingKeySet(): 내림차순으로 정렬하는 Set반환</li>
-<li>descendingKeyMap(): 내림차순으로 정렬하는 Map반환</li>
-<li>headMap(K toKey, boolean inclusive): toKey이전 Entry로 구성된 객체 반환</li>
-<li>tailMap(K fromKey, boolean inclusive): fromKey이후 Entry로 구성된 객체 반환</li>
-<li>subMap(K fromKey, boolean fromInclusive, k toKey, boolean toInclusive): fromKey 이후, toKey이전 Entry로 구성된 객체 반환</li>
+<li>country 테이블로부터 code, name, population 열들을 출력하고 이 때 200000000&lt;population&lt;  300000000 입니다.<h1 id="Between"><a href="#Between" class="headerlink" title="Between"></a>Between</h1>부등호를 쓰지 않고 범위를 표현할 수 있습니다.</li>
 </ul>
-<p><code>Properties</code>의 주요 메소드</p>
+</li>
+</ul>
+<pre><code>  SELECT code, name, population
+    FROM country
+    WHERE population BETWEEN 200000000 AND 300000000;</code></pre>
 <ul>
-<li>getProperty(): Key에 해당하는 속성 값을 반환</li>
-<li>stringPropertyNames(): key의 목록을 Set<String>으로 반환</li>
-<li>setProperty(): key로 value를 등록하고 기존 value값을 반환</li>
-<li>load(): reader를 이용해 속성을 읽어온다. (properties)</li>
-<li>loadFromXML() :XML형식으로 저장된 속성을 읽어온다.</li>
-<li>store(): writer를 이용해 속성을 저장한다.</li>
-<li>storeToXML(): XML형식으로 속성파일을 저장한다.</li>
+<li><p>country 테이블로부터 code, name, population 열들을 출력하고 이 때 200000000&lt;population&lt;  300000000 입니다.</p>
+<h1 id="특정-column의-특정-데이터를-특정-할-수-있습니다"><a href="#특정-column의-특정-데이터를-특정-할-수-있습니다" class="headerlink" title="특정 column의 특정 데이터를 특정 할 수 있습니다."></a>특정 column의 특정 데이터를 특정 할 수 있습니다.</h1><p>SELECT code, name, continent, population<br>FROM country<br>WHERE (continent = “Asia” or continent = “Africa”) AND population &gt;=100000000;</p>
+<ul>
+<li>continent = “Aisa” 또는 continent = “Africa” 이고 population &gt;100000000 인 code, name, continent, population 으로 이루어진 행들을 country 테이블로부터 뽑아낼 수 있습니다.<h1 id="Not-In"><a href="#Not-In" class="headerlink" title="Not In"></a>Not In</h1>특정 조건을 포함하지 않도록 할 수 있습니다.</li>
 </ul>
+<p>SELECT code, name, continent, population<br>FROM country<br>WHERE continent NOT IN (“Asia”, “Africa”) AND population &gt;=100000000;</p>
+<ul>
+<li>continent column에 Asia, Africa가 포함되지 않고, population&gt;100000000인 결과를 출력합니다.<h1 id="정규표현식"><a href="#정규표현식" class="headerlink" title="정규표현식"></a>정규표현식</h1>정규표현식을 사용하여 데이터를 추출 할 수 있습니다.</li>
+</ul>
+<p>SELECT code, name, GovernmentForm<br>FROM country<br>WHERE GovernmentForm LIKE “%Republic%”;</p>
+<ul>
+<li>GovernmentForm column에 Republic이 포함되는 결과를 출력합니다.<h1 id="Order-By"><a href="#Order-By" class="headerlink" title="Order By"></a>Order By</h1>특정 조건대로 정렬시킬 수 있습니다.</li>
+</ul>
+<p>SELECT code, name, population<br>FROM country<br>ORDER BY population ASC;</p>
+<ul>
+<li><p>ASC: 오름차순으로 정렬합니다. 초깃값이기 때문에 따로 쓰지 않더라도 적용됩니다.</p>
+<p> SELECT code, name, population<br> FROM country<br> ORDER BY population DESC;</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>DESC: 내림차순으로 정렬합니다. </li>
+</ul>
+<h1 id="Order-By-에-조건을-2개이상-넣을-수-있습니다"><a href="#Order-By-에-조건을-2개이상-넣을-수-있습니다" class="headerlink" title="Order By 에 조건을 2개이상 넣을 수 있습니다."></a>Order By 에 조건을 2개이상 넣을 수 있습니다.</h1><pre><code>SELECT countryCode, name, population
+FROM city
+WHERE countrycode IN (&quot;USA&quot;, &quot;KOR&quot;, &quot;JPN&quot;)
+ORDER BY countrycode ASC, population DESC;</code></pre>
+<ul>
+<li><p>countryCode, name, population column을 city테이블에서 가져 올 때 countrycode = “USA”, “KOR”, “JPN”인 행들만 포함합니다. 이 때 countrycode를 기준으로 오름차순으로 정렬하며, countrycode, 가 같다면 population을 기준으로 내림차순으로 재 정렬합니다.</p>
+<h1 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h1><p>출력 범위를 지정할 수 있습니다.</p>
+<p>SELECT countrycode, name, population<br>FROM city<br>WHERE countrycode IN (“USA”, “KOR”, “JPN”)<br>ORDER BY countrycode ASC, population DESC<br>LIMIT 5,2; #6,7위</p>
+</li>
+<li><p>Limit 5, 2: 첫 번째 결과부터 5개의 결과를 스킵하고, 2개의 결과를 출력합니다.</p>
+</li>
+</ul>
+<p>#QUIZ 한국(KOR)의 경기도(KYONGGI)에 해당하는 도시 에서 인구가 많은 3개의 도시를 출력</p>
+<pre><code>SELECT countrycode, name, population
+FROM city
+WHERE countrycode = &quot;KOR&quot; AND DISTRICT = &quot;KYONGGI&quot;
+ORDER BY population DESC
+LIMIT 3;</code></pre>
+<p>#동북아시아에서 인당 GNP가 높은 5개 나라 출력</p>
+<pre><code>SELECT code, name, GNP, population, region, (GNP/population) AS GNP_PER_PERSON
+FROM country
+WHERE region = &quot;Eastern Asia&quot;
+ORDER BY GNP_PER_PERSON DESC
+LIMIT 5;</code></pre>
+<p>#인구밀도가 높은 국가 6~10위까지 출력하세요</p>
+<pre><code>SELECT code, name, population, surfaceArea, surfaceArea/population as Density
+FROM country
+ORDER BY Density DESC
+LIMIT 5,5;</code></pre>
+<h1 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h1><p>Group By와 함께 사용되는 함수이며, Group By의 조건으로 묶였을 때 중복을 세어주는 함수</p>
+<pre><code>SELECT countrycode, count(countrycode)
+FROM city
+GROUP BY countrycode;</code></pre>
+<ul>
+<li>city 테이블에서 countrycode, count(countrycode) column을 출력한다. 이 때 Group By로 차트가 묶인 상태이기 때문에 countrycode는 중복되지 않는 값이 출력되며 이 때 count는 countrycode가 몇개 묶였는지 나타낸다.</li>
+</ul>
+<h1 id="MAX"><a href="#MAX" class="headerlink" title="MAX"></a>MAX</h1><p>Group By와 함께 쓰이며, 특정 조건의 최대값을 출력할 수 있습니다.</p>
+<pre><code>SELECT continent, MAX(GNP), MAX(population)
+FROM country
+GROUP BY continent;</code></pre>
+<ul>
+<li>continent 를 기준으로 continent가 중복된다면 해당 데이터들을 묶고, 이 때 묶인 데이터 들 중 최대 GNP와 최대 population을 출력합니다.    </li>
+</ul>
+<h1 id="SUM"><a href="#SUM" class="headerlink" title="SUM"></a>SUM</h1><p>Group By와 함께 쓰이며, 데이터가 Group By에 의해 묶일 때 그 값들의 총합을 출력합니다.</p>
+<pre><code>SELECT continent, SUM(GNP) AS S_GNP, SUM(population) AS S_population, SUM(GNP)/SUM(population) AS per 
+FROM country
+GROUP BY continent; </code></pre>
+<ul>
+<li><p>continent 를 기준으로 데이터를 묶고 이 때 GNP와 population을 모두 더해 각각 S_GNP와 S_population으로 나타냅니다.</p>
+<h1 id="AVG"><a href="#AVG" class="headerlink" title="AVG"></a>AVG</h1><p>Group By와 함께 쓰이며, 데이터의 평균을 나타낼 수 있습니다.</p>
+<p>  SELECT continent, AVG(population), AVG(GNP), SUM(population) AS population<br>  FROM country<br>  WHERE population !=0 AND GNP !=0<br>  GROUP BY continent<br>  ORDER BY population DESC;</p>
+<ul>
+<li>continent를 기준으로 묶은 데이터들 중 population != 0, GNP !=0인 행들을 출력하고 이 때 데이터는 population을 기준으로 내림차순으로 정렬하며 출력하는 column의 종류는 continent, population의 평균, GNP의 평균, population 의 총합 입니다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h1><p> GROUP BY로 출력되는 결과를 필터링할 때 사용 합니다.</p>
+<pre><code>SELECT continent, SUM(population) AS S_POP
+FROM country
+GROUP BY continent
+HAVING S_POP&gt;=500000000
+ORDER BY S_POP DESC;</code></pre>
+<ul>
+<li>continent로 묶은 데이터 들 중에서 S_POP:SUM(population)이 &gt;500000000인 행들을 내림차순으로 출력합니다.<h1 id="Quiz"><a href="#Quiz" class="headerlink" title="Quiz"></a>Quiz</h1></li>
+</ul>
+<h2 id="1-언어별-사용하는-국가의-수를-조회하고-많이-사용되는-언어-6위-8위-출력"><a href="#1-언어별-사용하는-국가의-수를-조회하고-많이-사용되는-언어-6위-8위-출력" class="headerlink" title="1. 언어별 사용하는 국가의 수를 조회하고 많이 사용되는 언어 6위~ 8위 출력"></a>1. 언어별 사용하는 국가의 수를 조회하고 많이 사용되는 언어 6위~ 8위 출력</h2><pre><code>SELECT language, count(CountryCode) AS count
+FROM countrylanguage
+GROUP BY language
+ORDER BY count DESC
+LIMIT 5,3;</code></pre>
+<h2 id="2-대륙별-나라의-갯수를-출력하고-국가가-많은-대륙-1위-3위까지-출력"><a href="#2-대륙별-나라의-갯수를-출력하고-국가가-많은-대륙-1위-3위까지-출력" class="headerlink" title="2. 대륙별 나라의 갯수를 출력하고 국가가 많은 대륙 1위 ~3위까지 출력"></a>2. 대륙별 나라의 갯수를 출력하고 국가가 많은 대륙 1위 ~3위까지 출력</h2><pre><code>SELECT continent, count(name) AS count
+FROM country
+GROUP BY continent
+ORDER BY count DESC
+LIMIT 3;</code></pre>
+<h2 id="3-city테이블에서-국가-코드별-총인구를-출력-총-인구순으로-내림차순-정렬-총-인구가-5천만-이상인-국가코드만-출력"><a href="#3-city테이블에서-국가-코드별-총인구를-출력-총-인구순으로-내림차순-정렬-총-인구가-5천만-이상인-국가코드만-출력" class="headerlink" title="3. city테이블에서 국가 코드별 총인구를 출력, 총 인구순으로 내림차순 정렬, 총 인구가 5천만 이상인 국가코드만 출력"></a>3. city테이블에서 국가 코드별 총인구를 출력, 총 인구순으로 내림차순 정렬, 총 인구가 5천만 이상인 국가코드만 출력</h2><pre><code>SELECT countrycode, SUM(population) AS S_pop
+FROM city
+GROUP BY countrycode
+HAVING S_pop &gt;=50000000
+ORDER BY S_POP DESC;</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/25/java/JCF(4)/" data-id="ckh2y1f6i0000p4v1hvnbd2w4" class="article-share-link">Share</a>
+      <a data-url="https://hansol-jeong.github.io/2020/10/12/MySql/day_1/" data-id="ckh3080cn0000nsv122f3000k" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li></ul>
 
     </footer>
   </div>
@@ -958,14 +1156,14 @@ public class Main &#123;
 
 
   
-    <article id="post-java/JCF(3)" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MySql/day_2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/24/java/JCF(3)/" class="article-date">
-  <time datetime="2020-08-24T03:11:45.000Z" itemprop="datePublished">2020-08-24</time>
+    <a href="/2020/10/12/MySql/day_2/" class="article-date">
+  <time datetime="2020-10-12T04:41:31.000Z" itemprop="datePublished">2020-10-12</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/JCF/">JCF</a>
+    <a class="article-category-link" href="/categories/Database/">Database</a>►<a class="article-category-link" href="/categories/Database/MySQL/">MySQL</a>►<a class="article-category-link" href="/categories/Database/MySQL/day-2/">day_2</a>
   </div>
 
   </div>
@@ -976,7 +1174,7 @@ public class Main &#123;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/24/java/JCF(3)/">JFC(3)</a>
+      <a class="article-title" href="/2020/10/12/MySql/day_2/">Day_2</a>
     </h1>
   
 
@@ -984,161 +1182,136 @@ public class Main &#123;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Set-인터페이스"><a href="#Set-인터페이스" class="headerlink" title="Set 인터페이스"></a>Set 인터페이스</h3><ul>
-<li><p>순서가 없는 데이터의 집합을 다루는 인터페이스</p>
-</li>
-<li><p>중복되는 데이터를 효율적으로 제거하는 데에 쓸 수 있음</p>
-</li>
-<li><p>Collection 인터페이스를 상속받아 메소드를 구현하고 있음</p>
-</li>
-<li><p>Set의 구현체</p>
-</li>
-<li><p><code>HashSet&lt;E&gt;</code></p>
+        <h1 id="Create-Database"><a href="#Create-Database" class="headerlink" title="Create Database"></a>Create Database</h1><pre><code>use jbs;
+CREATE TABLE user1(
+user_id INT,
+name varchar(20),
+email varchar(20),
+age INT(3),
+rDate DATE
+);</code></pre>
 <ul>
-<li>Set의 대표적인 구현체로, 기본적인 기능이 구현되어 있다.</li>
-</ul>
+<li><p>jbs데이터 베이스에 user1테이블을 생성하고 그 안에는 user_id, name, email, age, rDate가 각각의 데이터 형식으로 포함되어 있습니다.</p>
+<p>INSERT INTO user1 (user_id, name, email, age, rDate)<br>values(1, “Andy”, “<a href="mailto:&#65;&#x6e;&#100;&#x79;&#64;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#65;&#x6e;&#100;&#x79;&#64;&#103;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a>“, 23, “2020-10-01”);<br>SELECT * FROM user1;<br>SHOW TABLES;<br>DESC user1;</p>
 </li>
-<li><p><code>TreeSet&lt;E&gt;</code></p>
+<li><p>데이터를 주입합니다. </p>
+<p>CREATE TABLE user2 (<br>user_id INT PRIMARY KEY AUTO_INCREMENT,<br>name varchar(20) NOT NULL,<br>email varchar(20) unique NOT NULL,<br>age INT(3) DEFAULT 30,<br>rDate TIMESTAMP<br>);</p>
 <ul>
-<li><p><code>NavigableSet&lt;E&gt;</code>  인터페이스를 구현하며, 이진 탐색 트리 자료구조이다.</p>
-</li>
-<li><p>객체를 삽입하는 동시에 정렬되는 특성상 비교가 가능해야 한다.</p>
-</li>
+<li>user2테이블을 생성합니다. 이 때 </li>
+<li>Primary key: 한 개 혹은 여러 개의 칼럼으로 테이블 내의 각 행들을 구별하기 위한 목적을 갖고 있다. PK는 NULL 값을 갖을 수 없고(NOT NULL), Unique key라는 특징을 갖게 된다.</li>
+<li>Auto_Increment : 데이터가 증가할 때마다 인덱스가 1씩 늘어난다.</li>
 </ul>
 </li>
-</ul>
-<pre><code>        public TreeSet() // Comparable 구현체의 경우
-        public TreeSet(Comparator&lt;? super E&gt; comparator) // 별도로 비교 객체 삽입
-
-       - first() : 정렬된 첫 요소를 반환
-       - last(): 정렬된 마지막 요소를 반환
-       - lower(E e): e객체의 바로 이전 객체를 반환
-       - higher(E e) : e 객체의 바로 다음 객체를 반환
-       - floor(E e) : e 또는 e보다 이전 객체를 반환
-       - ceiling(E e) : e 또는 e보다 이후 객체를 반환
-       - pollFirst(): 정렬된 첫 요소를 제거하고 반환
-       - pollLast(): 정렬된 마지막 요소를 제거하고 반환
-       - descendingSet() : 내림차순으로 정렬하는 객체를 반환
-       - headSet(E toElement, boolean inclusive): toElement 이전 요소로 구성된 객체 반환
-       - tailSet(E fromElement, boolean inclusive): fromElement 이후 요소로 구성된 객체 반환
-       - subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive): fromElement 이후, toElement 이전 요소로 구성된 객체 반환
-자료 구조별 차이 정리: https://atin.tistory.com/622 감사합니다 날로먹겠습니다.</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/24/java/JCF(3)/" data-id="ckh2y1f6l0001p4v1f5pre0lm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java/JCF(1)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/22/java/JCF(1)/" class="article-date">
-  <time datetime="2020-08-22T07:21:01.000Z" itemprop="datePublished">2020-08-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/JCF/">JCF</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/22/java/JCF(1)/">JFC(2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="List-인터페이스"><a href="#List-인터페이스" class="headerlink" title="List 인터페이스"></a>List 인터페이스</h3><ul>
-<li><p>순서가 있는 데이터의 집합을 다루는 인터페이스</p>
+<li><p>때문에 user_id와 age, rDate 3가지는 초기값이 있다. name과 email이 null이면 안되기 때문에 이 두 값을 넣어줘야 한다 </p>
+<p>INSERT INTO user2(name, email)<br>values(“ANDY”, “<a href="mailto:&#x41;&#x4e;&#68;&#89;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#x41;&#x4e;&#68;&#89;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a>“);<br>DESC user2;– 의미를 잘 모르겠어</p>
+<h1 id="Drop"><a href="#Drop" class="headerlink" title="Drop"></a>Drop</h1><p>use world;<br>CREATE TABLE city2 (<br>name varchar(50),<br>countrycode char(3),<br>population INT<br>);<br>INSERT INTO city2<br>SELECT name, countrycode, population<br>FROM city<br>WHERE population &gt;=8000000;</p>
+<p>SELECT * FROM city2;</p>
+<p>DROP TABLE city2;</p>
 </li>
-<li><p>List는 인덱스를 이용해 요소를 구분할 수 있어, 데이터의 중복을 허용</p>
-</li>
-<li><p>Collection 인터페이스를 상속받았으며, 추가 메소드가 구현되어 있다.</p>
+<li><p>Drop으로 테이블을 지울 수 있습니다.</p>
 </li>
 </ul>
-<p>메소드/설명</p>
+<h1 id="CRUD-Create-Read-Update-Delete"><a href="#CRUD-Create-Read-Update-Delete" class="headerlink" title="CRUD : Create, Read, Update, Delete"></a>CRUD : Create, Read, Update, Delete</h1><p>create use alter drop 을 줄여서 CRUD라 한다.</p>
+<h2 id="Alter-설정-수정"><a href="#Alter-설정-수정" class="headerlink" title="Alter 설정, 수정"></a>Alter 설정, 수정</h2><pre><code>show variables like &quot;character_set_database&quot;;
+alter database test character set = utf8;
+alter database world character set = utf8;</code></pre>
+<p>데이터 베이스의 character set 을 utf8로 변경합니다.</p>
+<h2 id="alter-add-modify-dorp"><a href="#alter-add-modify-dorp" class="headerlink" title="alter: add, modify, dorp"></a>alter: add, modify, dorp</h2><pre><code>use jbs;
+CREATE TABLE user2(
+user_id INT primary key AUTO_INCREMENT,
+name varchar(20) NOT NULL,
+email varchar(30) unique NOT NULL,
+age INT(3) default 30,
+rdate TIMESTAMP
+);</code></pre>
 <ul>
-<li>add(int index, E element) : index 위치에 요소 element를 삽입한다.</li>
-<li>addAll( int index, Collection&lt;? extends E&gt; c) : index위치부터, 컬렉션 c의 모든 요소를 추가한다.</li>
-<li>get(int index) : index위치에 저장된 요소를 반환한다.</li>
-<li>indexOf(Object o) : 객체 o가 저장된 첫 번쨰 인덱스를 반환한다. 없을 경우 -1을 반환한다.</li>
-<li>lastIndexOf(Object o) : 객체 o가 저장된 마지막 인덱스를 반환한다. 없을 경우 -1을 반환한다.</li>
-<li>listIterator() : ListIterator 객체를 반환한다.</li>
-<li>remove(int index) : index에 위치한 객체를 제거하고 반환한다.</li>
-<li>set(int index, E element) :  index에 위치한 요소를 element로 대체한다.</li>
-<li>subList(int fromIndex, int toIndex) : fromIndex에 위치한 요소부터 toIndex의 직전에 위치한 요소까지 포함한 List를반환한다.</li>
-</ul>
-<h2 id="List-인터페이스의-구현체"><a href="#List-인터페이스의-구현체" class="headerlink" title="List 인터페이스의 구현체"></a>List 인터페이스의 구현체</h2><p>List<String> list = new ArrayList&lt;&gt;();<br>list = new LinkedList&lt;&gt;();</p>
+<li><p>jbs 데이터베이스에 user2테이블을 만들었다고 가정합니다.</p>
+<p>  alter table user2 Add tmp text;</p>
 <ul>
-<li><p>ArrayList<E></p>
+<li><p>자료형이 text 인 tmp column을 추가합니다.</p>
+<p>alter table user2 modify column tmp int;</p>
+</li>
+</ul>
+</li>
+<li><p>자료형을 int로 변경합니다.</p>
+<p>  drop database test;</p>
+</li>
+<li><p>test데이터베이스를 삭제합니다.</p>
+</li>
+</ul>
+<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><pre><code>update user2
+set email = &quot;jin@gmail.com&quot;
+where name = &quot;andy&quot;
+limit 1;
+select * from user2;</code></pre>
 <ul>
-<li><p>제네릭 클래스로 구현된 자료구조</p>
-</li>
-<li><p>배열을 기반으로 구현된 클래스로, 가장 자주 활용되며 활용도가 높다</p>
-</li>
-<li><p>ArrayList의 생성자는 세 종류가 주어진다</p>
-<pre><code>public ArrayList()
-public Arraylist(int initialCapacity)
-public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
-</li>
+<li>user2 테이블을 업데이트 할 것입니다. email을 <a href="mailto:&#106;&#105;&#x6e;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;">&#106;&#105;&#x6e;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#111;&#109;</a>으로 바꾸는 데 바꾸는 대상은 name = andy인 행이고, 이 때 andy가 name인 행을 1개 바꿉니다.</li>
 </ul>
-</li>
-<li><p>LinkedList<E></p>
+<h2 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h2><pre><code>delete from user2 where name = &quot;andy&quot; limit 1;
+select * from user2;</code></pre>
 <ul>
-<li>제네릭 클래스로 구현된 자료구조</li>
-<li>연결리스트를 기반으로 구현된 클래스로, 배열의 단점을 극복하기 위한 구현체이다.<br>데이터 삽입, 삭제시에는 LinkedList가 더 빠르고 검색,조회시에는 ArrayList가 더 빠르다<br><code>ArrayList</code>,  <code>LinkedList</code></li>
+<li>name = andy인 행을 한개 지웁니다.</li>
 </ul>
-</li>
-</ul>
+<h2 id="Truncate"><a href="#Truncate" class="headerlink" title="Truncate"></a>Truncate</h2><pre><code>insert into user2(user_id,name, email, age, rdate)
+values(1,&quot;andy&quot;, &quot;andy@gmail.com&quot;, 23, &quot;2020-02-20&quot;);
+truncate user2;</code></pre>
 <ul>
-<li><p>Object를 요소로 가지는 List 구현체 (Java5 이전)<br>List의 정렬</p>
-</li>
-<li><p><code>Collections</code>  클래스의  <code>sort()</code>  메소드 사용</p>
+<li>user2의 내용을 구조만 남기고 모두 제거합니다.</li>
+</ul>
+<h2 id="foreign-key"><a href="#foreign-key" class="headerlink" title="foreign key"></a>foreign key</h2><p>데이터의 무결성을 지키기 위해서 사용합니다.</p>
 <ul>
-<li><code>public static &lt;T extends Comparable&lt;? super T&gt; void sort(List&lt;T&gt; list)</code><ul>
-<li>객체에 선언된  <code>public int compareTo(T t)</code>  메소드로 비교하여 정렬</li>
-</ul>
-</li>
-<li><code>public static &lt;T&gt; void sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)</code><ul>
-<li>Comparator 객체 c에 정의된  <code>public int compare(T o1, T o2)</code>  메소드로 비교하여 정렬<br>ListIterator</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>listIterator()</code>로 반환되는 객체로, 양방향 사용이 가능</p>
-</li>
-<li><p>Iterator를 상속받은 클래스<br>메소드/ 설명</p>
+<li><p>foreign key 설정을 하려면 참조되는 부모 컬럼이 PK이거나 Unique해야 한다.</p>
+<p>  create table users(</p>
+<pre><code>  user_id int primary key auto_increment,
+  name varchar(20),
+  addr varchar(20)</code></pre>
+<p>  );<br>  desc user;</p>
+<p>  create table money(</p>
+<pre><code>  money_id int primary key auto_increment,
+  income int,
+  user_id int</code></pre>
+<p>  );<br>  desc money;</p>
 <ul>
-<li>hasPrevious() : 이전 요소가 있는지 확인</li>
-<li>previous() : 이전 요소가 있을 경우 반환</li>
-</ul>
+<li><p>users 테이블과 money테이블을 생성합니다.</p>
+<p>insert into users (name, addr)<br>values (“jin”, “seoul”),(“andy”, “pusan”);</p>
+<p>insert into money (income, user_id)<br>values (1000,1), (2000,2);</p>
 </li>
 </ul>
+</li>
+<li><p>데이터를 주입합니다. </p>
+<p>  alter table money add constraint FK foreign key (user_id) references users (user_id);</p>
+</li>
+<li><p>money의 user_id에 users의 user_id를 잠조하는 FK를 추가합니다.</p>
+<h2 id="테이블-생성시-FK설정"><a href="#테이블-생성시-FK설정" class="headerlink" title="테이블 생성시 FK설정"></a>테이블 생성시 FK설정</h2><p>  create table money(</p>
+<pre><code>  money_id int primary key auto_increment,
+  income int,
+  user_id int,
+  foreign key (user_id) references users (user_id)</code></pre>
+<p>  );</p>
+</li>
+</ul>
+<pre><code>insert into money (income, user_id)
+values (2000,1), (3000,2);</code></pre>
+<ul>
+<li>(3000,3) 은 넣지 못한다. 데이터 무결성이 깨지기 때문에<br>select * from money;</li>
+</ul>
+<p>– users의 user_id가 변경되면 money의 user_id도 변경되지만 반대의 경우는 그렇지 못하다. 그렇기 때문에 생긴 것이 On Update, On Delete</p>
+<h2 id="데이터-삭제"><a href="#데이터-삭제" class="headerlink" title="데이터 삭제"></a>데이터 삭제</h2><p>select *from money;<br>delete from money<br>where user_id = 2<br>limit 1;<br>select * from users; select * from money; – 보면 money는 잘 지워졌다 그러나<br>delete from users where user_id = 1 limit 1; – users의 user_id 1은 money에 의해 참조되어있기 때문에 지워지지 않는다. (같은 맥락에서 drop table users 또한 되지 않는다.)<br>delete from users where user_id = 2 limit 1; – 그러나 이미 money에서 지워진 user_id 2 는 잘 지워지는 것을 볼 수 있다.</p>
+<h2 id="ON-DELETE-ON-UPDATE-설정-FK-어려우니까-생김"><a href="#ON-DELETE-ON-UPDATE-설정-FK-어려우니까-생김" class="headerlink" title="ON DELETE, ON UPDATE 설정 (FK 어려우니까 생김)"></a>ON DELETE, ON UPDATE 설정 (FK 어려우니까 생김)</h2><p>#참조를 받는 데이터가 수정하거나 삭제될 때 참조 하는 데이터를 설정(수정, 삭제 등등…) 역으로 영향을 준다 (동기화) 그니까 원래는 참조받는 쪽에서 데이터 수정, 삭제가 불가했지만 가능하게 해준다.</p>
+<h3 id="CASCADE-참조-받은-데이터가-수정-삭제하면-참조하는-데이터도-수정-삭제"><a href="#CASCADE-참조-받은-데이터가-수정-삭제하면-참조하는-데이터도-수정-삭제" class="headerlink" title="CASCADE : 참조 받은 데이터가 수정, 삭제하면, 참조하는 데이터도 수정, 삭제"></a>CASCADE : 참조 받은 데이터가 수정, 삭제하면, 참조하는 데이터도 수정, 삭제</h3><h3 id="SET-NULL-참조-받는-데이터가-수정-삭제하면-참조하는-데이터는-NULL로-수정"><a href="#SET-NULL-참조-받는-데이터가-수정-삭제하면-참조하는-데이터는-NULL로-수정" class="headerlink" title="SET NULL : 참조 받는 데이터가 수정, 삭제하면, 참조하는 데이터는 NULL로 수정"></a>SET NULL : 참조 받는 데이터가 수정, 삭제하면, 참조하는 데이터는 NULL로 수정</h3><ul>
+<li>업데이트 되면 업데이트(cascade), 삭제되면 NULL값으로 수정 (set null) null이되면 컬럼간의 FK는 유지되지만 참조하는 값 자체가 null이기 때문에 무결성은 유지된다. (if null이 아닌값이 되면 문제가되지만 null이면 문제가 안된다.)<br>#위에 무슨소린지 이해해보자</li>
+</ul>
+<p>insert into users(name, addr) values (“peter”, “incheon”);<br>select * from users;</p>
+<p>drop table money; – 머니 삭제하고 연결설정해보겠다.<br>create table money (<br>money_id int primary key auto_increment,<br>income int,<br>user_id int,<br>foreign key (user_id) references users(user_id)<br>on update cascade on delete set null – money 단에서 수정, 삭제 시 부모가 동기화 되도록 설정 하였다.<br>);<br>desc money;<br>select * from users; select * from money; – 현제 user_id 1,3이 존재한다. 그니까 이 둘은 애초에 넣을 수 있는 것들<br>insert into money (income, user_id)<br>values(1000,1),(2000,3); select * from money;<br>#이제 업데이트 해보자<br>update users<br>set user_id = 4 where user_id = 1; select * from users; select * from money;</p>
+<p>#user 데이터 삭제<br>delete from users<br>where user_id = 3; select *from users; select * from money; – money는 왜 데이터가 안지워지고 user_id열하나만 지워지죠</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/22/java/JCF(1)/" data-id="ckh2qp2p10000jwv1gxkc2ioe" class="article-share-link">Share</a>
+      <a data-url="https://hansol-jeong.github.io/2020/10/12/MySql/day_2/" data-id="ckh3080cr0001nsv10pk76v1y" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li></ul>
 
     </footer>
   </div>
@@ -1151,7 +1324,7 @@ public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -1162,7 +1335,7 @@ public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1172,7 +1345,7 @@ public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -1182,7 +1355,7 @@ public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 12px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12px;">day_1</a> <a href="/tags/day-2/" style="font-size: 10px;">day_2</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
@@ -1204,6 +1377,10 @@ public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/11/04/java/IO/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/03/Spring/day_1/">day_1</a>
           </li>
         
@@ -1217,10 +1394,6 @@ public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
         
           <li>
             <a href="/2020/10/29/java/MultiThread(5)/">MultiThread(5)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/28/java/MultiThread(3)/">MultiThread(3)</a>
           </li>
         
       </ul>
