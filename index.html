@@ -858,6 +858,90 @@ public class Main &#123;
 
 
   
+    <article id="post-java/JCF(2)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/22/java/JCF(2)/" class="article-date">
+  <time datetime="2020-08-22T07:21:01.000Z" itemprop="datePublished">2020-08-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/JCF/">JCF</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/22/java/JCF(2)/">JFC(2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="List-인터페이스"><a href="#List-인터페이스" class="headerlink" title="List 인터페이스"></a>List 인터페이스</h3><ul>
+<li><p>순서가 있는 데이터의 집합을 다루는 인터페이스</p>
+</li>
+<li><p>List는 인덱스를 이용해 요소를 구분할 수 있어, 데이터의 중복을 허용</p>
+</li>
+<li><p>Collection 인터페이스를 상속받았으며, 추가 메소드가 구현되어 있다.</p>
+</li>
+</ul>
+<p>메소드/설명</p>
+<ul>
+<li>add(int index, E element) : index 위치에 요소 element를 삽입한다.</li>
+<li>addAll( int index, Collection&lt;? extends E&gt; c) : index위치부터, 컬렉션 c의 모든 요소를 추가한다.</li>
+<li>get(int index) : index위치에 저장된 요소를 반환한다.</li>
+<li>indexOf(Object o) : 객체 o가 저장된 첫 번쨰 인덱스를 반환한다. 없을 경우 -1을 반환한다.</li>
+<li>lastIndexOf(Object o) : 객체 o가 저장된 마지막 인덱스를 반환한다. 없을 경우 -1을 반환한다.</li>
+<li>listIterator() : ListIterator 객체를 반환한다.</li>
+<li>remove(int index) : index에 위치한 객체를 제거하고 반환한다.</li>
+<li>set(int index, E element) :  index에 위치한 요소를 element로 대체한다.</li>
+<li>subList(int fromIndex, int toIndex) : fromIndex에 위치한 요소부터 toIndex의 직전에 위치한 요소까지 포함한 List를반환한다.</li>
+</ul>
+<h2 id="List-인터페이스의-구현체"><a href="#List-인터페이스의-구현체" class="headerlink" title="List 인터페이스의 구현체"></a>List 인터페이스의 구현체</h2><p>List<String> list = new ArrayList&lt;&gt;();<br>list = new LinkedList&lt;&gt;();</p>
+<ul>
+<li><p>ArrayList<E></p>
+<ul>
+<li><p>제네릭 클래스로 구현된 자료구조</p>
+</li>
+<li><p>배열을 기반으로 구현된 클래스로, 가장 자주 활용되며 활용도가 높다</p>
+</li>
+<li><p>ArrayList의 생성자는 세 종류가 주어진다</p>
+<pre><code>public ArrayList()
+public Arraylist(int initialCapacity)
+public ArrayList(Collection&lt;? extends E&gt;)</code></pre>
+</li>
+</ul>
+</li>
+<li><p>LinkedList<E></p>
+<ul>
+<li>제네릭 클래스로 구현된 자료구조</li>
+<li>연결리스트를 기반으로 구현된 클래스로, 배열의 단점을 극복하기 위한 구현체이다.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/22/java/JCF(2)/" data-id="ckh2qp2p50001jwv13u00enzn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java/java_lang" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/21/java/java_lang/" class="article-date">
@@ -1049,14 +1133,14 @@ int [] ints2 = ints.clone();</code></pre>
 
 
   
-    <article id="post-java/Lambda" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-java/JCF(1)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/20/java/Lambda/" class="article-date">
-  <time datetime="2020-08-20T14:41:12.000Z" itemprop="datePublished">2020-08-20</time>
+    <a href="/2020/08/21/java/JCF(1)/" class="article-date">
+  <time datetime="2020-08-21T06:21:37.000Z" itemprop="datePublished">2020-08-21</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Lambda/">Lambda</a>
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/JCF/">JCF</a>
   </div>
 
   </div>
@@ -1067,7 +1151,7 @@ int [] ints2 = ints.clone();</code></pre>
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/20/java/Lambda/">Lambda</a>
+      <a class="article-title" href="/2020/08/21/java/JCF(1)/">JFC(1)</a>
     </h1>
   
 
@@ -1075,298 +1159,82 @@ int [] ints2 = ints.clone();</code></pre>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="람다식-Lambda-Expression"><a href="#람다식-Lambda-Expression" class="headerlink" title="람다식 (Lambda Expression)"></a>람다식 (Lambda Expression)</h1><h2 id="람다식이란"><a href="#람다식이란" class="headerlink" title="람다식이란"></a>람다식이란</h2><ul>
-<li>Java 1.8에서 추가된 함수형 프로그래밍 기법</li>
-<li>객체지향 프로그래밍과 다르게, 비즈니스 로직만을 빠르게 구현하는 특징</li>
-<li>객체지향 언어인 Java에서 메소드를 함수처럼 사용하는 형식<h2 id="람다식의-예"><a href="#람다식의-예" class="headerlink" title="람다식의 예"></a>람다식의 예</h2></li>
-</ul>
-<h3 id="배열의-정렬"><a href="#배열의-정렬" class="headerlink" title="배열의 정렬"></a>배열의 정렬</h3><ul>
-<li><p>기본 정렬 방식을 이용한 정렬</p>
-<pre><code>String [] strings = &#123;&quot;fast&quot;, &quot;campus&quot;, &quot;java&quot;, &quot;backend&quot;, &quot;school&quot;&#125;;
-System.out.println(Arrays.toString(strings));
-Arrays.sort(strings);
-System.out.println(Arrays.toString(strings));</code></pre>
+        <h1 id="자바-컬렉션-프레임워크-Java-Collections-Framework-JCF"><a href="#자바-컬렉션-프레임워크-Java-Collections-Framework-JCF" class="headerlink" title="자바 컬렉션 프레임워크 (Java Collections Framework; JCF)"></a>자바 컬렉션 프레임워크 (Java Collections Framework; JCF)</h1><h2 id="컬렉션-프레임워크란"><a href="#컬렉션-프레임워크란" class="headerlink" title="컬렉션 프레임워크란"></a>컬렉션 프레임워크란</h2><ul>
+<li><p>java.utils에 속한 일련의 클래스로, 자료구조를 담당</p>
 </li>
-</ul>
-<hr>
+<li><p>잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현</p>
+</li>
+<li><p>제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.</p>
+<h2 id="JCF-인터페이스"><a href="#JCF-인터페이스" class="headerlink" title="JCF 인터페이스"></a>JCF 인터페이스</h2></li>
+<li><p>List 인터페이스</p>
 <ul>
-<li><p>익명 내부 클래스를 이용한 정렬 방식 변경</p>
-<pre><code> Arrays.sort(strings, new Comparator&lt;String&gt;() &#123; // 객체를 생성하여 전달
-  @Override
-  public int compare(String o1, String o2) &#123;
-      return o1.compareTo(o2) * -1; // 내림차순
-  &#125;
- &#125;);</code></pre>
-</li>
-<li><p>람다식을 이용한 정렬 방식의 변경</p>
-<pre><code>Arrays.sort(strings, (o1, o2) -&gt; &#123;return o1.compareTo(o2) * -1;&#125;);
-Comparator&lt;String&gt; comp = (o1, o2) -&gt; &#123;
-  return o1.compareTo(o2) * -1;
-&#125;;
-Arrays.sort(strings, comp);</code></pre>
-</li>
-<li><p>Comparator객체에서 어떤 함수가 return을 하는데? -&gt; 그런 모호함을 없애기 위해 실행되는 함수는 하나여야 한다.ㅇ</p>
-</li>
-<li><p>람다식을 쓰기 위해서는 추상메소드가 단 하나 존재해야 합니다. 그것을 검사하는 방법은</p>
-</li>
+<li>Collection 인터페이스를 상속</li>
+<li>순서가 있는 데이터의 집합으로, 데이터의 중복을 허용</li>
+<li>구현체: ArrayList, LinkedList(, Vector, Stack)</li>
 </ul>
-<p>함수형 인터페이스 (Functional Interface)</p>
+</li>
+<li><p>Set 인터페이스</p>
 <ul>
-<li>추상 메소드가 단 하나 존재하는지 검사</li>
+<li>Collection 인터페이스를 상속</li>
+<li>순서가 없는 데이터의 집합으로, 데이터의 중복을 허용하지 않음</li>
+<li>구현체: HashSet, TreeSet</li>
 </ul>
-<pre><code>    @FunctionalInterface
-    public interface Comparator&lt;T&gt; &#123;
-    int compare(T o1, T o2);
-    ...
-    &#125; </code></pre>
-<h2 id="람다식의-형식"><a href="#람다식의-형식" class="headerlink" title="람다식의 형식"></a>람다식의 형식</h2><pre><code>(String x) -&gt; &#123; System.out.println(x); &#125;
-
-(x) -&gt; &#123; System.out.println(x); &#125;
-
-x -&gt; System.out.println(x)
-
-() -&gt; System.out.println(&quot;x&quot;);  // () 생략 불가능
-
-(x) -&gt; &#123;
-    System.out.println(x);
-    return x;
-&#125;
-
-(x) -&gt; &quot;x: &quot; + x</code></pre>
-<h2 id="람다식의-변수-참조"><a href="#람다식의-변수-참조" class="headerlink" title="람다식의 변수 참조"></a>람다식의 변수 참조</h2><ul>
-<li><p>익명 내부 클래스와 동일한 규칙으로 변수 참조</p>
 </li>
-<li><p>문법적으로 this의 사용법만 다름</p>
+<li><p>Map 인터페이스</p>
 <ul>
-<li>익명의 내부 클래스와 달리 외부 클래스를 참조<ul>
-<li>익명의 내부 클래스의 this는 익명의 내부클래스를 가르키고, 람다식의 this는 외부 클래스를 가리킨다.</li>
+<li>Key-Value 쌍으로 이루어진 데이터의 집합</li>
+<li>구현체: HashMap, TreeMap, Hashtable, Properties<h3 id="Collection-인터페이스"><a href="#Collection-인터페이스" class="headerlink" title="Collection 인터페이스"></a>Collection 인터페이스</h3></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<pre><code>        @FunctionalInterface
-        interface FunctionalInterface &#123;
-        String method();
-        &#125;
-        class Main &#123;
-        void functionalMethod(FunctionalInterface obj) &#123;
-            System.out.println(obj.method());
-        &#125;
-        public static void main(String[] args) &#123;
-            functionalMethod(()-&gt; &#123;
-                System.out.println(&quot;this: &quot; + this);
-                System.out.println(&quot;OuterClass.this: &quot; + Main.this);
-                return &quot;Lambda expression used.&quot;
-            &#125;);
-            functionalMethod(new FunctionalInterface() &#123;
-                @Override
-                String method() &#123;
-                    System.out.println(&quot;this: &quot; + this);
-                    System.out.println(&quot;OuterClass.this: &quot; + Main.this);
-                    return &quot;Anonymous inner class used.&quot;
-                &#125;);
-        &#125;
-        &#125;</code></pre>
-<h2 id="표준-함수형-인터페이스"><a href="#표준-함수형-인터페이스" class="headerlink" title="표준 함수형 인터페이스"></a>표준 함수형 인터페이스</h2><ul>
-<li><p>자주 사용되는 함수형 인터페이스를 정의해 둔 API</p>
+<li><p>Collection 인터페이스의 주요 메소드</p>
 <ul>
-<li>Consumer, Supplier, Function, Operation, Predicate 계열이 있다.</li>
-<li>Consumer: 입력을 소비. accept(T)</li>
-<li>Supplier: 출력을 공급. get()</li>
-<li>Function: 입력 -&gt; 출력 함수 매핑. apply(R) </li>
-<li>Operation: 입력을 연산하여 동일 타입의 출력으로 리턴. apply(T)</li>
-<li>Predicate: 입력을 판단. test(T)<h3 id="표준-함수형-인터페이스의-종류"><a href="#표준-함수형-인터페이스의-종류" class="headerlink" title="표준 함수형 인터페이스의 종류"></a>표준 함수형 인터페이스의 종류</h3><h4 id="Consumer-계열"><a href="#Consumer-계열" class="headerlink" title="Consumer 계열"></a>Consumer 계열</h4></li>
-<li>Consumer</li>
-<li>BiConsumer</li>
-<li>IntConsumer</li>
-<li>LongConsumer</li>
-<li>DoubleConsumer</li>
-<li>ObjIntConumer</li>
-<li>ObjLongConsumer</li>
-<li>ObjDoubleConsumer<h4 id="Supplier-계열"><a href="#Supplier-계열" class="headerlink" title="Supplier 계열"></a>Supplier 계열</h4></li>
-</ul>
-</li>
-<li><p>Supplier</p>
-</li>
-<li><p>BooleanSupplier</p>
-</li>
-<li><p>IntSupplier</p>
-</li>
-<li><p>LonggSupplier</p>
-</li>
-<li><p>DoubleSupplier</p>
-<h4 id="Function-계열"><a href="#Function-계열" class="headerlink" title="Function 계열"></a>Function 계열</h4></li>
-<li><p>Function</p>
-</li>
-<li><p>BiFunction</p>
-</li>
-<li><p>PFunction</p>
-</li>
-<li><p>PtoQFunction</p>
-</li>
-<li><p>ToPFunction</p>
-</li>
-<li><p>ToPBiFunction</p>
-<h4 id="Operator-계열"><a href="#Operator-계열" class="headerlink" title="Operator 계열"></a>Operator 계열</h4></li>
-<li><p>UnaryOperator</p>
-</li>
-<li><p>BinaryOperator</p>
-</li>
-<li><p>IntunaryOperator</p>
-</li>
-<li><p>LongUnaryOperator</p>
-</li>
-<li><p>DoulbeUnaryOperator</p>
-</li>
-<li><p>IntBinaryOperator</p>
-</li>
-<li><p>LongBinaryOperator</p>
-</li>
-<li><p>DoubleBinaryOperator</p>
-<h4 id="Predicate-계열"><a href="#Predicate-계열" class="headerlink" title="Predicate 계열"></a>Predicate 계열</h4></li>
-<li><p>Predicate</p>
-</li>
-<li><p>BiPredicate</p>
-</li>
-<li><p>IntPredicate</p>
-</li>
-<li><p>LongPredicate</p>
-</li>
-<li><p>DoublePredicate</p>
-<h3 id="표준-함수형-인터페이스의-메소드"><a href="#표준-함수형-인터페이스의-메소드" class="headerlink" title="표준 함수형 인터페이스의 메소드"></a>표준 함수형 인터페이스의 메소드</h3><h4 id="andThen-compose"><a href="#andThen-compose" class="headerlink" title="andThen(), compose()"></a>andThen(), compose()</h4></li>
-<li><p>두 개 이상의 함수형 인터페이스를 연결하기 위해 사용</p>
-<ul>
-<li><code>A.andThen(B)</code>: A를 먼저 실행하고 B를 실행. Consumer, Function, Operator 계열 지원</li>
-</ul>
-</li>
-</ul>
-<pre><code>        Function&lt;String, String&gt; funcOne = x -&gt; &quot;str: &quot; + x;
-        Function&lt;String, String&gt; funcTwo = x -&gt; &quot;&#123;&quot; + x + &quot;&#125;&quot;;
-        Function&lt;String, String&gt; andThen = funcOne.andThen(funcTwo); // &#123;str: x&#125;
-
--   `A.compose(B)`: B를 먼저 실행하고 A를 실행. Function, Operator 계열 지원
-
-        IntUnaryOperator multTwo = x -&gt; x * 2;
-        IntUnaryOperator addTen = x -&gt; x + 10;
-        IntUnaryOperator multTwo.compose(addTen); // (x + 10) * 2</code></pre>
-<h4 id="and-or-negate-isEqual"><a href="#and-or-negate-isEqual" class="headerlink" title="and(), or(), negate(), isEqual()"></a>and(), or(), negate(), isEqual()</h4><ul>
-<li><p>Predicate 계열의 기본 메소드</p>
-<ul>
-<li><p>and(), or(), negate()</p>
-</li>
-<li><p>각각 &amp;&amp;, ||, !의 동작을 한다.</p>
-<p>DoublePredicate predOne = x -&gt; x &gt; 0.5;<br>DoublePredicate predTwo = x -&gt; x &lt; 0.0;<br>DoublePredicate predThree = predOne.or(predTwo);<br>DoublePredicate predFour = predThree.negate();</p>
-</li>
-</ul>
-</li>
-<li><p>Predicate 계열의 클래스 메소드</p>
-<ul>
-<li><p>isEqual()</p>
-<pre><code>Predicate&lt;String&gt; isEqualToString = Predicate.isEqual(&quot;String&quot;);</code></pre>
-<h4 id="minBy-maxBy"><a href="#minBy-maxBy" class="headerlink" title="minBy(), maxBy()"></a>minBy(), maxBy()</h4></li>
+<li>add( E e) : 요소 e를 컬렉션에 추가한다.</li>
+<li>addAll(Collection&lt;? extends E c&gt; : 다른 컬렉션 c의 모든 요소를 컬렉션에 추가한다<br>도전 과제: 와일드 카드란</li>
+<li>clear() : 컬렉션의 모든 요소를 제거한다.</li>
+<li>contains(Object o) : 컬렉션에 요소 o가 존재하는지 확인한다.</li>
+<li>containsAll(Collection&lt;?&gt; c) 컬렉션 c의 모든 요소가 컬렉션에 포함되는 지 확인한다.</li>
+<li>equals(Collection&lt;?&gt; c) : 컬렉션 c와 같은 내용을 포함하는지 비교한다.</li>
+<li>isEmpty() : 컬렉션이 비어있는지를 확인한다.</li>
+<li>iterator() : 컬렉션의 Iterator을 반환한다.</li>
+<li>remove(Object o) : 컬렉션에서 요소 o를 제거한다.</li>
+<li>removeAll(Collection&lt;?&gt; c) : 컬렉션 c에 속한 모든 요소를 컬렉션에서 제거한다.</li>
+<li>retainAll(Collection&lt;?&gt; c) : 컬렉션 c에 포함된 객체만 남기고 나머지 요소를 제거한다.</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li><p>BinaryOperator 클래스의 클래스 메소드</p>
+<li><p>Iterator</p>
 <ul>
-<li><p><code>Comparator&lt;T&gt;</code>를 파라미터로 받아 최소값/최대값을 구하는  <code>BinaryOperator&lt;T&gt;</code>를 리턴</p>
-<pre><code>BinaryOperator&lt;String&gt; minBy = BinaryOperator.minBy((o1, o2) -&gt; &#123;
-return len(o1) &gt; len(o2) ? 1 : -1;
-&#125;);
-BinaryOperator&lt;Integer&gt; maxBy = BinaryOperator.maxBy((val1, val2) -&gt; &#123;
-return val1.compareTo(val2);
-&#125;);</code></pre>
-<h3 id="람다식에-메소드-생성자-사용"><a href="#람다식에-메소드-생성자-사용" class="headerlink" title="람다식에 메소드/생성자 사용"></a>람다식에 메소드/생성자 사용</h3></li>
-</ul>
+<li><p>iterator()로 반환되는 객체로, Collection에 저장된 요소에 접근하기 위해 사용</p>
+<ul>
+<li><p>메소드/설명</p>
+<ul>
+<li><p>hasNext(): 다음 요소가 있는지 확인</p>
 </li>
-<li><p>이미 구현된 메소드가 있는 경우, 다양한 방식으로 람다식을 대체 가능</p>
-<h4 id="ClassName-instanceMethod"><a href="#ClassName-instanceMethod" class="headerlink" title="ClassName::instanceMethod"></a>ClassName::instanceMethod</h4></li>
+<li><p>next(): 다음 요소가 있을 경우 반환</p>
+</li>
+<li><p>remove(): 현재 위치의 요소를 삭제</p>
+<ul>
+<li>Iterator의 활용</li>
 </ul>
-<p>첫번째 파라미터를 객체로, 두번째 파라미터를 메소드 입력으로 사용</p>
-<pre><code>String[] strings = &#123; &quot;A&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot; &#125;;
-Arrays.sort(strings, String::compareTo);</code></pre>
-<h4 id="ClassName-classMethod"><a href="#ClassName-classMethod" class="headerlink" title="ClassName::classMethod"></a>ClassName::classMethod</h4><ul>
-<li><p>클래스 메소드의 입력으로 모든 파라미터가 사용됨</p>
-<pre><code>Function&lt;String, Integer&gt; parser = Integer::parseInt;</code></pre>
-<h4 id="instance-instanceMethod"><a href="#instance-instanceMethod" class="headerlink" title="instance::instanceMethod"></a>instance::instanceMethod</h4></li>
-<li><p>주어진 객체의 메소드를 호출</p>
-<pre><code>String string = &quot;StringA&quot;;
-Predicate&lt;String&gt; pred = string::equals;
-System.out.println(pred.apply(&quot;StringA&quot;));</code></pre>
-<h4 id="ClassName-new"><a href="#ClassName-new" class="headerlink" title="ClassName::new"></a>ClassName::new</h4></li>
-<li><p>생성자를 이용하여 객체를 생성하는 람다식</p>
+<p>Iterator<String> iter = collection.iterator();<br>while(iter.hasNext()) {<br>String string = iter.next();<br>System.out.println(string); }<br>이것을 간단하게 하면</p>
 </li>
 </ul>
-<pre><code>    IntFunction&lt;String&gt; func = String::new;
-    String string = func.apply(10);</code></pre>
-<h4 id="ClassName-new-1"><a href="#ClassName-new-1" class="headerlink" title="ClassName[]::new"></a>ClassName[]::new</h4><ul>
-<li><p>배열을 생성하는 람다식</p>
-<pre><code>IntFunction&lt;String[]&gt; func = String[]::new;
-String [] strings = func.apply(100);</code></pre>
+<p>for(String string: collection) {<br>System.out.println(string); }</p>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/20/java/Lambda/" data-id="ckh2ffo680017cov1d49f6jvx" class="article-share-link">Share</a>
+      <a data-url="https://hansol-jeong.github.io/2020/08/21/java/JCF(1)/" data-id="ckh2qp2p10000jwv1gxkc2ioe" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java/StringTokenizer" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/20/java/StringTokenizer/" class="article-date">
-  <time datetime="2020-08-20T07:22:19.000Z" itemprop="datePublished">2020-08-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/20/java/StringTokenizer/">StringTokenizer</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="StringTokenizer-클래스"><a href="#StringTokenizer-클래스" class="headerlink" title="StringTokenizer 클래스"></a>StringTokenizer 클래스</h1><h2 id="StringTokenizer란"><a href="#StringTokenizer란" class="headerlink" title="StringTokenizer란"></a>StringTokenizer란</h2><ul>
-<li><p>문자열 구분자 문자를 이용해 문자열을 분리하는 클래스</p>
-<h2 id="StringTokenizer의-초기화"><a href="#StringTokenizer의-초기화" class="headerlink" title="StringTokenizer의 초기화"></a>StringTokenizer의 초기화</h2><p>StringTokenizer st = new StringTokenizer(“abc,def,ghi”, “,”); // abc def ghi<br>st = new StringTokenizer(“230,0042,015,002”, “0,”); // 23 42 15 2</p>
-<h2 id="StringTokenizer의-메소드"><a href="#StringTokenizer의-메소드" class="headerlink" title="StringTokenizer의 메소드"></a>StringTokenizer의 메소드</h2></li>
-</ul>
-<ul>
-<li>countTokens(): 남아있는 토큰의 갯수를 반환</li>
-<li>hasMoreTokens() : 토큰이 남아있는지 여부를 반환</li>
-<li>nextToken() : 다음 토큰을 String으로 반환</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/20/java/StringTokenizer/" data-id="ckh2gk2w20000v0v15azw6ozk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
 
     </footer>
   </div>
@@ -1390,7 +1258,7 @@ String [] strings = func.apply(100);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1400,7 +1268,7 @@ String [] strings = func.apply(100);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -1410,7 +1278,7 @@ String [] strings = func.apply(100);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 12.5px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 

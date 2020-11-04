@@ -66,6 +66,332 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java/Lambda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/20/java/Lambda/" class="article-date">
+  <time datetime="2020-08-20T14:41:12.000Z" itemprop="datePublished">2020-08-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Lambda/">Lambda</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/20/java/Lambda/">Lambda</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="람다식-Lambda-Expression"><a href="#람다식-Lambda-Expression" class="headerlink" title="람다식 (Lambda Expression)"></a>람다식 (Lambda Expression)</h1><h2 id="람다식이란"><a href="#람다식이란" class="headerlink" title="람다식이란"></a>람다식이란</h2><ul>
+<li>Java 1.8에서 추가된 함수형 프로그래밍 기법</li>
+<li>객체지향 프로그래밍과 다르게, 비즈니스 로직만을 빠르게 구현하는 특징</li>
+<li>객체지향 언어인 Java에서 메소드를 함수처럼 사용하는 형식<h2 id="람다식의-예"><a href="#람다식의-예" class="headerlink" title="람다식의 예"></a>람다식의 예</h2></li>
+</ul>
+<h3 id="배열의-정렬"><a href="#배열의-정렬" class="headerlink" title="배열의 정렬"></a>배열의 정렬</h3><ul>
+<li><p>기본 정렬 방식을 이용한 정렬</p>
+<pre><code>String [] strings = &#123;&quot;fast&quot;, &quot;campus&quot;, &quot;java&quot;, &quot;backend&quot;, &quot;school&quot;&#125;;
+System.out.println(Arrays.toString(strings));
+Arrays.sort(strings);
+System.out.println(Arrays.toString(strings));</code></pre>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>익명 내부 클래스를 이용한 정렬 방식 변경</p>
+<pre><code> Arrays.sort(strings, new Comparator&lt;String&gt;() &#123; // 객체를 생성하여 전달
+  @Override
+  public int compare(String o1, String o2) &#123;
+      return o1.compareTo(o2) * -1; // 내림차순
+  &#125;
+ &#125;);</code></pre>
+</li>
+<li><p>람다식을 이용한 정렬 방식의 변경</p>
+<pre><code>Arrays.sort(strings, (o1, o2) -&gt; &#123;return o1.compareTo(o2) * -1;&#125;);
+Comparator&lt;String&gt; comp = (o1, o2) -&gt; &#123;
+  return o1.compareTo(o2) * -1;
+&#125;;
+Arrays.sort(strings, comp);</code></pre>
+</li>
+<li><p>Comparator객체에서 어떤 함수가 return을 하는데? -&gt; 그런 모호함을 없애기 위해 실행되는 함수는 하나여야 한다.ㅇ</p>
+</li>
+<li><p>람다식을 쓰기 위해서는 추상메소드가 단 하나 존재해야 합니다. 그것을 검사하는 방법은</p>
+</li>
+</ul>
+<p>함수형 인터페이스 (Functional Interface)</p>
+<ul>
+<li>추상 메소드가 단 하나 존재하는지 검사</li>
+</ul>
+<pre><code>    @FunctionalInterface
+    public interface Comparator&lt;T&gt; &#123;
+    int compare(T o1, T o2);
+    ...
+    &#125; </code></pre>
+<h2 id="람다식의-형식"><a href="#람다식의-형식" class="headerlink" title="람다식의 형식"></a>람다식의 형식</h2><pre><code>(String x) -&gt; &#123; System.out.println(x); &#125;
+
+(x) -&gt; &#123; System.out.println(x); &#125;
+
+x -&gt; System.out.println(x)
+
+() -&gt; System.out.println(&quot;x&quot;);  // () 생략 불가능
+
+(x) -&gt; &#123;
+    System.out.println(x);
+    return x;
+&#125;
+
+(x) -&gt; &quot;x: &quot; + x</code></pre>
+<h2 id="람다식의-변수-참조"><a href="#람다식의-변수-참조" class="headerlink" title="람다식의 변수 참조"></a>람다식의 변수 참조</h2><ul>
+<li><p>익명 내부 클래스와 동일한 규칙으로 변수 참조</p>
+</li>
+<li><p>문법적으로 this의 사용법만 다름</p>
+<ul>
+<li>익명의 내부 클래스와 달리 외부 클래스를 참조<ul>
+<li>익명의 내부 클래스의 this는 익명의 내부클래스를 가르키고, 람다식의 this는 외부 클래스를 가리킨다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>        @FunctionalInterface
+        interface FunctionalInterface &#123;
+        String method();
+        &#125;
+        class Main &#123;
+        void functionalMethod(FunctionalInterface obj) &#123;
+            System.out.println(obj.method());
+        &#125;
+        public static void main(String[] args) &#123;
+            functionalMethod(()-&gt; &#123;
+                System.out.println(&quot;this: &quot; + this);
+                System.out.println(&quot;OuterClass.this: &quot; + Main.this);
+                return &quot;Lambda expression used.&quot;
+            &#125;);
+            functionalMethod(new FunctionalInterface() &#123;
+                @Override
+                String method() &#123;
+                    System.out.println(&quot;this: &quot; + this);
+                    System.out.println(&quot;OuterClass.this: &quot; + Main.this);
+                    return &quot;Anonymous inner class used.&quot;
+                &#125;);
+        &#125;
+        &#125;</code></pre>
+<h2 id="표준-함수형-인터페이스"><a href="#표준-함수형-인터페이스" class="headerlink" title="표준 함수형 인터페이스"></a>표준 함수형 인터페이스</h2><ul>
+<li><p>자주 사용되는 함수형 인터페이스를 정의해 둔 API</p>
+<ul>
+<li>Consumer, Supplier, Function, Operation, Predicate 계열이 있다.</li>
+<li>Consumer: 입력을 소비. accept(T)</li>
+<li>Supplier: 출력을 공급. get()</li>
+<li>Function: 입력 -&gt; 출력 함수 매핑. apply(R) </li>
+<li>Operation: 입력을 연산하여 동일 타입의 출력으로 리턴. apply(T)</li>
+<li>Predicate: 입력을 판단. test(T)<h3 id="표준-함수형-인터페이스의-종류"><a href="#표준-함수형-인터페이스의-종류" class="headerlink" title="표준 함수형 인터페이스의 종류"></a>표준 함수형 인터페이스의 종류</h3><h4 id="Consumer-계열"><a href="#Consumer-계열" class="headerlink" title="Consumer 계열"></a>Consumer 계열</h4></li>
+<li>Consumer</li>
+<li>BiConsumer</li>
+<li>IntConsumer</li>
+<li>LongConsumer</li>
+<li>DoubleConsumer</li>
+<li>ObjIntConumer</li>
+<li>ObjLongConsumer</li>
+<li>ObjDoubleConsumer<h4 id="Supplier-계열"><a href="#Supplier-계열" class="headerlink" title="Supplier 계열"></a>Supplier 계열</h4></li>
+</ul>
+</li>
+<li><p>Supplier</p>
+</li>
+<li><p>BooleanSupplier</p>
+</li>
+<li><p>IntSupplier</p>
+</li>
+<li><p>LonggSupplier</p>
+</li>
+<li><p>DoubleSupplier</p>
+<h4 id="Function-계열"><a href="#Function-계열" class="headerlink" title="Function 계열"></a>Function 계열</h4></li>
+<li><p>Function</p>
+</li>
+<li><p>BiFunction</p>
+</li>
+<li><p>PFunction</p>
+</li>
+<li><p>PtoQFunction</p>
+</li>
+<li><p>ToPFunction</p>
+</li>
+<li><p>ToPBiFunction</p>
+<h4 id="Operator-계열"><a href="#Operator-계열" class="headerlink" title="Operator 계열"></a>Operator 계열</h4></li>
+<li><p>UnaryOperator</p>
+</li>
+<li><p>BinaryOperator</p>
+</li>
+<li><p>IntunaryOperator</p>
+</li>
+<li><p>LongUnaryOperator</p>
+</li>
+<li><p>DoulbeUnaryOperator</p>
+</li>
+<li><p>IntBinaryOperator</p>
+</li>
+<li><p>LongBinaryOperator</p>
+</li>
+<li><p>DoubleBinaryOperator</p>
+<h4 id="Predicate-계열"><a href="#Predicate-계열" class="headerlink" title="Predicate 계열"></a>Predicate 계열</h4></li>
+<li><p>Predicate</p>
+</li>
+<li><p>BiPredicate</p>
+</li>
+<li><p>IntPredicate</p>
+</li>
+<li><p>LongPredicate</p>
+</li>
+<li><p>DoublePredicate</p>
+<h3 id="표준-함수형-인터페이스의-메소드"><a href="#표준-함수형-인터페이스의-메소드" class="headerlink" title="표준 함수형 인터페이스의 메소드"></a>표준 함수형 인터페이스의 메소드</h3><h4 id="andThen-compose"><a href="#andThen-compose" class="headerlink" title="andThen(), compose()"></a>andThen(), compose()</h4></li>
+<li><p>두 개 이상의 함수형 인터페이스를 연결하기 위해 사용</p>
+<ul>
+<li><code>A.andThen(B)</code>: A를 먼저 실행하고 B를 실행. Consumer, Function, Operator 계열 지원</li>
+</ul>
+</li>
+</ul>
+<pre><code>        Function&lt;String, String&gt; funcOne = x -&gt; &quot;str: &quot; + x;
+        Function&lt;String, String&gt; funcTwo = x -&gt; &quot;&#123;&quot; + x + &quot;&#125;&quot;;
+        Function&lt;String, String&gt; andThen = funcOne.andThen(funcTwo); // &#123;str: x&#125;
+
+-   `A.compose(B)`: B를 먼저 실행하고 A를 실행. Function, Operator 계열 지원
+
+        IntUnaryOperator multTwo = x -&gt; x * 2;
+        IntUnaryOperator addTen = x -&gt; x + 10;
+        IntUnaryOperator multTwo.compose(addTen); // (x + 10) * 2</code></pre>
+<h4 id="and-or-negate-isEqual"><a href="#and-or-negate-isEqual" class="headerlink" title="and(), or(), negate(), isEqual()"></a>and(), or(), negate(), isEqual()</h4><ul>
+<li><p>Predicate 계열의 기본 메소드</p>
+<ul>
+<li><p>and(), or(), negate()</p>
+</li>
+<li><p>각각 &amp;&amp;, ||, !의 동작을 한다.</p>
+<p>DoublePredicate predOne = x -&gt; x &gt; 0.5;<br>DoublePredicate predTwo = x -&gt; x &lt; 0.0;<br>DoublePredicate predThree = predOne.or(predTwo);<br>DoublePredicate predFour = predThree.negate();</p>
+</li>
+</ul>
+</li>
+<li><p>Predicate 계열의 클래스 메소드</p>
+<ul>
+<li><p>isEqual()</p>
+<pre><code>Predicate&lt;String&gt; isEqualToString = Predicate.isEqual(&quot;String&quot;);</code></pre>
+<h4 id="minBy-maxBy"><a href="#minBy-maxBy" class="headerlink" title="minBy(), maxBy()"></a>minBy(), maxBy()</h4></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>BinaryOperator 클래스의 클래스 메소드</p>
+<ul>
+<li><p><code>Comparator&lt;T&gt;</code>를 파라미터로 받아 최소값/최대값을 구하는  <code>BinaryOperator&lt;T&gt;</code>를 리턴</p>
+<pre><code>BinaryOperator&lt;String&gt; minBy = BinaryOperator.minBy((o1, o2) -&gt; &#123;
+return len(o1) &gt; len(o2) ? 1 : -1;
+&#125;);
+BinaryOperator&lt;Integer&gt; maxBy = BinaryOperator.maxBy((val1, val2) -&gt; &#123;
+return val1.compareTo(val2);
+&#125;);</code></pre>
+<h3 id="람다식에-메소드-생성자-사용"><a href="#람다식에-메소드-생성자-사용" class="headerlink" title="람다식에 메소드/생성자 사용"></a>람다식에 메소드/생성자 사용</h3></li>
+</ul>
+</li>
+<li><p>이미 구현된 메소드가 있는 경우, 다양한 방식으로 람다식을 대체 가능</p>
+<h4 id="ClassName-instanceMethod"><a href="#ClassName-instanceMethod" class="headerlink" title="ClassName::instanceMethod"></a>ClassName::instanceMethod</h4></li>
+</ul>
+<p>첫번째 파라미터를 객체로, 두번째 파라미터를 메소드 입력으로 사용</p>
+<pre><code>String[] strings = &#123; &quot;A&quot;, &quot;B&quot;, &quot;D&quot;, &quot;C&quot; &#125;;
+Arrays.sort(strings, String::compareTo);</code></pre>
+<h4 id="ClassName-classMethod"><a href="#ClassName-classMethod" class="headerlink" title="ClassName::classMethod"></a>ClassName::classMethod</h4><ul>
+<li><p>클래스 메소드의 입력으로 모든 파라미터가 사용됨</p>
+<pre><code>Function&lt;String, Integer&gt; parser = Integer::parseInt;</code></pre>
+<h4 id="instance-instanceMethod"><a href="#instance-instanceMethod" class="headerlink" title="instance::instanceMethod"></a>instance::instanceMethod</h4></li>
+<li><p>주어진 객체의 메소드를 호출</p>
+<pre><code>String string = &quot;StringA&quot;;
+Predicate&lt;String&gt; pred = string::equals;
+System.out.println(pred.apply(&quot;StringA&quot;));</code></pre>
+<h4 id="ClassName-new"><a href="#ClassName-new" class="headerlink" title="ClassName::new"></a>ClassName::new</h4></li>
+<li><p>생성자를 이용하여 객체를 생성하는 람다식</p>
+</li>
+</ul>
+<pre><code>    IntFunction&lt;String&gt; func = String::new;
+    String string = func.apply(10);</code></pre>
+<h4 id="ClassName-new-1"><a href="#ClassName-new-1" class="headerlink" title="ClassName[]::new"></a>ClassName[]::new</h4><ul>
+<li><p>배열을 생성하는 람다식</p>
+<pre><code>IntFunction&lt;String[]&gt; func = String[]::new;
+String [] strings = func.apply(100);</code></pre>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/20/java/Lambda/" data-id="ckh2ffo680017cov1d49f6jvx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java/StringTokenizer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/20/java/StringTokenizer/" class="article-date">
+  <time datetime="2020-08-20T07:22:19.000Z" itemprop="datePublished">2020-08-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/20/java/StringTokenizer/">StringTokenizer</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="StringTokenizer-클래스"><a href="#StringTokenizer-클래스" class="headerlink" title="StringTokenizer 클래스"></a>StringTokenizer 클래스</h1><h2 id="StringTokenizer란"><a href="#StringTokenizer란" class="headerlink" title="StringTokenizer란"></a>StringTokenizer란</h2><ul>
+<li><p>문자열 구분자 문자를 이용해 문자열을 분리하는 클래스</p>
+<h2 id="StringTokenizer의-초기화"><a href="#StringTokenizer의-초기화" class="headerlink" title="StringTokenizer의 초기화"></a>StringTokenizer의 초기화</h2><p>StringTokenizer st = new StringTokenizer(“abc,def,ghi”, “,”); // abc def ghi<br>st = new StringTokenizer(“230,0042,015,002”, “0,”); // 23 42 15 2</p>
+<h2 id="StringTokenizer의-메소드"><a href="#StringTokenizer의-메소드" class="headerlink" title="StringTokenizer의 메소드"></a>StringTokenizer의 메소드</h2></li>
+</ul>
+<ul>
+<li>countTokens(): 남아있는 토큰의 갯수를 반환</li>
+<li>hasMoreTokens() : 토큰이 남아있는지 여부를 반환</li>
+<li>nextToken() : 다음 토큰을 String으로 반환</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/20/java/StringTokenizer/" data-id="ckh2gk2w20000v0v15azw6ozk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java/Regular_Expression" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/19/java/Regular_Expression/" class="article-date">
@@ -1090,341 +1416,6 @@ public static <'T'> T staicMethod(T var) &#123; &#125;
 
 
   
-    <article id="post-java/Interface" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/13/java/Interface/" class="article-date">
-  <time datetime="2020-08-13T12:55:23.000Z" itemprop="datePublished">2020-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Interface/">Interface</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/13/java/Interface/">Interface</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="인터페이스-Interface"><a href="#인터페이스-Interface" class="headerlink" title="인터페이스 (Interface)"></a>인터페이스 (Interface)</h1><h2 id="인터페이스란"><a href="#인터페이스란" class="headerlink" title="인터페이스란"></a>인터페이스란</h2><ul>
-<li><p>클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀</p>
-</li>
-<li><p>아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드</p>
-<h2 id="인터페이스의-특징"><a href="#인터페이스의-특징" class="headerlink" title="인터페이스의 특징"></a>인터페이스의 특징</h2></li>
-<li><p><code>class</code>가 아닌  <code>interface</code>  키워드로 선언</p>
-<ul>
-<li><code>public</code>  또는  <code>default</code>  접근 제어자만 사용 가능</li>
-</ul>
-</li>
-<li><p>멤버 변수는 항상  <code>public static final</code>이며, 생략 가능</p>
-</li>
-<li><p>멤버 메소드는 항상  <code>public abstract</code>이며, 생략 가능</p>
-</li>
-<li><p>클래스와 달리 인터페이스는 여러 개 상속받을 수 있다.</p>
-<pre><code>public interface IFoo &#123;
-public static final int MEMBER_VAR = 10;
-int MEMBER_VAR2 = 20; // public static final
-
-public abstract void methodA(int param);
-void methodB(int param); // public abstract
-&#125;
-
-public class Foo implements IFoo &#123;
-@Override
-void methodA(int param) &#123;
-    System.out.println(param);
-&#125;
-
-@Override
-void methodB(int param) &#123;
-    System.out.println(param);
-&#125;
-&#125;</code></pre>
-<h2 id="인터페이스간의-상속"><a href="#인터페이스간의-상속" class="headerlink" title="인터페이스간의 상속"></a>인터페이스간의 상속</h2></li>
-<li><p>인터페이스 간의 ‘IS-A’ 관계</p>
-</li>
-<li><p>인터페이스가 인터페이스를 상속할 경우  <code>extends</code>로 상속</p>
-</li>
-<li><p>클래스-클래스와 달리 다중 상속 가능</p>
-<pre><code>interface Walkable &#123;
-void walk();
-&#125;
-
-interface Runnable &#123;
-void run();
-&#125;
-public interface Jumpable extends Walkable, Runnable &#123;
-void jump();
-&#125;
-public class Jumper implements Jumpable &#123;
-@Override
-void walk() &#123;
-    System.out.println(&quot;walk&quot;);
-&#125;
-@Override
-void run() &#123;
-    System.out.println(&quot;run&quot;);
-&#125;
-@Override
-void jump() &#123;
-    System.out.println(&quot;jump&quot;);
-&#125;
-&#125;</code></pre>
-</li>
-</ul>
-<h2 id="JDK-1-8"><a href="#JDK-1-8" class="headerlink" title="JDK 1.8"></a>JDK 1.8</h2><ul>
-<li><p>기본 메소드 (Default method): 자식 클래스에서 구현할 필요가 없는 메소드</p>
-<ul>
-<li>인터페이스에  <code>default</code>  메소드를 구현할 수 있다.</li>
-<li><code>default</code>  메소드는 항상  <code>public</code>이다.</li>
-<li>인터페이스의 철학과 맞지 않으나, 인터페이스가 개선되었을 때 손쉽게 기능 추가를 위해 만들어짐</li>
-</ul>
-<p>interface IFoo {<br>void abstractMethod();</p>
-<p>default void defaultMethod() { // 구현 클래스에서 구현할 필요가 없다.</p>
-<pre><code>System.out.println(&quot;Default method&quot;);</code></pre>
-<p>}<br>}</p>
-<p>class SuperFoo {<br>void defaultMethod() {</p>
-<pre><code>System.out.println(&quot;Super method&quot;);</code></pre>
-<p>}<br>}</p>
-<p>class FooOne implements IFoo {<br>void abstractMethod() {</p>
-<pre><code>return;</code></pre>
-<p>}<br>}</p>
-<p>class FooTwo extends SuperFoo implements IFoo {<br>void abstractMethod() {</p>
-<pre><code>return;</code></pre>
-<p>}<br>}</p>
-<p>public class Main {<br>public static void main(String[] args) {</p>
-<pre><code>FooOne fooOne = new FooOne();
-fooOne.defaultMethod(); // Default method
-
-FooTwo fooTwo = new FooTwo();
-fooTwo.defaultMethod(); // Super method</code></pre>
-<p>}<br>}</p>
-</li>
-</ul>
-<ul>
-<li><p>static 메소드: 클래스 메소드와 동일하게 사용 가능</p>
-<ul>
-<li>인터페이스 이름으로 호출 가능</li>
-<li>클래스 구현체의 이름으로는 호출할 수 없음</li>
-</ul>
-</li>
-</ul>
-<pre><code>      interface IFoo &#123;
-      static void staticMethod() &#123;
-      System.out.println(&quot;static method&quot;);
-      &#125;
-      &#125;
-      class Foo implements IFoo &#123;
-      &#125;
-      public class Main &#123;
-      public static void main(String[] args) &#123;
-      IFoo.staticMethod(); // static method
-      // Foo.staticMethod(); // not possible
-      &#125;
-      &#125;</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/13/java/Interface/" data-id="ckh2ffo660014cov1at2oen5e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java/Modifier" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/12/java/Modifier/" class="article-date">
-  <time datetime="2020-08-12T14:53:23.000Z" itemprop="datePublished">2020-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Modifier/">Modifier</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/12/java/Modifier/">Modifier</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="제어자-Modifier"><a href="#제어자-Modifier" class="headerlink" title="제어자 (Modifier)"></a>제어자 (Modifier)</h1><h2 id="제어자란"><a href="#제어자란" class="headerlink" title="제어자란"></a>제어자란</h2><ul>
-<li>클래스, 변수, 메소드에 부가 기능을 부여하는 키워드</li>
-<li>접근 제어자 (Access modifiers)<ul>
-<li>접근할 수 있는 범위를 정하는 키워드</li>
-<li><code>public</code>,  <code>protected</code>,  <code>(default = package)</code>,  <code>private</code></li>
-</ul>
-</li>
-<li>그 외 제어자 (Other modifiers)<ul>
-<li>특별한 기능을 부여하는 제어자</li>
-<li><code>static</code>,  <code>final</code>,  <code>abstract</code>,  <code>synchronized</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="제어자의-기능"><a href="#제어자의-기능" class="headerlink" title="제어자의 기능"></a>제어자의 기능</h2><h3 id="접근-제어자"><a href="#접근-제어자" class="headerlink" title="접근 제어자"></a>접근 제어자</h3><ul>
-<li><p>접근 가능한 범위를 정해, 데이터 은닉/보호 (Encapsulation) 기능을 추가한다.</p>
-</li>
-<li><p>접근 제어자별 접근 범위</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>제어자</th>
-<th>같은 클래스</th>
-<th>같은 패키지</th>
-<th>다른패키지에 속한 자식클래스</th>
-<th>전제</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public</td>
-<td>o</td>
-<td>o</td>
-<td>o</td>
-<td>o</td>
-</tr>
-<tr>
-<td>protected</td>
-<td>o</td>
-<td>o</td>
-<td>o</td>
-<td></td>
-</tr>
-<tr>
-<td>default</td>
-<td>o</td>
-<td>o</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>private</td>
-<td>o</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<ul>
-<li><p><code>private</code>  또는  <code>protected</code>  변수에 접근하기 위해 getter와 setter 사용</p>
-<pre><code> class public Foo &#123;
-  private int x = 0;
-  private int y = 1;
-
-  public void setX(int x) &#123; // setter
-      this.x = x;
-  &#125;
-
-  public void setY(int y) &#123; // setter
-      if (y &gt;= 0) &#123;
-        this.y = y;
-      &#125;
-  &#125;
-
-  public int getX() &#123; // getter
-      return x;
-  &#125;
-
-  public int getY() &#123; // getter
-      return y;
-  &#125;</code></pre>
-<p>  }</p>
-</li>
-</ul>
-<h3 id="그-외의-제어자"><a href="#그-외의-제어자" class="headerlink" title="그 외의 제어자"></a>그 외의 제어자</h3><ul>
-<li><p><code>final</code></p>
-<ul>
-<li><p>더 이상 바뀔 수 없음을 의미</p>
-</li>
-<li><p>클래스, 메소드, 변수에 사용할 수 있음</p>
-<ul>
-<li><p>클래스: 더 이상 상속이 불가능해진다.</p>
-</li>
-<li><p>메소드: 자식 클래스에서 오버라이드할 수 없다.</p>
-</li>
-<li><p>변수: 변수의 값이 초기화 이후에 변하지 않는다.</p>
-<ul>
-<li>생성자에서 초기화가 이루어지는 것을  <code>blank final</code>  변수라 한다.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>public class Foo {<br>final int x = 0; // final variable<br>final int y; // blank finial variable</p>
-<p>public Foo(int y) {<br>  this.y = y; // blank final variable  initialization<br>}<br>}</p>
-</li>
-<li><p><code>static</code></p>
-<ul>
-<li>클래스 변수, 클래스 메소드 등을 선언하기 위해 사용</li>
-</ul>
-</li>
-<li><p><code>abstract</code></p>
-<ul>
-<li>추상 클래스에서 사용</li>
-</ul>
-</li>
-<li><p><code>synchronized</code></p>
-<ul>
-<li>동시성 프로그래밍에 사용<h2 id="싱글톤-패턴-Singletone"><a href="#싱글톤-패턴-Singletone" class="headerlink" title="싱글톤 패턴 (Singletone)"></a>싱글톤 패턴 (Singletone)</h2></li>
-</ul>
-</li>
-<li><p>객체가 단 하나만 존재할 수 있는 클래스</p>
-</li>
-<li><p><code>private</code>  생성자를 이용한다.</p>
-<pre><code>class SingletonClass &#123;
-private static SingletoneClass instance = new SingletonClass();
-private SingletonClass() &#123;&#125;
-
-public static SingletonClass getInstance() &#123;
-  return instance;
-&#125; 
-&#125;</code></pre>
-<p>static메소드를 통해 instance를 반환 받을 수 있고 instance는 static SingletonClass 객체이기 때문에 SingletonClass의 객체는 하나일 수 밖에 없으며, 오직 getInstance함수로만 생성이 가능하다.</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/12/java/Modifier/" data-id="ckh2ffo6c001gcov130gb40g5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1440,7 +1431,7 @@ public static SingletonClass getInstance() &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1450,7 +1441,7 @@ public static SingletonClass getInstance() &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -1460,7 +1451,7 @@ public static SingletonClass getInstance() &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 12.5px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 15px;">MultiThread</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 10px;">day_1</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
