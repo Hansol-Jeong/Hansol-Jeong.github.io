@@ -952,24 +952,27 @@ public class Main &#123;
 </li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/50402288/98468143-79091880-221c-11eb-8d76-be35501c6a5a.png" alt="20201108234502"></p>
+<p>그렇기 때문에 .term-list 의 뒤에 가상으로 블럭요소를 하나 만들고 그 블럭요소가 float를 받을 수 있도록 좌우로 clear 즉 clear: both를 주는 것입니다. 이 때 이 가상 블럭요소는 float요소가 아니기 때문에 이 요소자리까지 term 박스가 감쌀 수 있게 되는 것이죠 이제 list 요소들을 볼까요? </p>
 <pre><code>.term-list-subject &#123;
 float: right;
 width: 145px;
-margin-top: -5px;
+margin-top: -5px; 탑 마진이 +일 때는 컨텐츠가 아래로 내려가는 성질이 있습니다. 반대로 - 라면 컨텐츠가 올라가는 효과를 줍니다.
 color: #296897;
 &#125;
 .term-list-thumbnail &#123;
-float: left;
+float: left; 왼쪽정렬
 &#125;
-.term-list-thumbnail  img &#123;
-vertical-align: top;
+.term-list-thumbnail  img &#123; 이것은 썸네일 정렬인데...사실 왜있는지 모르겠습니다 없어도 그대로더라구요 없어도 될 것 같아요 제 생각엔 그래요.
+vertical-align: top; 
 &#125;
 .term-list-brief &#123;
-width: 145px;
-float: right;
-line-height: 1.5;
-margin-top: 5px;
+width: 145px; 좌우 길이를 주고
+float: right; 오른쪽 정렬
+line-height: 1.5; 한줄 높이
+margin-top: 5px; 탑마진
 &#125;</code></pre>
+<h2 id="결과-1"><a href="#결과-1" class="headerlink" title="결과"></a>결과</h2><p><img src="https://user-images.githubusercontent.com/50402288/98468480-fb460c80-221d-11eb-991e-137d07fceb11.png" alt="20201108235534"></p>
+<p>쨘! 이쁜 term섹션이 나왔습니다. HTML-CSS도 나름 재밌어요<br><img src="https://user-images.githubusercontent.com/50402288/98468545-42340200-221e-11eb-844a-a106aaf84e64.jpg" alt="20180118065028_1177184_600_760"></p>
 
       
     </div>
