@@ -858,6 +858,103 @@ public class Main &#123;
 
 
   
+    <article id="post-Algorithm/level1/Crain" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/24/Algorithm/level1/Crain/" class="article-date">
+  <time datetime="2020-10-24T13:11:23.000Z" itemprop="datePublished">2020-10-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>►<a class="article-category-link" href="/categories/Algorithm/Level1/">Level1</a>►<a class="article-category-link" href="/categories/Algorithm/Level1/Crain/">Crain</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/24/Algorithm/level1/Crain/">Crain</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>게임개발자인  죠르디는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다.<br>죠르디는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.</p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/69f1cd36-09f4-4435-8363-b71a650f7448/crane_game_101.png" alt="crane_game_101.png"></p>
+<p>게임 화면은  <strong>1 x 1</strong>  크기의 칸들로 이루어진  <strong>N x N</strong>  크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은  5 x 5  크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은  1 x 1  크기의 격자 한 칸을 차지하며  <strong>격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다.</strong>  게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.</p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/638e2162-b1e4-4bbb-b0d7-62d31e97d75c/crane_game_102.png" alt="crane_game_102.png"></p>
+<p>만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형  <strong>두 개</strong>가 없어집니다.</p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/8569d736-091e-4771-b2d3-7a6e95a20c22/crane_game_103.gif" alt="crane_game_103.gif"></p>
+<p>크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다. 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)</p>
+<p>게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.</p>
+<h5 id="제한사항"><a href="#제한사항" class="headerlink" title="[제한사항]"></a><strong>[제한사항]</strong></h5><ul>
+<li>board 배열은 2차원 배열로 크기는  5 x 5  이상  30 x 30  이하입니다.</li>
+<li>board의 각 칸에는 0 이상 100 이하인 정수가 담겨있습니다.<ul>
+<li>0은 빈 칸을 나타냅니다.</li>
+<li>1 ~ 100의 각 숫자는 각기 다른 인형의 모양을 의미하며 같은 숫자는 같은 모양의 인형을 나타냅니다.</li>
+</ul>
+</li>
+<li>moves 배열의 크기는 1 이상 1,000 이하입니다.</li>
+<li>moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.</li>
+</ul>
+<h5 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a><strong>입출력 예</strong></h5><dl><dt>board</dt><dd>[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]</dd></dl><dl><dt>moves</dt><dd>[1,5,3,5,1,2,1,4]</dd></dl><p>result<br>: 4</p>
+<h5 id="입출력-예에-대한-설명"><a href="#입출력-예에-대한-설명" class="headerlink" title="입출력 예에 대한 설명"></a><strong>입출력 예에 대한 설명</strong></h5><p><strong>입출력 예 #1</strong></p>
+<p>인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.</p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/bb0f59c7-6b72-485a-8302-217fe53ea88f/crane_game_104.jpg" alt="crane_game_104.jpg"></p>
+<h2 id="나의-풀이"><a href="#나의-풀이" class="headerlink" title="나의 풀이"></a>나의 풀이</h2><pre><code>class Solution &#123;  
+    public int solution(int[][] board, int[] moves) &#123;  
+        List&lt;Integer&gt; list = new ArrayList&lt;&gt;();  
+ int answer = 0;  
+ int length = 0;  
+  //몇행 몇열 인지 알아야지  
+  for (int m = 0; m&lt;moves.length; m++) &#123;  크레인이 움직이는 횟수만큼 반복할 거구요
+            int location = moves[m]-1;  횟수마다 크레인이 집는 위치는 moves[m]-1입니다.
+ int target = 0;  집어진 아이를 초기화 시켜주고요
+ for (int i = 0; i &lt; board.length; i++) &#123;  
+                if (board[i][location] == 0)  열은 location으로 정했죠? 그런데 깊이, 즉 행은 어디까지 가야하는지 몰라요 때문에 한층씩 내려가면서 해당층에 아무것도 없다면 집을 때 까지 반복할 것이고 집었다면 반복문을 탈출할 거에요
+                    continue;  
+ else &#123;  만약 집었다면
+                    target = board[i][location];  타겟을 특정하구요
+  board[i][location]=0;  해당 타겟이 있던자리는 0 으로 만들어줍니다
+ break;  &#125;  반복문 탈출해요
+            &#125;  
+            if(target != 0)&#123;  그래서 타겟을 집고있다면
+            list.add(target);  뽑힌 리스트에 타겟을 넣어주고
+  length = list.size()-1;  
+ if (length &gt;= 1) &#123;  
+                if (list.get(length) == list.get(length - 1)) &#123;  맨위에꺼와 바로아래꺼가 같은 아이라면
+                    answer++;  
+  answer++;  두개가 지워지니 답을 +2해주고
+  list.remove(length);  
+  list.remove(length - 1);  그 두아이를 지워줍니다
+  &#125;  
+                &#125;  
+            &#125;  
+        &#125;  
+        return answer;  
+  &#125;  
+&#125;</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/24/Algorithm/level1/Crain/" data-id="ckh9rosic000014v18m4y0cp6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Algorithm/level1/One_plus_One" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/24/Algorithm/level1/One_plus_One/" class="article-date">
@@ -1097,132 +1194,11 @@ margin-top: 5px; 탑마진
 
 
   
-    <article id="post-Front-End/day_3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/22/Front-End/day_3/" class="article-date">
-  <time datetime="2020-10-22T07:21:54.000Z" itemprop="datePublished">2020-10-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>►<a class="article-category-link" href="/categories/Front-End/day-3/">day_3</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/22/Front-End/day_3/">day_3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>HTML 코드</p>
-<ul>
-<li><code>&lt;div  class=&quot;visual&quot;&gt;비주얼&lt;/div&gt;</code></li>
-</ul>
-</li>
-<li><p>CSS 코드</p>
-</li>
-<li><p>  .visual {</p>
-<p>  background-color: lime;</p>
-<p>  }<br>이렇게 해서 초록색 비주얼 파트가 만들어 졌습니다.</p>
-</li>
-</ul>
-<p><img src="https://user-images.githubusercontent.com/50402288/98105166-e8100580-1eda-11eb-8553-e900e02e911a.png" alt="20201104201810"></p>
-<hr>
-<p><img src="https://user-images.githubusercontent.com/50402288/98105228-ffe78980-1eda-11eb-9812-4116bb49bbcd.png" alt="20201104201854"></p>
-<p>이제 왼쪽 그룹, 중간그룹, 오른쪽그룹해서 3가지 그룹을 만들어서 화면을 분할할 것인데요</p>
-<ul>
-<li><p>HTML 코드</p>
-</li>
-<li>  <main  class="main">
-  <div  class="group group1">그룹1</div>
-  <div  class="group group2">그룹2</div>
-  <div  class="group group3">그룹3</div>
-  </main>
-보시면 메인 태그로 묶여있고, 안에 그룹 1,2,3이 나눠져있습니다 이것을 CSS로 어떻게 할 것이냐 하면
-</li>
-<li><p>CSS코드</p>
-</li>
-</ul>
-<p>*</p>
-<pre><code> .main &#123;
-background-color:orchid; 뭔가 보라색?
-border-radius: 15px  15px  0  0; 위쪽 모서리 깎고
-padding: 30px  15px; 위아래 30, 좌우 15
-min-height: flex; 높이조절 유연하게(자동으로)
-flex-flow: row  nowrap; 배치는 행으로 하고 줄 바꾸지 않지
-justify-content: space-around; 해당 태그의 자식컨텐츠의 컨텐츠간격 일정하게
-&#125;</code></pre>
-<p>결과는?</p>
-<p><img src="https://user-images.githubusercontent.com/50402288/98106182-6faa4400-1edc-11eb-929e-0cc41525415b.png" alt="20201104202901"><br>이렇게 밑에 보라색 영역이 생겼구요 안에 아무것도 없지만 컨텐츠에 따라 높이가 조절될 것이고 배치는 행으로, 줄바뀌지 않고 간격 이쁘게 나뉘어서 배치될 겁니다. 우리는 이제 저기에 구역을 3개(group1, group2, group3) 나눠서 넣어볼 거에요</p>
-<ul>
-<li><p>group1</p>
-</li>
-<li><p>HTML 코드</p>
-</li>
-<li>  <div  class="group group1"> 그룹 1을 분할하는 div태그
-  <section  class="login"> login 섹션
-  <h2  class="login-heading">로그인</h2> 제목 로그인
-  <form  method="POST"  action="https://formspree.io/seulbinim@gmail.com"  class="login-form"> 전송방식 POST이고 해당 주소로 보내며 login-form클래스를 가진 form태그
-  <fieldset> 비슷한 것끼리 묶는 필드셋 태그
-  <legend>로그인 폼</legend> 요소 나타내는 레전드 태그
-  <div  class="user-email"> 유저 이메일 창 분할하는 div태그
-  <label  for="userEmail" id="userEmail">아이디</label> input태그에게 제목을 붙여줄 레이블 태그 (id로써)
-  <input  type="email"  id="userEmail"  name="userEmail"  placeholder="이메일형식"  required  />
-  </div>
-  <div  class="user-pw">
-  <label  for="userPw" id="userPw">비밀번호</label>
-  <input  type="password"  id="userPw"  name="userPw"  placeholder="8자리이상"  required  />
-  </div>
-  <button  class="btn-login"  type="submit">로그인</button> 로그인 버튼
-  </fieldset>
-  </form>
-  <ul  class="sign">
-  <li  class="icon-right-open"><a  href="#">회원가입</a></li>
-  <li  class="icon-right-open"><a  href="#">아이디/비밀번호 찾기</a></li>
-  </ul>
-  </section>
-  </div></li>
-<li><p>CSS 코드</p>
-</li>
-<li><p>  .group1 {<br>  width: 250px;<br>  }<br>  .group2 {<br>  width: 380px;<br>  }<br>  .group3 {<br>  width: 190px;<br>  }<br>구역 나눈 뒤</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>  .login {<br>  background: radial-gradient(circle at right  top, #e8852e, #ed552f); 이거는 그라디언트 효과주는 겁니다.<br>  border-radius: 5px; 양악수술 해주구요<br>  padding: 10px; 패딩 10 줍니다<br>  }<br>  .login-heading {<br>  text-indent: 10px; 들여쓰기 10<br>  font-size: 1.6rem; 1.6 배 글자크기<br>  font-weight: 700; 글자 두껍게<br>  color: #ff0; 색깔 노란색으로<br>  } 헤딩완성<br>  .login-form { 로그인폼<br>  background: #fff; 바탕 흰색<br>  margin-top: 10px; 탑에 마진 10주고<br>  border-radius: 5px  5px  0  0; 위에만 양악<br>  padding: 10px  10px  0  10px; 위 오른쪽 아래 좌 각각 패딩<br>  } 로그인 폼단 완성<br>  .login-form  fieldset { 로그인 폼 안의 컨텐츠들<br>  position: relative; 컨텐츠담을 그릇을 relative로 주고<br>  padding-bottom: 10px; 바텀마진<br>  border-bottom: 1px  solid  #aaa; 아래 줄 긋고<br>  } 필드셋완성<br>  .user-pw { 아이디 아래 컨텐츠<br>  margin-top: 3px;<br>  }탑마진 3 주고(아이디랑 벌려야돼)<br>  .login-form  label { 로그인폼 라벨태그<br>  display: inline-block; 인라인이면서 블록<br>  width: 4em; 글자크기 4칸<br>  font-size: 1.3rem;  폰트사이즈 1.3배<br>  }<br>  .login-form  input { 로그인 폼의 인풋태그<br>  width: 90px; 길이<br>  height: 22px; 높이<br>  border: 1px  solid  #aaa; 선<br>  border-radius: 3px; 테두리 깎고<br>  padding: 1px  1px  1px  0.5em; 패딩주엇다<br>  }<br>  .login-form  label,<br>  .login-form  input {라벨과 인풋에 공통으로 수직 정렬해주고<br>  vertical-align: middle;<br>  }<br>  .btn-login { 로그인 버튼<br>  position: absolute; 포지션 부모에게 고정 부모는 로그인 폼의 필드셋 태그<br>  top: 0;<br>  right: 0; 오른쪽 상단에 배치<br>  width: 50px; 폭<br>  height: 50px; 높이<br>  border: 1px  solid  #e8852e; 선그어줍니다<br>  border-radius: 3px; 겉에 도려내고<br>  background-color: #ed552f; 배경색<br>  color: #fff; 글자색<br>  padding: 0; 패딩 0<br>  }<br>  .sign {<br>  background: #fff;<br>  border-radius: 0  0  5px  5px;<br>  padding: 10px;<br>  display: flex; 디스플레이 플렉스<br>  flex-flow: row  nowrap; 행정렬 줄바꿈 x<br>  font-size: 1.3rem; 크기<br>  justify-content: space-between; 배치 간격 정의<br>  }<br>  .sign  li::before {사인 클래스의 li 태그의 가상 전 자식요소<br>  width: auto;<br>  margin-left: 0;<br>  color: #ed552f;<br>  }<br>이러면 뭐가 나오냐 하면<br><img src="https://user-images.githubusercontent.com/50402288/98110648-c155cd00-1ee2-11eb-89cc-2883903399d5.png" alt="20201104211412"><br>빰! 나왔습니다 로그인 창!<br>@오늘은 여까징@</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/10/22/Front-End/day_3/" data-id="ckh3dblre0003ygv1f404g76x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -1233,7 +1209,7 @@ justify-content: space-around; 해당 태그의 자식컨텐츠의 컨텐츠간�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1253,7 +1229,7 @@ justify-content: space-around; 해당 태그의 자식컨텐츠의 컨텐츠간�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 14.29px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 14.29px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 14.29px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 10px;">Level1</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 11.43px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 10px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 11.43px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.43px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 14.29px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 14.29px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 14.29px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.43px;">Level1</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 11.43px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.43px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 11.43px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
