@@ -66,6 +66,232 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java/HandlingException" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/17/java/HandlingException/" class="article-date">
+  <time datetime="2020-08-17T12:14:21.000Z" itemprop="datePublished">2020-08-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/17/java/HandlingException/">Handling_Exception</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Handling-Exception"><a href="#Handling-Exception" class="headerlink" title="Handling_Exception"></a>Handling_Exception</h1><h2 id="오류와-예외"><a href="#오류와-예외" class="headerlink" title="오류와 예외"></a>오류와 예외</h2><ul>
+<li><p>프로그램이 동작 중에 비정상 종료가 발생하는 상황</p>
+</li>
+<li><p>심각도에 따라 오류와 예외로 분류할 수 있음</p>
+<h3 id="오류-Errors"><a href="#오류-Errors" class="headerlink" title="오류 (Errors)"></a>오류 (Errors)</h3></li>
+<li><p>시스템의 메모리가 부족하거나, 무한히 메소드 호출이 발생하는 등 프로그램 복구가 불가능한 상황</p>
+</li>
+<li><p>오류가 발생하는 원인을 찾아서 제거하는 방법으로 해결</p>
+<h3 id="예외-Exceptions"><a href="#예외-Exceptions" class="headerlink" title="예외 (Exceptions)"></a>예외 (Exceptions)</h3></li>
+<li><p>오류에 비해 심각도가 낮으며, 프로그램의 정상적인 흐름을 방해 ex) 파일명으로 파일을 읽으려 하는데, 파일을 찾을 수 없음</p>
+</li>
+<li><p>문제 상황을 해결하는 로직을 별도로 구성하여 해결 가능</p>
+<h3 id="예외-처리"><a href="#예외-처리" class="headerlink" title="예외 처리"></a>예외 처리</h3></li>
+<li><p>예외가 발생했을 때, 이 상황을 감지하고 해결하기 위해 동작하는 코드</p>
+</li>
+<li><p>try ~ catch 구문과 Exception 클래스와 그 자식 클래스를 활용</p>
+<h3 id="Throwable-클래스"><a href="#Throwable-클래스" class="headerlink" title="Throwable 클래스"></a>Throwable 클래스</h3></li>
+<li><p>Throwable 클래스는 Exception과 Error 클래스에 의해 상속</p>
+<ul>
+<li>Exception<ul>
+<li>Checked Exceptions: 예외 처리되지 않으면 컴파일이 되지 않는 예외</li>
+<li>Unchecked Exceptions: 예외 처리되지 않아도 컴파일이 되는 예외</li>
+</ul>
+</li>
+<li>Error: 프로그램이 복구 불가능한 상황<h3 id="Exception-클래스"><a href="#Exception-클래스" class="headerlink" title="Exception 클래스"></a>Exception 클래스</h3></li>
+</ul>
+</li>
+<li><p>Throwable 클래스의 주요 메소드</p>
+<ul>
+<li>getMessage(): 발생한 예외에 대한 메세지를 반환</li>
+<li>getLocalizedMessage(): 오버라이드 하여 추가 메세지 제공(오버라이드 하지 않으면 getMessage() 와 동일)</li>
+<li>getCause(): 예외의 원인이 되는 Throwable 객체 반환</li>
+<li>printStackTrace(): 예외가 발생된 메소드가 호출될 때의 Method call stack을 출력</li>
+</ul>
+<h2 id="예외-처리-기법"><a href="#예외-처리-기법" class="headerlink" title="예외 처리 기법"></a>예외 처리 기법</h2><h3 id="try-catch-구문"><a href="#try-catch-구문" class="headerlink" title="try ~ catch 구문"></a>try ~ catch 구문</h3><p>try {</p>
+<pre><code>// 예외가 발생할 수 있는 코드 영역
+// 예외 발생 시 예외 객체를 던짐 (throw)</code></pre>
+<p>} catch (Exception e) { // 던져진 예외를 받음 (catch)</p>
+<pre><code>                    // Exception의 자식 클래스로 지정하여 특정 클래스를 받는다.
+// 예외 상황을 처리하는 코드</code></pre>
+<p>}</p>
+</li>
+</ul>
+<h3 id="다중-예외-처리"><a href="#다중-예외-처리" class="headerlink" title="다중 예외 처리"></a>다중 예외 처리</h3><ul>
+<li><p>여러 개의 catch 구문을 사용하면 다중 예외를 처리할 수 있음</p>
+</li>
+<li><p>if ~ else if 구문처럼, 순차적으로 검사하면서 적용 가능한 예외를 처리</p>
+</li>
+<li><p>다형성이 적용되어, 자식 예외를 처리 가능</p>
+<pre><code>try &#123;
+ // 예외 발생 가능 코드 영역
+&#125; catch (AException e) &#123;
+// A예외 처리
+&#125; catch (BException e) &#123;
+// B예외 처리
+&#125; catch (CException e) &#123;
+// C예외 처리
+&#125; catch (Exception e) &#123;
+// 나머지 모든 예외 처리
+&#125;</code></pre>
+</li>
+</ul>
+<h3 id="try-catch-finally-구문"><a href="#try-catch-finally-구문" class="headerlink" title="try ~ catch ~ finally 구문"></a>try ~ catch ~ finally 구문</h3><ul>
+<li><p>try 구문 실행 중에 어떤 일이 발생해도 반드시 실행되어야 하는 구문은 finally 블록에 작성</p>
+</li>
+<li><p>try 구문 내에 return문이 있는 경우에도 finally 블록은 실행됨</p>
+</li>
+<li><p>try 구문 내에서 접근한 System 자원을 안전하게 복구하기 위해 사용</p>
+<pre><code>FileInputStream file = null;
+try &#123;
+file = new FileInputStream(fileName);
+file.read();
+&#125; catch (IOException e) &#123;
+System.out.println(&quot;파일처리실패&quot;);
+&#125; finally &#123;
+if (file != null) &#123;
+    try &#123;
+        file.close();
+    &#125; catch (IOException e) &#123;
+        System.out.println(&quot;파일인풋스트림 종료 실패&quot;);
+    &#125;
+&#125;
+&#125;</code></pre>
+</li>
+</ul>
+<h3 id="try-with-resources-구문"><a href="#try-with-resources-구문" class="headerlink" title="try ~ with ~ resources 구문"></a>try ~ with ~ resources 구문</h3><ul>
+<li><p>Java1.7에서 추가된 기능</p>
+</li>
+<li><p>AutoClosable 인터페이스를 구현하는 리소스를 자동으로 close 처리</p>
+<pre><code>try (FileInputStream file = new FileInputStream(fileName)) &#123;
+file.read();
+&#125; catch (IOException e) &#123;
+System.out.println(&quot;파일처리실패&quot;);
+&#125;</code></pre>
+</li>
+</ul>
+<h2 id="예외-처리-위임"><a href="#예외-처리-위임" class="headerlink" title="예외 처리 위임"></a>예외 처리 위임</h2><h3 id="throws"><a href="#throws" class="headerlink" title="throws"></a>throws</h3><ul>
+<li><p>호출한 메소드로 예외 처리를 전달하는 방식</p>
+</li>
+<li><p>Checked Exception의 경우 throws로 위임 가능하나, 최종적으로 try ~ catch를 만나야 함</p>
+<pre><code>class CheckedException &#123;
+void methodA() throws ClassNotFoundException &#123;
+    Class.forname(&quot;A Class&quot;);
+&#125;
+
+void methodB() &#123;
+    try &#123;
+        methodA();
+    &#125; catch (ClassNotFoundException e) &#123;
+        ...
+    &#125;
+&#125;
+&#125;</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>Unchecked Exception의 경우 throws로 위임하지 않아도 자동으로 전달</p>
+<pre><code>  class UncheckedException &#123;
+     void methodA() &#123;
+      int x = 10;
+      x = 10/0;
+  &#125;
+  void methodB() &#123;
+      try &#123;
+        methodA();
+      &#125; catch (ArithmeticException e) &#123;
+          ...
+      &#125;
+  &#125;
+ &#125;</code></pre>
+</li>
+<li><p>메소드를 오버라이드한 경우, 조상 클래스의 메소드보다 조상 예외는 던질 수 없음</p>
+<pre><code> class Foo &#123;
+   void methodA() throws IOException &#123;&#125;
+ &#125;
+
+class BarOne extends Foo&#123;
+  void methodA() throws IOException &#123;&#125; // possible
+&#125;
+
+class BarTwo extends Foo&#123;
+  void methodA() throws FileNotFoundException &#123;&#125; // possible
+&#125;
+
+class BarThree extends Foo&#123;
+  void methodA() throws Exception &#123;&#125; // *NOT* possible
+&#125;</code></pre>
+</li>
+</ul>
+<p>그니까 Foo가 조상인데 Foo에서 IOException을 던지는데 Foo를 상속받은 BarThree에서 IOException 의 조상인 Exception을 던질 순 없다고</p>
+<h3 id="throw"><a href="#throw" class="headerlink" title="throw"></a>throw</h3><ul>
+<li><p>예외를 발생시키는 키워드</p>
+</li>
+<li><p>new 키워드로 새 Exception 객체를 생성하여 예외 내용을 작성</p>
+<pre><code>void exceptMethod() throws Exception &#123;
+...
+if (Err) &#123;
+    throw new Exception(&quot;Some Error&quot;); // 예외 발생 및 Message 전달
+&#125;
+...
+&#125;</code></pre>
+<h2 id="사용자-정의-예외-Custom-Exceptions"><a href="#사용자-정의-예외-Custom-Exceptions" class="headerlink" title="사용자 정의 예외 (Custom Exceptions)"></a>사용자 정의 예외 (Custom Exceptions)</h2></li>
+<li><p>Exception 또는 RuntimeException 클래스를 상속하여 작성</p>
+<ul>
+<li>Exception을 상속한경우 Checked Exception이 되어 반드시 예외를 처리해야 한다.</li>
+</ul>
+</li>
+</ul>
+<pre><code>        class MyException extends RuntimeException &#123;
+        enum ErrorCode &#123;
+        ERROR_A, ERROR_B;
+        &#125;
+        private ErrorCode errorCode;
+        public MyException(ErrorCode errorCode, String message) &#123;
+        super(message);
+        this.errorCode = errorCode;
+        &#125;
+        @Override
+        public String getLocalizedMessage() &#123;
+        String message = getMessage();
+        ...
+        return localizedMessage;
+        &#125;
+        &#125;</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/08/17/java/HandlingException/" data-id="ckh2ffo5x000ncov19q9ihkw7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java/Wrapper_Class" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/14/java/Wrapper_Class/" class="article-date">
@@ -1039,136 +1265,6 @@ public Bar(String x, String y) &#123;
 
 
   
-    <article id="post-java/Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/10/java/Polymorphism/" class="article-date">
-  <time datetime="2020-08-10T11:03:04.000Z" itemprop="datePublished">2020-08-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/Polymorphism/">Polymorphism</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/10/java/Polymorphism/">Polymorphism1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1>Polymorphism</h1>
- &nbsp;&nbsp;&nbsp;&nbsp;네 그래요 오늘은 다형성에 대해 알아볼 거십니다.
-
-  <h2>Override</h2>
-  &nbsp;&nbsp;&nbsp;&nbsp;뜬금 없지만 제가 좋아하는 노래중 하나는 바로 JP SAXE의 If the world was ending   
-  인데요, 처음에 그 노래를 듣고 검색하려고 구글에 override라고 쳤다가 도저히 안나왔던 기억이 있습니다. 알고보니   
-  'over right' 였더군요. 그냥 그랬다구요 이제 들어가 보죠   
-   #   
-  &nbsp;&nbsp;&nbsp;&nbsp; 쟈 다형성을 형성하는 방법으로는 첫번째로 override가 있습니다.   
-  override는 상속이 이루어진 경우에만 가능한데요 예를 들어보죠
-
-<pre><code>class Foo &#123;
-               static public String y = "Super Class";
-               public String x = "Super";
-
-               public void methodA() &#123;
-                   System.out.println("Super Method");
-               &#125;
-           &#125;
-
-           class Bar extends Foo &#123;
-               static public String y = "Sub Class";
-               public String x = "Sub";
-
-               @Override
-               public void methodA() &#123;
-                   System.out.println("Sub Method");
-               &#125;
-           &#125; </code></pre>
-<p> &nbsp;&nbsp;&nbsp;&nbsp;쟈 이경우는 Bar가 Foo를 상속했습니다. 그리고 methodA()를 Bar에서 오버라이드 하고있죠<br> 지금은 Foo를 상속한 Bar가 하나지만 Bar1,Bar2,Bar3…이렇게 여러개가 있다면 어떨까요? 맞습니다 필요한 자식 클래스로 필요<br> 할때마다 캐스팅 할 수 있겠죠 이렇게 오버라이딩을 통해 다형성을 실현할 수 있습니다.<br> <h2>Overload</h2><br>   &nbsp;&nbsp;&nbsp;&nbsp;네 두번째 방법은 오버로드인데요 오버로드는 상속이 필요없죠, 그저 필요한 메소드를<br>   상황에 맞게 바꿔쓰시면 됩니다. 이것도 예를 들어보죠</p>
-<pre><code>     public Vector3D add(Vector3D x) &#123;
-                    return new Vector3D(this.x + x.x,
-                            this.y + x.y,
-                            this.z + x.z);
-                &#125;
-
-                public Vector3D add(float x) &#123;
-                    return new Vector3D(this.x + x,
-                            this.y + x,
-                            this.z + x);
-                &#125;</code></pre>
-<p> &nbsp;&nbsp;&nbsp;&nbsp; 무섭게 생겼죠? 그래요 나도 무서워요 벡터는 참 못생긴것 같아요 하지만 뜯어보면 이쁜구석이<br> 조금이라도 있을지 모르니 같이 보기로해요. 보면 같은 반환형(Vector3D)에 같은 메소드이름(add)를 가졌네요 그런데 다른게<br> 눈에 띄어요, 바로 파라미터값과 안에 내용이 미묘하게 조큼 다르죠? 그래요 이게 바로 오버로드에요 저그인구수 +8해주는 오버로드가<br> 생각나는 부분이지만 넘어가기로 해요. 결론적으로 오버로드는 파라미터 자료형 또는 갯수가 다를 때 내용을 다르게만들어서 필요할때<br> 바꿔쓸 수 있답니다. 이를 통해서 다형성을 실현할 수 있지요</p>
- <pre><code>     public Vector3D add(Vector3D x) &#123;
-                     return new Vector3D(this.x + x.x,
-                             this.y + x.y,
-                             this.z + x.z);
-                 &#125;
-
-                 public Vector3D add(float x) &#123;
-                     return new Vector3D(this.x + x,
-                             this.y + x,
-                             this.z + x);
-                 &#125;</code></pre>
- <h2>AbstractClass</h2>
-    &nbsp;&nbsp;&nbsp;&nbsp;세번째 방법도있어요 세번쨰는 추상클래스를 통한 다형성의 실현이에요 더럽게 종류도 많네요 하지만   
-    여러분과 저는 취업을 해야하니 한번 같이 뜯어보도록 하죠. 저는 예시덕후라 또 예시 한번 가실게요
-     <pre><code>abstract class AbstractFoo &#123;
-                    int x, y;
-                    public void method() &#123;
-                        System.out.println("method");
-                    &#125;
-                    public abstract void abstractMethod();
-                &#125;
-                class Foo extends AbstractFoo &#123;
-                    @Override
-                    public void abstractMethod() &#123;
-                        System.out.println("implemented abstractMethod");
-                    &#125;
-                &#125;&#125;</code></pre>무섭게 생겼네요 하지만 해야지 어쩌겠어요 보시면 abstractMethod();를 포함하고있는 클래스는   
-                지금까지 우리가 보아온 녀석과 좀달라요. 주황버섯에서 뿔버섯이 됫달까요 그런느낌이죠 다들하시죠? abstract class AbstractFoo라고   
-                앞에 abstract가 붙어 있어요 무슨뜻일까요? 네 잘알고 계시네요 추상이란 뜻이에요 추사랑아빠 추상 아니에요   
-                그래서 이 추상 클래스, 추상메소드가 뭘 하느냐? 예를들면 가이드라인 같은거에요. 우리 같이 눈을감고 생각해보죠 당신은   
-                공사장에서 현장안전관리요원으로 취직했어요 그리고 하루 공사가 끝날 때 꼭 체크해야 할 항목들이 있죠. 예를들면 
-                * 개미굴이 몇개인지    
-                * 두더지는 보이지않는지    
-                * 비둘기는 몇kg정도인지    
-               bsp;&nbsp;&nbsp; 체크하는 것들일 거에요 만약에 하나라도 체크를 안하고 퇴근한다면 공사장에 재앙이 생기기 때문에 이것은 회사에서 필수항목으로   
-               체크하라고 가이드라인에 넣어놨다 해보죠. 이게바로 추상메소드입니다. 추상클래스에 추상메소드로 선언해 놓으면 당신은 그것을 무조건   
-               구현해놔야해요 다시 위의 코드를 보죠 abstract class AbstractFoo 라는 가이드라인에서 public abstract void abstractMethod();항목은   
-               꼭 구현해놓으라고 선언한 것이에요 그렇기 때문에 당신이 추상 클래스인 abstract class AbstractFoo를 상속받아서 새로운 클래스를   
-               정의하고 싶다면  class Foo extends AbstractFoo에서 
-                <pre><code> 
-                @Override
-                 public void abstractMethod() &#123;
-                   System.out.println("implemented abstractMethod");
-                  &#125;</code></pre>이부분을 구현해야 한다는 소리에요 안그러면 안되요 이게바로 추상 클래스입니다.
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/08/10/java/Polymorphism/" data-id="ckh2ffo6n0027cov18z7t4nv7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1184,7 +1280,7 @@ public Bar(String x, String y) &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1204,7 +1300,7 @@ public Bar(String x, String y) &#123;
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.43px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 14.29px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 14.29px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 14.29px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.43px;">Level1</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 11.43px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.43px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 11.43px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.43px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 14.29px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 14.29px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 14.29px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.43px;">Level1</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 11.43px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.43px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.86px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
@@ -1226,6 +1322,10 @@ public Bar(String x, String y) &#123;
       <ul>
         
           <li>
+            <a href="/2020/11/09/Spring/day_2/">day_2</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/03/Spring/day_1/">day_1</a>
           </li>
         
@@ -1239,10 +1339,6 @@ public Bar(String x, String y) &#123;
         
           <li>
             <a href="/2020/10/29/java/MultiThread(5)/">MultiThread(5)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/28/java/MultiThread(3)/">MultiThread(3)</a>
           </li>
         
       </ul>
