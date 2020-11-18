@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day_2 | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="나의 자바의 한계는 나의 세계의 한계를 뜻한다. -Wittgenstein 이클립스 다이나믹 웹 프로젝트 DAO: Data Access Object VO: Value Object H2: 데이터 베이스  Lombok: Getter&#x2F;Setter 자동  생성라이브러리   BoardVO.java@Data public class BoardVO &amp;#123;&#x2F;&#x2F;Valu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day_2">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/11/18/Spring/fastcampus/day_2/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="나의 자바의 한계는 나의 세계의 한계를 뜻한다. -Wittgenstein 이클립스 다이나믹 웹 프로젝트 DAO: Data Access Object VO: Value Object H2: 데이터 베이스  Lombok: Getter&#x2F;Setter 자동  생성라이브러리   BoardVO.java@Data public class BoardVO &amp;#123;&#x2F;&#x2F;Valu">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/99493926-77c1b380-29b3-11eb-8355-7ee6b9e55252.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/99500401-aba1d680-29bd-11eb-93f3-851b4485589e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/99501821-a2b20480-29bf-11eb-8f4a-49253d21280c.png">
+<meta property="article:published_time" content="2020-11-18T06:35:00.000Z">
+<meta property="article:modified_time" content="2020-11-18T08:02:17.296Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="DAO">
+<meta property="article:tag" content="VO">
+<meta property="article:tag" content="Lombok">
+<meta property="article:tag" content="h2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/50402288/99493926-77c1b380-29b3-11eb-8355-7ee6b9e55252.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring/fastcampus/day_2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/18/Spring/fastcampus/day_2/" class="article-date">
+  <time datetime="2020-11-18T06:35:00.000Z" itemprop="datePublished">2020-11-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>►<a class="article-category-link" href="/categories/Spring/day-2/">day_2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      day_2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://user-images.githubusercontent.com/50402288/99493926-77c1b380-29b3-11eb-8355-7ee6b9e55252.png" alt="image"></p>
+<p>나의 자바의 한계는 나의 세계의 한계를 뜻한다. -Wittgenstein</p>
+<h1 id="이클립스-다이나믹-웹-프로젝트"><a href="#이클립스-다이나믹-웹-프로젝트" class="headerlink" title="이클립스 다이나믹 웹 프로젝트"></a>이클립스 다이나믹 웹 프로젝트</h1><ul>
+<li>DAO: Data Access Object</li>
+<li>VO: Value Object</li>
+<li>H2: 데이터 베이스 </li>
+<li>Lombok: Getter/Setter 자동  생성라이브러리</li>
+</ul>
+<hr>
+<h2 id="BoardVO-java"><a href="#BoardVO-java" class="headerlink" title="BoardVO.java"></a>BoardVO.java</h2><pre><code>@Data
+public class BoardVO &#123;//Value Object 의 값들로는 순서, 타이틀, 작성자, 내용, 날짜, 조회수, 패스워드
+private int seq;
+private String title;
+private String writer;
+private String content;
+private Date regDate;
+private int cnt;
+private String password;
+&#125;</code></pre>
+<hr>
+<ul>
+<li>Lombok을 이용한 Value Object 관리 실제로 각 필드 변수의 Getter/Setter가 모두 형성되어 있고, 변수 이름이 바뀌거나 추가되어도 자동으로 세팅되어 매우 편하다.<br><img src="https://user-images.githubusercontent.com/50402288/99500401-aba1d680-29bd-11eb-93f3-851b4485589e.png" alt="20201118164646"></li>
+</ul>
+<hr>
+<h2 id="BoardDAO-java"><a href="#BoardDAO-java" class="headerlink" title="BoardDAO.java"></a>BoardDAO.java</h2><pre><code>    public class BoardDAO &#123;// Data access object
+
+    private Connection conn;
+    private PreparedStatement stmt;
+    private ResultSet rs;
+    private PreparedStatement stmt2;
+
+    private static final String BOARD_INSERT = &quot;INSERT INTO BOARD(seq, title, writer, content)&quot;
+            + &quot;values((select nvl(max(seq),0) + 1 from board), ?, ?, ?)&quot;;
+    private static final String BOARD_LIST = &quot;Select * from board order by seq DESC&quot;;
+    private static final String BOARD_UPDATE = &quot;update board set title = ?, content = ? where seq = ?&quot;;
+    private static final String BOARD_GET = &quot;select * from board where seq = ?&quot;;
+    private static final String BOARD_DELETE = &quot;delete board where seq = ?&quot;;
+    private static final String BOARD_INCREASE = &quot;UPDATE BOARD SET CNT=CNT+1 WHERE SEQ=?&quot;;
+
+    public void insertBoard(BoardVO vo) &#123; //vo객체를 받아서 데이터베이스에 추가
+        try &#123;
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(BOARD_INSERT);
+
+            stmt.setString(1, vo.getTitle());
+            stmt.setString(2, vo.getWriter());
+            stmt.setString(3, vo.getContent());
+
+            stmt.executeUpdate();
+        &#125; catch (SQLException e) &#123;
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        &#125; finally &#123;
+            JDBCUtil.close(stmt, conn);
+        &#125;
+
+    &#125;
+
+    public void deleteBoard(BoardVO vo) &#123; //vo 객체를 받아서 데이터 베이스 삭제
+        try &#123;
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(BOARD_DELETE);
+            // 물음표에 값을 넣어줘야지
+            stmt.setInt(1, vo.getSeq());
+
+            stmt.executeUpdate();
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            JDBCUtil.close(stmt, conn);
+        &#125;
+
+    &#125;
+
+    public void updateBoard(BoardVO vo) &#123; //업데이트
+        try &#123;
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(BOARD_UPDATE);
+            // 물음표에 값을 넣어줘야지
+            stmt.setString(1, vo.getTitle());
+            stmt.setString(2, vo.getContent());
+            stmt.setInt(3, vo.getSeq());
+
+            stmt.executeUpdate();
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            JDBCUtil.close(stmt, conn);
+        &#125;
+
+    &#125;
+
+    public List&lt;BoardVO&gt; getBoardList() &#123; //전체조회
+        List&lt;BoardVO&gt; boardList = new ArrayList&lt;BoardVO&gt;();
+        try &#123;
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(BOARD_LIST);
+            rs = stmt.executeQuery();
+            while (rs.next()) &#123;
+                BoardVO board = new BoardVO();
+                board.setSeq(rs.getInt(&quot;SEQ&quot;));
+                board.setTitle(rs.getString(&quot;TITLE&quot;));
+                board.setWriter(rs.getString(&quot;WRITER&quot;));
+                board.setContent(rs.getString(&quot;CONTENT&quot;));
+                board.setRegDate(rs.getDate(&quot;REGDATE&quot;));
+                board.setCnt(rs.getInt(&quot;CNT&quot;));
+                boardList.add(board);
+                System.out.println(rs.getInt(&quot;SEQ&quot;) + &quot; : &quot; + rs.getString(&quot;CONTENT&quot;));
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            JDBCUtil.close(rs, stmt, conn);
+        &#125;
+        return boardList;
+
+    &#125;
+
+    public BoardVO getBoard(BoardVO vo) &#123; //특정 조회
+        BoardVO board = null;
+        try &#123;
+            conn = JDBCUtil.getConnection();
+            stmt = conn.prepareStatement(BOARD_GET);
+            stmt2 = conn.prepareStatement(BOARD_INCREASE);
+
+            stmt2.setInt(1, vo.getSeq());
+            stmt.setInt(1, vo.getSeq());
+
+            stmt2.executeUpdate();
+            rs = stmt.executeQuery();
+            if (rs.next()) &#123;
+                board = new BoardVO();
+                board.setSeq(rs.getInt(&quot;SEQ&quot;));
+                board.setTitle(rs.getString(&quot;TITLE&quot;));
+                board.setWriter(rs.getString(&quot;WRITER&quot;));
+                board.setContent(rs.getString(&quot;CONTENT&quot;));
+                board.setRegDate(rs.getDate(&quot;REGDATE&quot;));
+                board.setCnt(rs.getInt(&quot;CNT&quot;));
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            JDBCUtil.close(rs, stmt, conn);
+            JDBCUtil.close(stmt2, conn);
+        &#125;
+        return board;
+    &#125;
+&#125;</code></pre>
+<hr>
+<h2 id="InsertBoardTest-java"><a href="#InsertBoardTest-java" class="headerlink" title="InsertBoardTest.java"></a>InsertBoardTest.java</h2><pre><code>public class InsertBoardTest &#123;//insert 는 title, writer랑 content정보가 필요해
+    public static void main(String[] args) &#123;
+        //data access object 와 data value를 선언해준다
+        BoardDAO boardDAO = new BoardDAO();
+        BoardVO vo = new BoardVO();
+        vo.setTitle(&quot;타이틀&quot;);
+        vo.setWriter(&quot;테스텉&quot;);
+        vo.setContent(&quot;VO 내용...&quot;);
+
+        boardDAO.insertBoard(vo);; //boardDAO로 insertObject명령어를 실행시키고 뭘 담아가서 실행시켜? -&gt; vo를 담아가서 실행시켜
+        boardDAO.getBoardList(); // 마지막에 출력해주면 되지.
+
+    &#125;
+&#125;</code></pre>
+<hr>
+<h2 id="DeleteBoardTest-java"><a href="#DeleteBoardTest-java" class="headerlink" title="DeleteBoardTest.java"></a>DeleteBoardTest.java</h2><pre><code>public class DeleteBoardTest &#123;
+public static void main(String[] args) &#123;
+    BoardDAO boardDAO = new BoardDAO();
+    BoardVO vo = new BoardVO();
+
+    vo.setSeq(3);
+    boardDAO.deleteBoard(vo);
+    boardDAO.getBoardList();
+&#125;
+&#125;</code></pre>
+<hr>
+<h2 id="UpdateBoardTest-java"><a href="#UpdateBoardTest-java" class="headerlink" title="UpdateBoardTest.java"></a>UpdateBoardTest.java</h2><pre><code>public class UpdateBoardTest &#123;//업데이트에는 seq, title, content가 필요해
+//data access object, Value object
+public static void main(String[] args) &#123;
+    BoardDAO boardDAO = new BoardDAO();
+    BoardVO vo = new BoardVO();
+    vo.setSeq(4);
+    vo.setTitle(&quot;새로운 타이틀&quot;);
+    vo.setContent(&quot;새로운 컨텐트&quot;);
+
+    boardDAO.updateBoard(vo);
+    BoardVO board = boardDAO.getBoard(vo);
+    System.out.println(board.getSeq() + &quot;번 게시 글의 상세 정보&quot;);
+    System.out.println(&quot;제목 : &quot; + board.getTitle());
+    System.out.println(&quot;작성자 : &quot; + board.getWriter());
+    System.out.println(&quot;내용 : &quot; + board.getContent());
+    System.out.println(&quot;등록일 : &quot; + board.getRegDate());
+    System.out.println(&quot;조회수 : &quot; + board.getCnt());
+
+&#125;
+&#125;</code></pre>
+<hr>
+<h2 id="GetBoardList-java"><a href="#GetBoardList-java" class="headerlink" title="GetBoardList.java"></a>GetBoardList.java</h2><pre><code>public class GetBoardList &#123;
+public static void main(String[] args) &#123;
+    BoardDAO boardDAO = new BoardDAO();
+    BoardVO vo = new BoardVO();
+
+    List&lt;BoardVO&gt; list = new ArrayList&lt;BoardVO&gt;();
+    list = boardDAO.getBoardList();
+    for (BoardVO board : list) &#123;
+        System.out.print(&quot;제목: &quot; + board.getTitle());
+        System.out.println(&quot; 조회수: &quot; + board.getCnt());
+    &#125;
+    System.out.println(&quot;총 글 수 : &quot; + list.size());
+&#125;
+&#125;</code></pre>
+<hr>
+<h2 id="GetBoardTest-java"><a href="#GetBoardTest-java" class="headerlink" title="GetBoardTest.java"></a>GetBoardTest.java</h2><pre><code>public class GetBoardTest &#123;
+public static void main(String[] args) &#123;
+    BoardDAO boardDAO = new BoardDAO();
+    BoardVO vo = new BoardVO();
+
+    vo.setSeq(4);
+    vo = boardDAO.getBoard(vo);
+    System.out.println(vo.getSeq() + &quot;번 글의 상세정보&quot;);
+    System.out.println(&quot;제목:  &quot;+vo.getTitle());
+    System.out.println(&quot;작성자: &quot; + vo.getWriter());
+    System.out.println(&quot;내용: &quot; + vo.getContent());
+    System.out.println(&quot;등록일: &quot; + vo.getRegDate());
+    System.out.println(&quot;조회수: &quot; + vo.getCnt());
+&#125;
+&#125;</code></pre>
+<hr>
+<h2 id="JDBCUtil-java"><a href="#JDBCUtil-java" class="headerlink" title="JDBCUtil.java"></a>JDBCUtil.java</h2><ul>
+<li>일일히 커넥션 만들고 닫고 할 수 없으니 따로 분리 시켜 놓은 클래스</li>
+</ul>
+<pre><code>  public class JDBCUtil &#123;
+
+    public static Connection getConnection() &#123;
+        try &#123;
+   //            DriverManager.registerDriver(new org.h2.Driver());
+            Class.forName(&quot;org.h2.Driver&quot;);
+            return DriverManager.getConnection(&quot;jdbc:h2:tcp://localhost/~/test&quot;, &quot;sa&quot;, &quot;&quot;);
+
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+        return null;
+    &#125;
+
+    public static void close(PreparedStatement stmt, Connection conn) &#123;
+        try &#123;
+            if(stmt != null) &#123;
+                stmt.close();
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            stmt = null;
+        &#125;
+        try &#123;
+            if(!conn.isClosed() &amp;&amp; conn != null)
+                conn.close();
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            conn = null;
+        &#125;
+    &#125;
+
+    public static void close(ResultSet rs, PreparedStatement stmt, Connection conn) &#123;
+
+        try &#123;
+            if(rs != null) &#123;
+                rs.close();
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            rs = null;
+        &#125;
+        try &#123;
+            if(stmt != null) &#123;
+                stmt.close();
+            &#125;
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            stmt = null;
+        &#125;
+        try &#123;
+            if(!conn.isClosed() &amp;&amp; conn != null)
+                conn.close();
+        &#125; catch (Exception e) &#123;
+            e.printStackTrace();
+        &#125; finally &#123;
+            conn = null;
+        &#125;
+
+    &#125;
+  &#125;</code></pre>
+<p>느낀점: 롬복 쩐다</p>
+<p>+과제: 조회 할 때 마다 CNT(조회수)를 늘려보세요.(CNT 디폴트값: 0)<br>처음에 BoardDAO에 BOARD_GET쿼리 문에 “아무튼 쿼리문1”+”아무튼 쿼리문2”이렇게 하고 각각의 ?에 stmt.setInt(1, vo.getSeq()); stmt.setInt(2, vo.getSeq());할라 햇는데 아무튼 안되더라 -&gt; PreparedStatement객체를 두개 만들었다.</p>
+<pre><code> private static final String BOARD_GET = &quot;select * from board where seq = ?&quot;;</code></pre>
+<p>-&gt;</p>
+<pre><code>private PreparedStatement stmt;
+private PreparedStatement stmt2;</code></pre>
+<hr>
+<pre><code>private static final String BOARD_INCREASE = &quot;UPDATE BOARD SET CNT=CNT+1 WHERE SEQ=?&quot;;
+private static final String BOARD_GET = &quot;select * from board where seq = ?&quot;;</code></pre>
+<hr>
+<pre><code>stmt = conn.prepareStatement(BOARD_GET);
+stmt2 = conn.prepareStatement(BOARD_INCREASE);</code></pre>
+<p>결과:<br><img src="https://user-images.githubusercontent.com/50402288/99501821-a2b20480-29bf-11eb-8f4a-49253d21280c.png" alt="20201118170049"></p>
+<p>잘됩니다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/18/Spring/fastcampus/day_2/" data-id="ckhn4bosf0000rwv12rvl9ech" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/h2/" rel="tag">h2</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/17/Spring/fastcampus/day_1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">day_1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/" rel="tag">h2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.43px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 14.29px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DAO/" style="font-size: 10px;">DAO</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 14.29px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 14.29px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.43px;">Level1</a> <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.86px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.43px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 14.29px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/VO/" style="font-size: 10px;">VO</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.86px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/h2/" style="font-size: 10px;">h2</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/18/Spring/fastcampus/day_2/">day_2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/17/Spring/fastcampus/day_1/">day_1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/08/Spring/book/day_2/">day_2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/03/Spring/book/day_1/">day_1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/30/java/MultiThread(6)/">MultiThread(6)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
