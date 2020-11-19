@@ -66,6 +66,94 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java/MultiThread(1)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/26/java/MultiThread(1)/" class="article-date">
+  <time datetime="2020-10-26T13:11:23.000Z" itemprop="datePublished">2020-10-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/26/java/MultiThread(1)/">MultiThread(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MultiThread-1"><a href="#MultiThread-1" class="headerlink" title="MultiThread(1)"></a>MultiThread(1)</h1><p>멀티 쓰레드 프로그래밍: 여러개의 스레드를 사용하는 프로그래밍 기법!</p>
+<ul>
+<li>Thread: 최소의 프로세스 동작단위 -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다.</li>
+<li>Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세스가 된다.(프로그램을 실행할 때, 멀티 프로세스로 동작하는 프로그램도 있다.)</li>
+</ul>
+<h1 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h1><ul>
+<li>여러 동작을 병렬적으로 처리하여 CPU 사용율 향상 (CPU Utilization) (ex. 인코딩, 랜더링, 배치작업 (DB 정리, 로그처리 등…)    </li>
+<li>시간이 걸리는 동작을 분리하여 프로그램의 응답성 향상(ex. GUI, 게임, 앱, 웹API, …)</li>
+</ul>
+<h1 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h1><ul>
+<li>디버깅이 어렵다 -&gt; 쓰레드가 동시에 동작하기 때문에, 디버거로 확인하기 어려움. -&gt; 디버거를 쓰거나, 디버깅을 하기 위한 코드를 추가하면 동작이 변한다.</li>
+<li>구현이 어렵다. 쓰레드간의 동기화를 하기 위한 구현이 어렵다. 쉽게 동기화하면 느려진다. -&gt; Context Switching 오버헤드가 있기 때문에 동기화를 잘 못하면 오히려 더 느려진다.</li>
+</ul>
+<h2 id="쓰레드를-생성하는-3가지-방법"><a href="#쓰레드를-생성하는-3가지-방법" class="headerlink" title="쓰레드를 생성하는 3가지 방법"></a>쓰레드를 생성하는 3가지 방법</h2><h2 id="1-Extends-를-통한-생성"><a href="#1-Extends-를-통한-생성" class="headerlink" title="1. Extends 를 통한 생성"></a>1. Extends 를 통한 생성</h2><pre><code>class MyThread extends Thread &#123;  
+@Override  
+ public void run() &#123;  
+    for (int i = 0; i &lt; 10; i++) &#123;  
+        System.out.print(i);  
+  &#125;  
+    System.out.println();  
+    &#125;  
+&#125;</code></pre>
+<h2 id="2-익명의-내부클래스-를-통한-생성"><a href="#2-익명의-내부클래스-를-통한-생성" class="headerlink" title="2. 익명의 내부클래스 를 통한 생성"></a>2. 익명의 내부클래스 를 통한 생성</h2><pre><code>    Thread p1 = new Thread(new Runnable() &#123; // 1. 익명 내부 클래스  
+  @Override  
+  public void run() &#123;  
+        try &#123;  
+            Thread.sleep(50);  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+        System.out.println(&quot;Hello Thread&quot;);  
+  &#125;  
+&#125;);</code></pre>
+<h2 id="3-람다식을-통한-생성"><a href="#3-람다식을-통한-생성" class="headerlink" title="3. 람다식을 통한 생성"></a>3. 람다식을 통한 생성</h2><pre><code>Thread p2 = new Thread(() -&gt; &#123; // 2. 람다식 구현  
+  System.out.println(&quot;Thread by lambda&quot;);  
+ while (true) &#123;  
+
+    &#125;  
+&#125;);</code></pre>
+<h1 id="쓰레드-실행"><a href="#쓰레드-실행" class="headerlink" title="쓰레드 실행"></a>쓰레드 실행</h1><p> 쓰레드는 .start()함수를 통해 실행되며, 한번 실행되면 재사용이 불가합니다. 때문에 실행이 아닌 테스트를 하려면 메인쓰레드로 접근하는 .run()을 사용 하면 됩니다. run은 Thread 에 implement한 Runnable() 인터페이스를 오버라이드한 함수로 쓰레드 실행에 영향을 주지 않습니다.</p>
+<h2 id="Sleep-Join"><a href="#Sleep-Join" class="headerlink" title="Sleep(), Join();"></a>Sleep(), Join();</h2><p> 멀티쓰레드의 실행 순서는 OS가 관여하므로(Priority, Starve) 어떤것이 먼저 실행 될지 정확하게 알 수 없습니다. 이를 해결하기 위해 쓰레드를 Thread.sleep(millis) 해주면 해당 쓰레드는 해당 시간 때문에 대기합니다. 하지만 이는 사용자가 직접 얼마나 기다릴 지 기입해야하고 예측해야 하기 때문에 비효율 적입니다. 이를 위해 Join()을 써봅니다.<br>  Join()은 예를들어 p2라는 쓰레드가 실행되고 있다면 다음 쓰레드 전에 p2.join()메소드를 호출합니다. 그렇다면 p2 쓰레드가 끝난 후 다음 쓰레드가 실행될 것입니다. p2.join(millis) 는 해당 시간 동안 기다리고 시간이 되면 강제로 다음 쓰레드를 실행합니다.</p>
+<h2 id="구현-후-즉시-실행"><a href="#구현-후-즉시-실행" class="headerlink" title="구현 후 즉시 실행"></a>구현 후 즉시 실행</h2><p>  쓰레드의 레퍼런스를 일일히 지정해주지 않아도 되는 경우가 있습니다. 이 경우</p>
+<pre><code>new Thread(() -&gt; &#123;  
+    System.out.println(&quot;IDEA&quot;);  
+&#125;).start(); // 이렇게 하면 join 등 활용이 어려움</code></pre>
+<p>   이런식으로 레퍼런스를 지정해 주지 않고 실행하면 속도가 빨라지지만, 객체지정이 안되어있으니 join등 후에 사용이 어려울 것입니다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/26/java/MultiThread(1)/" data-id="ckh2ffo6b001dcov1hweqa36s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Algorithm/level1/Crain" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/24/Algorithm/level1/Crain/" class="article-date">
@@ -846,170 +934,6 @@ padding: 8px  10px; 위아래 양 옆 패딩 이렇게 줍니다
 
 
   
-    <article id="post-MySql/day_2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/13/MySql/day_2/" class="article-date">
-  <time datetime="2020-10-13T03:44:12.000Z" itemprop="datePublished">2020-10-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Database/">Database</a>►<a class="article-category-link" href="/categories/Database/MySQL/">MySQL</a>►<a class="article-category-link" href="/categories/Database/MySQL/day-2/">day_2</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/13/MySql/day_2/">Day_2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Create-Database"><a href="#Create-Database" class="headerlink" title="Create Database"></a>Create Database</h1><pre><code>use jbs;
-CREATE TABLE user1(
-user_id INT,
-name varchar(20),
-email varchar(20),
-age INT(3),
-rDate DATE
-);</code></pre>
-<ul>
-<li><p>jbs데이터 베이스에 user1테이블을 생성하고 그 안에는 user_id, name, email, age, rDate가 각각의 데이터 형식으로 포함되어 있습니다.</p>
-<p>INSERT INTO user1 (user_id, name, email, age, rDate)<br>values(1, “Andy”, “<a href="mailto:&#65;&#110;&#100;&#x79;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#65;&#110;&#100;&#x79;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a>“, 23, “2020-10-01”);<br>SELECT * FROM user1;<br>SHOW TABLES;<br>DESC user1;</p>
-</li>
-<li><p>데이터를 주입합니다. </p>
-<p>CREATE TABLE user2 (<br>user_id INT PRIMARY KEY AUTO_INCREMENT,<br>name varchar(20) NOT NULL,<br>email varchar(20) unique NOT NULL,<br>age INT(3) DEFAULT 30,<br>rDate TIMESTAMP<br>);</p>
-<ul>
-<li>user2테이블을 생성합니다. 이 때 </li>
-<li>Primary key: 한 개 혹은 여러 개의 칼럼으로 테이블 내의 각 행들을 구별하기 위한 목적을 갖고 있다. PK는 NULL 값을 갖을 수 없고(NOT NULL), Unique key라는 특징을 갖게 된다.</li>
-<li>Auto_Increment : 데이터가 증가할 때마다 인덱스가 1씩 늘어난다.</li>
-</ul>
-</li>
-<li><p>때문에 user_id와 age, rDate 3가지는 초기값이 있다. name과 email이 null이면 안되기 때문에 이 두 값을 넣어줘야 한다 </p>
-<p>INSERT INTO user2(name, email)<br>values(“ANDY”, “<a href="mailto:&#65;&#78;&#68;&#89;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;">&#65;&#78;&#68;&#89;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#111;&#x6d;</a>“);<br>DESC user2;– 의미를 잘 모르겠어</p>
-<h1 id="Drop"><a href="#Drop" class="headerlink" title="Drop"></a>Drop</h1><p>use world;<br>CREATE TABLE city2 (<br>name varchar(50),<br>countrycode char(3),<br>population INT<br>);<br>INSERT INTO city2<br>SELECT name, countrycode, population<br>FROM city<br>WHERE population &gt;=8000000;</p>
-<p>SELECT * FROM city2;</p>
-<p>DROP TABLE city2;</p>
-</li>
-<li><p>Drop으로 테이블을 지울 수 있습니다.</p>
-</li>
-</ul>
-<h1 id="CRUD-Create-Read-Update-Delete"><a href="#CRUD-Create-Read-Update-Delete" class="headerlink" title="CRUD : Create, Read, Update, Delete"></a>CRUD : Create, Read, Update, Delete</h1><p>create use alter drop 을 줄여서 CRUD라 한다.</p>
-<h2 id="Alter-설정-수정"><a href="#Alter-설정-수정" class="headerlink" title="Alter 설정, 수정"></a>Alter 설정, 수정</h2><pre><code>show variables like &quot;character_set_database&quot;;
-alter database test character set = utf8;
-alter database world character set = utf8;</code></pre>
-<p>데이터 베이스의 character set 을 utf8로 변경합니다.</p>
-<h2 id="alter-add-modify-dorp"><a href="#alter-add-modify-dorp" class="headerlink" title="alter: add, modify, dorp"></a>alter: add, modify, dorp</h2><pre><code>use jbs;
-CREATE TABLE user2(
-user_id INT primary key AUTO_INCREMENT,
-name varchar(20) NOT NULL,
-email varchar(30) unique NOT NULL,
-age INT(3) default 30,
-rdate TIMESTAMP
-);</code></pre>
-<ul>
-<li><p>jbs 데이터베이스에 user2테이블을 만들었다고 가정합니다.</p>
-<p>  alter table user2 Add tmp text;</p>
-<ul>
-<li><p>자료형이 text 인 tmp column을 추가합니다.</p>
-<p>alter table user2 modify column tmp int;</p>
-</li>
-</ul>
-</li>
-<li><p>자료형을 int로 변경합니다.</p>
-<p>  drop database test;</p>
-</li>
-<li><p>test데이터베이스를 삭제합니다.</p>
-</li>
-</ul>
-<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><pre><code>update user2
-set email = &quot;jin@gmail.com&quot;
-where name = &quot;andy&quot;
-limit 1;
-select * from user2;</code></pre>
-<ul>
-<li>user2 테이블을 업데이트 할 것입니다. email을 <a href="mailto:&#106;&#105;&#110;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#106;&#105;&#110;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a>으로 바꾸는 데 바꾸는 대상은 name = andy인 행이고, 이 때 andy가 name인 행을 1개 바꿉니다.</li>
-</ul>
-<h2 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h2><pre><code>delete from user2 where name = &quot;andy&quot; limit 1;
-select * from user2;</code></pre>
-<ul>
-<li>name = andy인 행을 한개 지웁니다.</li>
-</ul>
-<h2 id="Truncate"><a href="#Truncate" class="headerlink" title="Truncate"></a>Truncate</h2><pre><code>insert into user2(user_id,name, email, age, rdate)
-values(1,&quot;andy&quot;, &quot;andy@gmail.com&quot;, 23, &quot;2020-02-20&quot;);
-truncate user2;</code></pre>
-<ul>
-<li>user2의 내용을 구조만 남기고 모두 제거합니다.</li>
-</ul>
-<h2 id="foreign-key"><a href="#foreign-key" class="headerlink" title="foreign key"></a>foreign key</h2><p>데이터의 무결성을 지키기 위해서 사용합니다.</p>
-<ul>
-<li><p>foreign key 설정을 하려면 참조되는 부모 컬럼이 PK이거나 Unique해야 한다.</p>
-<p>  create table users(</p>
-<pre><code>  user_id int primary key auto_increment,
-  name varchar(20),
-  addr varchar(20)</code></pre>
-<p>  );<br>  desc user;</p>
-<p>  create table money(</p>
-<pre><code>  money_id int primary key auto_increment,
-  income int,
-  user_id int</code></pre>
-<p>  );<br>  desc money;</p>
-<ul>
-<li><p>users 테이블과 money테이블을 생성합니다.</p>
-<p>insert into users (name, addr)<br>values (“jin”, “seoul”),(“andy”, “pusan”);</p>
-<p>insert into money (income, user_id)<br>values (1000,1), (2000,2);</p>
-</li>
-</ul>
-</li>
-<li><p>데이터를 주입합니다. </p>
-<p>  alter table money add constraint FK foreign key (user_id) references users (user_id);</p>
-</li>
-<li><p>money의 user_id에 users의 user_id를 잠조하는 FK를 추가합니다.</p>
-<h2 id="테이블-생성시-FK설정"><a href="#테이블-생성시-FK설정" class="headerlink" title="테이블 생성시 FK설정"></a>테이블 생성시 FK설정</h2><p>  create table money(</p>
-<pre><code>  money_id int primary key auto_increment,
-  income int,
-  user_id int,
-  foreign key (user_id) references users (user_id)</code></pre>
-<p>  );</p>
-</li>
-</ul>
-<pre><code>insert into money (income, user_id)
-values (2000,1), (3000,2);</code></pre>
-<ul>
-<li>(3000,3) 은 넣지 못한다. 데이터 무결성이 깨지기 때문에<br>select * from money;</li>
-</ul>
-<p>– users의 user_id가 변경되면 money의 user_id도 변경되지만 반대의 경우는 그렇지 못하다. 그렇기 때문에 생긴 것이 On Update, On Delete</p>
-<h2 id="데이터-삭제"><a href="#데이터-삭제" class="headerlink" title="데이터 삭제"></a>데이터 삭제</h2><p>select *from money;<br>delete from money<br>where user_id = 2<br>limit 1;<br>select * from users; select * from money; – 보면 money는 잘 지워졌다 그러나<br>delete from users where user_id = 1 limit 1; – users의 user_id 1은 money에 의해 참조되어있기 때문에 지워지지 않는다. (같은 맥락에서 drop table users 또한 되지 않는다.)<br>delete from users where user_id = 2 limit 1; – 그러나 이미 money에서 지워진 user_id 2 는 잘 지워지는 것을 볼 수 있다.</p>
-<h2 id="ON-DELETE-ON-UPDATE-설정-FK-어려우니까-생김"><a href="#ON-DELETE-ON-UPDATE-설정-FK-어려우니까-생김" class="headerlink" title="ON DELETE, ON UPDATE 설정 (FK 어려우니까 생김)"></a>ON DELETE, ON UPDATE 설정 (FK 어려우니까 생김)</h2><p>#참조를 받는 데이터가 수정하거나 삭제될 때 참조 하는 데이터를 설정(수정, 삭제 등등…) 역으로 영향을 준다 (동기화) 그니까 원래는 참조받는 쪽에서 데이터 수정, 삭제가 불가했지만 가능하게 해준다.</p>
-<h3 id="CASCADE-참조-받은-데이터가-수정-삭제하면-참조하는-데이터도-수정-삭제"><a href="#CASCADE-참조-받은-데이터가-수정-삭제하면-참조하는-데이터도-수정-삭제" class="headerlink" title="CASCADE : 참조 받은 데이터가 수정, 삭제하면, 참조하는 데이터도 수정, 삭제"></a>CASCADE : 참조 받은 데이터가 수정, 삭제하면, 참조하는 데이터도 수정, 삭제</h3><h3 id="SET-NULL-참조-받는-데이터가-수정-삭제하면-참조하는-데이터는-NULL로-수정"><a href="#SET-NULL-참조-받는-데이터가-수정-삭제하면-참조하는-데이터는-NULL로-수정" class="headerlink" title="SET NULL : 참조 받는 데이터가 수정, 삭제하면, 참조하는 데이터는 NULL로 수정"></a>SET NULL : 참조 받는 데이터가 수정, 삭제하면, 참조하는 데이터는 NULL로 수정</h3><ul>
-<li>업데이트 되면 업데이트(cascade), 삭제되면 NULL값으로 수정 (set null) null이되면 컬럼간의 FK는 유지되지만 참조하는 값 자체가 null이기 때문에 무결성은 유지된다. (if null이 아닌값이 되면 문제가되지만 null이면 문제가 안된다.)<br>#위에 무슨소린지 이해해보자</li>
-</ul>
-<p>insert into users(name, addr) values (“peter”, “incheon”);<br>select * from users;</p>
-<p>drop table money; – 머니 삭제하고 연결설정해보겠다.<br>create table money (<br>money_id int primary key auto_increment,<br>income int,<br>user_id int,<br>foreign key (user_id) references users(user_id)<br>on update cascade on delete set null – money 단에서 수정, 삭제 시 부모가 동기화 되도록 설정 하였다.<br>);<br>desc money;<br>select * from users; select * from money; – 현제 user_id 1,3이 존재한다. 그니까 이 둘은 애초에 넣을 수 있는 것들<br>insert into money (income, user_id)<br>values(1000,1),(2000,3); select * from money;<br>#이제 업데이트 해보자<br>update users<br>set user_id = 4 where user_id = 1; select * from users; select * from money;</p>
-<p>#user 데이터 삭제<br>delete from users<br>where user_id = 3; select *from users; select * from money; – money는 왜 데이터가 안지워지고 user_id열하나만 지워지죠</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/10/13/MySql/day_2/" data-id="ckh3080cr0001nsv10pk76v1y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1025,7 +949,7 @@ values (2000,1), (3000,2);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/">Fastcampus</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/day-2/">day_2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/">Fastcampus</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/day-2/">day_2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1035,7 +959,7 @@ values (2000,1), (3000,2);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/" rel="tag">h2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/" rel="tag">h2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -1045,7 +969,7 @@ values (2000,1), (3000,2);</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.43px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 14.29px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DAO/" style="font-size: 10px;">DAO</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 14.29px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 14.29px;">HTML</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.43px;">Level1</a> <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.86px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.43px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Spring/" style="font-size: 14.29px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/VO/" style="font-size: 10px;">VO</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.86px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/h2/" style="font-size: 10px;">h2</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.43px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 14.29px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DAO/" style="font-size: 10px;">DAO</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15.71px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 14.29px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 14.29px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 14.29px;">JCF</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.43px;">Level1</a> <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 17.14px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15.71px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.86px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.43px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Servlet/" style="font-size: 10px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 15.71px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/VO/" style="font-size: 10px;">VO</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.86px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.86px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.43px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/h2/" style="font-size: 10px;">h2</a> <a href="/tags/java/" style="font-size: 18.57px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
@@ -1067,6 +991,10 @@ values (2000,1), (3000,2);</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/11/19/Spring/fastcampus/day_3/">day_3</a>
+          </li>
+        
+          <li>
             <a href="/2020/11/18/Spring/fastcampus/day_2/">day_2</a>
           </li>
         
@@ -1080,10 +1008,6 @@ values (2000,1), (3000,2);</code></pre>
         
           <li>
             <a href="/2020/11/03/Spring/book/day_1/">day_1</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/30/java/MultiThread(6)/">MultiThread(6)</a>
           </li>
         
       </ul>
