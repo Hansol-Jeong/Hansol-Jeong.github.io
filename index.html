@@ -110,26 +110,16 @@
 <li>서버는 응답 프로토콜을 만든다.</li>
 </ul>
 <ol>
-<li><p>스타트 라인: http버전, 응답 상태코드(404, 405, 500), 응답 상태코드에 딸려가는 메시지(ex: ‘OK’)</p>
-<ul>
-<li><p>404: (톰캣 관할) 브라우저가 서버에 요청한 파일이 서버에 존재하지 않음(프로젝트안에 해당 파일이 없음), (서블릿 엔진 관할) 서블릿 엔진이 xml에 등록되지 않은 URI를 참조할 때. 아래 사진참고</p>
-<pre><code>*  </code></pre>
-<p><img src="https://user-images.githubusercontent.com/50402288/99617956-c29b0400-2a63-11eb-94bc-27c4c7b0cb58.png" alt="20201119123537"><br>URI패턴에 hello.do가 매핑되어 있다. 즉 웹페이지 주소에 해당 URI로 접속하면 hello.HelloServlet이 실행된다. 그런데 login.do나 연관없는 URI로 들어가면 서블릿엔진이 주소를 찾지 못하고 404를 출력한다.</p>
-<ul>
-<li>405: 요청방식을 서버가 지원하지 않을 때(ex: 아래 사진의 doPost가 정의되어 있지 않거나, doGet이 정의되어 있지 않거나)<ul>
-<li><img src="https://user-images.githubusercontent.com/50402288/99618320-77cdbc00-2a64-11eb-935f-9b583868a477.png" alt="20201119124043"></li>
+<li>스타트 라인: http버전, 응답 상태코드(404, 405, 500), 응답 상태코드에 딸려가는 메시지(ex: ‘OK’)<ul>
+<li>404: (톰캣 관할) 브라우저가 서버에 요청한 파일이 서버에 존재하지 않음(프로젝트안에 해당 파일이 없음), (서블릿 엔진 관할) 서블릿 엔진이 xml에 등록되지 않은 URI를 참조할 때. 아래 사진참고</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>500: internal server error 오류 (서버오류 like Arithmetic Exception)</p>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/50402288/99617956-c29b0400-2a63-11eb-94bc-27c4c7b0cb58.png" alt="20201119123537"><br>URI패턴에 hello.do가 매핑되어 있다. 즉 웹페이지 주소에 해당 URI로 접속하면 hello.HelloServlet이 실행된다. 그런데 login.do나 연관없는 URI로 들어가면 서블릿엔진이 주소를 찾지 못하고 404를 출력한다.<br>    * 405: 요청방식을 서버가 지원하지 않을 때(ex: 아래 사진의 doPost가 정의되어 있지 않거나, doGet이 정의되어 있지 않거나)<br>        * <img src="https://user-images.githubusercontent.com/50402288/99618320-77cdbc00-2a64-11eb-935f-9b583868a477.png" alt="20201119124043"></p>
+<pre><code> * 500: internal server error 오류 (서버오류 like Arithmetic Exception)</code></pre>
 <ol start="2">
 <li>메시지 헤더는 역시 여기서도 중요하지 않다.</li>
 <li>메시지 바디: 브라우저가 요청한 문서가(html, img, etc…) 응답 프로토콜 바디쪽에 담겨서 전달된다.</li>
-</ol>
-</li>
-</ul>
-</li>
 </ol>
 <h2 id="서블릿의-특징"><a href="#서블릿의-특징" class="headerlink" title="서블릿의 특징"></a>서블릿의 특징</h2><ul>
 <li>서블릿은 자바 클래스이다. 다만 서블릿 엔진에 의해서만 동작한다.(동작한다: 객체를 생성하고 실행한다.)</li>
