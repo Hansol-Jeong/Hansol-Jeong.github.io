@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day_5 | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="one can never go back, that one should not ever try to go back – that the essence of life is going forward. Life is really a One Way Street. 되돌아가려 노력하지 않은 사람은 절대로 되돌아갈 수 없어요. 삶의 본질은 앞으로 나아가는 것이니까요. 삶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day_5">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/11/23/Spring/fastcampus/day_5/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="one can never go back, that one should not ever try to go back – that the essence of life is going forward. Life is really a One Way Street. 되돌아가려 노력하지 않은 사람은 절대로 되돌아갈 수 없어요. 삶의 본질은 앞으로 나아가는 것이니까요. 삶">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/99928554-df4d7980-2d8c-11eb-8ad9-cd2bae5a96e3.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/99930089-2fc7d580-2d93-11eb-9984-e16a85a8a8ec.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/99930155-656cbe80-2d93-11eb-90a8-11235fe7c067.png">
+<meta property="article:published_time" content="2020-11-23T05:06:00.000Z">
+<meta property="article:modified_time" content="2020-11-24T06:33:53.573Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="HTTP">
+<meta property="article:tag" content="JSP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/50402288/99928554-df4d7980-2d8c-11eb-8ad9-cd2bae5a96e3.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring/fastcampus/day_5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/23/Spring/fastcampus/day_5/" class="article-date">
+  <time datetime="2020-11-23T05:06:00.000Z" itemprop="datePublished">2020-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>►<a class="article-category-link" href="/categories/Spring/day-5/">day_5</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      day_5
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://user-images.githubusercontent.com/50402288/99928554-df4d7980-2d8c-11eb-8ad9-cd2bae5a96e3.png" alt="image"></p>
+<p>one can never go back, that one should not ever try to go back – that the essence of life is going forward. Life is really a One Way Street. 되돌아가려 노력하지 않은 사람은 절대로 되돌아갈 수 없어요. 삶의 본질은 앞으로 나아가는 것이니까요. 삶은 정말 일방통행이에요. -Agatha Cristie</p>
+<h1 id="JSPProject"><a href="#JSPProject" class="headerlink" title="JSPProject"></a>JSPProject</h1><ul>
+<li>기존 서블릿의 단점을 보완한 기술입니다.</li>
+<li><ul>
+<li>기존 서블릿의 단점: 코드내에 HTML이 포함되어있어 작성시 매우 불편합니다. 때문에 코드가 길어지고 수정, 보완이 매우 어렵게됩니다. 이를 보완한 것이 JSP입니다.</li>
+</ul>
+</li>
+<li>JSP: Java Server Page: 용어를 기억하는 것은 중요합니다.</li>
+<li>정의: HTML 코드에 JAVA 코드를 넣어 동적웹페이지를 생성하는 웹어플리케이션 도구이다. -정의를 기억하는 것 또한 중ㅇ요합니다.</li>
+</ul>
+<hr>
+<p>복습 요소:<br>필터에서 chain.doFilter를 만나면 다음 필터를 만나고 더이상 필터가 없으면 서블릿으로 갓다가 역순으로 다시 돌아온다 =&gt; 필터 체인</p>
+<p>context=문맥=엔진</p>
+<hr>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><ul>
+<li><p>세션; 웹 서버 쪽의 웹 컨테이너에 상태를 유지하기 위한 정보를 저장하는 장소.</p>
+<ul>
+<li>세션이 왜 중요한가?<br>우리는 앞서 로그인 페이지와 글 목록, 글 수정 삭제 등록 등 많은 기능을 구현해보았습니다. 하지만 한 가지 중요한 점을 놓쳤는데요, 바로 상태에 대한 저장이 없다는 것입니다. 가령 우리가 로그인 하지 않고 <code>http://localhost:7777/servletProject3/getBoardList.do</code><br>라는 URL을 치고 들어가면 우리는 로그인 절차 없이 글 목록을 볼 수 있습니다. 그렇기 때문에 로그인 되었는지, 누가 로그인을 하였는지에 대한 정보를 저장하고, 활용하기 위해 세션이 필요합니다.</li>
+</ul>
+</li>
+<li><p>세션은 브라우저 하나당 하나씩만 유지됩니다. 재사용 할 때는 (만약 브라우저가 살아있다면) 우너래 세션의 주소만 리턴합니다. 즉 재사용 할 때마다 새로 생성하지 않습니다.</p>
+<ul>
+<li><p>세션의 메소드 중 중요한 것</p>
+<ul>
+<li><p>Object getAttribute(String name) : 이름에 해당하는 객체를 리턴한다.</p>
+</li>
+<li><p>void setAttribute(String name, Object value) : 객체를 Session에 저장한다.</p>
+</li>
+<li><p>void invalidate() : Session을 종료한다.</p>
+</li>
+<li><p>boolean  isNew() : Session이 처음 만들어진 것이면 true 를 리턴한다.</p>
+</li>
+<li><p>void removeAttribute(String name) : 주어진 이름에 해당하는 객체를 삭제한다.</p>
+</li>
+<li><p>void setMaxInactiveInterval(int seconds) : Session을 유지할 시간을 설정한다.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>jsp는 서비스메소드에 내가작성한 모든코드가 작성되기 때문에 get/post상관없이 작동한다.<br>톰켓 서버가 jsp를 서블릿으로 대신 작성해준다</p>
+<h2 id="JSP-문법"><a href="#JSP-문법" class="headerlink" title="JSP 문법"></a>JSP 문법</h2><ul>
+<li>Scriptlet: &lt;% %&gt;</li>
+<li>Expression: &lt;%= %&gt;<br>두 가지의 차이점이 뭐냐, 첫번째는 정상적인 자바코드<br>두번째는 두가지가 온다. 변수, 메소드(void가 아닌, 뭔가를 리턴하는 메소드) 호출 두가지가 온다.</li>
+<li>ctrl shit / :주석</li>
+<li>&lt;!– –&gt;:html주석은 안쓴다(왜안쓰더라)</li>
+<li>코드 끝에 ‘;’붙으면 정상적인 자바코드고 그러면 스크립틀릿을 써야해 익스프레션안돼</li>
+</ul>
+<hr>
+<h2 id="JSPProject-구조-vs-ServletProject-구조"><a href="#JSPProject-구조-vs-ServletProject-구조" class="headerlink" title="JSPProject 구조 vs ServletProject 구조"></a>JSPProject 구조 vs ServletProject 구조</h2><p>아래는 JSP<br><img src="https://user-images.githubusercontent.com/50402288/99930089-2fc7d580-2d93-11eb-9984-e16a85a8a8ec.png" alt="20201123135231"><br>아래는 Servlet<br><img src="https://user-images.githubusercontent.com/50402288/99930155-656cbe80-2d93-11eb-90a8-11235fe7c067.png" alt="20201123135416"><br>둘 다 동일한 구조를 가지고 있으나 Servlet -&gt; JSP로 대체된 것을 볼 수 있습니다. 그러면 코드를 상세히 보면서 어느부분이 어떻게 대체가 되었는지 알아보겠습니다.</p>
+<h2 id="주의-극단적인-비교를-위해-가장-긴-코드인-GetBoardListServlet-를-가져왔습니다"><a href="#주의-극단적인-비교를-위해-가장-긴-코드인-GetBoardListServlet-를-가져왔습니다" class="headerlink" title="*주의: 극단적인 비교를 위해 가장 긴 코드인 GetBoardListServlet 를 가져왔습니다."></a>*주의: 극단적인 비교를 위해 가장 긴 코드인 GetBoardListServlet 를 가져왔습니다.</h2><pre><code>public class GetBoardListServlet extends HttpServlet &#123;
+    private static final long serialVersionUID = 1L;
+
+
+
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;
+        //0. 세션 체크
+        HttpSession session =request.getSession();
+        UserVO user = (UserVO)session.getAttribute(&quot;user&quot;);
+        if(user == null) &#123;
+            response.sendRedirect(&quot;login.html&quot;);
+        &#125; else &#123;
+        //글 목록 화면을 요청한 브라우저와 매핑된 세션 객체를 얻어낸다.
+//        HttpSession session = request.getSession();//request: 요청 프로토콜과 연결된 객체
+//        if(session.isNew()) &#123;
+//            System.out.println(&quot;===&gt; GetBoardListServlet 에서 처음 생성한 세션이다.&quot;);
+//        &#125; else &#123;
+//            System.out.println(&quot;---&gt; 이전에 생성된 세션 재사용하는 것이다.&quot;);
+//        &#125;
+        //1. 사용자 입력정보 추출(검색 기능은 숙제...)
+//        request.setCharacterEncoding(&quot;EUC-KR&quot;);
+        String searchCondition = request.getParameter(&quot;searchCondition&quot;);
+        String searchKeyword = request.getParameter(&quot;searchKeyword&quot;);
+
+        //null 체크를 해줘야해
+        if(searchCondition == null) &#123;
+            searchCondition = &quot;TITLE&quot;;
+        &#125;
+        if(searchKeyword == null)
+            searchKeyword = &quot;&quot;;
+
+        //2. DB연동 처리
+        BoardVO vo = new BoardVO();
+        vo.setSearchCondition(searchCondition);
+        vo.setSearchKeyword(searchKeyword);
+
+        BoardDAO boardDAO = new BoardDAO();
+        List&lt;BoardVO&gt; boardList = boardDAO.getBoardList(vo);
+        //3. 응답 화면 구성
+        response.setContentType(&quot;text/html; charset=EUC-KR&quot;);
+        PrintWriter out = response.getWriter();//출력 스트림
+//        out.println(&quot;&lt;h1&gt;게시판 목록&lt;/h1&gt;&quot;);
+//        for (BoardVO board : boardList) &#123;
+//            out.println(&quot;---&gt;&quot; + board.toString() + &quot;&lt;br&gt;&quot;);
+//        &#125; 아래와 같이 업그레이드 시킨다
+        out.println(&quot;&lt;!DOCTYPE html PUBLIC &#39;-//W3C//DTD HTML 4.01 Transitional//EN&#39; &#39;http://www.w3.org/TR/html4/loose.dtd&#39;&gt;&quot;);
+        out.println(&quot;&lt;html&gt;&quot;);
+        out.println(&quot;&lt;head&gt;&quot;);
+        out.println(&quot;&lt;meta http-equiv=&#39;Content-Type&#39; content=&#39;text/html; charset=EUC-KR&#39;&gt;&quot;);
+        out.println(&quot;&lt;title&gt;글 목록&lt;/title&gt;&quot;);
+        out.println(&quot;&lt;/head&gt;&quot;);
+        out.println(&quot;&lt;body&gt;&quot;);
+        out.println(&quot;&lt;center&gt;&quot;);
+        out.println(&quot;&lt;h1&gt;게시글 목록&lt;/h1&gt;&quot;);
+        out.println(&quot;&lt;h3&gt;&quot;+user.getName()+(&quot;userName&quot;)+&quot;님 로그인 환영합니다......&quot;);
+        out.println(&quot;&lt;a href=&#39;logout.do&#39;&gt;Log-out&lt;/a&gt;&lt;/h3&gt;&quot;);
+
+        out.println(&quot;&lt;!-- 검색 시작 --&gt;&quot;);
+        out.println(&quot;&lt;form action=&#39;getBoardList.do&#39; method=&#39;post&#39;&gt;&quot;);//자기 자신을 한번더 호출
+        out.println(&quot;&lt;table border=&#39;1&#39; cellpadding=&#39;0&#39; cellspacing=&#39;0&#39; width=&#39;700&#39;&gt;&quot;);
+        out.println(&quot;&lt;tr&gt;&quot;);
+        out.println(&quot;&lt;td align=&#39;right&#39;&gt;&quot;);
+        out.println(&quot;&lt;select name=&#39;searchCondition&#39;&gt;&quot;);
+        out.println(&quot;&lt;option value=&#39;TITLE&#39;&gt;제목&quot;);
+        out.println(&quot;&lt;option value=&#39;CONTENT&#39;&gt;내용&quot;);
+        out.println(&quot;&lt;/select&gt;&quot;);
+        out.println(&quot;&lt;input name=&#39;searchKeyword&#39; type=&#39;text&#39;/&gt;&quot;);
+        out.println(&quot;&lt;input type=&#39;submit&#39; value=&#39;검색&#39;/&gt;&quot;);
+        out.println(&quot;&lt;/td&gt;&quot;);
+        out.println(&quot;&lt;/tr&gt;&quot;);
+        out.println(&quot;&lt;/table&gt;&quot;);
+        out.println(&quot;&lt;/form&gt;&quot;);
+        out.println(&quot;&lt;!-- 검색 종료 --&gt;&quot;);
+
+        out.println(&quot;&lt;table border=&#39;1&#39; cellpadding=&#39;0&#39; cellspacing=&#39;0&#39; width=&#39;700&#39;&gt;&quot;);
+        out.println(&quot;&lt;tr&gt;&quot;);
+        out.println(&quot;&lt;th bgcolor=&#39;orange&#39; width=&#39;100&#39;&gt;번호&lt;/th&gt;&quot;);
+        out.println(&quot;&lt;th bgcolor=&#39;orange&#39; width=&#39;200&#39;&gt;제목&lt;/th&gt;&quot;);
+        out.println(&quot;&lt;th bgcolor=&#39;orange&#39; width=&#39;150&#39;&gt;작성자&lt;/th&gt;&quot;);
+        out.println(&quot;&lt;th bgcolor=&#39;orange&#39; width=&#39;150&#39;&gt;등록일&lt;/th&gt;&quot;);
+        out.println(&quot;&lt;th bgcolor=&#39;orange&#39; width=&#39;100&#39;&gt;조회수&lt;/th&gt;&quot;);
+        out.println(&quot;&lt;/tr&gt;&quot;);
+for(BoardVO board : boardList) &#123;
+        out.println(&quot;&lt;tr&gt;&quot;);
+        out.println(&quot;&lt;td&gt;&quot;+board.getSeq()+&quot;&lt;/td&gt;&quot;);
+        out.println(&quot;&lt;td align=&#39;left&#39;&gt;&lt;a href=&#39;getBoard.do?seq=&quot;+board.getSeq()+&quot;&#39;&gt;&quot;+board.getTitle()+&quot;&lt;/a&gt;&lt;/td&gt;&quot;);
+        out.println(&quot;&lt;td&gt;&quot;+board.getWriter()+&quot;&lt;/td&gt;&quot;);
+        out.println(&quot;&lt;td&gt;&quot;+board.getRegDate()+&quot;&lt;/td&gt;&quot;);
+        out.println(&quot;&lt;td&gt;&quot;+board.getCnt()+&quot;&lt;/td&gt;&quot;);
+        out.println(&quot;&lt;/tr&gt;&quot;);
+&#125;
+        out.println(&quot;&lt;/table&gt;&quot;);
+        out.println(&quot;&lt;br&gt;&quot;);
+        out.println(&quot;&lt;a href=&#39;insertBoard.html&#39;&gt;새글 등록&lt;/a&gt;&quot;);
+        out.println(&quot;&lt;/center&gt;&quot;);
+        out.println(&quot;&lt;/body&gt;&quot;);
+        out.println(&quot;&lt;/html&gt;&quot;);
+
+        out.close();
+    &#125;
+    &#125;
+&#125;</code></pre>
+<p>보시다 시피 HTML코드가 매우 길어서 보기 좋지 않습니다. 또한 해당 코드는 차후 내용이 바뀌었을 때 수정이 매우 힙듭니다. 이를 JSP로 작성하면</p>
+<pre><code> &lt;%
+        String searchCondition = request.getParameter(&quot;searchCondition&quot;);
+        String searchKeyword = request.getParameter(&quot;searchKeyword&quot;);
+
+        if (searchCondition == null) &#123;
+            searchCondition = &quot;TITLE&quot;;
+        &#125;
+        if (searchKeyword == null)
+            searchKeyword = &quot;&quot;;
+
+        BoardVO vo = new BoardVO();
+        vo.setSearchCondition(searchCondition);
+        vo.setSearchKeyword(searchKeyword);
+
+        BoardDAO boardDAO = new BoardDAO();
+        List&lt;BoardVO&gt; boardList = boardDAO.getBoardList(vo);
+    %&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv=&#39;Content-Type&#39; content=&#39;text/html; charset=EUC-KR&#39;&gt;
+    &lt;title&gt;글 목록&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;center&gt;
+            &lt;h1&gt;게시글 목록&lt;/h1&gt;
+            &lt;h3&gt;
+                관리자userName님 로그인 환영합니다...... &lt;a href=&#39;logout_proc.jsp&#39;&gt;Log-out&lt;/a&gt;
+            &lt;/h3&gt;
+            &lt;!-- 검색 시작 --&gt;
+            &lt;form action=&#39;getBoardList.jsp&#39; method=&#39;post&#39;&gt;
+                &lt;table border=&#39;1&#39; cellpadding=&#39;0&#39; cellspacing=&#39;0&#39; width=&#39;700&#39;&gt;
+                    &lt;tr&gt;
+                        &lt;td align=&#39;right&#39;&gt;&lt;select name=&#39;searchCondition&#39;&gt;
+                                &lt;option value=&#39;TITLE&#39;&gt;제목
+                                &lt;option value=&#39;CONTENT&#39;&gt;내용
+                        &lt;/select&gt; &lt;input name=&#39;searchKeyword&#39; type=&#39;text&#39; /&gt; &lt;input type=&#39;submit&#39;
+                            value=&#39;검색&#39; /&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/form&gt;
+            &lt;!-- 검색 종료 --&gt;
+            &lt;table border=&#39;1&#39; cellpadding=&#39;0&#39; cellspacing=&#39;0&#39; width=&#39;700&#39;&gt;
+                &lt;tr&gt;
+                    &lt;th bgcolor=&#39;orange&#39; width=&#39;100&#39;&gt;번호&lt;/th&gt;
+                    &lt;th bgcolor=&#39;orange&#39; width=&#39;200&#39;&gt;제목&lt;/th&gt;
+                    &lt;th bgcolor=&#39;orange&#39; width=&#39;150&#39;&gt;작성자&lt;/th&gt;
+                    &lt;th bgcolor=&#39;orange&#39; width=&#39;150&#39;&gt;등록일&lt;/th&gt;
+                    &lt;th bgcolor=&#39;orange&#39; width=&#39;100&#39;&gt;조회수&lt;/th&gt;
+                &lt;/tr&gt;
+                &lt;% for(BoardVO board: boardList)  &#123;    %&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;&lt;%=board.getSeq() %&gt;&lt;/td&gt;
+                    &lt;td align=&#39;left&#39;&gt;&lt;%=board.getTitle() %&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;%=board.getWriter() %&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;%=board.getRegDate() %&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;%=board.getCnt() %&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;%&#125; %&gt;
+            &lt;/table&gt;
+            &lt;br&gt; &lt;a href=&#39;insertBoard.html&#39;&gt;새글 등록&lt;/a&gt;
+        &lt;/center&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<p>  와 같이 효율적으로 작성됨을 알 수 있습니다.<br>필터 왜 init, destory 오버라이딩 해야 한댓지?</p>
+<ul>
+<li></li>
+</ul>
+<p>상세, 수정, 삭제 마무리하기</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/23/Spring/fastcampus/day_5/" data-id="ckhvlt7zb0000psv15xa2ebwz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/24/Spring/fastcampus/day_6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          day_6
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/20/Spring/fastcampus/day_4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">day_4</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/">Fastcampus</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/Fastcampus/day-2/">day_2</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-4/">day_4</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-5/">day_5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-6/">day_6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/" rel="tag">MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/" rel="tag">h2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.25px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 13.75px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DAO/" style="font-size: 10px;">DAO</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 13.75px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 13.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 12.5px;">HTTP</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 13.75px;">JCF</a> <a href="/tags/JSP/" style="font-size: 11.25px;">JSP</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.25px;">Level1</a> <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16.25px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.25px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Servlet/" style="font-size: 11.25px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 17.5px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/VO/" style="font-size: 10px;">VO</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.5px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.5px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.25px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/h2/" style="font-size: 10px;">h2</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/24/Spring/fastcampus/day_6/">day_6</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/23/Spring/fastcampus/day_5/">day_5</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/20/Spring/fastcampus/day_4/">day_4</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/19/Spring/fastcampus/day_3/">day_3</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/18/Spring/fastcampus/day_2/">day_2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
