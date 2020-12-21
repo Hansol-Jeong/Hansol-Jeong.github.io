@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>day_6 | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="“The purpose of life is finding the largest burden that you can bear and bearing it.”― Jordan B. Peterson   아키텍쳐는 어플리케이션의 뼈대입니다. 그렇다면아키텍쳐란 무엇입니까? MODEL_1 Architecture 아키텍쳐는 어플리케이션의 뼈대 MODEL: VO VIEW:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day_6">
+<meta property="og:url" content="https://hansol-jeong.github.io/2020/11/25/Spring/fastcampus/day_7/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="“The purpose of life is finding the largest burden that you can bear and bearing it.”― Jordan B. Peterson   아키텍쳐는 어플리케이션의 뼈대입니다. 그렇다면아키텍쳐란 무엇입니까? MODEL_1 Architecture 아키텍쳐는 어플리케이션의 뼈대 MODEL: VO VIEW:">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/102800280-fff20900-43f6-11eb-93ac-2fac7080233a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/102800592-6f67f880-43f7-11eb-9d93-d309389579db.png">
+<meta property="article:published_time" content="2020-11-25T06:11:25.000Z">
+<meta property="article:modified_time" content="2020-12-21T18:08:15.377Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Servlet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/50402288/102800280-fff20900-43f6-11eb-93ac-2fac7080233a.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring/fastcampus/day_7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/25/Spring/fastcampus/day_7/" class="article-date">
+  <time datetime="2020-11-25T06:11:25.000Z" itemprop="datePublished">2020-11-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>►<a class="article-category-link" href="/categories/Spring/day-7/">day_7</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      day_6
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://user-images.githubusercontent.com/50402288/102800280-fff20900-43f6-11eb-93ac-2fac7080233a.png" alt="image"><br>“The purpose of life is finding the largest burden that you can bear and bearing it.”<br>― Jordan B. Peterson</p>
+<hr>
+<p><img src="https://user-images.githubusercontent.com/50402288/102800592-6f67f880-43f7-11eb-9d93-d309389579db.png" alt="image"></p>
+<h2 id="아키텍쳐는-어플리케이션의-뼈대입니다-그렇다면"><a href="#아키텍쳐는-어플리케이션의-뼈대입니다-그렇다면" class="headerlink" title="아키텍쳐는 어플리케이션의 뼈대입니다. 그렇다면"></a>아키텍쳐는 어플리케이션의 뼈대입니다. 그렇다면</h2><h3 id="아키텍쳐란-무엇입니까"><a href="#아키텍쳐란-무엇입니까" class="headerlink" title="아키텍쳐란 무엇입니까?"></a>아키텍쳐란 무엇입니까?</h3><ul>
+<li>MODEL_1 Architecture<ul>
+<li>아키텍쳐는 어플리케이션의 뼈대</li>
+<li>MODEL: VO</li>
+<li>VIEW: JSP</li>
+<li>CONTROLLER: controller(servlet)</li>
+</ul>
+</li>
+</ul>
+<h2 id="session-이나-request에-결과가-저장이-되었다면el과-jstl을-통해서-jsp에-뿌려줄-수-있습니다"><a href="#session-이나-request에-결과가-저장이-되었다면el과-jstl을-통해서-jsp에-뿌려줄-수-있습니다" class="headerlink" title="session 이나 request에 결과가 저장이 되었다면el과 jstl을 통해서 jsp에 뿌려줄 수 있습니다."></a>session 이나 request에 결과가 저장이 되었다면el과 jstl을 통해서 jsp에 뿌려줄 수 있습니다.</h2><h3 id="model-addAttribute-“List”-List"><a href="#model-addAttribute-“List”-List" class="headerlink" title="model.addAttribute(“List”, List);"></a>model.addAttribute(“List”, List);</h3><p> List란 Key값으로 List 객체를 넣어줬다면 jsp에서<br> &lt;c:forEach var=”content” items=”${List}”&gt;</p>
+<p></c:forEach><br>이런식으로 List의 원소값들을 뿌려 줄 수 있습니다. 그렇다면 그 원소값은 ${content}로 뿌려줄 수 있을 것입니다. </p>
+<h3 id="session-setAttribute-“List”-List"><a href="#session-setAttribute-“List”-List" class="headerlink" title="session.setAttribute(“List”, List);"></a>session.setAttribute(“List”, List);</h3><p>session도 마찬가지 입니다. session.setAttribute(“List”, List); 으로 세션에 저장하였다면<br>${sessionScope.List}로 값을 뿌려줄 수 있습니다.</p>
+<h2 id="IoC-Inversion-of-Control"><a href="#IoC-Inversion-of-Control" class="headerlink" title="IoC(Inversion of Control)"></a>IoC(Inversion of Control)</h2><ul>
+<li>원래는 개발자가 객체의 생명주기를 관리합니다 하지만 이 제어권을 프레임워크(Spring)에게 넘겨주는 것이 IoC입니다. 때문에 제어의 역제어라고 합니다.</li>
+<li>이제 개발자는 객체를 ‘생성’하는 것이 아닌 ‘호출’하여 씁니다.</li>
+<li>역제어의 예)  서블릿은 개발자가 만드는 것이 아니다. xml을 로딩하여 서블릿 컨테이너가 서블릿을 만든다. 제어권은 서블릿 컨테이너에게 있다.<h3 id="순제어-V-S-역제어"><a href="#순제어-V-S-역제어" class="headerlink" title="순제어 V.S 역제어"></a>순제어 V.S 역제어</h3>순제어는 유지보수가 어렵습니다.  하지만 역제어는 유지보수가 용이합니다. (xml파일만 건드리면 됩니다)</li>
+</ul>
+<p>스프링 컨테이너도 마찬가지입니다. 서블릿 컨테이너와 마찬가지로 xml파일을 로딩합니다<br> 로딩하면 xml파일에 bean등록된 클래스들이 객체로서 JVM 메모리에 올라갑니다. 어떤 객체가 메모리에 뜰지는 xml만 수정하면 수정가능합니다. 이것이 역제어의 편리성입니다.</p>
+<p>스프링컨테이너가 bean등록한 객체들을 무조건 메모리에 띄운다. (등록된 순서대로)<br>이 떄 bean등록되는 클래스들은 모두 디폴트 생성자가 필요합니다. 컨테이너에서 bean등록 시 디폴트 생성자가 없다면 메모리에 띄우지 않습니다. 그래서 의존성 주입이 필요합니다.</p>
+<h3 id="의존성-주입"><a href="#의존성-주입" class="headerlink" title="의존성 주입"></a>의존성 주입</h3><ul>
+<li><p>Constructor Injection</p>
+</li>
+<li><p>Setter Injection</p>
+<h3 id="Constructor-Injection"><a href="#Constructor-Injection" class="headerlink" title="Constructor Injection"></a>Constructor Injection</h3><p>간단한 가정! 현재 TV라는 인터페이스가 있으며 TV를 상속받은 sonyTV, samsungTV 클래스가 있다고 가정합니다. 또한 Speaker 인터페이스가 있으며 역시 sonySpeaker, samsungSpeaker가 있습니다.</p>
+<pre><code> &lt;bean id=&quot;tv&quot; class=&quot;polymorphism.SamsungTV&quot;&gt;</code></pre>
+</li>
+</ul>
+<p>라고 명시되어 있다면 해석은 “tv”라는 id로 호출할 수 있는 bean객체를 등록할 것인데 그 bean객체의 클래스는 samsungTV입니다. 때문에 JVM메모리에 떠있는 TV라는 인터페이스를 가진 객체는 samsungTV하나이죠. 이를 @Component(“tv”)해서 객체를 가져온다면 samsungTV객체가 로딩될 것입니다.<br> 이 때 samsungTV는 speaker라는 필드를 가지고 있습니다. 이 speaker또한 인터페이스이니 해당 인터페이스를 상속받은 객체를 주입시켜주어야 합니다 이를 생성자 인젝션으로 한다면</p>
+<pre><code>   &lt;constructor-arg  ref=&quot;sony&quot;&gt;&lt;/constructor-arg&gt;
+   &lt;bean id=&quot;sony&quot; class=&quot;polymorphism.SonySpeaker&quot;&gt;&lt;/bean&gt;
+   &lt;/bean&gt;</code></pre>
+<p>와 같이 됩니다 이를 해석하면 tv bean을 띄울 때 constructor-arg: 생성자로서 “sony”라는 id를 가진 bean객체를 등록합니다. 이는 samsungTV객체가 생성될 때 samsungTV생성자의 파라미터로써 들어가게 된다는 의미입니다. 주의할 점은 bean에 등록되려면 스프링 컨테이너가 해당 bean을 인지할 수 있어야 하며 전제조건으로 bean으로 등록되려는 클래스는 꼭 디폴트 생성자를 가져야 한다고 했습니다. 때문에 생성자를 오버라이딩하여 Speaker클래스의 객체를 파라미터로 받는 생성자를 만들어 줘야 합니다.</p>
+<pre><code>public SamsungTV(SonySpeaker speaker) &#123;
+
+System.out.println(&quot;===&gt; SamsungTV  객체 생성&quot;);
+
+this.speaker = speaker;
+
+&#125;</code></pre>
+<h3 id="Setter-Injection"><a href="#Setter-Injection" class="headerlink" title="Setter Injection"></a>Setter Injection</h3><p> Setter Injection이 이루어지기위한 간단한 전제조건은 samsungTV()에 setSpeaker()라는 세터메소드가 존재해야한다는 것입니다. </p>
+<pre><code> public void setSpeaker(SonySpeaker speaker) &#123;
+
+this.speaker  = speaker;
+
+&#125;</code></pre>
+<p>또한 xml단에서는 </p>
+<pre><code>&lt;bean id=&quot;tv&quot; class=&quot;polymorphism.SamsungTV&quot;&gt;
+
+&lt;property name=&quot;speaker&quot;  ref=&quot;sony&quot;&gt;&lt;/property&gt;
+
+&lt;/bean&gt;
+
+&lt;bean id=&quot;sony&quot; class=&quot;polymorphism.SonySpeaker&quot;&gt;&lt;/bean&gt;</code></pre>
+<p>  “tv”라는 id를 가진 bean객체를 등록하는데 이 객체의 클래스는 samsungTV입니다. 이 때<br> property: speaker필드의 값을 “sony”라는 id를 가진 bean으로 설정합니다.<br> “sony”라는 id를 가진 bean은 sonySpeaker클래스를 가진 객체입니다.</p>
+<ul>
+<li><p>id를 지정해주지 않았을 시<br>Creating instance of bean ‘Polymorphism4.GoogleTV#0’  이 콘솔에 뜹니다 이것이 자동생성되는 고유아이디입니다.</p>
+</li>
+<li><p>컨테이너는 MAP이다. bean에서 Key=tv, value=samsungTV</p>
+</li>
+<li><p>컨테이너가 xml파일을 로딩합니다 : xml을 통해서 spring container을 제어할 수 있다.</p>
+</li>
+<li><p>아키텍쳐는 jar형태로서 라이브러리에 다 들어있다. 이것이 뼈대이며 이것이 프레임 워크입니다.</p>
+</li>
+<li><p>프레임워크가 뼈대이면 비지니스로직은 뼈대에 붙일 살이라고 할 수 있습니다.</p>
+</li>
+<li><p>이 뼈와 살을 연결하는 것이 xml환경설정 파일.(접착제, 살을 뼈에 넘겨줄 건데 어떤 설정으로 넘겨줄 것이냐)</p>
+<h2 id="서블릿-컨테이너와-스프링-컨테이너의-비교"><a href="#서블릿-컨테이너와-스프링-컨테이너의-비교" class="headerlink" title="서블릿 컨테이너와 스프링 컨테이너의 비교"></a>서블릿 컨테이너와 스프링 컨테이너의 비교</h2><p>서블릿은 클라이언트가 불러야주고 스프링은 애초에 컨테이너 호출하면 메모리에 다 올리고시작하고 하지만 둘다 역제어는 똑같고 왜 똑같냐 스프링은 컨테이너가 bean을 불러와서 객체생성하고 서블릿은 서블릿 컨테이너가 url맞으면 그 때 서블릿 생성하고 그래서 역제어인건 똑같애</p>
+<ul>
+<li>서블릿 컨테이너는 클라이언트가 요청시에 서블릿 객체를 생성합니다(lazy-loading) 반면에 스프링 컨테이너는 호출됨과 동시에 객체를 메모리에 다 로딩 시키고 시작합니다.(pre-loading).</li>
+</ul>
+</li>
+<li><p>둘다 역제어 입니다. 스프링은 컨테이너가 bean을 불러와서 객체생성하니까 역제어이고, 서플릿은 서블릿 컨테이너가 url이 맞으면 그 때 서블릿을 생성하므로 역제어인 것은 동일합니다.</p>
+</li>
+</ul>
+<p>디폴트 생성자만 쓰면 그럼 초기화는 어떻게해? -&gt;  xml에 초기화 메소드, 파괴메소드 등록할 수 있어.<br>같은 객체 계속 불러와야돼? -&gt; 싱글톤 -&gt; 싱글톤도 하지마</p>
+<h2 id="Ioc는-두가지-제어를-개발자에게서-가져갔다"><a href="#Ioc는-두가지-제어를-개발자에게서-가져갔다" class="headerlink" title="Ioc는 두가지 제어를 개발자에게서 가져갔다"></a>Ioc는 두가지 제어를 개발자에게서 가져갔다</h2><ol>
+<li>객체 생성</li>
+<li>객체와 객체간의 의존관계<br>객체생성은 xml파일에서 관리하고, 의존관계 역시 xml파일에서 관리합니다.</li>
+</ol>
+<h2 id="Annotation설정"><a href="#Annotation설정" class="headerlink" title="Annotation설정"></a>Annotation설정</h2><p>@Autowired: 매우매우 중요한 타입인젝션, 변수의 타입을 기준으로 의존성 주입을 처리한다.<br>따라서 해당 타입의 객체가 메모리에 있기만 하면 컨테이너가 그 객체를 변수에 할당한다.<br>만약 주입할 객체가 없으면 exception 발생 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/25/Spring/fastcampus/day_7/" data-id="ckiyvr0fa0002kwv1hixjgdzv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/24/Spring/fastcampus/day_6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">day_6</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-4/">day_4</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-5/">day_5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-6/">day_6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-7/">day_7</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/" rel="tag">MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/" rel="tag">h2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.25px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 13.75px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DAO/" style="font-size: 10px;">DAO</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 13.75px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 13.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 12.5px;">HTTP</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 13.75px;">JCF</a> <a href="/tags/JSP/" style="font-size: 11.25px;">JSP</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.25px;">Level1</a> <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16.25px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.25px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Servlet/" style="font-size: 12.5px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 17.5px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/VO/" style="font-size: 10px;">VO</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.5px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.5px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.25px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/h2/" style="font-size: 10px;">h2</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/25/Spring/fastcampus/day_7/">day_6</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/24/Spring/fastcampus/day_6/">day_6</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/23/Spring/fastcampus/day_5/">day_5</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/20/Spring/fastcampus/day_4/">day_4</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/19/Spring/fastcampus/day_3/">day_3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
