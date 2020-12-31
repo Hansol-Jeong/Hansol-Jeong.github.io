@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>TestCode | Hansol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="스프링부트에서 테스트 코드를 작성하자패스트 캠퍼스의 강사님들 또한 테스크 코드에 대해 많은 언급을 하셨었습니다. 그만큼 테스트 코드는 중요하다고 할 수 있습니다. TDD와 단위테스트는 다릅니다. TDD: 테스트가 주도하는 개발, 테스트 코드를 먼저 작성하는 것부터 시작 단위 테스트: 기능 단위의 테스트 코드를 작성 단위 테스트의 필요성 단위 테스트는 개발">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TestCode">
+<meta property="og:url" content="https://hansol-jeong.github.io/2021/01/01/Spring/springboot&AWS/testCode/index.html">
+<meta property="og:site_name" content="Hansol">
+<meta property="og:description" content="스프링부트에서 테스트 코드를 작성하자패스트 캠퍼스의 강사님들 또한 테스크 코드에 대해 많은 언급을 하셨었습니다. 그만큼 테스트 코드는 중요하다고 할 수 있습니다. TDD와 단위테스트는 다릅니다. TDD: 테스트가 주도하는 개발, 테스트 코드를 먼저 작성하는 것부터 시작 단위 테스트: 기능 단위의 테스트 코드를 작성 단위 테스트의 필요성 단위 테스트는 개발">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/103354612-5b0ab680-4aef-11eb-8625-4be1ea0eba7c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/103390553-5e865800-4b58-11eb-9b14-e1cb5d0f566a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/103390761-6bf01200-4b59-11eb-9cc8-55c85605000e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/50402288/103366146-299ce580-4b05-11eb-9a97-5b44832e132d.png">
+<meta property="article:published_time" content="2020-12-31T18:42:14.000Z">
+<meta property="article:modified_time" content="2020-12-31T18:49:28.588Z">
+<meta property="article:author" content="Hansol">
+<meta property="article:tag" content="til">
+<meta property="article:tag" content="springBoot">
+<meta property="article:tag" content="testCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/50402288/103354612-5b0ab680-4aef-11eb-8625-4be1ea0eba7c.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hansol" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hansol</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://hansol-jeong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring/springboot&amp;AWS/testCode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/01/Spring/springboot&AWS/testCode/" class="article-date">
+  <time datetime="2020-12-31T18:42:14.000Z" itemprop="datePublished">2021-01-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SpringBoot-AWS/">SpringBoot&AWS</a>►<a class="article-category-link" href="/categories/SpringBoot-AWS/TestCode/">TestCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TestCode
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="스프링부트에서-테스트-코드를-작성하자"><a href="#스프링부트에서-테스트-코드를-작성하자" class="headerlink" title="스프링부트에서 테스트 코드를 작성하자"></a>스프링부트에서 테스트 코드를 작성하자</h2><p>패스트 캠퍼스의 강사님들 또한 테스크 코드에 대해 많은 언급을 하셨었습니다. 그만큼 테스트 코드는 중요하다고 할 수 있습니다.</p>
+<h3 id="TDD와-단위테스트는-다릅니다"><a href="#TDD와-단위테스트는-다릅니다" class="headerlink" title="TDD와 단위테스트는 다릅니다."></a>TDD와 단위테스트는 다릅니다.</h3><p> TDD: 테스트가 주도하는 개발, 테스트 코드를 먼저 작성하는 것부터 시작<br> 단위 테스트: 기능 단위의 테스트 코드를 작성</p>
+<h3 id="단위-테스트의-필요성"><a href="#단위-테스트의-필요성" class="headerlink" title="단위 테스트의 필요성"></a>단위 테스트의 필요성</h3><ul>
+<li><p>단위 테스트는 개발 단계 초기에 문제를 발견하도록 도와줍니다</p>
+</li>
+<li><p>단위 테스트는 개발자가 나중에 코드를 리팩토링 하거나 라이브러리 업그레이드 등에서 기존 기능이 올바르게 작동하는지 확인할 수 있습니다.</p>
+</li>
+<li><p>단위 테스트는 기능에 대한 불확실성을 감소시킬 수 있습니다</p>
+</li>
+<li><p>단위 테스트는 시스템에 대한 실제 문서를 제공합니다. 즉, 단위 테스트 자체가 문서로서 사용될 수 있습니다.<br>우선 스프링 메인 클래스부터 만들어보겠습니다.<br>   package com.example.admin;  </p>
+<p>  import org.springframework.boot.SpringApplication;<br>  import org.springframework.boot.autoconfigure.SpringBootApplication;  </p>
+<p>  @SpringBootApplication<br>  public class Application {  </p>
+<pre><code>  public static void main(String[] args) &#123;  
+      SpringApplication.run(Application.class, args);  
+&#125;  </code></pre>
+<p>  }<br>하나하나 보겠습니다. 모르는 건 없어야 합니다. @SpringBootApplication을 붙임으로 써 스프링 부트의 자동설정, 스프링 Bean읽기와 생성을 모두 자동으로 합니다. 여기서 자동설정은 매우 중요한 부분입니다. @AutoConfiguration이 @SpringBootApplication안에 래핑되어 있기 때문에 우리는 추가한 dependency에 대해서 일일히 bean등록을 할 필요가 없습니다.<br>SpringApplication.run으로 인해 내장WAS(Web Application Server)가 실행됩니다. 때문에 별도로 톰켓이 필요가 없습니다. 스프링 부트로 만들어진 Jar파일안에 있는 톰캣이 실행되기 때문입니다.<br><img src="https://user-images.githubusercontent.com/50402288/103354612-5b0ab680-4aef-11eb-8625-4be1ea0eba7c.png" alt="20201230213943"><br>디펜던시 안에 Jar파일로 톰켓이 있는 것을 볼 수 있습니다. 이 내장 WAS의 장점은 언제 어디서나 같은 환경을 제공한다는 것입니다. 톰켓 버전이 서로 달라도 내장 톰켓을 사용하니 충돌의 우려가 없습니다.</p>
+<p>이제 테스트를 할 코드를 작성하기 전에 기능구현을 해보겠습니다.</p>
+<p>   @RestController<br>  public class HelloController {  </p>
+<pre><code>  @GetMapping(&quot;/hello&quot;)  
+  public String hello() &#123;  
+      return &quot;hello&quot;;  
+&#125;  </code></pre>
+<p>  }<br>아주 기본적인 코드입니다. 하지만 짚고넘어가야 할 점 또한 있습니다.</p>
+<h3 id="RestController-V-S-Controller"><a href="#RestController-V-S-Controller" class="headerlink" title="RestController V.S Controller"></a>RestController V.S Controller</h3><p>지금까지 아무런 고민없이 둘을 혼합하여 써왔습니다. 그도 그럴것이 뭔가를 창조적으로 만들어내 본 적 없이 클론 코딩만 하다보니 둘의 차이점을 알지 못했습니다. 이젠 알아야 할 때입니다.<br>이론적으로 보면 RestController = Controller + ResponseBody입니다.</p>
+<ul>
+<li><p>Controller<br>String 값을 반환 하는 것이 가장 대표적인 형태이며 이로써 ViewResolver를 거쳐 jsp페이지를 보여줍니다.</p>
+</li>
+<li><p>ResponseBody<br>객체 자체의 값을 Json으로 변환하여 반환합니다.<br>때문에</p>
+</li>
+<li><p>RestController<br>Controller로써 기능하지만 ViewResolver를 거치치 않습니다. 때문에 특정 페이지로 매핑되지 않고 Json형태로 객체 자체의 값을 반환합니다.</p>
+<h4 id="그렇다면-이것이-왜-쓰입니까"><a href="#그렇다면-이것이-왜-쓰입니까" class="headerlink" title="그렇다면 이것이 왜 쓰입니까?"></a>그렇다면 이것이 왜 쓰입니까?</h4><p>기존에는 Controller만으로도 충분했습니다. 필요에 따라서 ResponseBody를 붙여가며 상황에 따라서 값을 반환했습니다. 하지만 <strong>다양한 기기</strong>들에 대한 접속의 <strong>유연성</strong>이 대두되었습니다.<br>예를 들어보겠습니다. 저는 서버에서 ViewResolver를 통해 “/hello”라는 URI에 대해 hello.jsp라는 페이지를 출력하도록 하였습니다. 하지만 이는 다양한 클라이언트를 지원할 수 없습니다. windows에서는 지원이되지만 ios에서는 지원이 되지 않을 수 있고 다른 iot장비에서 jsp를 읽지 못할 수 있습니다. 때문에 서버는 클라이언트 측에 관여를 일 절 하지 않고 객체 자체의 정보만 전달해 주겠다는 것입니다. 이로써 서버-클라이언트의 분리가 더욱 확실해지고 다양한 미디어 기기에 대한 서버의 유연성이 대폭 증가됩니다.</p>
+<h3 id="HelllowControllerTest"><a href="#HelllowControllerTest" class="headerlink" title="HelllowControllerTest"></a>HelllowControllerTest</h3><p>   @RunWith(SpringRunner.class)<br>@WebMvcTest(controllers = HelloController.class)<br>public class HelloControllerTest {  </p>
+<pre><code>@Autowired  </code></pre>
+<p>  private MockMvc mvc;  </p>
+<p>  @Test<br>  public void hello_Returning() throws Exception {  </p>
+<pre><code>    String hello = &quot;hello&quot;;  </code></pre>
+<p>  mvc.perform(get(“/hello”))  </p>
+<pre><code>            .andExpect(status().isOk())  
+            .andExpect(content().string(hello));  </code></pre>
+<p>  }  </p>
+<p>}<br>매우 중요한 포인트라고 생각합니다. 여기에 우리가 하려던 단위 테스트의 기초부분이 모두 들어있습니다.</p>
+</li>
+<li><p>Runwith<br>우선 이 테스트는 Spring환경에서 실행되어야 합니다. 하지만 test패키지는 main패키지를 참조하지 않기 때문에 스프링 환경에서 실행하라고 명시해주어야 합니다. 이 때 @Runwith를 통해서 스프링 환경에서 실행하라고 알려주는 것입니다. 프레임워크로써 스프링을 추가합니다.</p>
+</li>
+</ul>
+</li>
+<li><p>WebMvcTest<br>스프링을 프레임워크로 추가했지만 여전히 부족합니다. 이 테스트가 수행되기 위해서는 스프링 부트로써 수행되어야 합니다. 이전에 우리는 스프링 부트로 실행하는 것을 명시하기위해서 @SpringBootApplication을 추가했었습니다. 이 안에는 일 전에 강조한 @AutoConfiguration이 래핑되어있습니다. 이는 사전에 클래스에 대한 객체를 생성합니다. 하지만 문제는 테스트만 하는데 많은 bean을 JVM에 띄울 이유가 없습니다. 때문에 @WebMvcTest를 통해 테스트에 필요한 구성만 bean으로 등록합니다.<br>(<em>하지만 의문점이 있습니다. 처음에는 @WebMvcTest(controllers = HelloController.class)에서 어떻게 HelloController클래스를 인식하는지 이해가 되지 않았습니다. 그래서 이 부분을 지우고 @WebMvcTest만 남기고 해당부분을 지웠음에도 잘 동작하였습니다. 이는 질문으로써 해결해야 할 것입니다.</em>)</p>
+<ul>
+<li><p>AutoConfiguration<br><a target="_blank" rel="noopener" href="http://dveamer.github.io/backend/SpringBootAutoConfiguration.html%EC%97%90">http://dveamer.github.io/backend/SpringBootAutoConfiguration.html에</a> 굉장히 잘 정리되어 있습니다.<br>spring.factories파일에 정의한 내용에 의해 JVM에 bean을 띄웁니다.<br><img src="https://user-images.githubusercontent.com/50402288/103390553-5e865800-4b58-11eb-9b14-e1cb5d0f566a.png" alt="20201231110708"><br>그렇다고 해서 저 수많은 객체들이 전부 사전에 bean등록되는 것이 아닙니다. 특정 조건을 만족해야 하는 것들이 있습니다. 예를들면 h2콘솔같은경우를 예로 듭니다. 우리는 h2디펜던시를 앞으로 추가할 것입니다. 이를 통해 프로젝트내에서 h2를 데이터 베이스로 사용하는 것이 가능합니다. 하지만 이전엔 한번도 고민해 본적 없던 h2콘솔은 어디에도 정의한 적이 없습니다. 그것이 어떻게 뜨는 건지 생각조차 한 적이 없습니다. 이 때 동작하는 것이 AutoConfiguration이며  특정조건(h2가 의존성 주입되었는지 등)을 만족하면 h2콘솔관련 bean이 JVM 에 뜨며 /h2-console URI로 접속하면 콘솔이 뜨는 것입니다.<br><img src="https://user-images.githubusercontent.com/50402288/103390761-6bf01200-4b59-11eb-9cc8-55c85605000e.png" alt="20201231111436"></p>
+</li>
+<li><p>Autowired<br>스프링 프레임워크가 관리하는 JVM메모리상의 bean들중에서 적합한 bean을 주입받습니다. 여기서 <strong>적합</strong>이란 해당 클래스 자체일 수도 있고 해당 클래스의 부모 클래스일 수 도 있으며 해당 클래스가 implement한 interface일 수도 있습니다.</p>
+</li>
+<li><p>MockMvc mvc<br>Mvc테스트의 중추입니다. MockMvc의 의미는 가짜 mvc(model, view, controller) 를 만든다는 것인데 이를 통해 모의 HTTP 요청을 컨트롤러에 보내고 컨트롤러를 서버 내에서 실행하지 않고도 컨트롤러가 어떻게 작동하는지 테스트 할 수 있습니다. 여기서 컨트롤러의 작동이란 HTTP GET, POST, PUT, DELETE 을 의미합니다.</p>
+</li>
+<li><p>mvc.perform(get(“/hello”))<br>가짜 mvc를 생성해서 이를 통해 서버를 구동시키지 않고도 자체적으로 /hello URI에 대한 테스트를 진행할 수 있습니다. HTTP GET요청을 하며 이 요청에 대한 응답을 통해 여러 검증을 체이닝을 통해 할 수 있습니다.</p>
+</li>
+<li><p>andExpect(status().Ok())<br>HTTP Header의 상태(status)를 검증합니다 이 때 상태란 200, 404, 500등 서버의 응답 상태를 의미합니다.<br>Ok상태는 200의 의미하기에 200인지 아닌지 검증합니다.</p>
+</li>
+<li><p>andExpect(contnet().string(hello))<br>본문의 내용이 hello가 맞는지 검증합니다.<br>(<em>여기서 본문의 내용이란 무엇인지 헷갈립니다. 현재는 RestController기 때문에 본문이란 Json의 본문이나, return되는 String이나 같기 때문에 오해의 소지가 없어도, 그냥 Controller라면, 본문이 의미하는 것은 return 되는 String입니까 아니면 prefix, suffix가 붙은 (~/WEB-INF/hello.jsp)입니까</em>)</p>
+<h4 id="HelloController"><a href="#HelloController" class="headerlink" title="HelloController"></a>HelloController</h4><p>이제 테스트 코드가 아닌 실제 코드를 실행해보겠습니다.  앞선 테스트대로라면<br>mvc.perform(get(“/hello”).andExpect(status().Ok()).andExpect(content().string(hello));<br>HTTP GET요청에 따른 URI(“/hello”)의 서버 응답상태는 200번이어야 하며, 그 컨텐츠의 내용은 hello여야 할 것입니다. 실행결과는<br><img src="https://user-images.githubusercontent.com/50402288/103366146-299ce580-4b05-11eb-9a97-5b44832e132d.png" alt="20201231010922"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>와 같이 정상적인 연결상태에 내용은 hello인 것을 알 수 있습니다.</p>
+<h4 id="단위테스트"><a href="#단위테스트" class="headerlink" title="단위테스트"></a>단위테스트</h4><p>단위테스트는 테스트코드를 먼저작성하는지 아닌지는 상관이 없습니다. 그저 그 기능을 테스트할 수 있는 테스트 코드를 만드는 것입니다. 이것이 TDD와 비교되는 점인데 TDD는 명확한 절차가 있습니다. 실질적인 코드를 작성하기 전 미리 항상 실패하는 테스트를 먼저 작성하고 이 후 테스트를 통과하는 코드를 작성하고 이를 리팩토링하여 실질적인 코드를 만듭니다.</p>
+<h3 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h3><p> 지금까지 eclipse에서 lombok을 쓸 때는 의존성 추가만 해주면 쓸 수 있었습니다. 하지만 intelliJ는 따로 프로젝트에 플러그인을 설치해주어야 한다는데 이것이 이해가 되질 않았습니다. 그 이유는 플러그인 설치를 안해주면 lombok을 쓰기위한 어노테이션을 intelliJ가 인식하지 못하여 오류처리하지 때문입니다. 그런데 최신버전 intelliJ는 괜찮나 봅니다. 자동으로 롬복이 설치되어 있었습니다.</p>
+<h4 id="HelloResponseDto"><a href="#HelloResponseDto" class="headerlink" title="HelloResponseDto"></a>HelloResponseDto</h4><pre><code>@Getter  
+@RequiredArgsConstructor  
+public class HelloResponseDto &#123;  
+    private final String name;  
+ private final int amount;  
+&#125;</code></pre>
+<p>롬복을 통해 Dto(Data Transfer Object, VO(Value Object와 같은개념이나 VO는 read only이다.)를 작성하였다</p>
+<ul>
+<li>Getter<br>get 메소드를 자동으로 생성해준다.<ul>
+<li>RequiredArgsConstructor<br>선언된 모든 final필드가 포함된 생성자를 생성해 줍니다.<br>final이 없는 필드는 생성자에 포함되지 않습니다. 즉 name과 amount를 초기화 해줄 파라미터가 포함된 생성자를 생성합니다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="HelloResponseDtoTest"><a href="#HelloResponseDtoTest" class="headerlink" title="HelloResponseDtoTest"></a>HelloResponseDtoTest</h4><pre><code>public class HelloResponseDtoTest &#123;  
+    @Test  
+  public void lombok_test() &#123;  
+        String name = &quot;hansol&quot;;  
+ int amount = 25;  
+
+  HelloResponseDto dto = new HelloResponseDto(name, amount);  
+  assertThat(dto.getName()).isEqualTo(name);  
+  assertThat(dto.getAmount()).isEqualTo(amount);  
+  &#125;  
+&#125;
+##### 롬복 에러
+그런데 문제는 해당 테스트가 지속적으로 통과되지가 않았습니다. 이유는 생각보다 간단했습니다. gradle 5 버전 이상부터 lombok의 디펜던시 설정방법이 세분화 되었기 때문입니다.</code></pre>
+<p>implementation ‘org.projectlombok:lombok’<br>기존에는 이렇게 했었지만</p>
+<pre><code>compileOnly(&quot;org.projectlombok:lombok&quot;)  
+testCompileOnly(&quot;org.projectlombok:lombok&quot;)  
+annotationProcessor(&quot;org.projectlombok:lombok&quot;)  
+testAnnotationProcessor(&quot;org.projectlombok:lombok&quot;)</code></pre>
+<p>이제는 설정 시 이렇게 설정해주어야 한다고 합니다. 바꾸니 테스트를 통과하였습니다.</p>
+<ul>
+<li>assertThat<br>.andExpect와 같은 기능을 하는 검증 메소드입니다. 마찬가지로 체이닝이 지원되어 메소드를 이어서 사용할 수 있습니다.</li>
+<li>isEqualTo<br>비교하는 값이 같다면 참입니다.</li>
+</ul>
+<h4 id="HelloController-1"><a href="#HelloController-1" class="headerlink" title="HelloController+"></a>HelloController+</h4><p>HelloResponseDto가 정상으로 작동하는 것을 단위테스트에서 확인하였으니 HelloController에 추가해보겠습니다.</p>
+<pre><code>@GetMapping(&quot;/hello/dto&quot;)  
+public HelloResponseDto helloDto(@RequestParam(&quot;name&quot;) String name,  
+  @RequestParam(&quot;amount&quot;) int amount) &#123;  
+    return new HelloResponseDto(name, amount);  
+&#125;</code></pre>
+<ul>
+<li>RequestParam<br>HTTP Request 파라미터를 받을 수 있습니다. 즉 Request에 있는 파라미터와 받고자 하는 변수명을 일치시키면 해당 값을 가져올 수 있습니다. 이를 통해 fastcampus프로젝트에서 jsp에서 request로 넘긴 값을 entity에서의 변수와 일치시켜 해당 entity에 변수 값을 1대1매핑시켜서 객체 형태로 controller에 받아 쓸 수 있었습니다. 쓸 땐 몰랐는데 이제야 이해가 되는 부분입니다.</li>
+</ul>
+<h4 id="HelloControllerTest"><a href="#HelloControllerTest" class="headerlink" title="HelloControllerTest+"></a>HelloControllerTest+</h4><p>위의 코드를 실행 하기 전 이에 대한 테스트 코드를 작성합니다</p>
+<pre><code>@Test  
+public void helloDto_Returning() throws Exception &#123;  
+    String name = &quot;hansol&quot;;  
+ int amount = 25;  
+
+  mvc.perform(get(&quot;/hello/dto&quot;).param(&quot;name&quot;, name)  
+    .param(&quot;amount&quot;, String.valueOf(amount)))  
+            .andExpect(status().isOk())  
+            .andExpect(jsonPath(&quot;$.name&quot;, is(name)))  
+            .andExpect(jsonPath(&quot;$.amount&quot;, is(amount)));  
+&#125;</code></pre>
+<ul>
+<li>param<br>요청 파라미터를 설정합니다. 컨트롤러 작성시 어노테이션 @RequestParam을 통해 request name 파라미터를 필드명 name에 매칭시켜주기로 했었습니다. 때문에 param을 통해서 request파라미터 name에  name(hansol)을 주입시킵니다. 이것은 외부에서 request형태로 name = “hansol” 파라미터를 전달해 준 것과 같습니다. 그러면 컨트롤러에서 request파라미터중 name을 찾아 메소드 파라미터로써 name을 받아옵니다. 이를 통해 return시 HelloResponseDto의 생성자 파라미터로 넘겨서 반환합니다.<ul>
+<li>jsonPath<br>jsonPath는 response를 확인하는 용도입니다. 이 때 json의 필드명은 $.name과 같이 가져옵니다.</li>
+</ul>
+</li>
+</ul>
+<p>코드는 해당 URI로 들어간다면 request파라미터 “name”에 name을 매핑할 것이고 마찬가지로 “amount” 에 amount를 매핑할 것입니다. 이 때 기대가 됩니다. 무엇이? 상태가 200번일 것이 또한 기대가 됩니다. 무엇이? response해준 json에서 “name”파라미터의 값이 name일 것이, 또한 “amount”파라미터의 값이 amount일 것이 기대가 됩니다.<br>(<em>그렇다면 RestController가 아닌 기본 Controller를 사용 했을 때  Response에 대한  Test는 어떻게 합니까? 이 때는 json이 아니라 html, 또는 jsp형태로 반환되지 않습니까?</em>)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2021/01/01/Spring/springboot&AWS/testCode/" data-id="ckjd7diub0004e8v1fhk5a6u0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springBoot/" rel="tag">springBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/testCode/" rel="tag">testCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/31/Spring/springboot&AWS/intelliJ&springboot/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">intelliJ&amp;springboot</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-4/">day_4</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-5/">day_5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-6/">day_6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-7/">day_7</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/">SpringBoot&AWS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/TestCode/">TestCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/intelliJ-springboot/">intelliJ&springboot</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/" rel="tag">MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/" rel="tag">h2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/" rel="tag">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testCode/" rel="tag">testCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.25px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 13.75px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DAO/" style="font-size: 10px;">DAO</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 13.75px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 13.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 12.5px;">HTTP</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 13.75px;">JCF</a> <a href="/tags/JSP/" style="font-size: 11.25px;">JSP</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.25px;">Level1</a> <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16.25px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.25px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Servlet/" style="font-size: 12.5px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 17.5px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/VO/" style="font-size: 10px;">VO</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.5px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.5px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.25px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/h2/" style="font-size: 10px;">h2</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/springBoot/" style="font-size: 11.25px;">springBoot</a> <a href="/tags/testCode/" style="font-size: 10px;">testCode</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/01/Spring/springboot&AWS/testCode/">TestCode</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/31/Spring/springboot&AWS/intelliJ&springboot/">intelliJ&amp;springboot</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/22/Spring/fastcampus/day_8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/25/Spring/fastcampus/day_7/">day_7</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/24/Spring/fastcampus/day_6/">day_6</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Hansol<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

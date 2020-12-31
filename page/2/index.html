@@ -66,6 +66,345 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Spring/book/day_2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/08/Spring/book/day_2/" class="article-date">
+  <time datetime="2020-11-08T11:11:57.000Z" itemprop="datePublished">2020-11-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>►<a class="article-category-link" href="/categories/Spring/til/">til</a>►<a class="article-category-link" href="/categories/Spring/til/day-2/">day_2</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/08/Spring/book/day_2/">day_2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="스프링-부트-시작하기"><a href="#스프링-부트-시작하기" class="headerlink" title="스프링 부트 시작하기"></a>스프링 부트 시작하기</h2><ul>
+<li>Spring Initializer의 웹 인터페이스를 사용한다.</li>
+<li>Spring Tool Suite에서 스프링 부트 프로젝트 만들기</li>
+<li>IntelliJ에서 스프링 부트 프로젝트 새로 만들기</li>
+<li>스프링 부트 CLI에서 Initializr사용<br>$ spring init<br>init 명령은 Initializr 웹 애플리케이션에 접속 후 demo.zip파일을 다운로드 한다. 이 프로젝트 파일의 압축을 풀면 메이븐의 pom.xml 빌드 명세가 들어있는 프로젝트 구조를 볼 수 있다. 메이븐의 빌드 명세는 스프링 부트와 테스트에 필요한 최소한의 스타터 의존성만으로 구성되어 있다.<br>$ spring init -dweb,jpa,security<br>데이터 영속성으로 JPA를 사용하고 스프링 시큐리티로 보안을 적용하는 웹 애플리케이션 명령이다.<br>명령을 실행하면 이전과 구조가 똑같은 demo.zip파일을 만드는데 스프링 부트의 웹, JPA, 시큐리티 스타터가 의존성으로 pom.xml에 포함된다. -d와 의존성 사이에는 공백이 없어야 한다는 점에 주의하자. 이 때 gradle로 만들고 싶다면<br>$ spring init -dewb,jpa,security –build gradle 이라고 해주면 됩니다.<br>$ spring init -dewb,jpa,security –build gradle -p war myapp<br>이 명령문의 의미는 프로젝트 압축파일을 myapp 디렉터리에 풀기를 원한다는 의미다. 생성된 프로젝트 압축 파일을 현재 디렉터리에 풀고 싶다면 –extract나 -x 매개 변수를 사용한다.( $ spring init -dweb,jpa,security –build gradle -p war -x<br>도움말은 $ spring help init<br>Spring Initializr 서비스가 지원하는 기능을 모두 확인하려면 $ spring init –list</li>
+</ul>
+<h2 id="요약"><a href="#요약" class="headerlink" title="요약"></a>요약</h2><ul>
+<li>스프링 부트는 프레임워크 자체에 저항을 최소화 하면서 스프링 애플리케이션을 개발할 수 있는 방법입니다.</li>
+<li>자동 구성은 전통적인 스프링 애플리케이션에 있던 많은 보일러 플레이트 구성을 제거했다.</li>
+<li>스프링 부트 스타터는 명시적인 라이브러리 이름이나 버전 대신에 스프링 부트가 제공하는 기능으로 빌드 의존성을 지정할 수 있게 했다.</li>
+<li>스프링 부트 CLI는 명령줄에서 그루비를 사용하여 빠르고 간편하게 개발할 수 있게 하여 스프링 부트의 저항없는 개발모델을 완전히 새로운 수준으로 끌어올렸다.</li>
+<li>액추에이터는 작동 중인 애플리케이션 내부를 살펴보면서 스프링 부트가 어떤 식으로 처리하는지 알 수 있게 했다.<br>@1장 끝@<h1 id="2장"><a href="#2장" class="headerlink" title="2장"></a>2장</h1><h2 id="스프링-부트-사용하기"><a href="#스프링-부트-사용하기" class="headerlink" title="스프링 부트 사용하기"></a>스프링 부트 사용하기</h2></li>
+<li>애플리케이션을 최소한의 구성으로 빠르게 개발하려고 스프링 부트를 사용하는 것이다.</li>
+<li>스프링 MVC(model-view-controller)로 웹 요청을 처리하고, Thymeleaf로 뷰를 정의하며 JPA로 데이터베이스 독서목록을 영속화 할 것이다. 일단은 내장 H2데이터베이스를 사용하자-&gt;이것이 뭔 소리냐 해석을 해보자<ul>
+<li>Thymeleaf: html태그를 기반으로 하여 th: 속성을 이용하여 동적인 View를 제공합니다. 출처: <a target="_blank" rel="noopener" href="http://blog.naver.com/PostView.nhn?blogId=bgpoilkj&amp;logNo=221982228705&amp;parentCategoryNo=20&amp;categoryNo=&amp;viewDate=&amp;isShowPopularPosts=false&amp;from=postView">http://blog.naver.com/PostView.nhn?blogId=bgpoilkj&amp;logNo=221982228705&amp;parentCategoryNo=20&amp;categoryNo=&amp;viewDate=&amp;isShowPopularPosts=false&amp;from=postView</a></li>
+<li>JPA: DB테이블과 자바 객체 사이의 매핑을 처리해ㅔ주는 ORM이란 기술의 표준이다. 따라서 JPA에는 객체와 DB사이의 매핑을 어떻게 설정하고 어떻게 동작해야 하는지 기술하고 있다. 즉 자바의 클래스와 DB의 테이블을 매핑하는 기술이다. 출처: <a target="_blank" rel="noopener" href="https://dev-troh.tistory.com/150">https://dev-troh.tistory.com/150</a></li>
+<li>H2 Database: 자바 기반의 오픈소스 관계형 데이터 베이스 관리 시스템, 그냥 자바에 기본적으로 있는 데이터베이스라고 생각하면 될 것이다.<br><img src="https://user-images.githubusercontent.com/50402288/98490762-e301dc00-2275-11eb-91a5-22c7af18177a.png" alt="20201109102453"></li>
+</ul>
+</li>
+<li>의존성으로  web, Thymeleaf, Security, JPA, H2, Actuator, DevTools를 넣었다.<h2 id="뭐가-들어있는지-살펴보자"><a href="#뭐가-들어있는지-살펴보자" class="headerlink" title="뭐가 들어있는지 살펴보자@@"></a>뭐가 들어있는지 살펴보자@@</h2><img src="https://user-images.githubusercontent.com/50402288/98491373-f2822480-2277-11eb-87f2-a459226ae5ea.png" alt="20201109103855"></li>
+<li>build.gradle: 그래이들 빌드 명세</li>
+<li>gradlew: 그래이들 래퍼<ul>
+<li>그래이들 래퍼란? :</li>
+<li>gradle wrapper*  줄여서 gradlew 는 새로운 환경에서 프로젝트를 설정할 때 java나 gradle을 설치하지 않고 바로 빌드할 수 있게 해주는 역할을 한다.<br>출처: <a target="_blank" rel="noopener" href="https://gihyun.com/120">https://gihyun.com/120</a> [Note]</li>
+</ul>
+</li>
+<li>Demo2.Application: 애플리케이션의 부트스트랩 클래스이자 주 스트링 구성 클래스<ul>
+<li>부트스트랩이란? : <img src="https://user-images.githubusercontent.com/50402288/98491886-91f3e700-2279-11eb-8be7-ba8e4c77049f.jpg" alt="다운로드"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>application.properties: 애플리케이션과 스프링 부트 프로퍼티를 구성하는 데 사용하는 파일</li>
+<li>Demo2AookucatuibTests.java: 기본 통합 테스트 클래스 </li>
+</ul>
+<h3 id="스프링-부트스트래핑"><a href="#스프링-부트스트래핑" class="headerlink" title="스프링 부트스트래핑"></a>스프링 부트스트래핑</h3><p>Demo2Application 클래스는 스프링 부트 애플리케이션에서 구성과 부트 스트래핑 두 가지 역할을 담당한다. 첫째, 가장 중요한 스프링 구성 클래스다. 스프링 부트의 자동구성이 수많은 스프링 구성을 제거하지만, 자동 구성을 활성화하는 최소한의 구성은 해야한다.  해당 클래스의 내부를 보면 구성 코드는 단 한줄 뿐이다.</p>
+<ul>
+<li>실제 코드</li>
+</ul>
+<hr>
+<pre><code>package com.example.demo2;  
+import org.springframework.boot.SpringApplication;  
+import org.springframework.boot.autoconfigure.SpringBootApplication;  
+@SpringBootApplication  
+public class Demo2Application &#123;  
+   public static void main(String[] args) &#123;  
+      SpringApplication.run(Demo2Application.class, args);  
+  &#125;  
+&#125;</code></pre>
+<hr>
+<p>여기서 @SpringBootApplication 애너테이션은 스프링 컴포넌트 검색과 스프링 부트 자동구성을 활성화 한다. 사실 @SpringBootApplication 애너테이션은 유용한 애너테이션 세 개를 묶은 것이다.</p>
+<ul>
+<li>@Configuration: 이 애너테이션이 붙은 클래스를 스프링의 자바 기반 구성 클래스로 지정한다. -&gt; 이게 무슨소린가요? 강사님한테 질문할것입니다.</li>
+<li>@ComponentScan: 컴포넌트 검색 기능을 활성화해서 웹 컨트롤러 클래스나 다른 컴포넌트 클래스들을 자동으로 검색하여 스프링 애플리케이션 컨텍스트에 빈으로 등록시킨다. -&gt; 예제로 해볼 것입니다.</li>
+<li>@EnableAutoConfiguration: 이 작은 애너테이션은 @Abracadabra라고 해도 무방하다. 이 구성 한 줄로 스프링 부트의 자동구성 마법이 일어나기 때문이다. 이것으로 수 많은 구성 코드를 대체할 수 있다.<h2 id="여기서-잠깐-WAR-JAR-그게뭔데"><a href="#여기서-잠깐-WAR-JAR-그게뭔데" class="headerlink" title="여기서 잠깐! WAR? JAR? 그게뭔데?"></a>여기서 잠깐! WAR? JAR? 그게뭔데?</h2>WAR: Web Application Archive<br>.war 확장자 파일은 servlet/ jsp 컨테이너에 배치할 수 있는 웹 어플리케이션 압축 파일 포맷입니다. JSP, SERVLET, JAR, CLASS, XML, THML, JAVASCRIPT 등 Servlet Context 관련 파일들로 패키징 되어 있습니다. WAR는 웹 응용프로그램을 위한 포맷이기 때문에 웹 관련 자원만 포함하고 있으며 이를 사용하면 웹 어플리케이션을 쉽게 배포하고 테스트 할 수 있습니다.<ul>
+<li>여기서 또잠깐! Servlet, JSP는 뭐였더라?(복습)<ul>
+<li>Servlet: 클라이언트의 요청을 처리하고, 그 결과를 반환하는 Servlet 클래스의 구현 규칙을 지킨 자바 웹 프로그래밍 기술<ul>
+<li>스프링의 DispatcherServlet을 선언한 web.xml파일 또는 WebApplicationInitializer구현<ul>
+<li>JSP: JavaServer Pages의 약자이며, HTML코드에 JAVA코드를 넣어 동적 웹페이지를 생성하는 웹 어플리케이션 도구이다.<br>JSP가 실행되면 자바 Servlet으로 변환되며 웹 어플리케이션 서버에서 동작 되면서 필요한 기능을 수행하고 그렇게 생성된 데이터를 웹 페이지와 함께 클라이언트로 응답한다.<br>JAR: Java Archive<br>.jar 확장자는 파일에는 Class와 같은 Java 리소스와 속성파일, 라이브러리 및 액세서리 파일이 포함되어 있습니다. 쉽게 JAVA 어플리케이션이 동작할 수 있도록 자바 프로젝트를 압축한 파일로 생각하비면 되겠습니다. 실제로 JAR파일은 플랫폼에 귀속되는 점만 제외하면 WIN ZIP 파일과 동일한 구조입니다.<br>출처: <a target="_blank" rel="noopener" href="https://ifuwanna.tistory.com/224">https://ifuwanna.tistory.com/224</a> 항상 감사합니다 선배님들@@</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+앞에서 언급했듯이 Demo2Application은 부트스트랩 클래스이기도 하다. 전통적인 WAR파일 배포를 포함하여 스트링 부트 애플리케이션을 실행하는 방법은 여러가지다. 하지만 여기서는 main() 메서드가 명령줄에서 실행 가능한 JAR파일로 애플리케이션을 실행할 수 있게 한다. main() 메서드에서는 Demo2Application 클래스 참조와 명령줄 인자를 SpringApplication.run() 메서드에 전달하여 애플리케이션을 실행한다.<h3 id="gradle-bootRun"><a href="#gradle-bootRun" class="headerlink" title="gradle bootRun"></a>gradle bootRun</h3>bootRun 테스크는 스프링 부트 그레이들 플러그인에 포함되어 있다. 이것은 나중에 더 자세히 살펴본다. 이것은 아래의 코드와 동일하다<br>$ gradle build<br>$ graild -jar build/libs/readinglist-0.0.1-SNAPSHOT.jar<br>명령을 실행하면 애플리케이션이 정상적으로 작동하고 8080포트에서 수신하는 톰캣 서버가 작동해야 한다. 원한다면 웹 브라우저로 접속해도 된다. 하지만 아직 컨트롤러 클래스를 작성하지 않았기 때문에 404 오류가 뜰 것이다.<br>여기서 막혔어 gradle bootRun이 되지않아<br>‘gradle’은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는<br>배치 파일이 아닙니다.<br>나한테 왜이러는거야정말</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/08/Spring/book/day_2/" data-id="ckhlqimcm0007dov1coug2ece" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Spring/book/day_1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/03/Spring/book/day_1/" class="article-date">
+  <time datetime="2020-11-03T13:15:21.000Z" itemprop="datePublished">2020-11-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>►<a class="article-category-link" href="/categories/Spring/til/">til</a>►<a class="article-category-link" href="/categories/Spring/til/day-1/">day_1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/03/Spring/book/day_1/">day_1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day-1"><a href="#day-1" class="headerlink" title="day_1"></a>day_1</h1><h2 id="스프링의-새로운-시작"><a href="#스프링의-새로운-시작" class="headerlink" title="스프링의 새로운 시작"></a>스프링의 새로운 시작</h2><ul>
+<li>스프링은 JEE, J2EE 와 같은 자바 엔터프라이즈 에디션을 경량화 하기 위해 만들어짐<ul>
+<li>의존성 주입과 관점 지향 프로그래밍을 활용해서 간단하게 엔터프라이즈 자바 개발에 접근<ul>
+<li>엔터프라이즈 자바: 기업을 대상으로 하는, 매우 큰 규모의 환경을 구축하는 자바</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>초기 스프링: XML기반 -&gt; 애너테이션 기반</li>
+</ul>
+<ul>
+<li>애플리케이션 로직 작성 대신 구성 작업에 쓰는 시간은 모두 낭비다!</li>
+<li>의존성 라이브러리를 추가하는 것은 중요하지만 의존 라이브러리의 버전을 잘못 선택해서 발생하는 모든 호환성문제 -&gt; 스프링은 이것을 해결하였다.</li>
+</ul>
+<h2 id="Hello-World-웹-어플리케이션을-개발한다고-할-때-필요한-것들"><a href="#Hello-World-웹-어플리케이션을-개발한다고-할-때-필요한-것들" class="headerlink" title="Hello World 웹 어플리케이션을 개발한다고 할 때 필요한 것들"></a>Hello World 웹 어플리케이션을 개발한다고 할 때 필요한 것들</h2><ul>
+<li><p>메이븐이나 그레이들 빌드 파일이 완비된 프로젝트 구조</p>
+<ul>
+<li>메이븐, 그레이들: 자바용 프로젝트 관리 도구</li>
+</ul>
+</li>
+<li><p>스프링 MVC, 서블릿 API를 의존성으로 지정</p>
+<ul>
+<li>MVC: model - view - controller</li>
+<li>Servlet: 클라이언트의 요청을 처리하고, 그 결과를 반환하는 Servlet 클래스의 구현 규칙을 지킨 자바 웹 프로그래밍 기술</li>
+</ul>
+</li>
+<li><p>스프링의 DispatcherServlet을 선언한 web.xml파일 또는 WebApplicationInitializer구현</p>
+<ul>
+<li>DispatcherServlet: Servlet Container에서 HTTP 프로토콜을 통해 들어오는 모든 요청을 프레젠테이션 계층의 제일 앞에 둬서 중앙집중식으로 처리해 주는 프론트 컨트롤러<ul>
+<li>프론트 컨트롤러: 주로 서블릿 컨테이너의 제일 앞에서 서버로 들어오는 클라이언트의 모든 요청을 받아서 처리해 주는 컨트롤러, MVC 구조에서 함께 사용되는 패턴이다.</li>
+</ul>
+</li>
+<li>XML파일: extensible Markup Language 즉 확장 가능한 마크업 언어, HTML과 같지만 임의로 태그를 만들 수 있는 언어</li>
+</ul>
+</li>
+<li><p>스프링 MVC를 사용할 수 있는 스프링 구성</p>
+</li>
+<li><p>HTTP 요청에 “Hello World!” 라고 응답할 컨트롤러 클래스</p>
+</li>
+<li><p>애플리케이션을 배포할 웹 애플리케이션 서버(톰캣같은)</p>
+<p>사실 상 개발자가 해야 할 것은 컨트롤러 작성 하나 뿐이다. 그렇다면 나머지는 ‘스프링’에게 맡기면 된다.<br>Groovy: java와 비슷한 하지만 약간 다른 언어</p>
+</li>
+</ul>
+<h2 id="스프링-부트의-핵심-살펴보기"><a href="#스프링-부트의-핵심-살펴보기" class="headerlink" title="스프링 부트의 핵심 살펴보기"></a>스프링 부트의 핵심 살펴보기</h2><ul>
+<li>자동구성: 많은 스프링 애플리케이션에서 공통으로 필요한 애플리케이션 기능을 자동으로 구성한다.</li>
+<li>스타터 의존성: 스프링 부트에 어떤 기능이 필요한 지 알려주면 필요한 라이브러리를 빌드에 추가한다는 것을 보장한다.</li>
+<li>명령줄 인터페이스: 이 부가기능을 이용하면 애플리케이션 코드만 작성해도 완전한 애플리케이션을 개발할 수 있다.</li>
+<li>액추에이터: 스프링 부트 애플리케이션을 실행할 때 내부에서 어떤 일이 일어나는지 알 수 있다.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/03/Spring/book/day_1/" data-id="ckhlqimcc0000dov1eta3axw7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java/MultiThread(6)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/30/java/MultiThread(6)/" class="article-date">
+  <time datetime="2020-10-29T23:44:34.000Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>►<a class="article-category-link" href="/categories/java/til/">til</a>►<a class="article-category-link" href="/categories/java/til/MultiThread/">MultiThread</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/java/MultiThread(6)/">MultiThread(6)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MultiThread-6"><a href="#MultiThread-6" class="headerlink" title="MultiThread(6)"></a>MultiThread(6)</h1><h1 id="synchronizedList"><a href="#synchronizedList" class="headerlink" title="synchronizedList"></a>synchronizedList</h1><pre><code>List&lt;Integer&gt; list1 = new Vector&lt;&gt;();  
+List&lt;Integer&gt; list2 = new ArrayList&lt;&gt;();  
+List&lt;Integer&gt; list3 = Collections.synchronizedList(list2);  
+// list3: list2의 싱크된 버전  
+
+
+for (int i = 0; i &lt; 1000; i++) &#123;  
+    new Thread(() -&gt; &#123;  
+        for (int j = 0; j &lt; 100; j++) &#123;  
+            list1.add(1);  
+  &#125;  
+    &#125;).start();  
+&#125;  
+
+for (int i = 0; i &lt; 1000; i++) &#123;  
+    new Thread(() -&gt; &#123;  
+        for (int j = 0; j &lt; 100; j++) &#123;  
+            list3.add(1);  
+  &#125;  
+    &#125;).start();  
+&#125;  
+
+
+
+Thread.sleep(1000);  
+
+System.out.println(list1.size());  
+System.out.println(list2.size());</code></pre>
+<p>  리스트를 sync해서 쓸 수 있는데 대표적으로 우리가 아는 sync된 리스트는 Vector이다. 때문에 기본적으로 벡터는 다른 자료구조에 비해 느린 이유가 여기있다. 따로 Vector를 쓰지 않고 싱크된 자료구조를 쓰고 싶다면 위의 코드처럼 Collections.synchronizedList(list) 로 만들어 주면 될 것이다.</p>
+<h1 id="쓰레드-풀-Thread-Pool"><a href="#쓰레드-풀-Thread-Pool" class="headerlink" title="쓰레드 풀(Thread Pool)"></a>쓰레드 풀(Thread Pool)</h1><p>  쓰레드는 생성하고 관리하기가 어렵다. 때문에 쓰레드 풀이란 것이있다. 이미 만들어진 쓰레드 뭉텅이에 SynchronousQueue(작업 큐)를 제출(submit)해주면 된다. 이 스레드 풀을 생성하는 방법은 Executors.newCachedThreadPool(), Executors.newFixedThreadPool(n),new ThreadPoolExecutor ( 여러가지 ) 이렇게 세 가지가 있으며 공통점은 작업큐를 제출할 때 작업큐는 Runnable객체 또는 Callable객체여야 한다는 것이다. 활용 예는 아래와 같다.</p>
+<pre><code>public class Main &#123;  
+    public static void main(String[] args) throws InterruptedException &#123;  
+        ExecutorService pool1 = Executors.newCachedThreadPool();  
+  /**  
+ * newCachedThreadPool * - 초기 스레드가 0개 -&gt; 오버헤드가 없다.  
+ * - 코어 스레드가 0개(일하지 않아도 살려두는 스레드)  
+ * - 요청 작업보다 스레드가 부족하면 새 스레드를 생성  
+  * - 60초 동안 일하지 않은 스레드는 제거  
+  */  
+  ExecutorService pool2 = Executors.newFixedThreadPool(10);  
+  /**  
+ *  newFixedThreadPool *  - 최대 스레드 nThread개  
+  *  - 코어 스레드 nThread개  
+  *  - 요청 작업보다 스레드가 부족하면 새 스레드 생성  
+  *  - 작업하지 않는 스레드도 제거하지 않고 동작  
+  */  
+
+  ExecutorService es = new ThreadPoolExecutor (  
+                10, //코어 스레드  
+  100, // 최대 스레드 개수  
+  120, // 스레드가 이 시간동안 일 하지 않으면 제거  
+  TimeUnit.SECONDS,  
+ new SynchronousQueue&lt;Runnable&gt;() // 요청 -&gt; 작업을 쌓아둔 큐 -&gt;스레드 풀  
+  );  
+  //2.스레드에 할당할 작업 생성  
+  class Work implements Runnable &#123;  
+
+            @Override  
+  public void run() &#123;  
+                for(int i = 0; i&lt; 100; i++) &#123;  
+                    System.out.println(i);  
+  &#125;  
+            &#125;  
+        &#125;  
+        class CallableWork implements Callable&lt;String&gt; &#123;  
+
+            @Override  
+  public String call() throws Exception &#123;  
+                return &quot;작업종료&quot;;  
+  &#125;  
+        &#125;  
+        //3.스레드에 작업 요청  
+  Future&lt;String&gt; future;  
+  future=pool1.submit(new CallableWork());  
+ for (int i = 0; i&lt;100; i++) &#123;  
+            pool1.submit(new Work());  
+ ;  &#125;//4. 스레드 종료(동기화)  
+ //스레드 풀은 자동 종료가 안되기 때문에, 직접 스레드풀을 종료해 주어야 한다.  
+  pool1.shutdown(); // Thread.join()과 마찬가지로 끝나길 기다려서 종료  
+  Thread.sleep(1000);  
+ try &#123;  
+            System.out.println(future.get()); //get()은 Blocking method 즉59번 째 줄에 future에 값이 들어오기 전까진 get()에서 블러킹한다.  
+ //get()을 영원히 기다릴 수 도 있음으로 timeout 설정 가능  
+  future.cancel(true); //실행중인 Callable객체를 강제종료 인터럽트해서 강제종료  
+  System.out.println(future.isCancelled());  
+  System.out.println(future.isDone());  
+  &#125; catch (InterruptedException e) &#123;  
+            e.printStackTrace();  
+  &#125; catch (ExecutionException e) &#123;  
+            e.printStackTrace();  
+  &#125;  
+    &#125;  
+&#125;</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/10/30/java/MultiThread(6)/" data-id="ckh2ffo6k001ycov19h6ra8gu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java/MultiThread(4)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/29/java/MultiThread(4)/" class="article-date">
@@ -837,356 +1176,11 @@ return answer;
 
 
   
-    <article id="post-Front-End/day_4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/23/Front-End/day_4/" class="article-date">
-  <time datetime="2020-10-23T03:50:04.000Z" itemprop="datePublished">2020-10-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>►<a class="article-category-link" href="/categories/Front-End/day-4/">day_4</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/23/Front-End/day_4/">day_4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://user-images.githubusercontent.com/50402288/98467123-08abc880-2217-11eb-85fa-3829481e64a8.png" alt="20201108230534"><br> 이번에는 위 사진같은 Validation 섹터를 만들어볼건데요</p>
-<ul>
-<li><p>HTML 코드</p>
-</li>
-<li> <section  class="validation">
- <h2  class="a11y-hidden"> 숨김컨텐츠 클래스를 주구여 
- 유효성 검사 배너 이건 a11y-hidden클래스의 css처리에서 사라질 부분입니다.
- </h2>
- <ul  class="validation-list">
- <li>
- <a  href="https://validator.w3.org/"  target="_blank"  title="마크업 유효성 검사 사이트로 이동(새창)">
- W3C Markup Validation
- </a>
- </li>
- <li>
- <a  href="https://jigsaw.w3.org/css-validator/"  target="_blank"  title="CSS 유효성 검사 사이트로 이동(새창)">
- CSS Validation Service
- </a>
- </li>
- </ul>
- </section>
-
-</li>
-</ul>
-<ul>
-<li><p>CSS 코드</p>
-</li>
-<li><p>  legend,<br>  .a11y-hidden {<br>  position: absolute;<br>  width: 1px;<br>  height: 1px;<br>  margin: -1px;<br>  overflow: hidden;<br>  clip: rect(0, 0, 0, 0);<br>  clip: rect(0  0  0  0);<br>  clip-path: polygon(0  0, 0  0, 0  0);</p>
-<h2 id="컨텐츠를-작게만들어서-없애는-클래스입니다"><a href="#컨텐츠를-작게만들어서-없애는-클래스입니다" class="headerlink" title="  } 컨텐츠를 작게만들어서 없애는 클래스입니다."></a>  } 컨텐츠를 작게만들어서 없애는 클래스입니다.</h2><p>  .validation-list {<br>  margin-top: 20px; 위쪽으로 빈 공간 20픽셀 줄 것이구요<br>  }<br>  .validation-list  a { validation-list클래스의 a태그에 대해서<br>  display: block; 블록처리<br>  border: 1px  solid  #aaa; 테두리주구여<br>  border-radius: 20px; 겉에 20픽셀만큼 돌려깍아주구여<br>  padding: 6px  10px  6px  45px; 사방으로 패딩 주구여<br>  margin-top: 10px; 위쪽으로 마진주구여<br>  background: url(./images/validation_icon.png) no-repeat  20px  50%, 배경이미지, 반복없음(이거안하면 무한반복이미지나옵니다), 크기, 50% 저거는…<br>  바꾸면 위치만 바뀌고 의미를 모르겠어서 MDN 들어가봤는데도 잘 모르겠어서 지금 질문해놨어요… 열심히할게요… 봐주세요…<br>  linear-gradient(#ccc, #eee); 그라디언트 #ccc -&gt; #eee로 주는 코드입니다.<br>  }</p>
-<h2 id="결과"><a href="#결과" class="headerlink" title="결과"></a>결과</h2></li>
-</ul>
-<p><img src="https://user-images.githubusercontent.com/50402288/98467575-7a851180-2219-11eb-8723-8518910d5456.png" alt="20201108232335"></p>
-<p>요로코롬 버튼 두개가 생겼습니다!</p>
-<p>그 다음 구현해볼 섹션은말이죠!</p>
-<p><img src="https://user-images.githubusercontent.com/50402288/98467646-c46df780-2219-11eb-980c-b6bf80c38f31.png" alt="20201108232546"></p>
-<p>이 부분이에요! 같이한번 해볼까요?</p>
-<ul>
-<li>HTML 코드</li>
-</ul>
-<pre><code>&lt;/section&gt;
-&lt;section  class=&quot;term&quot;&gt;
-&lt;h2  class=&quot;term-heading&quot;&gt;웹 관련 용어&lt;/h2&gt;
-&lt;dl  class=&quot;term-list&quot;&gt;
-&lt;dt  class=&quot;term-list-subject&quot;&gt;웹 표준 이란?&lt;/dt&gt;
-&lt;dd  class=&quot;term-list-thumbnail&quot;&gt;
-&lt;img  src=&quot;./images/web_standards.gif&quot;  alt=&quot;W3C&quot;  /&gt;
-&lt;/dd&gt;
-&lt;dd  class=&quot;term-list-brief&quot;&gt;
-W3C 단체에서 규정한 웹 기술 사양에 대한 규칙을 말하며 표준 규격은...
-&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;/section&gt;</code></pre>
-<p>dl, dt, dd,,,까먹었어요,,, 뭐였죠…?</p>
-<ul>
-<li><p>&lt;dl&gt; 태그는 definition list(정의목록)의 약자로, 사전처럼 용어를 설명하는 목록을 만듭니다.</p>
-</li>
-<li><dt> definition term(정의 용어)의 약자로, 정의되는 용어의 제목을 넣을 때 사용합니다.</li>
-<li><dd> definition description(정의 설명)의 약자로, 용어를 설명하는데 사용합니다.
-  * 출처: https://aboooks.tistory.com/211 감사합니다.
-</li>
-<li><p>CSS 코드</p>
-</li>
-<li><p>  .term {<br>  margin-top: 20px; 가장 바깥 클래스인 term에 윗쪽으로 20마진<br>  border: 1px  solid  #aaa; 테두리 만들어주고<br>  border-radius: 5px; 5픽셀 겉테두리 깎아주고<br>  padding: 10px  15px; 좌우 상하로 10 15 픽셀씩 패딩을 입혀줍니다.<br>  background:  linear-gradient(#ccc, #eee); 배경은 그라디언트 #ccc -&gt; #eee로 줍니다.<br>  }<br>  .term-heading { 제목 클래스는<br>  font-size: 1.6rem; 1.6배의 글자크기를 가지구여<br>  font-weight: 700; 두꺼운 글씨체를 씁니다.<br>  }<br>  .term-list { 용어 리스트<br>  margin-top: 10px; 윗쪽 마진 10<br>  }<br>  .term-list::after { 가상 생성자 이거 중요합니다.<br>  content: “”;  가상으로 내용이 없는 생성자를 term-list클래스 생성자 뒤에 만듭니다<br>  display: block; 이 생성자의 display는 block이구요<br>  clear: both; 이 블록요소가 float되있는 요소를 감쌀 수 있도록 설정합니다. 요고 중요합니다.<br>  }<br>  !이 뒤의 float요소들이 마구 나오는데 걔네들은 float요소이기 때문에 특별한 처리를 해주지 않으면 박스 .term 위로 떠버리게 될 겁니다 예를 들면 이렇게되는거죠</p>
-</li>
-</ul>
-<p><img src="https://user-images.githubusercontent.com/50402288/98468143-79091880-221c-11eb-8d76-be35501c6a5a.png" alt="20201108234502"></p>
-<p>그렇기 때문에 .term-list 의 뒤에 가상으로 블럭요소를 하나 만들고 그 블럭요소가 float를 받을 수 있도록 좌우로 clear 즉 clear: both를 주는 것입니다. 이 때 이 가상 블럭요소는 float요소가 아니기 때문에 이 요소자리까지 term 박스가 감쌀 수 있게 되는 것이죠 이제 list 요소들을 볼까요? </p>
-<pre><code>.term-list-subject &#123;
-float: right;
-width: 145px;
-margin-top: -5px; 탑 마진이 +일 때는 컨텐츠가 아래로 내려가는 성질이 있습니다. 반대로 - 라면 컨텐츠가 올라가는 효과를 줍니다.
-color: #296897;
-&#125;
-.term-list-thumbnail &#123;
-float: left; 왼쪽정렬
-&#125;
-.term-list-thumbnail  img &#123; 이것은 썸네일 정렬인데...사실 왜있는지 모르겠습니다 없어도 그대로더라구요 없어도 될 것 같아요 제 생각엔 그래요.
-vertical-align: top; 
-&#125;
-.term-list-brief &#123;
-width: 145px; 좌우 길이를 주고
-float: right; 오른쪽 정렬
-line-height: 1.5; 한줄 높이
-margin-top: 5px; 탑마진
-&#125;</code></pre>
-<h2 id="결과-1"><a href="#결과-1" class="headerlink" title="결과"></a>결과</h2><p><img src="https://user-images.githubusercontent.com/50402288/98468480-fb460c80-221d-11eb-991e-137d07fceb11.png" alt="20201108235534"></p>
-<p>쨘! 이쁜 term섹션이 나왔습니다. HTML-CSS도 나름 재밌어요<br><img src="https://user-images.githubusercontent.com/50402288/98468545-42340200-221e-11eb-844a-a106aaf84e64.jpg" alt="20180118065028_1177184_600_760"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/10/23/Front-End/day_4/" data-id="ckh992vur0000bsv1cgpu4o1d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Front-End/day_3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/22/Front-End/day_3/" class="article-date">
-  <time datetime="2020-10-22T07:21:54.000Z" itemprop="datePublished">2020-10-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>►<a class="article-category-link" href="/categories/Front-End/day-3/">day_3</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/22/Front-End/day_3/">day_3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>HTML 코드</p>
-<ul>
-<li><code>&lt;div  class=&quot;visual&quot;&gt;비주얼&lt;/div&gt;</code></li>
-</ul>
-</li>
-<li><p>CSS 코드</p>
-</li>
-<li><p>  .visual {</p>
-<p>  background-color: lime;</p>
-<p>  }<br>이렇게 해서 초록색 비주얼 파트가 만들어 졌습니다.</p>
-</li>
-</ul>
-<p><img src="https://user-images.githubusercontent.com/50402288/98105166-e8100580-1eda-11eb-8553-e900e02e911a.png" alt="20201104201810"></p>
-<hr>
-<p><img src="https://user-images.githubusercontent.com/50402288/98105228-ffe78980-1eda-11eb-9812-4116bb49bbcd.png" alt="20201104201854"></p>
-<p>이제 왼쪽 그룹, 중간그룹, 오른쪽그룹해서 3가지 그룹을 만들어서 화면을 분할할 것인데요</p>
-<ul>
-<li><p>HTML 코드</p>
-</li>
-<li>  <main  class="main">
-  <div  class="group group1">그룹1</div>
-  <div  class="group group2">그룹2</div>
-  <div  class="group group3">그룹3</div>
-  </main>
-보시면 메인 태그로 묶여있고, 안에 그룹 1,2,3이 나눠져있습니다 이것을 CSS로 어떻게 할 것이냐 하면
-</li>
-<li><p>CSS코드</p>
-</li>
-</ul>
-<p>*</p>
-<pre><code> .main &#123;
-background-color:orchid; 뭔가 보라색?
-border-radius: 15px  15px  0  0; 위쪽 모서리 깎고
-padding: 30px  15px; 위아래 30, 좌우 15
-min-height: flex; 높이조절 유연하게(자동으로)
-flex-flow: row  nowrap; 배치는 행으로 하고 줄 바꾸지 않지
-justify-content: space-around; 해당 태그의 자식컨텐츠의 컨텐츠간격 일정하게
-&#125;</code></pre>
-<p>결과는?</p>
-<p><img src="https://user-images.githubusercontent.com/50402288/98106182-6faa4400-1edc-11eb-929e-0cc41525415b.png" alt="20201104202901"><br>이렇게 밑에 보라색 영역이 생겼구요 안에 아무것도 없지만 컨텐츠에 따라 높이가 조절될 것이고 배치는 행으로, 줄바뀌지 않고 간격 이쁘게 나뉘어서 배치될 겁니다. 우리는 이제 저기에 구역을 3개(group1, group2, group3) 나눠서 넣어볼 거에요</p>
-<ul>
-<li><p>group1</p>
-</li>
-<li><p>HTML 코드</p>
-</li>
-<li>  <div  class="group group1"> 그룹 1을 분할하는 div태그
-  <section  class="login"> login 섹션
-  <h2  class="login-heading">로그인</h2> 제목 로그인
-  <form  method="POST"  action="https://formspree.io/seulbinim@gmail.com"  class="login-form"> 전송방식 POST이고 해당 주소로 보내며 login-form클래스를 가진 form태그
-  <fieldset> 비슷한 것끼리 묶는 필드셋 태그
-  <legend>로그인 폼</legend> 요소 나타내는 레전드 태그
-  <div  class="user-email"> 유저 이메일 창 분할하는 div태그
-  <label  for="userEmail" id="userEmail">아이디</label> input태그에게 제목을 붙여줄 레이블 태그 (id로써)
-  <input  type="email"  id="userEmail"  name="userEmail"  placeholder="이메일형식"  required  />
-  </div>
-  <div  class="user-pw">
-  <label  for="userPw" id="userPw">비밀번호</label>
-  <input  type="password"  id="userPw"  name="userPw"  placeholder="8자리이상"  required  />
-  </div>
-  <button  class="btn-login"  type="submit">로그인</button> 로그인 버튼
-  </fieldset>
-  </form>
-  <ul  class="sign">
-  <li  class="icon-right-open"><a  href="#">회원가입</a></li>
-  <li  class="icon-right-open"><a  href="#">아이디/비밀번호 찾기</a></li>
-  </ul>
-  </section>
-  </div></li>
-<li><p>CSS 코드</p>
-</li>
-<li><p>  .group1 {<br>  width: 250px;<br>  }<br>  .group2 {<br>  width: 380px;<br>  }<br>  .group3 {<br>  width: 190px;<br>  }<br>구역 나눈 뒤</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>  .login {<br>  background: radial-gradient(circle at right  top, #e8852e, #ed552f); 이거는 그라디언트 효과주는 겁니다.<br>  border-radius: 5px; 양악수술 해주구요<br>  padding: 10px; 패딩 10 줍니다<br>  }<br>  .login-heading {<br>  text-indent: 10px; 들여쓰기 10<br>  font-size: 1.6rem; 1.6 배 글자크기<br>  font-weight: 700; 글자 두껍게<br>  color: #ff0; 색깔 노란색으로<br>  } 헤딩완성<br>  .login-form { 로그인폼<br>  background: #fff; 바탕 흰색<br>  margin-top: 10px; 탑에 마진 10주고<br>  border-radius: 5px  5px  0  0; 위에만 양악<br>  padding: 10px  10px  0  10px; 위 오른쪽 아래 좌 각각 패딩<br>  } 로그인 폼단 완성<br>  .login-form  fieldset { 로그인 폼 안의 컨텐츠들<br>  position: relative; 컨텐츠담을 그릇을 relative로 주고<br>  padding-bottom: 10px; 바텀마진<br>  border-bottom: 1px  solid  #aaa; 아래 줄 긋고<br>  } 필드셋완성<br>  .user-pw { 아이디 아래 컨텐츠<br>  margin-top: 3px;<br>  }탑마진 3 주고(아이디랑 벌려야돼)<br>  .login-form  label { 로그인폼 라벨태그<br>  display: inline-block; 인라인이면서 블록<br>  width: 4em; 글자크기 4칸<br>  font-size: 1.3rem;  폰트사이즈 1.3배<br>  }<br>  .login-form  input { 로그인 폼의 인풋태그<br>  width: 90px; 길이<br>  height: 22px; 높이<br>  border: 1px  solid  #aaa; 선<br>  border-radius: 3px; 테두리 깎고<br>  padding: 1px  1px  1px  0.5em; 패딩주엇다<br>  }<br>  .login-form  label,<br>  .login-form  input {라벨과 인풋에 공통으로 수직 정렬해주고<br>  vertical-align: middle;<br>  }<br>  .btn-login { 로그인 버튼<br>  position: absolute; 포지션 부모에게 고정 부모는 로그인 폼의 필드셋 태그<br>  top: 0;<br>  right: 0; 오른쪽 상단에 배치<br>  width: 50px; 폭<br>  height: 50px; 높이<br>  border: 1px  solid  #e8852e; 선그어줍니다<br>  border-radius: 3px; 겉에 도려내고<br>  background-color: #ed552f; 배경색<br>  color: #fff; 글자색<br>  padding: 0; 패딩 0<br>  }<br>  .sign {<br>  background: #fff;<br>  border-radius: 0  0  5px  5px;<br>  padding: 10px;<br>  display: flex; 디스플레이 플렉스<br>  flex-flow: row  nowrap; 행정렬 줄바꿈 x<br>  font-size: 1.3rem; 크기<br>  justify-content: space-between; 배치 간격 정의<br>  }<br>  .sign  li::before {사인 클래스의 li 태그의 가상 전 자식요소<br>  width: auto;<br>  margin-left: 0;<br>  color: #ed552f;<br>  }<br>이러면 뭐가 나오냐 하면<br><img src="https://user-images.githubusercontent.com/50402288/98110648-c155cd00-1ee2-11eb-89cc-2883903399d5.png" alt="20201104211412"><br>빰! 나왔습니다 로그인 창!<br>@오늘은 여까징@</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/10/22/Front-End/day_3/" data-id="ckh3dblre0003ygv1f404g76x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Front-End/day_2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/20/Front-End/day_2/" class="article-date">
-  <time datetime="2020-10-20T04:44:51.000Z" itemprop="datePublished">2020-10-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Front-End/">Front-End</a>►<a class="article-category-link" href="/categories/Front-End/day-2/">day_2</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/20/Front-End/day_2/">day_2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://user-images.githubusercontent.com/50402288/98083641-03204c80-1ebe-11eb-9a62-764364eafc4e.png" alt="20201104165103"><br> 이 예제를 같이 한번 만들어 보겠습니다.</p>
-<p><img src="https://user-images.githubusercontent.com/50402288/98084510-40d1a500-1ebf-11eb-8c82-3eefa4c85679.png" alt="헤더"><br>먼저 이 헤더를 만들어 볼 것인데요</p>
-<ul>
-<li><p>html  코드 </p>
-</li>
-<li>  <header  class="header">
-  <h1  class="logo"><a  href="#"><img  src="./images/logo.png"  alt="WEB CAFE"></a></h1>
-  <ul  class="member">
-  <li><a  href="#">홈</a></li>
-  <li><span  class="divider"  aria-hidden="true">:</span><a  href="#">로그인</a></li>
-  <li><span  class="divider"  aria-hidden="true">:</span><a  href="#">회원가입</a></li>
-  <li><span  class="divider"  aria-hidden="true">:</span><a  href="#">사이트맵</a></li>
-  <li><span  class="divider"  aria-hidden="true">:</span><a  href="#">english</a></li>
-  </ul>
-  <nav  class="navigation">내비게이션</nav>
-  </header>
-
-</li>
-</ul>
-<hr>
-<pre><code>* css 코드
-    * .header &#123;
-background-color: aquamarine; 색은 구분될 수 있게 아쿠아마린
-position: relative; 포지션 relative로 설정
-padding: 0  30px  50px; 위 좌우 아래의 패딩을 각각의 값으로 줍니다 
-border-radius: 0  0  15px  15px; 이건 둥글게 깎는 작업입니다 좌상단 우상단 우하단 좌하단을 수치만큼 둥글게 깎습니다.
-&#125;
-.logo &#123;
-position: absolute; 값을 조정할 수 있는데요 relative 한 부모컨테이너를 기준으로 움직입니다. 현재 부모컨테이너가 header고 relative값을 줬으니 header를 기준으로 움직일 것입니다
-top: 47px; header를 기준으로 해당 수치만큼 이동
-left: 65px;
-&#125;
-.member &#123;
-// position: relative; 생각해보면 멤버 클래스는 relative를 가질 이유가 없습니다.
-text-align: right; ul태그는 기본적으로 block성질입니다. 오른쪽으로 텍스트 정렬해줍니다.
-right: -10px; 역시 부모인 header기준으로 -10만큼 이동해주고
-background-color: azure; 구분하기위해 색을 줍니다
-&#125;
-.member  li &#123; 멤버 안에있는 li태그들을 총괄합니다
-text-align: right; 오른쪽 정렬해주구요
-font-size: 1.4rem; 기본적으로 설정한 폰트의 1.4배로 출력합니다
-text-transform: uppercase; 대문자출력하구요
-padding: 2px  0; 패팅은 위아래 2px입니다
-background-color: bisque; 색깔 주구요
-display: inline-block; 블록성질을 가진 인라인 텍스트입니다. 줄바꾸면 안되기 때문에 인라인 성질을 줬습니다.
-&#125;
-.memeber  a &#123;
-display: inline-block; //솔직히 여기는 설정안해도 된다고 생각하는데요 아무문제없을것입니다 li태그 안서 뭐 움직일수도 없으니까요 그냥 일단두구요
-padding: 8px  10px; 위아래 양 옆 패딩 이렇게 줍니다
-&#125;</code></pre>
-<p>이제 색처리를 다시해주면</p>
-<p><img src="https://user-images.githubusercontent.com/50402288/98090102-f48a6300-1ec6-11eb-8b0c-b0a34eca31fe.png" alt="헤더"></p>
-<p>쨘 우리가 원하는 헤더가 나왔습니다. 별거아닌데 블로그에쓰기 더럽게 힘드네요 오늘은 여기까지 하겠습니다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/10/20/Front-End/day_2/" data-id="ckh3dblrc0001ygv10zaq2bp7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -1197,7 +1191,7 @@ padding: 8px  10px; 위아래 양 옆 패딩 이렇게 줍니다
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-4/">day_4</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-5/">day_5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-6/">day_6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-7/">day_7</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-4/">day_4</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-5/">day_5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-6/">day_6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-7/">day_7</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/">SpringBoot&AWS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/TestCode/">TestCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/intelliJ-springboot/">intelliJ&springboot</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1207,7 +1201,7 @@ padding: 8px  10px; 위아래 양 옆 패딩 이렇게 줍니다
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/" rel="tag">MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/" rel="tag">h2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abstract-Class/" rel="tag">Abstract_Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Annotations/" rel="tag">Annotations</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arrays/" rel="tag">Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Class/" rel="tag">Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conditional-Statements/" rel="tag">Conditional_Statements</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/" rel="tag">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataType/" rel="tag">DataType</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-End/" rel="tag">Front-End</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generic/" rel="tag">Generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Handling-Exception/" rel="tag">Handling_Exception</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/InnerClasses/" rel="tag">InnerClasses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Input-and-Output/" rel="tag">Input and Output</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interface/" rel="tag">Interface</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JCF/" rel="tag">JCF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/" rel="tag">Lombok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loops/" rel="tag">Loops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/" rel="tag">MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Modifier/" rel="tag">Modifier</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MultiThread/" rel="tag">MultiThread</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N-D-Arrays/" rel="tag">N-D_Arrays</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOP/" rel="tag">OOP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Package/" rel="tag">Package</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-1/" rel="tag">Quiz_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quiz-2/" rel="tag">Quiz_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Regular-Expression/" rel="tag">Regular_Expression</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringTokenizer/" rel="tag">StringTokenizer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Strings/" rel="tag">Strings</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VO/" rel="tag">VO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Variable/" rel="tag">Variable</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-1/" rel="tag">day_1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-2/" rel="tag">day_2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-3/" rel="tag">day_3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/day-4/" rel="tag">day_4</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/h2/" rel="tag">h2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java-lang/" rel="tag">java_lang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/" rel="tag">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testCode/" rel="tag">testCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/til/" rel="tag">til</a></li></ul>
     </div>
   </div>
 
@@ -1217,7 +1211,7 @@ padding: 8px  10px; 위아래 양 옆 패딩 이렇게 줍니다
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.25px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 13.75px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DAO/" style="font-size: 10px;">DAO</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 13.75px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 13.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 12.5px;">HTTP</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 13.75px;">JCF</a> <a href="/tags/JSP/" style="font-size: 11.25px;">JSP</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.25px;">Level1</a> <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16.25px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.25px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Servlet/" style="font-size: 12.5px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 17.5px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/VO/" style="font-size: 10px;">VO</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.5px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.5px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.25px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/h2/" style="font-size: 10px;">h2</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
+      <a href="/tags/Abstract-Class/" style="font-size: 10px;">Abstract_Class</a> <a href="/tags/Algorithm/" style="font-size: 11.25px;">Algorithm</a> <a href="/tags/Annotations/" style="font-size: 10px;">Annotations</a> <a href="/tags/Arrays/" style="font-size: 10px;">Arrays</a> <a href="/tags/CSS/" style="font-size: 13.75px;">CSS</a> <a href="/tags/Class/" style="font-size: 10px;">Class</a> <a href="/tags/Conditional-Statements/" style="font-size: 10px;">Conditional_Statements</a> <a href="/tags/DAO/" style="font-size: 10px;">DAO</a> <a href="/tags/DataType/" style="font-size: 10px;">DataType</a> <a href="/tags/Database/" style="font-size: 15px;">Database</a> <a href="/tags/Enum/" style="font-size: 10px;">Enum</a> <a href="/tags/Front-End/" style="font-size: 13.75px;">Front-End</a> <a href="/tags/Generic/" style="font-size: 10px;">Generic</a> <a href="/tags/HTML/" style="font-size: 13.75px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 12.5px;">HTTP</a> <a href="/tags/Handling-Exception/" style="font-size: 10px;">Handling_Exception</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Inheritance/" style="font-size: 10px;">Inheritance</a> <a href="/tags/InnerClasses/" style="font-size: 10px;">InnerClasses</a> <a href="/tags/Input-and-Output/" style="font-size: 10px;">Input and Output</a> <a href="/tags/Interface/" style="font-size: 10px;">Interface</a> <a href="/tags/JCF/" style="font-size: 13.75px;">JCF</a> <a href="/tags/JSP/" style="font-size: 11.25px;">JSP</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Level1/" style="font-size: 11.25px;">Level1</a> <a href="/tags/Lombok/" style="font-size: 10px;">Lombok</a> <a href="/tags/Loops/" style="font-size: 10px;">Loops</a> <a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/Modifier/" style="font-size: 10px;">Modifier</a> <a href="/tags/MultiThread/" style="font-size: 16.25px;">MultiThread</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/N-D-Arrays/" style="font-size: 10px;">N-D_Arrays</a> <a href="/tags/OOP/" style="font-size: 10px;">OOP</a> <a href="/tags/Package/" style="font-size: 10px;">Package</a> <a href="/tags/Polymorphism/" style="font-size: 12.5px;">Polymorphism</a> <a href="/tags/Programmers/" style="font-size: 11.25px;">Programmers</a> <a href="/tags/Quiz-1/" style="font-size: 10px;">Quiz_1</a> <a href="/tags/Quiz-2/" style="font-size: 10px;">Quiz_2</a> <a href="/tags/Regular-Expression/" style="font-size: 10px;">Regular_Expression</a> <a href="/tags/Servlet/" style="font-size: 12.5px;">Servlet</a> <a href="/tags/Spring/" style="font-size: 17.5px;">Spring</a> <a href="/tags/StringTokenizer/" style="font-size: 10px;">StringTokenizer</a> <a href="/tags/Strings/" style="font-size: 10px;">Strings</a> <a href="/tags/VO/" style="font-size: 10px;">VO</a> <a href="/tags/Variable/" style="font-size: 10px;">Variable</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/day-1/" style="font-size: 12.5px;">day_1</a> <a href="/tags/day-2/" style="font-size: 12.5px;">day_2</a> <a href="/tags/day-3/" style="font-size: 11.25px;">day_3</a> <a href="/tags/day-4/" style="font-size: 10px;">day_4</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/h2/" style="font-size: 10px;">h2</a> <a href="/tags/java/" style="font-size: 18.75px;">java</a> <a href="/tags/java-lang/" style="font-size: 10px;">java_lang</a> <a href="/tags/springBoot/" style="font-size: 11.25px;">springBoot</a> <a href="/tags/testCode/" style="font-size: 10px;">testCode</a> <a href="/tags/til/" style="font-size: 20px;">til</a>
     </div>
   </div>
 
@@ -1226,7 +1220,7 @@ padding: 8px  10px; 위아래 양 옆 패딩 이렇게 줍니다
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
     </div>
   </div>
 
@@ -1239,23 +1233,23 @@ padding: 8px  10px; 위아래 양 옆 패딩 이렇게 줍니다
       <ul>
         
           <li>
-            <a href="/2020/11/25/Spring/fastcampus/day_7/">day_6</a>
+            <a href="/2021/01/01/Spring/springboot&AWS/testCode/">TestCode</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/31/Spring/springboot&AWS/intelliJ&springboot/">intelliJ&amp;springboot</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/22/Spring/fastcampus/day_8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/25/Spring/fastcampus/day_7/">day_7</a>
           </li>
         
           <li>
             <a href="/2020/11/24/Spring/fastcampus/day_6/">day_6</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/23/Spring/fastcampus/day_5/">day_5</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/20/Spring/fastcampus/day_4/">day_4</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/19/Spring/fastcampus/day_3/">day_3</a>
           </li>
         
       </ul>
@@ -1270,7 +1264,7 @@ padding: 8px  10px; 위아래 양 옆 패딩 이렇게 줍니다
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Hansol<br>
+      &copy; 2021 Hansol<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
