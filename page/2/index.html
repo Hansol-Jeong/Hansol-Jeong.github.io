@@ -66,6 +66,308 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Spring/fastcampus/day_1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/17/Spring/fastcampus/day_1/" class="article-date">
+  <time datetime="2020-11-17T07:05:51.000Z" itemprop="datePublished">2020-11-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>►<a class="article-category-link" href="/categories/Spring/day-1/">day_1</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/17/Spring/fastcampus/day_1/">day_1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://user-images.githubusercontent.com/50402288/99357311-0caea900-28ef-11eb-9bcb-7e21b79d6a1d.png" alt="image"><br> 바보야, 문제는 다형성이야. - 빌 클린턴</p>
+<h1 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h1><ul>
+<li><p>유지보수  측면에서 다형성은 매우매우 중요합니다.</p>
+<h2 id="ex1"><a href="#ex1" class="headerlink" title="ex1"></a>ex1</h2><ul>
+<li>엘지티비와 삼성티비를 구현할겁니다 </li>
+<li>다형성이 구현되어 있지 않을 경우</li>
+</ul>
+</li>
+</ul>
+<pre><code>public class LgTv &#123;  
+        public LgTv() &#123;  
+            System.out.println(&quot;===&gt; LgTv 생성&quot;);  
+  &#125; //  
+  public void turnOn() &#123;  
+            System.out.println(&quot;LgTv---전원 켠다&quot;);  
+  &#125;  
+        public void turnOff() &#123;  
+            System.out.println(&quot;LgTv---전원 끈다&quot;);  
+  &#125;  
+        public void soundUp() &#123;  
+            System.out.println(&quot;LgTv---소리 올린다&quot;);  
+  &#125;  
+        public void soundDown() &#123;  
+            System.out.println(&quot;LgTv---소리 내린다&quot;);  
+
+  &#125;  
+&#125;</code></pre>
+<hr>
+<pre><code>    public class SamsungTV &#123;  
+    public SamsungTV() &#123;  
+        System.out.println(&quot;===&gt; SamsungTV 생성&quot;);  
+  &#125; //  
+  public void powerOn() &#123;  
+        System.out.println(&quot;SamsungTV---전원 켠다&quot;);  
+  &#125;  
+    public void powerOff() &#123;  
+        System.out.println(&quot;SamsungTV---전원 끈다&quot;);  
+  &#125;  
+    public void volumeUp() &#123;  
+        System.out.println(&quot;SamsungTV---소리 올린다&quot;);  
+  &#125;  
+    public void volumeDown() &#123;  
+        System.out.println(&quot;SamsungTV---소리 내린다&quot;);  
+  &#125;  
+&#125;</code></pre>
+<hr>
+<pre><code>SamsungTV tv = new SamsungTV();  
+tv.powerOn();  
+tv.powerOff();  
+tv.volumeDown();  
+tv.volumeUp();  
+LgTv tv2 = new LgTv();  
+tv2.soundDown();  
+tv2.soundUp();  
+tv2.turnOff();  
+tv2.turnOn(); //뭐하러 이렇게 하냐 하나하나 다 뜯어고쳐야 되잖아</code></pre>
+<p>써있는 것처럼 메소드 하나하나 다 뜯어 고쳐야 하니 힘들죠? 그죠?</p>
+<h2 id="ex2"><a href="#ex2" class="headerlink" title="ex2"></a>ex2</h2><ul>
+<li><h2 id="인터페이스를-구현한-경우"><a href="#인터페이스를-구현한-경우" class="headerlink" title="인터페이스를 구현한 경우"></a>인터페이스를 구현한 경우</h2><p>  public interface TV {  </p>
+<pre><code>  void powerOn();  </code></pre>
+<p>   void powerOff();  </p>
+<p>   void volumeUp();  </p>
+<p>   void volumeDown();<br>  }</p>
+</li>
+</ul>
+<hr>
+<pre><code>public class LgTv implements TV&#123;  
+        public LgTv() &#123;  
+            System.out.println(&quot;===&gt; LgTv 생성&quot;);  
+  &#125; //  
+
+
+  @Override  
+  public void powerOn() &#123;  
+        System.out.println(&quot;LgTv---전원 켠다&quot;);  
+  &#125;  
+
+    @Override  
+  public void powerOff() &#123;  
+        System.out.println(&quot;LgTv---전원 끈다&quot;);  
+  &#125;  
+    @Override  
+  public void volumeUp() &#123;  
+            System.out.println(&quot;LgTv---소리 올린다&quot;);  
+  &#125;  
+
+    @Override  
+  public void volumeDown() &#123;  
+            System.out.println(&quot;LgTv---소리 내린다&quot;);  
+  &#125;  
+&#125;</code></pre>
+<hr>
+<pre><code>public class SamsungTV implements TV &#123;  
+    public SamsungTV() &#123;  
+        System.out.println(&quot;===&gt; SamsungTV 생성&quot;);  
+  &#125; //  
+  @Override  
+  public void powerOn() &#123;  
+        System.out.println(&quot;SamsungTV---전원 켠다&quot;);  
+  &#125;  
+    @Override  
+  public void powerOff() &#123;  
+        System.out.println(&quot;SamsungTV---전원 끈다&quot;);  
+  &#125;  
+    @Override  
+  public void volumeUp() &#123;  
+        System.out.println(&quot;SamsungTV---소리 올린다&quot;);  
+  &#125;  
+    @Override  
+  public void volumeDown() &#123;  
+        System.out.println(&quot;SamsungTV---소리 내린다&quot;);  
+  &#125;  
+&#125;</code></pre>
+<hr>
+<pre><code>  public static void main(String[] args) &#123;  
+  TV tv = new SamsungTV();  
+  tv.powerOn();  
+  tv.powerOff();  
+  tv.volumeDown();  
+  tv.volumeUp();  
+  TV tv2 = new LgTv();  
+  tv2.powerOn();  
+  tv2.powerOff();  
+  tv2.volumeDown();  
+  tv2.volumeUp(); 
+// Polymorhpism: one interface multiful implementation.  
+ //어떻게 하면 클라이언트를 아예 안바꾸고 수정할 수 있을까 -&gt; 디자인 패턴  
+  &#125;</code></pre>
+<hr>
+<h2 id="인터페이스를-사용해도-여전히-클라이언트-수정이-불가피합니다-그러면-gt-디자인패턴-Factory-Pattern-을-씁니다"><a href="#인터페이스를-사용해도-여전히-클라이언트-수정이-불가피합니다-그러면-gt-디자인패턴-Factory-Pattern-을-씁니다" class="headerlink" title="인터페이스를 사용해도 여전히 클라이언트 수정이 불가피합니다 그러면 -&gt; 디자인패턴(Factory Pattern)을 씁니다."></a>인터페이스를 사용해도 여전히 클라이언트 수정이 불가피합니다 그러면 -&gt; 디자인패턴(Factory Pattern)을 씁니다.</h2><h2 id="ex3"><a href="#ex3" class="headerlink" title="ex3"></a>ex3</h2><ul>
+<li>팩토리 디자인 패턴을 구현한 경우</li>
+</ul>
+<hr>
+<ul>
+<li><h2 id="인터페이스"><a href="#인터페이스" class="headerlink" title="인터페이스"></a>인터페이스</h2><p>  public interface TV {<br>   void powerOn();  </p>
+<p>   void powerOff();  </p>
+<p>   void volumeUp();  </p>
+<p>   void volumeDown();<br>  }</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>엘지 티비</li>
+</ul>
+<hr>
+<pre><code>public class LgTv implements TV &#123;  
+        public LgTv() &#123;  
+            System.out.println(&quot;===&gt; LgTv 생성&quot;);  
+  &#125; //  
+
+
+  @Override  
+  public void powerOn() &#123;  
+        System.out.println(&quot;LgTv---전원 켠다&quot;);  
+  &#125;  
+
+    @Override  
+  public void powerOff() &#123;  
+        System.out.println(&quot;LgTv---전원 끈다&quot;);  
+  &#125;  
+    @Override  
+  public void volumeUp() &#123;  
+            System.out.println(&quot;LgTv---소리 올린다&quot;);  
+  &#125;  
+
+    @Override  
+  public void volumeDown() &#123;  
+            System.out.println(&quot;LgTv---소리 내린다&quot;);  
+  &#125;  
+&#125;</code></pre>
+<hr>
+<ul>
+<li>삼성 티비</li>
+</ul>
+<hr>
+<pre><code>  public class SamsungTV implements TV &#123;  
+    public SamsungTV() &#123;  
+        System.out.println(&quot;===&gt; SamsungTV 생성&quot;);  
+  &#125; //  
+  @Override  
+  public void powerOn() &#123;  
+        System.out.println(&quot;SamsungTV---전원 켠다&quot;);  
+  &#125;  
+    @Override  
+  public void powerOff() &#123;  
+        System.out.println(&quot;SamsungTV---전원 끈다&quot;);  
+  &#125;  
+    @Override  
+  public void volumeUp() &#123;  
+        System.out.println(&quot;SamsungTV---소리 올린다&quot;);  
+  &#125;  
+    @Override  
+  public void volumeDown() &#123;  
+        System.out.println(&quot;SamsungTV---소리 내린다&quot;);  
+  &#125;  
+&#125;</code></pre>
+<hr>
+<ul>
+<li>구글 티비</li>
+</ul>
+<hr>
+<pre><code>public class GoogleTV implements TV &#123;  
+    public GoogleTV() &#123;  
+        System.out.println(&quot;===&gt; GoogleTV 생성&quot;);  
+  &#125; //  
+  @Override  
+  public void powerOn() &#123;  
+        System.out.println(&quot;GoogleTV---전원 켠다&quot;);  
+  &#125;  
+    @Override  
+  public void powerOff() &#123;  
+        System.out.println(&quot;GoogleTV---전원 끈다&quot;);  
+  &#125;  
+    @Override  
+  public void volumeUp() &#123;  
+        System.out.println(&quot;GoogleTV---소리 올린다&quot;);  
+  &#125;  
+    @Override  
+  public void volumeDown() &#123;  
+        System.out.println(&quot;GoogleTV---소리 내린다&quot;);  
+  &#125;  
+&#125;</code></pre>
+<hr>
+<ul>
+<li>팩토리 패턴</li>
+</ul>
+<hr>
+<pre><code>public class BeanFactory &#123;//Factory디자인 패턴  
+  //Bean -&gt; 객체, BeanFactory:객체 공장  
+  public Object getBean(String id) &#123;  
+        if(id.equals(&quot;lg&quot;)) &#123;  
+            return new LgTv();  
+  &#125; else if(id.equals(&quot;samsung&quot;)) &#123;  
+            return new SamsungTV();  
+  &#125;  
+        else if(id.equals(&quot;Google&quot;)) &#123;  
+            return new GoogleTV();  
+  &#125;//분기 계속 만들어줘야해 -&gt; Spring frame work로 간다!(자바 소스 안건드리고 유지보수가 가능하다.)  
+  return null;  
+  &#125;  
+&#125;</code></pre>
+<p>   <img src="https://user-images.githubusercontent.com/50402288/99366591-2aced600-28fc-11eb-90ca-72bef96101ad.png" alt="20201117174111"></p>
+<p>(빨간색은 무시하세요 왜저럴까요) arg에 Google을 넣으면</p>
+<hr>
+<ul>
+<li>TVUser</li>
+</ul>
+<hr>
+<pre><code>public class TVUser3 &#123;  
+    public static void main(String[] args) &#123;  
+        BeanFactory factory = new BeanFactory();  
+
+  TV tv = (TV) factory.getBean(args[0]);  
+  tv.powerOff();  
+  tv.powerOn();  
+  tv.volumeDown();  
+  tv.volumeUp();  
+  &#125;  
+&#125;</code></pre>
+<p>  보이는 것처럼 args[0]에 Google이 들어가서 팩토리 패턴에 id에 Google을 넘겨주는 것을 알 수 있습니다. 그러면 우리는 클라이언트를 수정 할 필요 없이 서로다른 클래스를 args에 다른 문자열을 넣는것으로 생성 가능 합니다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://hansol-jeong.github.io/2020/11/17/Spring/fastcampus/day_1/" data-id="ckhlqimcn0008dov17lt9bkwd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Spring/book/day_2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/08/Spring/book/day_2/" class="article-date">
@@ -1066,116 +1368,6 @@ public class Main &#123;
 
 
   
-    <article id="post-Algorithm/level1/One_plus_One" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/24/Algorithm/level1/One_plus_One/" class="article-date">
-  <time datetime="2020-10-24T06:41:00.000Z" itemprop="datePublished">2020-10-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>►<a class="article-category-link" href="/categories/Algorithm/Level1/">Level1</a>►<a class="article-category-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/24/Algorithm/level1/One_plus_One/">One_Plus_One</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h6><p>정수 배열 numbers가 주어집니다. numbers에서 서로 다른 인덱스에 있는 두 개의 수를 뽑아 더해서 만들 수 있는 모든 수를 배열에 오름차순으로 담아 return 하도록 solution 함수를 완성해주세요.</p>
-<hr>
-<h5 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h5><ul>
-<li>numbers의 길이는 2 이상 100 이하입니다.<ul>
-<li>numbers의 모든 수는 0 이상 100 이하입니다.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h5 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h5><p>numbers</p>
-<p>result</p>
-<p><code>[2,1,3,4,1]</code></p>
-<p><code>[2,3,4,5,6,7]</code></p>
-<p><code>[5,0,2,7]</code></p>
-<p><code>[2,5,7,9,12]</code></p>
-<hr>
-<h5 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h5><p>입출력 예 #1</p>
-<ul>
-<li>2 = 1 + 1 입니다. (1이 numbers에 두 개 있습니다.)</li>
-<li>3 = 2 + 1 입니다.</li>
-<li>4 = 1 + 3 입니다.</li>
-<li>5 = 1 + 4 = 2 + 3 입니다.</li>
-<li>6 = 2 + 4 입니다.</li>
-<li>7 = 3 + 4 입니다.</li>
-<li>따라서  <code>[2,3,4,5,6,7]</code>  을 return 해야 합니다.</li>
-</ul>
-<p>입출력 예 #2</p>
-<ul>
-<li>2 = 0 + 2 입니다.</li>
-<li>5 = 5 + 0 입니다.</li>
-<li>7 = 0 + 7 = 5 + 2 입니다.</li>
-<li>9 = 2 + 7 입니다.</li>
-<li>12 = 5 + 7 입니다.</li>
-<li>따라서  <code>[2,5,7,9,12]</code>  를 return 해야 합니다.</li>
-</ul>
-<h2 id="나의-풀이-과정"><a href="#나의-풀이-과정" class="headerlink" title="나의 풀이 과정"></a>나의 풀이 과정</h2><ul>
-<li><p>전체를 순회해야 하네요? -&gt; 이중 반복문을 쓸 것입니다.</p>
-</li>
-<li><p>중복이 허용되지 않네요? -&gt; HashSet을 쓸 것입니다.</p>
-</li>
-<li><p>데이터를 가공해야 하네요? -&gt; stream으로 작업할 것입니다.</p>
-</li>
-<li><p>  class Solution {  </p>
-<pre><code>  public int[] solution(int[] numbers) &#123;  
-      int answer[];  
-Set&lt;Integer&gt; set = new HashSet&lt;&gt;();  셋을 만들어 줍니다
-List&lt;Integer&gt; list = new ArrayList&lt;&gt;();  일단 리스트를 만들어 주어요 하지만 이건 나중에 수정할 거에요 비 효율적이거든요</code></pre>
-<p>   for(int i = 0; i &lt; numbers.length; i++) {  이중 for문으로 전체를 순회하며 set에 값을 넣어주고요</p>
-<pre><code>          if (i &lt; numbers.length) &#123;  
-              for (int j = i + 1; j &lt; numbers.length; j++) &#123;  
-                  set.add(Math.addExact(numbers[i],numbers[j]));  
-&#125;  
-          &#125;  
-      &#125;  
-     사실 여기서 고민이 많았어요 아무리 해도 stream을 List&lt;&gt;로 받아서 array로 변환시켜서 answer에 넣어줄수가 없었거든요 그래서 결국엔
-     list = new ArrayList&lt;&gt;(set).stream().sorted(Integer::compareTo).collect(Collectors.toList());  리스트를 받고 정렬 한 후
-       answer = new int[list.size()];  배열 크기를 정의하고
-      for(int i = 0; i &lt; list.size(); i++) &#123;  하나하나 넣어줬습니다. 
-          answer[i] = list.get(i);  
-      &#125;  
-return answer;  
-&#125;  </code></pre>
-<p>  }<br>  근데 이건 좀 아닌것 같아요 아무리생각해도 그래서 통과는 했으니 다른사람의 답을 봤습니다.</p>
-</li>
-</ul>
-<hr>
-<pre><code>answer = set.stream().sorted().mapToInt(Integer::intValue).toArray();</code></pre>
-<p>이렇게 간단하게 끝낼 수 있더라구요 셋을 스트림으로 변환하고 정렬 후 각 요소를 Integer -&gt; int값으로 받고 배열로 만들 수 있습니다. 쩐다<br><img src="https://user-images.githubusercontent.com/50402288/98487406-12a8e800-2266-11eb-8ff9-791218d9d798.png" alt="272F4137531A77170C"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://hansol-jeong.github.io/2020/10/24/Algorithm/level1/One_plus_One/" data-id="ckh9r94la0000skv1do51fves" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Level1/" rel="tag">Level1</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Programmers/" rel="tag">Programmers</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1191,7 +1383,7 @@ return answer;
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-4/">day_4</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-5/">day_5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-6/">day_6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-7/">day_7</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/">SpringBoot&AWS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/TestCode/">TestCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/intelliJ-springboot/">intelliJ&springboot</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/">Level1</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/Crain/">Crain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/Level1/One-Plus-One/">One_Plus_One</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/">MySQL</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-1/">Quiz_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/Quiz-2/">Quiz_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/MySQL/day-3/">day_3</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/">Front-End</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Front-End/day-4/">day_4</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-2/">day_2</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-3/">day_3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-4/">day_4</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-5/">day_5</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-6/">day_6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/day-7/">day_7</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-1/">day_1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/til/day-2/">day_2</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/">SpringBoot&AWS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/TestCode/">TestCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot-AWS/intelliJ-springboot/">intelliJ&springboot</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/etc/">etc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/">til</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Abstract-Class/">Abstract_Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Annotations/">Annotations</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Arrays/">Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Class/">Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Conditional-Statements/">Conditional_Statements</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/DataType/">DataType</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Enum/">Enum</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Generic/">Generic</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Handling-Exception/">Handling_Exception</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/IO/">IO</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Inheritance/">Inheritance</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/InnerClasses/">InnerClasses</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Input-and-Output/">Input and Output</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Interface/">Interface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/JCF/">JCF</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Lambda/">Lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Loops/">Loops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Modifier/">Modifier</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/MultiThread/">MultiThread</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/N-D-Arrays/">N-D_Arrays</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/OOP/">OOP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Package/">Package</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism/">Polymorphism</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Polymorphism1/">Polymorphism1</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Regular-Expression/">Regular_Expression</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/StringTokenizer/">StringTokenizer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Strings/">Strings</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Variable/">Variable</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/Wrapper-Class/">Wrapper Class</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/til/java-lang/">java_lang</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1233,6 +1425,10 @@ return answer;
       <ul>
         
           <li>
+            <a href="/2021/01/01/diary/2021_01_01/">망상</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/01/Spring/springboot&AWS/testCode/">TestCode</a>
           </li>
         
@@ -1246,10 +1442,6 @@ return answer;
         
           <li>
             <a href="/2020/11/25/Spring/fastcampus/day_7/">day_7</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/24/Spring/fastcampus/day_6/">day_6</a>
           </li>
         
       </ul>
